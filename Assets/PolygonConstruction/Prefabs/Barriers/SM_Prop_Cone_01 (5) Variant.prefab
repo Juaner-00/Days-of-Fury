@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3857262390680005808
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1956315680376676, guid: 41c4aa0ed926d03478c0597806cb29ac, type: 3}
+      propertyPath: m_Name
+      value: SM_Prop_Cone_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099506375350376, guid: 41c4aa0ed926d03478c0597806cb29ac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -47.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099506375350376, guid: 41c4aa0ed926d03478c0597806cb29ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.113
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099506375350376, guid: 41c4aa0ed926d03478c0597806cb29ac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099506375350376, guid: 41c4aa0ed926d03478c0597806cb29ac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00899423
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099506375350376, guid: 41c4aa0ed926d03478c0597806cb29ac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.35612085
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099506375350376, guid: 41c4aa0ed926d03478c0597806cb29ac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.021265203
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099506375350376, guid: 41c4aa0ed926d03478c0597806cb29ac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9341546
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099506375350376, guid: 41c4aa0ed926d03478c0597806cb29ac, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 41c4aa0ed926d03478c0597806cb29ac, type: 3}

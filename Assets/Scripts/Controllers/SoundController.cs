@@ -23,12 +23,14 @@ public abstract class SoundController : MonoBehaviour
     }
 
     public void Play(int index, bool? randomClip = null, bool? loop = null) {
-        sources[index].clip = randomClip == null? 
-            sources[index].clip : actionClips[index].Clips[UnityEngine.Random.Range(0, actionClips[index].Clips.Length)];
-        sources[index].loop = loop == null? false : (bool)loop;
-        sources[index].volume = actionClips[index].ActionVolume;
+        if(actionClips[index].Clips.Length > 0) { 
+            sources[index].clip = randomClip == null? 
+                sources[index].clip : actionClips[index].Clips[UnityEngine.Random.Range(0, actionClips[index].Clips.Length)];
+            sources[index].loop = loop == null? false : (bool)loop;
+            sources[index].volume = actionClips[index].ActionVolume;
 
-        sources[index].Play();
+            sources[index].Play();
+        }
     }
 
     public void Stop(int index) {

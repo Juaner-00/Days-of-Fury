@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MusicManager : SoundController
 {
+    const string MIXER_PATH = "Audio/Music Mixer";
+
     #region SINGLETON
     private static MusicManager instance;
 
@@ -12,14 +15,18 @@ public class MusicManager : SoundController
 
     protected override void ChildAwake()
     {
-        if (Instance != null) {
+        if (Instance == null) {
+            instance = this;
+        }
+        else {
             Destroy(gameObject);
             return;
         }
-        else instance = this;
+
         DontDestroyOnLoad(gameObject);
 
         SubscribeEvents();
+        ApplyAudioMixer();
     }
     #endregion
 
@@ -28,6 +35,11 @@ public class MusicManager : SoundController
 
     private void SubscribeEvents() {
         SceneManager.sceneLoaded += UpdateMusicToLoadedScene;
+    }
+    private void ApplyAudioMixer() {
+        for(int i = 0; i < sources.Length; i++) {
+            sources[i].outputAudioMixerGroup = Resources.Load<AudioMixerGroup>(MIXER_PATH);
+        }
     }
     void UpdateMusicToLoadedScene(Scene scene, LoadSceneMode loadMode) {
         StopAll();

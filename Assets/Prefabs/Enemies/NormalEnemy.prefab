@@ -48,6 +48,7 @@ MonoBehaviour:
   force: 50
   attackSpeed: 1
   reference: {fileID: 8715754462216024055}
+  smokeFire: {fileID: 0}
 --- !u!1 &8716960832049030951
 GameObject:
   m_ObjectHideFlags: 0
@@ -48124,22 +48125,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 8718753481427106765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8caac411025ac2847b6a29a3a10f91a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionClips:
   - actionName: Moving
-    actionVolume: 0.025
+    actionVolume: 0.05
     clips:
-    - {fileID: 8300000, guid: 94541f6e730bda94b9ee0fb32d7d442f, type: 3}
+    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
   - actionName: Shooting
     actionVolume: 0.3
     clips:
-    - {fileID: 8300000, guid: 3b05be4f25bac92448d3f93346dbe884, type: 3}
+    - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
   - actionName: GettingHurt
-    actionVolume: 0.7
+    actionVolume: 1
     clips:
-    - {fileID: 8300000, guid: 0b63c3a7618376e448f86bcc85021f32, type: 3}
+    - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}
 --- !u!1 &8718754909727491761
 GameObject:
   m_ObjectHideFlags: 0

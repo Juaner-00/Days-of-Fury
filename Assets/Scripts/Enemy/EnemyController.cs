@@ -49,8 +49,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     public void TakeDamage()
     {
-        OnGettingHurt?.Invoke();
-
         if (isDead)
             return;
 
@@ -66,6 +64,8 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             //aqui van las particulitas, sonidito y eso :v
             if (ScoreManager.Instance)
             {
+                OnGettingHurt?.Invoke();
+
                 ScoreManager.Instance.Addscore(scorePoints);
             }
 

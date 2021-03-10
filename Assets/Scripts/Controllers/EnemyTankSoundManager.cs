@@ -28,4 +28,10 @@ public class EnemyTankSoundManager : SoundController
     {
         PlaySourceByName("GettingHurt");
     }
+
+    private void OnDisable() {
+        fov.OnMoving -= PlayMoving;
+        fov.OnShooting -= PlayShooting;
+        controller.OnGettingHurt -= PlayGettingHurt;
+    }
 }

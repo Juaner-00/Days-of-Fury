@@ -12,6 +12,7 @@ public class TurretTank : MonoBehaviour
     bool available = true;
     Pool cartrigde;
 
+    public bool Available { get => available; }
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class TurretTank : MonoBehaviour
 
     public void Shot()
     {
-        if (available)
+        //if (available)
         {
             if (smokeFire)
                 smokeFire.Play();

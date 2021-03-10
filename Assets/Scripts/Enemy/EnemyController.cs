@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     int healthPoints;
     bool isDead;
 
+    PoolVfxs particleDamage, particleExplo;
 
     public static event EnemyEvent OnDie;
     public delegate void EnemyEvent();
@@ -22,6 +23,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     public Action OnGettingHurt;
 
+    void Start()
+    {
+        particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
+        particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
+    }
     public void Instantiate()
     {
         GetComponent<FieldOfView>().enabled = false;
@@ -53,13 +59,16 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             return;
 
 
-
+        ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         healthPoints--;
         isDead = (healthPoints <= 0) ? true : false;
 
         if (isDead)
         {
+            ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
+
             OnDie?.Invoke();
+            
 
             //aqui van las particulitas, sonidito y eso :v
             if (ScoreManager.Instance)

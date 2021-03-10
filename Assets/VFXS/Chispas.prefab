@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7868676703975474853}
   - component: {fileID: 7966822414482664944}
   - component: {fileID: 6314885886990525374}
-  - component: {fileID: 19203514642615903}
+  - component: {fileID: 8925414771757473195}
   m_Layer: 0
   m_Name: Chispas
   m_TagString: Untagged
@@ -4711,8 +4711,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1558641aa5457fc4d9dc0a9247bce1d3, type: 2}
-  - {fileID: 2100000, guid: 20882d83195a0314d8752fe79231714f, type: 2}
+  - {fileID: 2100000, guid: 2f4617f8459ea0c4db6783aaec4dddfd, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4756,7 +4756,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &19203514642615903
+--- !u!114 &8925414771757473195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4765,10 +4765,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1295345877655224280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 318f9d2351c274945ba72190fcc6f079, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d7402527e29b4841ae7836862b73650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 9.62
+  lifeTime: 10
 --- !u!1 &3281104417754720848
 GameObject:
   m_ObjectHideFlags: 0
@@ -9388,7 +9388,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1558641aa5457fc4d9dc0a9247bce1d3, type: 2}
+  - {fileID: 2100000, guid: 2f4617f8459ea0c4db6783aaec4dddfd, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

@@ -83,7 +83,9 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         FinishGame();
-        DeathScreen.Instance.LoseGame();
+        //delay para que se vea la muerte del player
+        Invoke("deadTank", 2f);
+        
     }
 
     public void WinGame()
@@ -92,6 +94,10 @@ public class GameManager : MonoBehaviour
         VictoryScreen.Instance.WinGame();
     }
 
+    public void deadTank()
+    {
+        DeathScreen.Instance.LoseGame();
+    }
 
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }

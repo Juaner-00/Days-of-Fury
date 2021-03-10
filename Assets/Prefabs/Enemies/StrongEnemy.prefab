@@ -18871,8 +18871,8 @@ MonoBehaviour:
     m_Bits: 256
   turretTank: {fileID: 3568881591217885342}
   walkPoint: {fileID: 0}
-  viewRadius: 13.9
-  viewAngle: 45
+  viewRadius: 13.89
+  viewAngle: 2.4
   targetMask:
     serializedVersion: 2
     m_Bits: 512

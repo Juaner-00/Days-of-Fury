@@ -9,14 +9,15 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 {
     [SerializeField] int maxHealthPoints;
     [SerializeField] SimpleCameraShakeInCinemachine sCamara;
-    [SerializeField] ParticleSystem chispa, explosion;
-    [SerializeField] Animator player;
+ 
+    Animator playerAnimator;
 
 
     ParticleSystem vfxscontainer;
     CinemachineImpulseSource impulseS;
     VfxsController vfxs;
 
+    PoolVfxs particleDamage, particleExplo;
     public static Action OnDie;
     public static Action OnChangeLife;
     public static Action OnGettingHurt;
@@ -27,6 +28,9 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     private void Awake()
     {
+        playerAnimator = GetComponentInChildren<Animator>();
+        particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
+        particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
         vfxs = GetComponent<VfxsController>();
         impulseS = GetComponent<CinemachineImpulseSource>();
         healthPoints = maxHealthPoints;
@@ -38,21 +42,19 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage();
-            if (chispa)
-            {
-                ParticleSystem daño = Instantiate(chispa, transform.position, transform.rotation);
-                daño.Play();
-            }
+
         }
     }
 
     public void TakeDamage()
     {
-        OnGettingHurt?.Invoke();
 
         if (isDead)
             return;
 
+
+        ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
+        OnGettingHurt?.Invoke();
         healthPoints--;
         OnChangeLife?.Invoke();
 
@@ -63,11 +65,15 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
         if (isDead)
         {
-            if (player)
-                player.SetTrigger("Dead1");
+            if (playerAnimator)
+            {
+                playerAnimator.SetTrigger("Dead1");
+                ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
+            }
+               
             OnDie?.Invoke();
             // Cuando se tenga la animación y las partículas de muerte se cambia el Destroy
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

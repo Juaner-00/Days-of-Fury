@@ -18728,7 +18728,7 @@ Animator:
   m_GameObject: {fileID: 3566982465080086895}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8050c46caa25e5d42a3bd82021b7aba7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -18856,8 +18856,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4184a5b256d63cb4799a4ad02952431b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundRadius: 41.99
-  shotRadius: 19.87
+  soundRadius: 26.78
+  shotRadius: 12.6
   normalSpeed: 6
   targetSpeed: 10
   randomXmin: -36
@@ -18871,8 +18871,8 @@ MonoBehaviour:
     m_Bits: 256
   turretTank: {fileID: 3568881591217885342}
   walkPoint: {fileID: 0}
-  viewRadius: 32.9
-  viewAngle: 32
+  viewRadius: 13.89
+  viewAngle: 2.4
   targetMask:
     serializedVersion: 2
     m_Bits: 512
@@ -18894,6 +18894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 2
   scorePoints: 100
+  timeDead: 2
 --- !u!114 &8613527440792475867
 MonoBehaviour:
   m_ObjectHideFlags: 0

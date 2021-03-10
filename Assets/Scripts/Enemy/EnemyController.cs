@@ -7,21 +7,29 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 {
     [SerializeField] int maxHealthPoints;
     [SerializeField] int scorePoints;
-
+    [SerializeField] float timeDead;
     Vector3 inicialPosition;
 
     int healthPoints;
     bool isDead;
-
+    Animator enemyAnimator;
+    PoolVfxs particleDamage, particleExplo;
 
     public static event EnemyEvent OnDie;
-    public delegate void EnemyEvent();
+
+    public delegate void EnemyEvent(Vector3 pos);
 
     public int MaxHealthPoints => maxHealthPoints;
     public int HealthPoints => healthPoints;
 
     public Action OnGettingHurt;
 
+    void Start()
+    {
+        enemyAnimator = GetComponentInChildren<Animator>();
+        particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
+        particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
+    }
     public void Instantiate()
     {
         GetComponent<FieldOfView>().enabled = false;
@@ -40,8 +48,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     public void End()
     {
-        GetComponent<NavMeshAgent>().enabled = false;
-        GetComponent<FieldOfView>().enabled = false;
+
 
         transform.position = inicialPosition;
         healthPoints = maxHealthPoints;
@@ -53,13 +60,17 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             return;
 
 
-
+        ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         healthPoints--;
         isDead = (healthPoints <= 0) ? true : false;
 
         if (isDead)
         {
-            OnDie?.Invoke();
+            enemyAnimator.SetTrigger("Dead4");
+            ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
+
+            OnDie?.Invoke(transform.position);
+            
 
             //aqui van las particulitas, sonidito y eso :v
             if (ScoreManager.Instance)
@@ -68,8 +79,9 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
                 ScoreManager.Instance.Addscore(scorePoints);
             }
-
-            End();
+            GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<FieldOfView>().enabled = false;
+            Invoke("End", timeDead);
         }
     }
 }

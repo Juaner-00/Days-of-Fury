@@ -48093,8 +48093,8 @@ MonoBehaviour:
     m_Bits: 256
   turretTank: {fileID: 8716881377724412250}
   walkPoint: {fileID: 0}
-  viewRadius: 32.9
-  viewAngle: 32
+  viewRadius: 22.4
+  viewAngle: 4.1
   targetMask:
     serializedVersion: 2
     m_Bits: 512
@@ -48116,6 +48116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 1
   scorePoints: 50
+  timeDead: 2
 --- !u!114 &-4104400680607199791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62336,7 +62337,7 @@ Animator:
   m_GameObject: {fileID: 8718920692993061035}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8050c46caa25e5d42a3bd82021b7aba7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

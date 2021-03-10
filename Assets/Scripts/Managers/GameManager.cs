@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] int scoreToWin;
+
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
 
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
             // Ganar por la cantidad de score
             if (ScoreManager.Instance)
                 if (ScoreManager.Instance.TotalScore >= scoreToWin)
-                    WinGame();
+                    WinGame(player.transform.position);
 
             // Parar de spawnear si ya alcanzó la cantidad de enemigos matado
             if (EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.EnemiesToStopSpawn)
@@ -59,7 +60,10 @@ public class GameManager : MonoBehaviour
 
             // Ganar el juego si ya no hay enemigos vivos 
             if (spawnEnemies && !EnemySpawnManager.Instance.CanSpawn && EnemySpawnManager.Instance.EnemiesAlived <= 0)
-                WinGame();
+                WinGame(EnemySpawnManager.LastPos);
+
+
+
         }
     }
 
@@ -83,15 +87,30 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         FinishGame();
-        DeathScreen.Instance.LoseGame();
+        //delay para que se vea la muerte del player
+        Invoke("deadTank", 2f);
+        
     }
 
-    public void WinGame()
+    public void WinGame(Vector3 pos)
     {
+        CamaraManager.Instance.ChangeCam(pos);
         FinishGame();
+        //delay para que se vea el efecto de acercamiento
+        Invoke("WiningTank", 2f);
+    }
+
+
+
+
+    public void WiningTank()
+    {     
         VictoryScreen.Instance.WinGame();
     }
-
+    public void deadTank()
+    {
+        DeathScreen.Instance.LoseGame();
+    }
 
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }

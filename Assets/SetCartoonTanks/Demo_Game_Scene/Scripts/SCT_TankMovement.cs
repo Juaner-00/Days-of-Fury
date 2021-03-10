@@ -105,7 +105,7 @@ public class SCT_TankMovement : MonoBehaviour
 		}
 
 
-		private void Start ()
+		void Start ()
 		{
 		TargetForTurn = transform;
 		if (!AI) {

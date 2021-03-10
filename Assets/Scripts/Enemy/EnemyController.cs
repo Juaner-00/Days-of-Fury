@@ -7,16 +7,17 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 {
     [SerializeField] int maxHealthPoints;
     [SerializeField] int scorePoints;
-
+    [SerializeField] float timeDead;
     Vector3 inicialPosition;
 
     int healthPoints;
     bool isDead;
-
+    Animator enemyAnimator;
     PoolVfxs particleDamage, particleExplo;
 
     public static event EnemyEvent OnDie;
-    public delegate void EnemyEvent();
+
+    public delegate void EnemyEvent(Vector3 pos);
 
     public int MaxHealthPoints => maxHealthPoints;
     public int HealthPoints => healthPoints;
@@ -25,6 +26,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     void Start()
     {
+        enemyAnimator = GetComponentInChildren<Animator>();
         particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
         particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
     }
@@ -46,8 +48,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     public void End()
     {
-        GetComponent<NavMeshAgent>().enabled = false;
-        GetComponent<FieldOfView>().enabled = false;
+
 
         transform.position = inicialPosition;
         healthPoints = maxHealthPoints;
@@ -65,9 +66,10 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         if (isDead)
         {
+            enemyAnimator.SetTrigger("Dead4");
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 
-            OnDie?.Invoke();
+            OnDie?.Invoke(transform.position);
             
 
             //aqui van las particulitas, sonidito y eso :v
@@ -77,8 +79,9 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
                 ScoreManager.Instance.Addscore(scorePoints);
             }
-
-            End();
+            GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<FieldOfView>().enabled = false;
+            Invoke("End", timeDead);
         }
     }
 }

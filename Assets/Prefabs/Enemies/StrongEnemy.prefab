@@ -18728,7 +18728,7 @@ Animator:
   m_GameObject: {fileID: 3566982465080086895}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8050c46caa25e5d42a3bd82021b7aba7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -18894,6 +18894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 2
   scorePoints: 100
+  timeDead: 2
 --- !u!114 &8613527440792475867
 MonoBehaviour:
   m_ObjectHideFlags: 0

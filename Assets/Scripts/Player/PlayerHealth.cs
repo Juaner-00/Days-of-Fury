@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     [SerializeField] int maxHealthPoints;
     [SerializeField] SimpleCameraShakeInCinemachine sCamara;
  
-    [SerializeField] Animator player;
+    Animator playerAnimator;
 
 
     ParticleSystem vfxscontainer;
@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     private void Awake()
     {
+        playerAnimator = GetComponentInChildren<Animator>();
         particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
         particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
         vfxs = GetComponent<VfxsController>();
@@ -64,9 +65,9 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
         if (isDead)
         {
-            if (player)
+            if (playerAnimator)
             {
-                player.SetTrigger("Dead1");
+                playerAnimator.SetTrigger("Dead1");
                 ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
             }
                

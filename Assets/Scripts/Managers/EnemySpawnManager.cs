@@ -11,7 +11,7 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] int maxEnemiesAtTime;
     [SerializeField] Transform[] spawnPos;
 
-
+    
     [Header("Types of enemies")]
     [SerializeField] bool normalEnemy;
     [SerializeField] bool robustTank;
@@ -22,6 +22,7 @@ public class EnemySpawnManager : MonoBehaviour
     Pool robustTankPool;
     Pool turretPool;
 
+    static Vector3 lastPos;
 
     List<Pool> pools = new List<Pool>();
 
@@ -51,6 +52,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
+
         normalEnemyPool = GameObject.Find("Normal Enemy (Pool)")?.GetComponent<Pool>();
         robustTankPool = GameObject.Find("Robust Tank (Pool)")?.GetComponent<Pool>();
         turretPool = GameObject.Find("Turret (Pool)")?.GetComponent<Pool>();
@@ -115,13 +117,18 @@ public class EnemySpawnManager : MonoBehaviour
         // time = 0;
     }
 
-    void CountKilled()
+    void CountKilled(Vector3 pos)
     {
+        lastPos = pos;
         currentEnemiesAlive--;
         countEnemiesKilled++;
 
         time = 0;
     }
+
+
+
+    public static Vector3 LastPos => lastPos;
 
 
     public static EnemySpawnManager Instance { get; private set; }

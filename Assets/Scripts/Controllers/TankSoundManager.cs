@@ -43,4 +43,9 @@ public class TankSoundManager : SoundController
         StopSourceByName("Aiming");
     }
 
+    private void OnDisable() {
+        PlayerMovement.OnMoving -= PlayMoving;
+        reticle.OnShooting -= PlayShooting;
+        PlayerHealth.OnGettingHurt -= PlayGettingHurt;
+    }
 }

@@ -14,7 +14,6 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
     [SerializeField] GameObject twoStarMedal;
     [SerializeField] GameObject threeStarMedal;
 
-
     [SerializeField] private int totalScore;
     int state = 0;
 

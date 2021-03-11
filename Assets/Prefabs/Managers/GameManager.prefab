@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfed7c35fcd38f443999b2ebefbaadfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorImage: {fileID: 2800000, guid: b86c267b1e7432a4cb6130a11b0db0b5, type: 3}
   scoreToWin: 8000
-  spawnEnemies: 1
-  spawnPickUps: 1
+  spawnEnemies: 0
+  spawnPickUps: 0

@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VfxsController : MonoBehaviour
+public class VfxsController : MonoBehaviour, IPool
 {
-    
+    ParticleSystem thisparticle;
     [SerializeField] float lifeTime = 10f;
 
     new Rigidbody rigidbody;
     Vector3 initial;
 
     string tag;
-
+    void Start()
+    {
+        thisparticle = GetComponent<ParticleSystem>();
+    }
     public void Instantiate()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.isKinematic = true;
+        
         initial = transform.position;
-        GetComponent<SphereCollider>().enabled = false;
+
     }
 
     public void Begin(Vector3 position, string tag)
@@ -25,29 +27,15 @@ public class VfxsController : MonoBehaviour
         this.tag = tag;
 
         transform.position = position;
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.isKinematic = false;
+        thisparticle.Play();
         Invoke("End", lifeTime);
-        GetComponent<SphereCollider>().enabled = true;
+
     }
 
     public void End()
     {
+        thisparticle.Stop();
         transform.position = initial;
-        rigidbody.isKinematic = true;
-        GetComponent<SphereCollider>().enabled = false;
-    }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        IDamagable destructible = collision.gameObject.GetComponent<IDamagable>();
-        if (destructible != null)
-        {
-            if (!collision.gameObject.CompareTag(tag))
-            {
-                destructible.TakeDamage();
-                End();
-            }
-        }
     }
 }

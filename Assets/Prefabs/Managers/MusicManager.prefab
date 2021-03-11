@@ -43,5 +43,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9be1895dc0158498d9738b98341c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionClips: []
-  scenesActions: []
+  actionClips:
+  - actionName: InGame
+    actionVolume: 0.3
+    clips:
+    - {fileID: 8300000, guid: af5213e2689bf29488da955af99770c5, type: 3}
+    - {fileID: 8300000, guid: c955b37df37eb734e9104cd671a116de, type: 3}
+    - {fileID: 8300000, guid: 95bab5668c54ea94cb231c52c226aade, type: 3}
+    - {fileID: 8300000, guid: 4e29532f7a4f9044e8e6a0856324e746, type: 3}
+  - actionName: Menu
+    actionVolume: 0.5
+    clips:
+    - {fileID: 8300000, guid: 5edfbae833773e44ebddfbeea0544e6d, type: 3}
+  scenesActions:
+  - actionName: InGame
+    playRandomClip: 1
+    scenesNames:
+    - Level1
+  - actionName: Menu
+    playRandomClip: 0
+    scenesNames:
+    - Home

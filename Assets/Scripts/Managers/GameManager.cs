@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] Texture2D cursorImage;
     [SerializeField] int scoreToWin;
+
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
 
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
+
         if (spawnEnemies)
             EnemySpawnManager.Instance.StartSpawning();
 
@@ -51,15 +55,16 @@ public class GameManager : MonoBehaviour
             // Ganar por la cantidad de score
             if (ScoreManager.Instance)
                 if (ScoreManager.Instance.TotalScore >= scoreToWin)
-                    WinGame();
+                    WinGame(player.transform.position);
 
-            // Parar de spawnear si ya alcanzó la cantidad de enemigos matado
-            if (EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.EnemiesToStopSpawn)
-                EnemySpawnManager.Instance.StopSpawn();
+            if (spawnEnemies)
+                // Parar de spawnear si ya alcanzó la cantidad de enemigos matado
+                if (EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.EnemiesToStopSpawn)
+                    EnemySpawnManager.Instance.StopSpawn();
 
             // Ganar el juego si ya no hay enemigos vivos 
             if (spawnEnemies && !EnemySpawnManager.Instance.CanSpawn && EnemySpawnManager.Instance.EnemiesAlived <= 0)
-                WinGame();
+                WinGame(EnemySpawnManager.LastPos);
         }
     }
 
@@ -67,7 +72,10 @@ public class GameManager : MonoBehaviour
     {
         if (player)
         {
-            player.GetComponent<PlayerMovement>().enabled = false;
+            if (player.name == "Player")
+                player.GetComponent<PlayerMovement>().enabled = false;
+            else
+                player.GetComponent<SCT_TankMovement>().enabled = false;
             player.GetComponent<ReticleController>().enabled = false;
         }
 
@@ -83,15 +91,31 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         FinishGame();
-        DeathScreen.Instance.LoseGame();
+        //delay para que se vea la muerte del player
+        Invoke("deadTank", 2f);
+
     }
 
-    public void WinGame()
+    public void WinGame(Vector3 pos)
     {
+        if (CamaraManager.Instance)
+            CamaraManager.Instance.ChangeCam(pos);
         FinishGame();
+        //delay para que se vea el efecto de acercamiento
+        Invoke("WiningTank", 2f);
+    }
+
+
+
+
+    public void WiningTank()
+    {
         VictoryScreen.Instance.WinGame();
     }
-
+    public void deadTank()
+    {
+        DeathScreen.Instance.LoseGame();
+    }
 
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }

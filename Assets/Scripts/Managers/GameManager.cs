@@ -72,7 +72,10 @@ public class GameManager : MonoBehaviour
     {
         if (player)
         {
-            player.GetComponent<SCT_TankMovement>().enabled = false;
+            if (player.name == "Player")
+                player.GetComponent<PlayerMovement>().enabled = false;
+            else
+                player.GetComponent<SCT_TankMovement>().enabled = false;
             player.GetComponent<ReticleController>().enabled = false;
         }
 
@@ -95,7 +98,8 @@ public class GameManager : MonoBehaviour
 
     public void WinGame(Vector3 pos)
     {
-        CamaraManager.Instance.ChangeCam(pos);
+        if (CamaraManager.Instance)
+            CamaraManager.Instance.ChangeCam(pos);
         FinishGame();
         //delay para que se vea el efecto de acercamiento
         Invoke("WiningTank", 2f);

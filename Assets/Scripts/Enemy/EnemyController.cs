@@ -102,6 +102,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     public void TakeDamage()
     {
+        OnGettingHurt?.Invoke();
         if (isDead)
             return;
 
@@ -118,7 +119,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             
             if (ScoreManager.Instance)
             {
-                OnGettingHurt?.Invoke();
 
                 ScoreManager.Instance.Addscore(scorePoints);
             }

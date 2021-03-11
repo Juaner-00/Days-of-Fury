@@ -48092,7 +48092,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   turretTank: {fileID: 8716881377724412250}
-  walkPoint: {fileID: 0}
   viewRadius: 22.4
   viewAngle: 4.1
   targetMask:
@@ -48131,7 +48130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionClips:
   - actionName: Moving
-    actionVolume: 0.05
+    actionVolume: 0.0125
     clips:
     - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
   - actionName: Shooting

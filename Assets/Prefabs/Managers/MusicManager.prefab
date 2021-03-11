@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionClips:
   - actionName: InGame
-    actionVolume: 0.3
+    actionVolume: 0.08
     clips:
     - {fileID: 8300000, guid: af5213e2689bf29488da955af99770c5, type: 3}
     - {fileID: 8300000, guid: c955b37df37eb734e9104cd671a116de, type: 3}

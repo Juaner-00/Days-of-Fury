@@ -21,14 +21,14 @@ public class Projectile : MonoBehaviour, IPool
         rigidbody.isKinematic = true;
         initial = transform.position;
         GetComponent<SphereCollider>().enabled = false;
-        trail.enabled= false;
+        trail.enabled = false;
     }
 
     public void Begin(Vector3 position, string tag)
     {
         collided = false;
         this.tag = tag;
-        trail.enabled=true;
+        trail.enabled = true;
         transform.position = position;
         rigidbody.velocity = Vector3.zero;
         rigidbody.isKinematic = false;
@@ -55,11 +55,11 @@ public class Projectile : MonoBehaviour, IPool
                 {
                     collided = true;
                     destructible.TakeDamage();
-                  
-                }
 
+                }
             }
-            End();
+            if (!collision.gameObject.CompareTag(tag))
+                End();
         }
     }
 }

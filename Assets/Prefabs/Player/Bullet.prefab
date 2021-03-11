@@ -252,5 +252,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87010705bdacfd84e8fafbd85e787a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 0.5
+  lifeTime: 5
   trail: {fileID: 5317224597222890327}

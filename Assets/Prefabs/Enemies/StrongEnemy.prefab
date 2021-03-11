@@ -18851,7 +18851,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3567026359210056201}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4184a5b256d63cb4799a4ad02952431b, type: 3}
   m_Name: 
@@ -18870,7 +18870,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   turretTank: {fileID: 3568881591217885342}
-  walkPoint: {fileID: 0}
   viewRadius: 13.89
   viewAngle: 2.4
   targetMask:

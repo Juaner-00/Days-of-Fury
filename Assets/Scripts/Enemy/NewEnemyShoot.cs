@@ -10,19 +10,19 @@ public class NewEnemyShoot : MonoBehaviour
     AIPath aIPath;
     public LayerMask obstacleMask;
     public Action OnShooting;
-    bool CanShoot;
+    public bool Dead;
     Quaternion target;
 
     private void Start()
     {
         aIPath = GetComponent<AIPath>();
-        CanShoot = true;
+        Dead = false;
     }
 
     private void Update()
     {
         HandleTurret();
-        if (CanShoot)
+        if (!Dead)
         {
             if (aIPath.reachedDestination)
             {
@@ -34,15 +34,18 @@ public class NewEnemyShoot : MonoBehaviour
 
     void HandleTurret()
     {
-        Vector3 turretLookDir = GameManager.Player.transform.position - turretTank.gameObject.transform.position;
-        Vector3 newDir = Vector3.RotateTowards(turretTank.gameObject.transform.forward, turretLookDir, 1, 0.0F);
-        target = Quaternion.LookRotation(newDir);
-        turretTank.gameObject.transform.rotation = Quaternion.Euler(-90, target.eulerAngles.y, 0);
+        if (!Dead)
+        {
+            Vector3 turretLookDir = GameManager.Player.transform.position - turretTank.gameObject.transform.position;
+            Vector3 newDir = Vector3.RotateTowards(turretTank.gameObject.transform.forward, turretLookDir, 1, 0.0F);
+            target = Quaternion.LookRotation(newDir);
+            turretTank.gameObject.transform.rotation = Quaternion.Euler(-90, target.eulerAngles.y, 0);
+        }
     }
 
     void changeBool()
     {
-        CanShoot = false;
+        Dead = true;
     }
 
     private void OnEnable()

@@ -124167,11 +124167,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AstarEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 988548298858404030, guid: ca24fa0c6adab3944b889106271840cf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 988548298858404031, guid: ca24fa0c6adab3944b889106271840cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -124226,11 +124221,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5491860505292135606, guid: ca24fa0c6adab3944b889106271840cf,
-        type: 3}
-      propertyPath: obstacleMask.m_Bits
-      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca24fa0c6adab3944b889106271840cf, type: 3}

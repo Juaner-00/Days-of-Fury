@@ -5,11 +5,8 @@ using UnityEngine.AI;
 
 public class FieldOfView : MonoBehaviour
 {
-
-
     [SerializeField]
     float soundRadius, shotRadius, normalSpeed = 2f, targetSpeed = 3.5f;
-
 
     //ramdon AI move
     [SerializeField] int randomXmin, randomXmax, randomZmin, randomZmax;
@@ -21,16 +18,10 @@ public class FieldOfView : MonoBehaviour
     float nPosColliderDistance;
     public LayerMask nPosColliderMask;
 
-
-
-
-
     [SerializeField] TurretTank turretTank;
 
     Transform targetSound;
     NavMeshAgent agent;
-    [SerializeField]
-    Transform walkPoint;
 
     public float viewRadius;
     [Range(0, 360)]
@@ -48,32 +39,24 @@ public class FieldOfView : MonoBehaviour
 
     void Start()
     {
-
         targetSound = GameObject.FindGameObjectWithTag("Player").transform;
 
         agent = GetComponent<NavMeshAgent>();
         NewPosition();
-
     }
-
-
 
     void Update()
     {
         if (targetSound == null)
         {
-
             Wander();
             return;
-
         }
-
 
         float distance = Vector3.Distance(targetSound.position, transform.position);
 
         visibleTargets.Clear();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
-
 
         //Move to sound radius
         if (distance <= soundRadius)
@@ -81,14 +64,12 @@ public class FieldOfView : MonoBehaviour
             GetComponent<NavMeshAgent>().speed = normalSpeed;
             // Move towards the player
             agent.SetDestination(targetSound.position);
-
         }
         else
         {
             //Move to Wandering Point
             GetComponent<NavMeshAgent>().speed = normalSpeed;
             Wander();
-
         }
         //Using overlapSphere... no se como usarlo para un solo objetivo
         for (int i = 0; i < targetsInViewRadius.Length; i++)
@@ -103,7 +84,6 @@ public class FieldOfView : MonoBehaviour
                 //Visible target
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-
                     //Move to target
                     visibleTargets.Add(target);
                     GetComponent<NavMeshAgent>().speed = targetSpeed;
@@ -121,10 +101,8 @@ public class FieldOfView : MonoBehaviour
                     //Move to Wandering Point
                     GetComponent<NavMeshAgent>().speed = normalSpeed;
                     Wander();
-
                 }
             }
-
         }
     }
 
@@ -161,18 +139,12 @@ public class FieldOfView : MonoBehaviour
 
             agent.SetDestination(DestinationPosition);
         }
-
-
         Collider[] wallNoWalking = Physics.OverlapSphere(DestinationPosition, nPosColliderDistance, nPosColliderMask);
 
         if (wallNoWalking.Length >= 1)
         {
             NewPosition();
         }
-
-
-
-
     }
 
     void NewPosition()
@@ -180,7 +152,5 @@ public class FieldOfView : MonoBehaviour
         float randomX = UnityEngine.Random.Range(randomXmin, randomXmax);
         float randomZ = UnityEngine.Random.Range(randomZmin, randomZmax);
         DestinationPosition = new Vector3(randomX, transform.position.y, randomZ);
-
-
     }
 }

@@ -96,7 +96,7 @@ MonoBehaviour:
   rotationSpeed: 450
   slowdownDistance: 0.6
   pickNextWaypointDist: 2
-  endReachedDistance: 12
+  endReachedDistance: 20
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   turretTank: {fileID: 3959426235147392057}
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!65 &6744038053857644895
 BoxCollider:
   m_ObjectHideFlags: 0

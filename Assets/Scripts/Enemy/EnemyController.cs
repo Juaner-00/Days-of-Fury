@@ -29,10 +29,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     AIDestinationSetter aIDestinationSetter;
     FieldOfView fieldOfView;
     NavMeshAgent navMeshAgent;
-
+    NewEnemyShoot newEnemyShoot;
 
     void Start()
     {
+        newEnemyShoot = GetComponent<NewEnemyShoot>();
         aIDestinationSetter = GetComponent<AIDestinationSetter>();
         aIPath = GetComponent<AIPath>();
         enemyAnimator = GetComponentInChildren<Animator>();
@@ -49,6 +50,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             aIPath.usingGravity = false;
             aIPath.canSearch = false;
             aIPath.canMove = false; 
+            newEnemyShoot.Dead = true;
         }
         if (aIDestinationSetter)
         {
@@ -56,7 +58,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         }
         if (fieldOfView)
         {
-            fieldOfView.enabled = false; 
+            fieldOfView.enabled = false;
         }
         inicialPosition = transform.position;
     }
@@ -68,6 +70,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             aIPath.usingGravity = true;
             aIPath.canSearch = true;
             aIPath.canMove = true; 
+            newEnemyShoot.Dead = false;
         }
         if (aIDestinationSetter)
         {
@@ -76,11 +79,10 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
-
         if (fieldOfView)
         {
             navMeshAgent.enabled = true;
-            fieldOfView.enabled = true; 
+            fieldOfView.enabled = true;
         }
     }
 
@@ -124,11 +126,12 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             {
                 aIPath.canSearch = false;
                 aIPath.canMove = false;
+                newEnemyShoot.Dead = true;
             }
             if (fieldOfView)
             {
                 navMeshAgent.enabled = false;
-                fieldOfView.enabled = false; 
+                fieldOfView.enabled = false;
             }
             Invoke("End", timeDead);
         }

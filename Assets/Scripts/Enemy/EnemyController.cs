@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Pathfinding;
 
 public class EnemyController : MonoBehaviour, IPool, IDamagable
 {
@@ -24,32 +25,75 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     public Action OnGettingHurt;
 
+    AIPath aIPath;
+    AIDestinationSetter aIDestinationSetter;
+    FieldOfView fieldOfView;
+    NavMeshAgent navMeshAgent;
+
+
     void Start()
     {
+        aIDestinationSetter = GetComponent<AIDestinationSetter>();
+        aIPath = GetComponent<AIPath>();
         enemyAnimator = GetComponentInChildren<Animator>();
         particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
         particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        fieldOfView = GetComponent<FieldOfView>();
     }
+
     public void Instantiate()
     {
-        GetComponent<FieldOfView>().enabled = false;
+        if (aIPath)
+        {
+            aIPath.usingGravity = false;
+            aIPath.canSearch = false;
+            aIPath.canMove = false; 
+        }
+        if (aIDestinationSetter)
+        {
+            aIDestinationSetter.target = null;
+        }
+        if (fieldOfView)
+        {
+            fieldOfView.enabled = false; 
+        }
         inicialPosition = transform.position;
     }
 
     public void Begin(Vector3 position, string tag)
     {
+        if (aIPath)
+        {
+            aIPath.usingGravity = true;
+            aIPath.canSearch = true;
+            aIPath.canMove = true; 
+        }
+        if (aIDestinationSetter)
+        {
+            aIDestinationSetter.target = GameManager.Player.transform;
+        }
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
 
-        GetComponent<NavMeshAgent>().enabled = true;
-        GetComponent<FieldOfView>().enabled = true;
+        if (fieldOfView)
+        {
+            navMeshAgent.enabled = true;
+            fieldOfView.enabled = true; 
+        }
     }
 
     public void End()
     {
-
-
+        if (aIPath)
+        {
+            aIPath.usingGravity = false;
+        }
+        if (aIDestinationSetter)
+        {
+            aIDestinationSetter.target = null;
+        }
         transform.position = inicialPosition;
         healthPoints = maxHealthPoints;
     }
@@ -58,7 +102,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     {
         if (isDead)
             return;
-
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         healthPoints--;
@@ -71,16 +114,22 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
             OnDie?.Invoke(transform.position);
             
-
-            //aqui van las particulitas, sonidito y eso :v
             if (ScoreManager.Instance)
             {
                 OnGettingHurt?.Invoke();
 
                 ScoreManager.Instance.Addscore(scorePoints);
             }
-            GetComponent<NavMeshAgent>().enabled = false;
-            GetComponent<FieldOfView>().enabled = false;
+            if (aIPath)
+            {
+                aIPath.canSearch = false;
+                aIPath.canMove = false;
+            }
+            if (fieldOfView)
+            {
+                navMeshAgent.enabled = false;
+                fieldOfView.enabled = false; 
+            }
             Invoke("End", timeDead);
         }
     }

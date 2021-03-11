@@ -205,7 +205,7 @@ namespace Pathfinding {
 		public bool updateRotation = true;
 
 		/// <summary>Indicates if gravity is used during this frame</summary>
-		protected bool usingGravity { get; set; }
+		public bool usingGravity { get; set; }
 
 		/// <summary>Delta time used for movement during the last frame</summary>
 		protected float lastDeltaTime;

@@ -389,7 +389,7 @@ MonoBehaviour:
   Turret_Turn: 1
   targetPointsPos: []
   m_Speed: 13
-  m_TurnSpeed: 300
+  m_TurnSpeed: 250
   currentHealth: 50
   m_PitchRange: 0.2
   tank_idle: {fileID: 8300000, guid: b6a7e39555a7f2e4dae0c4a98ace2458, type: 3}

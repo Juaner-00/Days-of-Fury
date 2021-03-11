@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 {
     [SerializeField] int maxHealthPoints;
     [SerializeField] SimpleCameraShakeInCinemachine sCamara;
- 
+
     Animator playerAnimator;
 
 
@@ -42,7 +42,6 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage();
-
         }
     }
 
@@ -70,7 +69,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
                 playerAnimator.SetTrigger("Dead1");
                 ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
             }
-               
+
             OnDie?.Invoke();
             // Cuando se tenga la animación y las partículas de muerte se cambia el Destroy
             //Destroy(gameObject);

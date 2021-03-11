@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] Texture2D cursorImage;
     [SerializeField] int scoreToWin;
 
     [SerializeField] bool spawnEnemies;
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
+
         if (spawnEnemies)
             EnemySpawnManager.Instance.StartSpawning();
 
@@ -54,16 +57,14 @@ public class GameManager : MonoBehaviour
                 if (ScoreManager.Instance.TotalScore >= scoreToWin)
                     WinGame(player.transform.position);
 
-            // Parar de spawnear si ya alcanzó la cantidad de enemigos matado
-            if (EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.EnemiesToStopSpawn)
-                EnemySpawnManager.Instance.StopSpawn();
+            if (spawnEnemies)
+                // Parar de spawnear si ya alcanzó la cantidad de enemigos matado
+                if (EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.EnemiesToStopSpawn)
+                    EnemySpawnManager.Instance.StopSpawn();
 
             // Ganar el juego si ya no hay enemigos vivos 
             if (spawnEnemies && !EnemySpawnManager.Instance.CanSpawn && EnemySpawnManager.Instance.EnemiesAlived <= 0)
                 WinGame(EnemySpawnManager.LastPos);
-
-
-
         }
     }
 
@@ -71,7 +72,10 @@ public class GameManager : MonoBehaviour
     {
         if (player)
         {
-            player.GetComponent<PlayerMovement>().enabled = false;
+            if (player.name == "Player")
+                player.GetComponent<PlayerMovement>().enabled = false;
+            else
+                player.GetComponent<SCT_TankMovement>().enabled = false;
             player.GetComponent<ReticleController>().enabled = false;
         }
 
@@ -89,12 +93,13 @@ public class GameManager : MonoBehaviour
         FinishGame();
         //delay para que se vea la muerte del player
         Invoke("deadTank", 2f);
-        
+
     }
 
     public void WinGame(Vector3 pos)
     {
-        CamaraManager.Instance.ChangeCam(pos);
+        if (CamaraManager.Instance)
+            CamaraManager.Instance.ChangeCam(pos);
         FinishGame();
         //delay para que se vea el efecto de acercamiento
         Invoke("WiningTank", 2f);
@@ -104,7 +109,7 @@ public class GameManager : MonoBehaviour
 
 
     public void WiningTank()
-    {     
+    {
         VictoryScreen.Instance.WinGame();
     }
     public void deadTank()

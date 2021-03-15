@@ -8,13 +8,14 @@ public class EnemyM : MonoBehaviour
     [SerializeField]
     float lookRadius, soundRadius;
 
+    [SerializeField]
+
+    Transform walkPoint;
     Transform target;
     NavMeshAgent agent;
-    [SerializeField]
-    Transform walkPoint;
 
 
-    private void OnEnable()
+    private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -26,7 +27,7 @@ public class EnemyM : MonoBehaviour
 
         if (distance <= lookRadius)
         {
-            GetComponent<NavMeshAgent>().speed = 3.5f;
+            agent.speed = 3.5f;
             // Moverse hacia el jugador
             agent.SetDestination(target.position);
             if (distance <= agent.stoppingDistance)
@@ -37,15 +38,14 @@ public class EnemyM : MonoBehaviour
         }
         else if (distance <= soundRadius)
         {
-            GetComponent<NavMeshAgent>().speed = 2f;
+            agent.speed = 2f;
             // Se mueve hacia el sonido
             agent.SetDestination(target.position);
         }
         else
         {
-            GetComponent<NavMeshAgent>().speed = 2f;
+            agent.speed = 2f;
             agent.SetDestination(walkPoint.position);
-
         }
     }
 

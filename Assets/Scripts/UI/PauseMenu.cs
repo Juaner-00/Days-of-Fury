@@ -27,6 +27,7 @@ public class PauseMenu : Menu
             Navigate();
     }
 
+    // Maneja los botones
     public override void Action()
     {
 

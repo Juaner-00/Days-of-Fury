@@ -11,17 +11,19 @@ public class VfxsController : MonoBehaviour, IPool
     Vector3 initial;
 
     string tag;
+    
     void Start()
     {
         thisparticle = GetComponent<ParticleSystem>();
     }
+    
+    // Se llama al inicializar el pool
     public void Instantiate()
     {
-        
         initial = transform.position;
-
     }
 
+    // Se llama cuando el pool obtiene el objeto
     public void Begin(Vector3 position, string tag)
     {
         this.tag = tag;
@@ -29,13 +31,12 @@ public class VfxsController : MonoBehaviour, IPool
         transform.position = position;
         thisparticle.Play();
         Invoke("End", lifeTime);
-
     }
 
+    // Se llama cuando se devuelve el objeto al pool
     public void End()
     {
         thisparticle.Stop();
         transform.position = initial;
-
     }
 }

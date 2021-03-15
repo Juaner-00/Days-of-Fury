@@ -27,6 +27,7 @@ public class Pool : MonoBehaviour
         }
     }
 
+    // Devuelve un objeto del pool en la posición requerida
     public GameObject GetItem(Vector3 position, string tag = "")
     {
         items[index].Begin(position, tag);

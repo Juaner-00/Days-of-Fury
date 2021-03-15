@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     NavMeshAgent navMeshAgent;
     NewEnemyShoot newEnemyShoot;
 
-    void Start()
+    void Awake()
     {
         newEnemyShoot = GetComponent<NewEnemyShoot>();
         aIDestinationSetter = GetComponent<AIDestinationSetter>();
@@ -43,6 +43,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         fieldOfView = GetComponent<FieldOfView>();
     }
 
+    // Se llama cuando se instancia el objeto
     public void Instantiate()
     {
         if (aIPath)
@@ -63,6 +64,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         inicialPosition = transform.position;
     }
 
+    // Se llama cuando el pool devuelve el objeto
     public void Begin(Vector3 position, string tag)
     {
         if (aIPath)
@@ -86,6 +88,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         }
     }
 
+    // Se llama cuando el objeto se devuelve al pool
     public void End()
     {
         if (aIPath)
@@ -100,6 +103,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         healthPoints = maxHealthPoints;
     }
 
+    // Método para hacer que el enemigo tome daño
     public void TakeDamage()
     {
         OnGettingHurt?.Invoke();

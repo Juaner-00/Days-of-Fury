@@ -37,7 +37,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         isDead = (healthPoints <= 0) ? true : false;
     }
 
-    public void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -45,12 +45,11 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         }
     }
 
+    // Se utiliza para que el jugador tome daño
     public void TakeDamage()
     {
-
         if (isDead)
             return;
-
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         OnGettingHurt?.Invoke();
@@ -76,6 +75,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         }
     }
 
+    // Método para que el jugador gane vidas
     public void GainLife()
     {
         healthPoints++;

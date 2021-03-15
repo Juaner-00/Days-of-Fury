@@ -19,6 +19,7 @@ public class TurretTank : MonoBehaviour
         cartrigde = GameObject.Find("Cartrigde (Pool)").GetComponent<Pool>();
     }
 
+    // Método para disparar una bala
     public void Shot()
     {
         //if (available)

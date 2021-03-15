@@ -13,6 +13,7 @@ public class OptionsMenu : Menu
         }
     }
 
+    // Maneja los botones
     public override void Action()
     {
         if (Option.gameObject.name == "Back")

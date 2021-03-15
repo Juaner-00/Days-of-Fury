@@ -8,12 +8,12 @@ public class FieldOfView : MonoBehaviour
     [SerializeField]
     float soundRadius, shotRadius, normalSpeed = 2f, targetSpeed = 3.5f;
 
-    //ramdon AI move
+    //Mover random la IA
     [SerializeField] int randomXmin, randomXmax, randomZmin, randomZmax;
     [SerializeField]
     Vector3 DestinationPosition;
 
-    //Making a collider in new position
+    //Poner el collider en una nueva posición
     [SerializeField]
     float nPosColliderDistance;
     public LayerMask nPosColliderMask;
@@ -27,7 +27,7 @@ public class FieldOfView : MonoBehaviour
     [Range(0, 360)]
     public float viewAngle;
 
-    //Look what im looking for
+    //Mirar qué estoy buscando
     public LayerMask targetMask;
     public LayerMask obstacleMask;
 
@@ -37,7 +37,7 @@ public class FieldOfView : MonoBehaviour
     public Action OnMoving;
     public Action OnShooting;
 
-    void Start()
+    void Awake()
     {
         targetSound = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -58,48 +58,48 @@ public class FieldOfView : MonoBehaviour
         visibleTargets.Clear();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
-        //Move to sound radius
+        // Moverse hacia el radio de sonido
         if (distance <= soundRadius)
         {
-            GetComponent<NavMeshAgent>().speed = normalSpeed;
-            // Move towards the player
+            agent.speed = normalSpeed;
+            // Moverse hacia el jugador
             agent.SetDestination(targetSound.position);
         }
         else
         {
-            //Move to Wandering Point
-            GetComponent<NavMeshAgent>().speed = normalSpeed;
+            // Moverse hacia los puntos de navegación
+            agent.speed = normalSpeed;
             Wander();
         }
-        //Using overlapSphere... no se como usarlo para un solo objetivo
+        // Usar overlapsphere para detectar al jugador
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
             Vector3 dirToTarget = (target.position - transform.position).normalized;
 
-            //Inside the range 
+            // Dentro del rango
             if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
             {
                 float dstToTarget = Vector3.Distance(transform.position, target.position);
-                //Visible target
+                // Jugador visible
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-                    //Move to target
+                    // Mover hacia el jugador
                     visibleTargets.Add(target);
-                    GetComponent<NavMeshAgent>().speed = targetSpeed;
+                    agent.speed = targetSpeed;
                     agent.SetDestination(target.position);
                     if (distance <= shotRadius && !Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                     {
-                        // Attack
-                        GetComponent<NavMeshAgent>().speed = 0f;
+                        // Atacar
+                        agent.speed = 0f;
                         turretTank.Shot();
                         OnShooting?.Invoke();
                     }
                 }
                 else
                 {
-                    //Move to Wandering Point
-                    GetComponent<NavMeshAgent>().speed = normalSpeed;
+                    // Moverse hacia los puntos de navegación
+                    agent.speed = normalSpeed;
                     Wander();
                 }
             }
@@ -126,6 +126,7 @@ public class FieldOfView : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(DestinationPosition, nPosColliderDistance);
     }
+    
     void Wander()
     {
         OnMoving?.Invoke();
@@ -136,7 +137,6 @@ public class FieldOfView : MonoBehaviour
         }
         else
         {
-
             agent.SetDestination(DestinationPosition);
         }
         Collider[] wallNoWalking = Physics.OverlapSphere(DestinationPosition, nPosColliderDistance, nPosColliderMask);

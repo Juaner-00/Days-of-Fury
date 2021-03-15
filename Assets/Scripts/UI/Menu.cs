@@ -24,6 +24,7 @@ public abstract class Menu : MonoBehaviour
         ColorButton();
     }
 
+    // Maneja el movimiento del cursor selector de botones
     public void Navigate()
     {
         bool up = Input.GetKeyDown(KeyCode.UpArrow);
@@ -115,7 +116,7 @@ public abstract class Menu : MonoBehaviour
     public abstract void Action();
 
     //--------------------------------- Posibles acciones dentro del menú
-
+    // Pausa el juego y muestra el panel de pausa
     public void Pause()
     {
         Time.timeScale = 0;
@@ -123,6 +124,7 @@ public abstract class Menu : MonoBehaviour
         HUD.SetActive(false);
     }
 
+    // Resume el juego
     public void Resume()
     {
         Time.timeScale = 1;
@@ -130,34 +132,40 @@ public abstract class Menu : MonoBehaviour
         HUD.SetActive(true);
     }
 
+    // Carga la siguiente escena
     public void NextLevel()
     {
         Resume();
         _SceneManager.LoadScene(1);
     }
 
+    // Reinicia la escena actual
     public void RestartLevel()
     {
         Resume();
         _SceneManager.ResetScene();
     }
 
+    // Carga el menú principal
     public void GoHome()
     {
         Resume();
         _SceneManager.LoadScene("Home");
     }
 
+    // Abre el menú de opciones
     public void OpenOptions()
     {
 
     }
-
+    
+    // Abre el panel anterior
     public void GoBack()
     {
 
     }
 
+    // Cierra el juego
     public void QuitGame()
     {
         Application.Quit();

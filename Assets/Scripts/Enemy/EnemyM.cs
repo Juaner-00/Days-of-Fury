@@ -2,7 +2,7 @@
 using UnityEngine.AI;
 using System.Collections;
 
-/* Makes enemies follow and attack the player */
+/* Hace que el enemigo se mueva y ataque al jugador */
 public class EnemyM : MonoBehaviour
 {
     [SerializeField]
@@ -27,18 +27,18 @@ public class EnemyM : MonoBehaviour
         if (distance <= lookRadius)
         {
             GetComponent<NavMeshAgent>().speed = 3.5f;
-            // Move towards the player
+            // Moverse hacia el jugador
             agent.SetDestination(target.position);
             if (distance <= agent.stoppingDistance)
             {
-                // Attack
+                // Atacar
 
             }
         }
         else if (distance <= soundRadius)
         {
             GetComponent<NavMeshAgent>().speed = 2f;
-            // Move towards the sound
+            // Se mueve hacia el sonido
             agent.SetDestination(target.position);
         }
         else
@@ -49,7 +49,7 @@ public class EnemyM : MonoBehaviour
         }
     }
 
-    // Point towards the player
+    // Apunta al jugador
     void FaceTarget()
     {
         Vector3 direction = (target.position - transform.position).normalized;

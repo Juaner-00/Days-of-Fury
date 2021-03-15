@@ -1,9 +1,3 @@
-﻿/*
-See the Unity Tutorial to know how to use this script: https://youtu.be/O2Pg8e2xwzg
-
-Developed by Lumidi - Alex Zuniga: https://twitter.com/LumidiDev
-*/
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,48 +6,46 @@ using UnityEngine.Events;
 
 public class SimpleCameraShakeInCinemachine : MonoBehaviour {
 
-    [SerializeField] float ShakeDuration = 0.5f;          // Time the Camera Shake effect will last
-    [SerializeField] float ShakeAmplitude = 1000.2f;         // Cinemachine Noise Profile Parameter
-    [SerializeField] float ShakeFrequency = 8.0f;         // Cinemachine Noise Profile Parameter
+    [SerializeField] float ShakeDuration = 0.5f;
+    [SerializeField] float ShakeAmplitude = 1000.2f;
+    [SerializeField] float ShakeFrequency = 8.0f;
 
     private float ShakeElapsedTime = 0f;
 
-    // Cinemachine Shake
     [SerializeField] CinemachineVirtualCamera VirtualCamera;
     private CinemachineBasicMultiChannelPerlin virtualCameraNoise;
 
-    // Use this for initialization
     void Start()
     {
-        // Get Virtual Camera Noise Profile
+        // Obtiene el noise
         if (VirtualCamera != null)
             virtualCameraNoise = VirtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
     }
 
+    // Método para empezar a agitar la cámara
     public void Shake()
     {
         ShakeElapsedTime = ShakeDuration;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // If the Cinemachine componet is not set, avoid update
+        // Si es nulo no haga nada
         if (VirtualCamera != null && virtualCameraNoise != null)
         {
-            // If Camera Shake effect is still playing
+            // Si el shake está ejecutándose
             if (ShakeElapsedTime > 0)
             {
-                // Set Cinemachine Camera Noise parameters
+                // Poner los parámetros
                 virtualCameraNoise.m_AmplitudeGain = ShakeAmplitude;
                 virtualCameraNoise.m_FrequencyGain = ShakeFrequency;
 
-                // Update Shake Timer
+                // Actualiza el contador
                 ShakeElapsedTime -= Time.fixedUnscaledDeltaTime;
             }
             else
             {
-                // If Camera Shake effect is over, reset variables
+                // Si se terminó resetear las variables
                 virtualCameraNoise.m_AmplitudeGain = 0f;
                 ShakeElapsedTime = 0f;
             }

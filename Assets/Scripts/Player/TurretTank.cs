@@ -12,15 +12,17 @@ public class TurretTank : MonoBehaviour
     bool available = true;
     Pool cartrigde;
 
+    public bool Available { get => available; }
 
     private void Start()
     {
         cartrigde = GameObject.Find("Cartrigde (Pool)").GetComponent<Pool>();
     }
 
+    // Método para disparar una bala
     public void Shot()
     {
-        if (available)
+        //if (available)
         {
             if (smokeFire)
                 smokeFire.Play();

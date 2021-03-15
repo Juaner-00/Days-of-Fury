@@ -14,6 +14,7 @@ public class DeathScreen : Menu
             Destroy(gameObject);
         Instance = this;
     }
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
@@ -25,12 +26,14 @@ public class DeathScreen : Menu
             Navigate();
     }
 
+    // Pausa el juego al perder el juego
     public void LoseGame()
     {
         Pause();
         IsDead = true;
     }
 
+    // Maneja los botones
     public override void Action()
     {
         if (Option.gameObject.name == "Home")

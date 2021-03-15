@@ -15,7 +15,6 @@ public class PoolVfxs : MonoBehaviour
 
     private void Awake()
     {
-        
         items = new IPool[length];
         objects = new ParticleSystem[length];
 
@@ -28,6 +27,7 @@ public class PoolVfxs : MonoBehaviour
         }
     }
 
+    // Devuelve un objeto del pool
     public ParticleSystem GetItem(Vector3 position, string tag = "")
     {
         items[index].Begin(position, tag);

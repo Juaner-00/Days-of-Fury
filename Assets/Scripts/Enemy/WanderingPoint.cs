@@ -7,11 +7,16 @@ public class WanderingPoint : MonoBehaviour
     GameObject enemy;
     [SerializeField] int randomXmin, randomXmax, randomZmin, randomZmax;
 
-    void Update()
+    void Awake()
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy");
+    }
+
+    void Update()
+    {
         float randomX = Random.Range(randomXmin, randomXmax);
         float randomZ = Random.Range(randomZmin, randomZmax);
+        
         if(gameObject.transform.position == enemy.transform.position)
         {
             gameObject.transform.position = new Vector3(randomX, transform.position.y, randomZ);

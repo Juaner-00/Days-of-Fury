@@ -26,12 +26,14 @@ public class VictoryScreen : Menu
             Navigate();
     }
 
+    // Se llama al gamar el juego
     public void WinGame()
     {
         Pause();
         HasWon = true;
     }
-
+    
+    // Maneja los botones
     public override void Action()
     {
         if (Option.gameObject.name == "Home")

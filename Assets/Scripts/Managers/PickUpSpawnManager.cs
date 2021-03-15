@@ -101,16 +101,19 @@ public class PickUpSpawnManager : MonoBehaviour
 
     }
 
+    // Parar de spawnear
     public void StopSpawn()
     {
         canSpawn = false;
     }
 
+    // Resumir el spawn de pickups
     public void ResumeSpawn()
     {
         canSpawn = true;
     }
 
+    // Empieza a spawnear los pickups
     public void StartSpawning()
     {
         canSpawn = true;

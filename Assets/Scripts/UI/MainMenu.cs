@@ -18,6 +18,7 @@ public class MainMenu : Menu
             Navigate();
     }
 
+    // Maneja los botones
     public override void Action()
     {
         if (Option.gameObject.name == "Play")
@@ -38,6 +39,7 @@ public class MainMenu : Menu
         }
     }
 
+    // Inicia el juego
     public void PlayGame()
     {
         MainMenuOpen = false;

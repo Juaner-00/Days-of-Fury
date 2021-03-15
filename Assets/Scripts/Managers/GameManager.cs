@@ -67,7 +67,8 @@ public class GameManager : MonoBehaviour
                 WinGame(EnemySpawnManager.LastPos);
         }
     }
-
+    
+    // Método para finalizar el juego
     public void FinishGame()
     {
         if (player)
@@ -88,14 +89,16 @@ public class GameManager : MonoBehaviour
         hasFinished = true;
     }
 
+    // Método que se llama si el jugador perdió
     public void LoseGame()
     {
         FinishGame();
         //delay para que se vea la muerte del player
-        Invoke("deadTank", 2f);
+        Invoke("DeadTank", 2f);
 
     }
 
+    // Método que se llama si el jugador ganó
     public void WinGame(Vector3 pos)
     {
         if (CamaraManager.Instance)
@@ -104,18 +107,19 @@ public class GameManager : MonoBehaviour
         //delay para que se vea el efecto de acercamiento
         Invoke("WiningTank", 2f);
     }
-
-
-
-
+    
+    // Método que se llama si el jugador gana
     public void WiningTank()
     {
         VictoryScreen.Instance.WinGame();
     }
-    public void deadTank()
+    
+    // Método que se llama si el jugador gana
+    public void DeadTank()
     {
         DeathScreen.Instance.LoseGame();
     }
+
 
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }

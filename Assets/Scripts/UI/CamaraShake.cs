@@ -4,18 +4,7 @@ using UnityEngine;
 
 public class CamaraShake : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Método para agitar la cámara
     public IEnumerator Shake(float duration, float magnitude)
     {
         Vector3 originalPos = transform.localPosition;
@@ -35,6 +24,5 @@ public class CamaraShake : MonoBehaviour
         }
 
         transform.localPosition = originalPos;
-
     }
 }

@@ -48073,7 +48073,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8718753481427106765}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4184a5b256d63cb4799a4ad02952431b, type: 3}
   m_Name: 
@@ -48092,7 +48092,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   turretTank: {fileID: 8716881377724412250}
-  walkPoint: {fileID: 0}
   viewRadius: 22.4
   viewAngle: 4.1
   targetMask:
@@ -48131,7 +48130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionClips:
   - actionName: Moving
-    actionVolume: 0.05
+    actionVolume: 0.0125
     clips:
     - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
   - actionName: Shooting

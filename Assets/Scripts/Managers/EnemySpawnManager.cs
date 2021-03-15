@@ -98,19 +98,21 @@ public class EnemySpawnManager : MonoBehaviour
                 currentEnemiesAlive++;
             }
         }
-
     }
 
+    // Parar que se puedan spawnear enemigos
     public void StopSpawn()
     {
         canSpawn = false;
     }
 
+    // Resumir que se puedan spawnear enemigos
     public void ResumeSpawn()
     {
         canSpawn = true;
     }
 
+    // Empieza a spawnear enemigos
     public void StartSpawning()
     {
         canSpawn = true;
@@ -127,10 +129,7 @@ public class EnemySpawnManager : MonoBehaviour
     }
 
 
-
     public static Vector3 LastPos => lastPos;
-
-
     public static EnemySpawnManager Instance { get; private set; }
     public int EnemiesToStopSpawn => maxEnemiesToStopSpawn;
     public int EnemiesKilled => countEnemiesKilled;

@@ -39,17 +39,20 @@ public abstract class PickUpBase : MonoBehaviour, IPool
         isInGame = false;
     }
 
+    // Se llama al inicializar el pickup
     public void Instantiate()
     {
         inicialPosition = transform.position;
     }
 
+    // Se llama cuando el pool obtiene el objeto
     public void Begin(Vector3 position, string tag)
     {
         isInGame = true;
         transform.position = position;
     }
 
+    // Se llama cuando se devuelva al pool
     public void End()
     {
         isInGame = false;

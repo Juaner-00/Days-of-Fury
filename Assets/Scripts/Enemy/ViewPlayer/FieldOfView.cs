@@ -106,7 +106,7 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
-    Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
+    public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
     {
         if (!angleIsGlobal)
         {

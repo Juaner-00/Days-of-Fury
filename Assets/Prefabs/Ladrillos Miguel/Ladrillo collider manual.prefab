@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2129345735857496109}
   - component: {fileID: 6902835669419176397}
   - component: {fileID: 645037943453613484}
+  - component: {fileID: 7577919285939771045}
   m_Layer: 0
   m_Name: Ladrillo collider manual
   m_TagString: Untagged
@@ -325,6 +326,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9000001, y: 4, z: 1.901927}
   m_Center: {x: 1, y: 2, z: -0.96856487}
+--- !u!114 &7577919285939771045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215240934839160240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8134327843795767783
 PrefabInstance:
   m_ObjectHideFlags: 0

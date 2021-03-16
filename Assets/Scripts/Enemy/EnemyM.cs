@@ -2,19 +2,20 @@
 using UnityEngine.AI;
 using System.Collections;
 
-/* Makes enemies follow and attack the player */
+/* Hace que el enemigo se mueva y ataque al jugador */
 public class EnemyM : MonoBehaviour
 {
     [SerializeField]
     float lookRadius, soundRadius;
 
+    [SerializeField]
+
+    Transform walkPoint;
     Transform target;
     NavMeshAgent agent;
-    [SerializeField]
-    Transform walkPoint;
 
 
-    private void OnEnable()
+    private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -26,36 +27,33 @@ public class EnemyM : MonoBehaviour
 
         if (distance <= lookRadius)
         {
-            GetComponent<NavMeshAgent>().speed = 3.5f;
-            // Move towards the player
+            agent.speed = 3.5f;
+            // Moverse hacia el jugador
             agent.SetDestination(target.position);
             if (distance <= agent.stoppingDistance)
             {
-                // Attack
+                // Atacar
 
             }
         }
         else if (distance <= soundRadius)
         {
-            GetComponent<NavMeshAgent>().speed = 2f;
-            // Move towards the sound
+            agent.speed = 2f;
+            // Se mueve hacia el sonido
             agent.SetDestination(target.position);
         }
         else
         {
-            GetComponent<NavMeshAgent>().speed = 2f;
+            agent.speed = 2f;
             agent.SetDestination(walkPoint.position);
-
         }
     }
 
-    // Point towards the player
+    // Apunta al jugador
     void FaceTarget()
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
-
-
 }

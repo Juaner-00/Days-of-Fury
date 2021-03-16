@@ -29358,7 +29358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretTransform: {fileID: 7020538782831695068}
-  reticleTransform: {fileID: 0}
   turretTank: {fileID: 7020538782831695071}
 --- !u!143 &7020538783977343665
 CharacterController:
@@ -29406,7 +29405,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 4
   sCamara: {fileID: 0}
-  player: {fileID: 0}
 --- !u!114 &8703890831471080377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29421,7 +29419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionClips:
   - actionName: Moving
-    actionVolume: 0.1
+    actionVolume: 0.05
     clips:
     - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
   - actionName: Shooting

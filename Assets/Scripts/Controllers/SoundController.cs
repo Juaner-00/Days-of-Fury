@@ -22,6 +22,7 @@ public abstract class SoundController : MonoBehaviour
         ChildAwake();
     }
 
+    // Reproduce un sonido
     public void Play(int index, bool? randomClip = null, bool? loop = null) {
         if(actionClips[index].Clips.Length > 0) { 
             sources[index].clip = randomClip == null? 
@@ -33,13 +34,17 @@ public abstract class SoundController : MonoBehaviour
         }
     }
 
+    // Detiene el sonido que se está reproduciendo
     public void Stop(int index) {
         sources[index].Stop();
     }
+    
+    // Detiene todos los sonidos que se reproducen
     public void StopAll() {
         for(int i = 0; i < sources.Length; i++) sources[i].Stop();
     }
 
+    // Agrega un sonido al un audiosource
     public void SetClip(int index, AudioClip newClip) {
         sources[index].clip = newClip;
     }

@@ -25,6 +25,7 @@ public class FirstScreen : Menu
         Time.timeScale = 0;
     }
 
+    // Maneja los botones
     public override void Action()
     {
 

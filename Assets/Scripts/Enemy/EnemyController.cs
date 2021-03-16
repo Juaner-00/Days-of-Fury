@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Pathfinding;
 
 public class EnemyController : MonoBehaviour, IPool, IDamagable
 {
@@ -24,41 +25,90 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     public Action OnGettingHurt;
 
-    void Start()
+    AIPath aIPath;
+    AIDestinationSetter aIDestinationSetter;
+    FieldOfView fieldOfView;
+    NavMeshAgent navMeshAgent;
+    NewEnemyShoot newEnemyShoot;
+
+    void Awake()
     {
+        newEnemyShoot = GetComponent<NewEnemyShoot>();
+        aIDestinationSetter = GetComponent<AIDestinationSetter>();
+        aIPath = GetComponent<AIPath>();
         enemyAnimator = GetComponentInChildren<Animator>();
         particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
         particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        fieldOfView = GetComponent<FieldOfView>();
     }
+
+    // Se llama cuando se instancia el objeto
     public void Instantiate()
     {
-        GetComponent<FieldOfView>().enabled = false;
+        if (aIPath)
+        {
+            aIPath.usingGravity = false;
+            aIPath.canSearch = false;
+            aIPath.canMove = false; 
+            newEnemyShoot.Dead = true;
+        }
+        if (aIDestinationSetter)
+        {
+            aIDestinationSetter.target = null;
+        }
+        if (fieldOfView)
+        {
+            fieldOfView.enabled = false;
+        }
         inicialPosition = transform.position;
     }
 
+    // Se llama cuando el pool devuelve el objeto
     public void Begin(Vector3 position, string tag)
     {
+        if (aIPath)
+        {
+            aIPath.usingGravity = true;
+            aIPath.canSearch = true;
+            aIPath.canMove = true; 
+            newEnemyShoot.Dead = false;
+        }
+        if (aIDestinationSetter)
+        {
+            aIDestinationSetter.target = GameManager.Player.transform;
+        }
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
-
-        GetComponent<NavMeshAgent>().enabled = true;
-        GetComponent<FieldOfView>().enabled = true;
+        if (fieldOfView)
+        {
+            navMeshAgent.enabled = true;
+            fieldOfView.enabled = true;
+        }
     }
 
+    // Se llama cuando el objeto se devuelve al pool
     public void End()
     {
-
-
+        if (aIPath)
+        {
+            aIPath.usingGravity = false;
+        }
+        if (aIDestinationSetter)
+        {
+            aIDestinationSetter.target = null;
+        }
         transform.position = inicialPosition;
         healthPoints = maxHealthPoints;
     }
 
+    // Método para hacer que el enemigo tome daño
     public void TakeDamage()
     {
+        OnGettingHurt?.Invoke();
         if (isDead)
             return;
-
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         healthPoints--;
@@ -71,16 +121,22 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
             OnDie?.Invoke(transform.position);
             
-
-            //aqui van las particulitas, sonidito y eso :v
             if (ScoreManager.Instance)
             {
-                OnGettingHurt?.Invoke();
 
                 ScoreManager.Instance.Addscore(scorePoints);
             }
-            GetComponent<NavMeshAgent>().enabled = false;
-            GetComponent<FieldOfView>().enabled = false;
+            if (aIPath)
+            {
+                aIPath.canSearch = false;
+                aIPath.canMove = false;
+                newEnemyShoot.Dead = true;
+            }
+            if (fieldOfView)
+            {
+                navMeshAgent.enabled = false;
+                fieldOfView.enabled = false;
+            }
             Invoke("End", timeDead);
         }
     }

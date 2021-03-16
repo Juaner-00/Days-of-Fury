@@ -16,15 +16,8 @@ public class CamaraManager : MonoBehaviour
             Destroy(gameObject);
         Instance = this;
     }
-    void Start()
-    {
-
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    // Cambia la posición de la cámara
     public void ChangeCam(Vector3 pos)
     {
         cam2.transform.position = pos + offSet;
@@ -32,5 +25,6 @@ public class CamaraManager : MonoBehaviour
         cam2.SetActive(true);
         Time.timeScale = 0.5f;
     }
+    
     public static CamaraManager Instance { get; private set; }
 }

@@ -29403,7 +29403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087423c238593734e91ceb88236f0fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 4
+  maxHealthPoints: 10
   sCamara: {fileID: 0}
 --- !u!114 &8703890831471080377
 MonoBehaviour:

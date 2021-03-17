@@ -26,6 +26,10 @@ PrefabInstance:
       propertyPath: sCamara
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2083632406, guid: ead32fde9fe95324bbebed8872b06aa0, type: 3}
+      propertyPath: maxHealthPoints
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6257535253181365672, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}
       propertyPath: m_IsActive

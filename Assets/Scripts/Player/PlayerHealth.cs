@@ -59,7 +59,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
         isDead = (healthPoints <= 0) ? true : false;
         //impulseS.GenerateImpulse();
-        sCamara.Shake();
+        SimpleCameraShakeInCinemachine.Instance.Shake();
 
         if (isDead)
         {

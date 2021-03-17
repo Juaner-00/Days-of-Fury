@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
                 WinGame(EnemySpawnManager.LastPos);
         }
     }
-    
+
     // Método para finalizar el juego
     public void FinishGame()
     {
@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour
         {
             if (player.name == "Player")
                 player.GetComponent<PlayerMovement>().enabled = false;
+            else if (player.name == "Player 2")
+                player.GetComponent<PlayerMovementVels>().enabled = false;
             else
                 player.GetComponent<SCT_TankMovement>().enabled = false;
             player.GetComponent<ReticleController>().enabled = false;
@@ -107,13 +109,13 @@ public class GameManager : MonoBehaviour
         //delay para que se vea el efecto de acercamiento
         Invoke("WiningTank", 2f);
     }
-    
+
     // Método que se llama si el jugador gana
     public void WiningTank()
     {
         VictoryScreen.Instance.WinGame();
     }
-    
+
     // Método que se llama si el jugador gana
     public void DeadTank()
     {

@@ -151,6 +151,7 @@ public class PlayerMovementVels : MonoBehaviour
     public void GainSpeed(float porcent)
     {
         maxSpeed += maxSpeed * porcent / 100;
+        state = PlayerStates.Accelerating;
     }
 
     private void OnDrawGizmos()

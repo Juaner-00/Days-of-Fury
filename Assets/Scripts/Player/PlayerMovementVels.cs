@@ -10,6 +10,7 @@ public class PlayerMovementVels : MonoBehaviour
     [SerializeField] float maxSpeedBase;
     [SerializeField] float acceleration;
     [SerializeField] float crashCoolDown;
+    [SerializeField] Directions initialDirection;
     [SerializeField] float rotationTime;
 
     [Header("Ray Properties")]
@@ -23,6 +24,7 @@ public class PlayerMovementVels : MonoBehaviour
     [SerializeField] float movementSpeed;
     [SerializeField] float maxSpeed;
     [SerializeField] float crashCoolDownTimer;
+    [SerializeField] Directions lastDir;
 
 
     float horizontal;
@@ -53,6 +55,7 @@ public class PlayerMovementVels : MonoBehaviour
         maxSpeed = maxSpeedBase;
 
         crashCoolDownTimer = crashCoolDown;
+        lastDir = initialDirection;
 
         frontRay = new Ray(transform.position, transform.forward * frontLenght);
         leftRay = new Ray(transform.position, transform.right * -1 * leftLenght);
@@ -137,14 +140,56 @@ public class PlayerMovementVels : MonoBehaviour
 
     void HandleRotation()
     {
+        Directions turnDir = Directions.North;
+
+        Directions oppositeDirection = GetOpositeDirection();
+
+        // Obtener la dirección a girar
         if (vertical > 0.1f)
-            transform.DORotate(Vector3.up * 0, rotationTime, RotateMode.Fast);
+            turnDir = Directions.North;
         else if (vertical < -0.1f)
-            transform.DORotate(Vector3.up * 180, rotationTime, RotateMode.Fast);
+            turnDir = Directions.South;
         else if (horizontal > 0.1f)
-            transform.DORotate(Vector3.up * 90, rotationTime, RotateMode.Fast);
+            turnDir = Directions.East;
         else if (horizontal < -0.1f)
-            transform.DORotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
+            turnDir = Directions.West;
+
+        // Que no se pueda girar en la direccion
+        if (turnDir != oppositeDirection)
+        {
+            if (vertical > 0.1f && turnDir != lastDir)
+            {
+                transform.DORotate(Vector3.up * 0, rotationTime, RotateMode.Fast);
+                lastDir = Directions.North;
+            }
+            else if (vertical < -0.1f)
+            {
+                transform.DORotate(Vector3.up * 180, rotationTime, RotateMode.Fast);
+                lastDir = Directions.South;
+            }
+            else if (horizontal > 0.1f)
+            {
+                transform.DORotate(Vector3.up * 90, rotationTime, RotateMode.Fast);
+                lastDir = Directions.East;
+            }
+            else if (horizontal < -0.1f)
+            {
+                transform.DORotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
+                lastDir = Directions.West;
+            }
+        }
+    }
+
+    Directions GetOpositeDirection()
+    {
+        if (lastDir == Directions.North)
+            return Directions.South;
+        else if (lastDir == Directions.South)
+            return Directions.North;
+        else if (lastDir == Directions.East)
+            return Directions.West;
+        else
+            return Directions.East;
     }
 
     // Método para aumentar la velocidad de movimiento
@@ -173,4 +218,12 @@ public enum PlayerStates
     Stoped,
     Accelerating,
     MaxSpeed
+}
+
+public enum Directions
+{
+    North,
+    East,
+    South,
+    West
 }

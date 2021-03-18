@@ -30,6 +30,9 @@ public class PickUpSpawnManager : MonoBehaviour
     float time;
     bool canSpawn;
 
+    // pos, available
+    Dictionary<Vector3, bool> spawns = new Dictionary<Vector3, bool>();
+
 
     private void OnEnable()
     {
@@ -56,7 +59,7 @@ public class PickUpSpawnManager : MonoBehaviour
 
         healthPool = GameObject.Find("Health (Pool)")?.GetComponent<Pool>();
         movementPool = GameObject.Find("Movement (Pool)")?.GetComponent<Pool>();
-        shootPool = GameObject.Find("shoot (Pool)")?.GetComponent<Pool>();
+        shootPool = GameObject.Find("Shoot (Pool)")?.GetComponent<Pool>();
 
         // Añadir a la lista de pools los que tienen el bool true
         if (health)
@@ -65,6 +68,12 @@ public class PickUpSpawnManager : MonoBehaviour
             pools.Add(movementPool);
         if (shootSpeed)
             pools.Add(shootPool);
+
+        // LLenar el diccionario donde están los spawnpoints disponibles
+        foreach (Transform trans in spawnPos)
+        {
+            spawns.Add(trans.position, true);
+        }
     }
 
     private void Update()
@@ -83,6 +92,12 @@ public class PickUpSpawnManager : MonoBehaviour
         // Cantidad de enemigos a spawnear
         int cant = maxPickUpsAtTime - currentPickUpsInScene;
 
+        if (cant > spawnPos.Length)
+        {
+            cant = spawnPos.Length;
+            Debug.LogWarning("No se pueden tener más pickups que puntos de spawn");
+        }
+
         // Spawnear [cant] de enemigos
         for (int i = 0; i < cant; i++)
         {
@@ -90,12 +105,19 @@ public class PickUpSpawnManager : MonoBehaviour
             {
                 Vector3 pos = spawnPos[UnityEngine.Random.Range(0, spawnPos.Length)].position;
 
-                // Obtener el enemigo de un pool aleatorio
-                GameObject enemy = pools[UnityEngine.Random.Range(0, pools.Count)].GetItem(pos);
+                if (spawns[pos] == true)
+                {
+                    // Obtener el enemigo de un pool aleatorio
+                    GameObject pick = pools[UnityEngine.Random.Range(0, pools.Count)].GetItem(pos, pos);
 
-                // Aumetar el contador de enemigos vivos
-                currentPickUpsInScene++;
-                // print("Spawn");
+                    // Aumetar el contador de enemigos vivos
+                    currentPickUpsInScene++;
+                    // print("Spawn");
+
+                    spawns[pos] = false;
+                }
+                else
+                    i--;
             }
         }
 
@@ -120,8 +142,9 @@ public class PickUpSpawnManager : MonoBehaviour
         time = 0;
     }
 
-    void CountPickUps()
+    void CountPickUps(Vector3 pos)
     {
+        spawns[pos] = true;
         currentPickUpsInScene--;
         time = 0;
     }

@@ -30,7 +30,7 @@ public class PoolVfxs : MonoBehaviour
     // Devuelve un objeto del pool
     public ParticleSystem GetItem(Vector3 position, string tag = "")
     {
-        items[index].Begin(position, tag);
+        items[index].Begin(position, tag, Vector3.zero);
         ParticleSystem tmp = objects[index];
         index++;
 

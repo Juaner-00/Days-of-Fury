@@ -67,7 +67,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     }
 
     // Se llama cuando el pool devuelve el objeto
-    public void Begin(Vector3 position, string tag)
+    public void Begin(Vector3 position, string tag, Vector3 _)
     {
         if (aIPath)
         {

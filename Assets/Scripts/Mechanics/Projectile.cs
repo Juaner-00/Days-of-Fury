@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour, IPool
         trail.enabled = false;
     }
 
-    public void Begin(Vector3 position, string tag)
+    public void Begin(Vector3 position, string tag, Vector3 _)
     {
         collided = false;
         this.tag = tag;

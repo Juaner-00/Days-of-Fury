@@ -11,7 +11,7 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] int maxEnemiesAtTime;
     [SerializeField] Transform[] spawnPos;
 
-    
+
     [Header("Types of enemies")]
     [SerializeField] bool normalEnemy;
     [SerializeField] bool robustTank;
@@ -92,7 +92,7 @@ public class EnemySpawnManager : MonoBehaviour
                 Vector3 pos = spawnPos[Random.Range(0, spawnPos.Length)].position;
 
                 // Obtener el enemigo de un pool aleatorio
-                GameObject enemy = pools[Random.Range(0, pools.Count)].GetItem(pos);
+                GameObject enemy = pools[Random.Range(0, pools.Count)].GetItem(pos, Vector3.zero);
 
                 // Aumetar el contador de enemigos vivos
                 currentEnemiesAlive++;

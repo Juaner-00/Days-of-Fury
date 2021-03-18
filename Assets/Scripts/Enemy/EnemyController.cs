@@ -9,8 +9,10 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     [SerializeField] int maxHealthPoints;
     [SerializeField] int scorePoints;
     [SerializeField] float timeDead;
-    Vector3 inicialPosition;
+    [SerializeField] ParticleSystem damagedSmoke;
 
+    Vector3 inicialPosition;
+   
     int healthPoints;
     bool isDead;
     Animator enemyAnimator;
@@ -65,7 +67,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     }
 
     // Se llama cuando el pool devuelve el objeto
-    public void Begin(Vector3 position, string tag)
+    public void Begin(Vector3 position, string tag, Vector3 _)
     {
         if (aIPath)
         {
@@ -106,6 +108,14 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     // Método para hacer que el enemigo tome daño
     public void TakeDamage()
     {
+
+        if (damagedSmoke)
+        {
+            damagedSmoke.Play();
+        }
+        
+        
+        
         OnGettingHurt?.Invoke();
         if (isDead)
             return;
@@ -116,6 +126,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         if (isDead)
         {
+            if (damagedSmoke)
+            {
+                damagedSmoke.Stop();
+            }
+            
             enemyAnimator.SetTrigger("Dead4");
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 

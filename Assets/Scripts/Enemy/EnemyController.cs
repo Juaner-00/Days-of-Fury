@@ -9,15 +9,16 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     [SerializeField] int maxHealthPoints;
     [SerializeField] int scorePoints;
     [SerializeField] float timeDead;
-    Vector3 inicialPosition;
+    [SerializeField] ParticleSystem damagedSmoke;
 
+    Vector3 inicialPosition;
+   
     int healthPoints;
     bool isDead;
     Animator enemyAnimator;
     PoolVfxs particleDamage, particleExplo;
 
     public static event EnemyEvent OnDie;
-
     public delegate void EnemyEvent(Vector3 pos);
 
     public int MaxHealthPoints => maxHealthPoints;
@@ -27,20 +28,16 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     AIPath aIPath;
     AIDestinationSetter aIDestinationSetter;
-    FieldOfView fieldOfView;
-    NavMeshAgent navMeshAgent;
-    NewEnemyShoot newEnemyShoot;
+    EnemyShootController enemyShootController;
 
     void Awake()
     {
-        newEnemyShoot = GetComponent<NewEnemyShoot>();
+        enemyShootController = GetComponent<EnemyShootController>();
         aIDestinationSetter = GetComponent<AIDestinationSetter>();
         aIPath = GetComponent<AIPath>();
         enemyAnimator = GetComponentInChildren<Animator>();
         particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
         particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        fieldOfView = GetComponent<FieldOfView>();
     }
 
     // Se llama cuando se instancia el objeto
@@ -50,29 +47,25 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         {
             aIPath.usingGravity = false;
             aIPath.canSearch = false;
-            aIPath.canMove = false; 
-            newEnemyShoot.Dead = true;
+            aIPath.canMove = false;
+            enemyShootController.Dead = true;
         }
         if (aIDestinationSetter)
         {
             aIDestinationSetter.target = null;
         }
-        if (fieldOfView)
-        {
-            fieldOfView.enabled = false;
-        }
         inicialPosition = transform.position;
     }
 
     // Se llama cuando el pool devuelve el objeto
-    public void Begin(Vector3 position, string tag)
+    public void Begin(Vector3 position, string tag, Vector3 _)
     {
         if (aIPath)
         {
             aIPath.usingGravity = true;
             aIPath.canSearch = true;
-            aIPath.canMove = true; 
-            newEnemyShoot.Dead = false;
+            aIPath.canMove = true;
+            enemyShootController.Dead = false;
         }
         if (aIDestinationSetter)
         {
@@ -81,11 +74,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
-        if (fieldOfView)
-        {
-            navMeshAgent.enabled = true;
-            fieldOfView.enabled = true;
-        }
     }
 
     // Se llama cuando el objeto se devuelve al pool
@@ -106,9 +94,15 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     // Método para hacer que el enemigo tome daño
     public void TakeDamage()
     {
-        OnGettingHurt?.Invoke();
         if (isDead)
             return;
+
+        if (damagedSmoke)
+        {
+            damagedSmoke.Play();
+        }
+        
+        OnGettingHurt?.Invoke();
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         healthPoints--;
@@ -116,6 +110,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         if (isDead)
         {
+            if (damagedSmoke)
+            {
+                damagedSmoke.Stop();
+            }
+            
             enemyAnimator.SetTrigger("Dead4");
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 
@@ -123,19 +122,13 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             
             if (ScoreManager.Instance)
             {
-
                 ScoreManager.Instance.Addscore(scorePoints);
             }
             if (aIPath)
             {
                 aIPath.canSearch = false;
                 aIPath.canMove = false;
-                newEnemyShoot.Dead = true;
-            }
-            if (fieldOfView)
-            {
-                navMeshAgent.enabled = false;
-                fieldOfView.enabled = false;
+                enemyShootController.Dead = true;
             }
             Invoke("End", timeDead);
         }

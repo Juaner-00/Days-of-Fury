@@ -8,16 +8,15 @@ using Cinemachine;
 public class PlayerHealth : MonoBehaviour, IDamagable
 {
     [SerializeField] int maxHealthPoints;
-    [SerializeField] SimpleCameraShakeInCinemachine sCamara;
 
     Animator playerAnimator;
 
 
     ParticleSystem vfxscontainer;
-    CinemachineImpulseSource impulseS;
     VfxsController vfxs;
 
     PoolVfxs particleDamage, particleExplo;
+
     public static Action OnDie;
     public static Action OnChangeLife;
     public static Action OnGettingHurt;
@@ -32,7 +31,6 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
         particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
         vfxs = GetComponent<VfxsController>();
-        impulseS = GetComponent<CinemachineImpulseSource>();
         healthPoints = maxHealthPoints;
         isDead = (healthPoints <= 0) ? true : false;
     }
@@ -58,8 +56,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
 
         isDead = (healthPoints <= 0) ? true : false;
-        //impulseS.GenerateImpulse();
-        sCamara.Shake();
+        SimpleCameraShakeInCinemachine.Instance.Shake();
 
         if (isDead)
         {
@@ -70,8 +67,6 @@ public class PlayerHealth : MonoBehaviour, IDamagable
             }
 
             OnDie?.Invoke();
-            // Cuando se tenga la animación y las partículas de muerte se cambia el Destroy
-            //Destroy(gameObject);
         }
     }
 

@@ -11,12 +11,12 @@ public class VfxsController : MonoBehaviour, IPool
     Vector3 initial;
 
     string tag;
-    
+
     void Start()
     {
         thisparticle = GetComponent<ParticleSystem>();
     }
-    
+
     // Se llama al inicializar el pool
     public void Instantiate()
     {
@@ -24,7 +24,7 @@ public class VfxsController : MonoBehaviour, IPool
     }
 
     // Se llama cuando el pool obtiene el objeto
-    public void Begin(Vector3 position, string tag)
+    public void Begin(Vector3 position, string tag, Vector3 _)
     {
         this.tag = tag;
 

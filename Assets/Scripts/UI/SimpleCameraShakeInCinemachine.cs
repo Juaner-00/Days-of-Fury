@@ -4,7 +4,8 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.Events;
 
-public class SimpleCameraShakeInCinemachine : MonoBehaviour {
+public class SimpleCameraShakeInCinemachine : MonoBehaviour
+{
 
     [SerializeField] float ShakeDuration = 0.5f;
     [SerializeField] float ShakeAmplitude = 1000.2f;
@@ -14,6 +15,14 @@ public class SimpleCameraShakeInCinemachine : MonoBehaviour {
 
     [SerializeField] CinemachineVirtualCamera VirtualCamera;
     private CinemachineBasicMultiChannelPerlin virtualCameraNoise;
+
+    private void Awake()
+    {
+        if (Instance)
+            Destroy(this);
+
+        Instance = this;
+    }
 
     void Start()
     {
@@ -51,4 +60,6 @@ public class SimpleCameraShakeInCinemachine : MonoBehaviour {
             }
         }
     }
+
+    public static SimpleCameraShakeInCinemachine Instance { get; private set; }
 }

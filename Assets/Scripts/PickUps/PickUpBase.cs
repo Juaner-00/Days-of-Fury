@@ -4,19 +4,21 @@ using UnityEngine;
 
 public abstract class PickUpBase : MonoBehaviour, IPool
 {
-    public static Action OnPick;
-    public static Action OnDespawn;
+    public static Action<Vector3> OnPick;
+    public static Action<Vector3> OnDespawn;
 
     Vector3 inicialPosition;
 
-    bool isInGame;
+    bool hasPicked;
 
     static float despawnTime;
     float time;
 
+    Vector3 pickupSpawn;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (isInGame)
+        if (!hasPicked)
             if (other.CompareTag("Player"))
             {
                 Pick();
@@ -26,8 +28,8 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 
     protected virtual void Despawn()
     {
-        if (isInGame)
-            OnDespawn?.Invoke();
+        if (!hasPicked)
+            OnDespawn?.Invoke(pickupSpawn);
 
         time = 0;
         End();
@@ -35,8 +37,8 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 
     protected virtual void Pick()
     {
-        OnDespawn?.Invoke();
-        isInGame = false;
+        OnDespawn?.Invoke(pickupSpawn);
+        hasPicked = true;
     }
 
     // Se llama al inicializar el pickup
@@ -46,22 +48,24 @@ public abstract class PickUpBase : MonoBehaviour, IPool
     }
 
     // Se llama cuando el pool obtiene el objeto
-    public void Begin(Vector3 position, string tag)
+    public void Begin(Vector3 position, string tag, Vector3 pos)
     {
-        isInGame = true;
+        pickupSpawn = pos;
+        hasPicked = false;
         transform.position = position;
     }
 
     // Se llama cuando se devuelva al pool
     public void End()
     {
-        isInGame = false;
+        hasPicked = true;
         transform.position = inicialPosition;
+        pickupSpawn = Vector3.zero;
     }
 
     private void Update()
     {
-        if (isInGame)
+        if (hasPicked)
             time += Time.deltaTime;
 
         if (time > despawnTime)

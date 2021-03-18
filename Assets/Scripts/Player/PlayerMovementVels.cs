@@ -6,15 +6,23 @@ using DG.Tweening;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovementVels : MonoBehaviour
 {
-    [Header("Script Properties")]
+    [Header("Movement Properties")]
     [SerializeField] float maxSpeedBase;
     [SerializeField] float acceleration;
+    [SerializeField] float crashCoolDown;
     [SerializeField] float rotationTime;
+
+    [Header("Ray Properties")]
+    [SerializeField] LayerMask obstacleMask;
+    [SerializeField] float frontLenght;
+    [SerializeField] float leftLenght;
+    [SerializeField] float rightLenght;
 
 
     [Header("Debug")]
     [SerializeField] float movementSpeed;
     [SerializeField] float maxSpeed;
+    [SerializeField] float crashCoolDownTimer;
 
 
     float horizontal;
@@ -24,8 +32,13 @@ public class PlayerMovementVels : MonoBehaviour
 
     PlayerStates state;
 
-    public static Action OnMoving;
+    Ray frontRay;
+    Ray leftRay;
+    Ray rightRay;
 
+
+    public static Action OnMoving;
+    public static Action OnStoped;
 
 
     private void Awake()
@@ -38,6 +51,12 @@ public class PlayerMovementVels : MonoBehaviour
         state = PlayerStates.Stoped;
         movementSpeed = 0;
         maxSpeed = maxSpeedBase;
+
+        crashCoolDownTimer = crashCoolDown;
+
+        frontRay = new Ray(transform.position, transform.forward * frontLenght);
+        leftRay = new Ray(transform.position, transform.right * -1 * leftLenght);
+        rightRay = new Ray(transform.position, transform.right * rightLenght);
     }
 
     private void Update()
@@ -51,7 +70,34 @@ public class PlayerMovementVels : MonoBehaviour
 
     void HandleRayCast()
     {
+        // Si no tiene el coolDown
+        if (crashCoolDownTimer > crashCoolDown)
+        {
+            // Choca con el rayo del frente o el de la derecha o izquierda
+            if (Physics.Raycast(frontRay, frontLenght, obstacleMask) ||
+                Physics.Raycast(leftRay, leftLenght, obstacleMask) ||
+                Physics.Raycast(rightRay, rightLenght, obstacleMask))
+            {
+                switch (state)
+                {
+                    // Si está acelerando se para
+                    case PlayerStates.Accelerating:
+                        state = PlayerStates.Stoped;
+                        movementSpeed = 0;
+                        OnStoped?.Invoke();
+                        break;
+                    // Si tiene la máxima velocidad se le reduce y se pone en el estado acelerando
+                    case PlayerStates.MaxSpeed:
+                        state = PlayerStates.Accelerating;
+                        movementSpeed *= 0.3f;
+                        break;
+                }
 
+                crashCoolDownTimer = 0;
+            }
+        }
+
+        crashCoolDownTimer += Time.deltaTime;
     }
 
     void HandleSpeed()
@@ -64,18 +110,21 @@ public class PlayerMovementVels : MonoBehaviour
 
         switch (state)
         {
+            // Si está parado y presiona cualquier tecla se pone en acelerando
             case PlayerStates.Stoped:
                 if (Input.anyKey)
                     state = PlayerStates.Accelerating;
                 break;
+            // Si está acelerando se incrementa la velocidad
             case PlayerStates.Accelerating:
-                OnMoving?.Invoke();
                 movementSpeed += acceleration * Time.deltaTime;
                 controller.SimpleMove(transform.forward * movementSpeed);
-                break;
-            case PlayerStates.MaxSpeed:
                 OnMoving?.Invoke();
+                break;
+            // Si está en máxima velodicad se mueve a máxima velocidad
+            case PlayerStates.MaxSpeed:
                 controller.SimpleMove(transform.forward * movementSpeed);
+                OnMoving?.Invoke();
                 break;
         }
     }
@@ -102,6 +151,17 @@ public class PlayerMovementVels : MonoBehaviour
     public void GainSpeed(float porcent)
     {
         maxSpeed += maxSpeed * porcent / 100;
+    }
+
+    private void OnDrawGizmos()
+    {
+        frontRay = new Ray(transform.position, transform.forward * frontLenght);
+        leftRay = new Ray(transform.position, transform.right * -1 * leftLenght);
+        rightRay = new Ray(transform.position, transform.right * rightLenght);
+
+        Debug.DrawRay(frontRay.origin, frontRay.direction.normalized * frontLenght, Color.red, 0.1f);
+        Debug.DrawRay(leftRay.origin, leftRay.direction.normalized * leftLenght, Color.blue, 0.1f);
+        Debug.DrawRay(rightRay.origin, rightRay.direction.normalized * rightLenght, Color.magenta, 0.1f);
     }
 
 }

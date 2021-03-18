@@ -14,9 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeedBase: 15
   acceleration: 3
+  crashCoolDown: 2.5
   rotationTime: 0.3
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  frontLenght: 2.3
+  leftLenght: 2
+  rightLenght: 2
   movementSpeed: 0
   maxSpeed: 0
+  crashCoolDownTimer: 0
 --- !u!1001 &6177860047497837436
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TurretTank : MonoBehaviour
 {
     [Header("Shoot Properties")]
-    [SerializeField] float force = 10, attackSpeed = 0.5f;
+    [SerializeField] float force = 10, attackSpeedBase = 0.5f;
     [SerializeField] Transform reference;
     [SerializeField] ParticleSystem smokeFire;
 
@@ -14,15 +14,21 @@ public class TurretTank : MonoBehaviour
 
     public bool Available { get => available; }
 
+    [SerializeField, Header("Debug")]
+    float attackSpeed;
+
+
     private void Start()
     {
         cartrigde = GameObject.Find("Cartrigde (Pool)").GetComponent<Pool>();
+
+        attackSpeed = attackSpeedBase;
     }
 
     // Método para disparar una bala
     public void Shot()
     {
-        //if (available)
+        if (available)
         {
             if (smokeFire)
                 smokeFire.Play();
@@ -31,7 +37,7 @@ public class TurretTank : MonoBehaviour
 
             Vector3 force = -transform.up * this.force;
 
-            GameObject clone = cartrigde.GetItem(reference.position, tag);
+            GameObject clone = cartrigde.GetItem(reference.position, Vector3.zero, tag);
             //clone.transform.LookAt(clone.transform.position + transform.forward);
             clone.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
         }
@@ -40,5 +46,11 @@ public class TurretTank : MonoBehaviour
     void Reload()
     {
         available = true;
+    }
+
+    // Método para aumentar la cadencia de disparo
+    public void GainShootSpeed(float porcent)
+    {
+        attackSpeed = attackSpeed + attackSpeed * porcent / 100;
     }
 }

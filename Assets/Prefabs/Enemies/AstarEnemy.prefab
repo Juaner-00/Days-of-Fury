@@ -146,6 +146,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
+  Dead: 0
 --- !u!65 &6744038053857644895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -207,7 +208,7 @@ MonoBehaviour:
   force: 50
   attackSpeed: 1
   reference: {fileID: 3962803469022186132}
-  smokeFire: {fileID: 0}
+  smokeFire: {fileID: 3761631285256366158}
 --- !u!1 &3959506239233131076
 GameObject:
   m_ObjectHideFlags: 0
@@ -62388,7 +62389,7 @@ Transform:
   m_GameObject: {fileID: 3960882059341786216}
   m_LocalRotation: {x: -0.00000005960465, y: 0.000000087422734, z: -0.0000001629206,
     w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.342}
+  m_LocalPosition: {x: 0.026, y: 2.451, z: 1.924}
   m_LocalScale: {x: 4.4881396, y: 5.068161, z: 4.09879}
   m_Children: []
   m_Father: {fileID: 3954690170910231966}

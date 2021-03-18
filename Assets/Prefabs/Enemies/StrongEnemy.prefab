@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3569817760017337869}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BoneWheel_R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3572998164098731749}
   - component: {fileID: 3691581031648641397}
   - component: {fileID: 3695144697181576559}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmokeEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4566,7 +4566,7 @@ GameObject:
   - component: {fileID: 3572891181635825533}
   - component: {fileID: 3694702794226641155}
   - component: {fileID: 3693197893557988765}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9387,7 +9387,7 @@ GameObject:
   - component: {fileID: 3569768245046796593}
   - component: {fileID: 3694402441120117653}
   - component: {fileID: 3693195883390015335}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DerisFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14033,7 +14033,7 @@ GameObject:
   - component: {fileID: 3570063552241406841}
   - component: {fileID: 3694194113118592321}
   - component: {fileID: 3693116653903205045}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FireEmbers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18696,7 +18696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3572890217576229485}
   - component: {fileID: 3519395431459216363}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tank_T34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18716,7 +18716,7 @@ Transform:
   m_Children:
   - {fileID: 3569810362152623773}
   m_Father: {fileID: 3570189695485330273}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3519395431459216363
 Animator:
@@ -18746,7 +18746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3572620810433825133}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BoneBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18785,7 +18785,7 @@ GameObject:
   - component: {fileID: 3567026359210056207}
   - component: {fileID: 7878026889269737147}
   - component: {fileID: 8613527440792475867}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: StrongEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -18803,6 +18803,7 @@ Transform:
   m_LocalPosition: {x: -55.282116, y: 0.9605365, z: 1.8535061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1554140549770579563}
   - {fileID: 3572890217576229485}
   - {fileID: 3570145604175470849}
   - {fileID: 3572997279180479583}
@@ -18874,7 +18875,7 @@ MonoBehaviour:
   viewAngle: 2.4
   targetMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   obstacleMask:
     serializedVersion: 2
     m_Bits: 311
@@ -18894,6 +18895,7 @@ MonoBehaviour:
   maxHealthPoints: 2
   scorePoints: 100
   timeDead: 2
+  damagedSmoke: {fileID: 1676125995168850869}
 --- !u!114 &8613527440792475867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18930,7 +18932,7 @@ GameObject:
   - component: {fileID: 3572920993902278395}
   - component: {fileID: 3598809264485219757}
   - component: {fileID: 3591359375927443581}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wheel_L2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19007,7 +19009,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3569706412554308859}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BodyShake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19039,7 +19041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3569810362152623773}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19075,7 +19077,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3572573167942528701}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BoneBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19108,7 +19110,7 @@ GameObject:
   - component: {fileID: 3569834253563488303}
   - component: {fileID: 3598760338626130521}
   - component: {fileID: 3591271775135225703}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wheel_R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19187,7 +19189,7 @@ GameObject:
   - component: {fileID: 3569691518241714413}
   - component: {fileID: 3694307839824208649}
   - component: {fileID: 3695046384907022911}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23997,7 +23999,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3570131559179983907}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BoneBarreTilt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24029,7 +24031,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3572584066075121721}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BoneWheel_R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24062,7 +24064,7 @@ GameObject:
   - component: {fileID: 3572706424411680449}
   - component: {fileID: 3599456714033469331}
   - component: {fileID: 3591542889624688441}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24140,7 +24142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3570007647999184435}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GunEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24172,7 +24174,7 @@ GameObject:
   - component: {fileID: 3573032929825631661}
   - component: {fileID: 3598884819018856975}
   - component: {fileID: 3591391704926633691}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BarrelMount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24251,7 +24253,7 @@ GameObject:
   - component: {fileID: 3569840861783381789}
   - component: {fileID: 3694096555855488755}
   - component: {fileID: 3693761965107926563}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BigExplosionEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28909,7 +28911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3570145604175470849}
   - component: {fileID: 3518100650929846635}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: marksLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28929,7 +28931,7 @@ Transform:
   m_Children:
   - {fileID: 3570140432202887279}
   m_Father: {fileID: 3570189695485330273}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &3518100650929846635
 TrailRenderer:
@@ -29037,7 +29039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3572899446946617707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BoneWheel_L2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29070,7 +29072,7 @@ GameObject:
   - component: {fileID: 3569713129204086397}
   - component: {fileID: 3601827321257760723}
   - component: {fileID: 3591109241962164597}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wheel_L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29148,7 +29150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3573033302019238163}
   - component: {fileID: 3459892212377076823}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29241,7 +29243,7 @@ GameObject:
   - component: {fileID: 3570073856384937615}
   - component: {fileID: 3598794872329127385}
   - component: {fileID: 3589591784884346861}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wheel_R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29318,7 +29320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3570044761002408965}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BoneTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29351,7 +29353,7 @@ GameObject:
   - component: {fileID: 3572949998936611717}
   - component: {fileID: 3694744558293633181}
   - component: {fileID: 3693023388023551369}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightDustTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33970,7 +33972,7 @@ GameObject:
   - component: {fileID: 3572707921964024341}
   - component: {fileID: 3599329590727712977}
   - component: {fileID: 3589418005794781811}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34049,7 +34051,7 @@ GameObject:
   - component: {fileID: 3569768525258192873}
   - component: {fileID: 3694142612523799161}
   - component: {fileID: 3694978425297054739}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38816,7 +38818,7 @@ GameObject:
   - component: {fileID: 3570102414823639515}
   - component: {fileID: 3694514028758413917}
   - component: {fileID: 3695010460459853465}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DebrisSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43480,7 +43482,7 @@ GameObject:
   - component: {fileID: 3572941086066662119}
   - component: {fileID: 3694777371226287337}
   - component: {fileID: 3693356560224405217}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: smokeBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48073,7 +48075,7 @@ GameObject:
   - component: {fileID: 3572588195818162489}
   - component: {fileID: 3599014141080418773}
   - component: {fileID: 3589931598192867977}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48154,7 +48156,7 @@ GameObject:
   - component: {fileID: 3572637783783664401}
   - component: {fileID: 3691586515596853899}
   - component: {fileID: 3695141849902025111}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52793,7 +52795,7 @@ GameObject:
   - component: {fileID: 3572529274492713573}
   - component: {fileID: 3694896657674480683}
   - component: {fileID: 3694955437117818303}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57466,7 +57468,7 @@ GameObject:
   - component: {fileID: 3570140432202887279}
   - component: {fileID: 3691643993337302197}
   - component: {fileID: 3694946397481525487}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftDustTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62083,7 +62085,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3570132089209508547}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BoneWheel_L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62115,7 +62117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3572997279180479583}
   - component: {fileID: 3517720950972598121}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: marksRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62135,7 +62137,7 @@ Transform:
   m_Children:
   - {fileID: 3572949998936611717}
   m_Father: {fileID: 3570189695485330273}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &3517720950972598121
 TrailRenderer:
@@ -62244,7 +62246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3570000629799730747}
   - component: {fileID: 3568881591217885342}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BoneTurretTurn
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -62294,7 +62296,7 @@ GameObject:
   - component: {fileID: 3572629406165567857}
   - component: {fileID: 3694499789419551857}
   - component: {fileID: 3693449087693050195}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66992,3 +66994,138 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1001 &1549348387805163933
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3570189695485330273}
+    m_Modifications:
+    - target: {fileID: 1023332647564484, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094924764167744, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575754434287412, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_Name
+      value: SmokeEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575754434287412, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592097632162508, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+        type: 3}
+      propertyPath: NoiseModule.strength.scalar
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+        type: 3}
+      propertyPath: NoiseModule.frequency
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 14.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 22.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key3.a
+      value: 0.6392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 0.41568628
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6c32251bcc267b04bb7f78bfe9e35de8, type: 3}
+--- !u!4 &1554140549770579563 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4801287709818870, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1549348387805163933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1676125995168850869 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1549348387805163933}
+  m_PrefabAsset: {fileID: 0}

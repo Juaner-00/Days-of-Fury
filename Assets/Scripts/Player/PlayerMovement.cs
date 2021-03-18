@@ -6,7 +6,7 @@ using DG.Tweening;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] float speedBase;
     [SerializeField] float rotationTime;
     CamaraShake cShake;
 
@@ -16,7 +16,10 @@ public class PlayerMovement : MonoBehaviour
     float horizontal;
     float vertical;
 
+    float movementSpeed;
+
     public static Action OnMoving;
+
 
     private void Awake()
     {
@@ -26,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
+    private void Start()
+    {
+        movementSpeed = speedBase;
+    }
+
     private void Update()
     {
         OnMoving?.Invoke();
@@ -33,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         HandleInputs();
         HandleRotation();
 
-        controller.SimpleMove(transform.forward * speed);
+        controller.SimpleMove(transform.forward * movementSpeed);
     }
 
     void HandleInputs()
@@ -54,7 +62,9 @@ public class PlayerMovement : MonoBehaviour
             transform.DORotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
     }
 
-
-
-
+    // Método para aumentar la velocidad de movimiento
+    public void GainSpeed(float porcent)
+    {
+        movementSpeed += movementSpeed * porcent / 100;
+    }
 }

@@ -7,16 +7,22 @@ using DG.Tweening;
 public class PlayerMovementVels : MonoBehaviour
 {
     [Header("Script Properties")]
-    [SerializeField] float speedBase;
+    [SerializeField] float maxSpeedBase;
+    [SerializeField] float acceleration;
     [SerializeField] float rotationTime;
 
-    CharacterController controller;
+
+    [Header("Debug")]
+    [SerializeField] float movementSpeed;
+    [SerializeField] float maxSpeed;
+
 
     float horizontal;
     float vertical;
 
-    [SerializeField, Header("Debug")]
-    float movementSpeed;
+    CharacterController controller;
+
+    PlayerStates state;
 
     public static Action OnMoving;
 
@@ -29,17 +35,49 @@ public class PlayerMovementVels : MonoBehaviour
 
     private void Start()
     {
-        movementSpeed = speedBase;
+        state = PlayerStates.Stoped;
+        movementSpeed = 0;
+        maxSpeed = maxSpeedBase;
     }
 
     private void Update()
     {
-        OnMoving?.Invoke();
-
         HandleInputs();
         HandleRotation();
 
-        controller.SimpleMove(transform.forward * movementSpeed);
+        HandleRayCast();
+        HandleSpeed();
+    }
+
+    void HandleRayCast()
+    {
+
+    }
+
+    void HandleSpeed()
+    {
+        if (movementSpeed > maxSpeed)
+        {
+            movementSpeed = maxSpeed;
+            state = PlayerStates.MaxSpeed;
+        }
+
+        switch (state)
+        {
+            case PlayerStates.Stoped:
+                if (Input.anyKey)
+                    state = PlayerStates.Accelerating;
+                break;
+            case PlayerStates.Accelerating:
+                OnMoving?.Invoke();
+                movementSpeed += acceleration * Time.deltaTime;
+                controller.SimpleMove(transform.forward * movementSpeed);
+                break;
+            case PlayerStates.MaxSpeed:
+                OnMoving?.Invoke();
+                controller.SimpleMove(transform.forward * movementSpeed);
+                break;
+        }
     }
 
     void HandleInputs()
@@ -63,14 +101,15 @@ public class PlayerMovementVels : MonoBehaviour
     // Método para aumentar la velocidad de movimiento
     public void GainSpeed(float porcent)
     {
-        movementSpeed += movementSpeed * porcent / 100;
+        maxSpeed += maxSpeed * porcent / 100;
     }
+
 }
 
 
 public enum PlayerStates
 {
     Stoped,
-    SlowAcceleration,
-    FastAcceleration
+    Accelerating,
+    MaxSpeed
 }

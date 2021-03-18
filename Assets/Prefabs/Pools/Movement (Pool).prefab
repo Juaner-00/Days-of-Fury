@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6415636171326966698}
   - component: {fileID: 4078042101118247451}
   m_Layer: 0
-  m_Name: MovementSpeed PickUP
+  m_Name: Movement (Pool)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2adbd18d95dc1a94483e32ede6fe165b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 1652189564951397605, guid: dcf0770f1e4c9d045a580713389b90d5, type: 3}
+  item: {fileID: 1652189564951397605, guid: e6a59754db5fab545853726b5b30ecbb, type: 3}
   length: 5

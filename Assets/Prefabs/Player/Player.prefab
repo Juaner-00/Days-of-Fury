@@ -5081,9 +5081,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 40
-  attackSpeed: 1
+  attackSpeedBase: 0.5
   reference: {fileID: 7020538783509773034}
   smokeFire: {fileID: 6083539468821694196}
+  attackSpeed: 1
 --- !u!1 &7020538782890349246
 GameObject:
   m_ObjectHideFlags: 0
@@ -5747,8 +5748,8 @@ GameObject:
   - component: {fileID: 7020538783977343669}
   - component: {fileID: 7020538783977343668}
   - component: {fileID: 7020538783977343671}
-  - component: {fileID: 7020538783977343670}
   - component: {fileID: 7020538783977343665}
+  - component: {fileID: 7020538783977343670}
   - component: {fileID: 7020538783977343664}
   - component: {fileID: 2083632406}
   - component: {fileID: 8703890831471080377}
@@ -5805,20 +5806,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &7020538783977343670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020538783977343667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0374ac94a9d43c54bb822632d26aecaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretTransform: {fileID: 7020538782831695068}
-  turretTank: {fileID: 7020538782831695071}
 --- !u!143 &7020538783977343665
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5837,6 +5824,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.55, z: 0.12}
+--- !u!114 &7020538783977343670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7020538783977343667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0374ac94a9d43c54bb822632d26aecaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretTransform: {fileID: 7020538782831695068}
+  turretTank: {fileID: 7020538782831695071}
 --- !u!114 &7020538783977343664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5849,7 +5850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d72fa0938bdce47b572d7624dcf242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speedBase: 0
   rotationTime: 0.1
 --- !u!114 &2083632406
 MonoBehaviour:
@@ -5864,7 +5865,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 4
-  sCamara: {fileID: 0}
 --- !u!114 &8703890831471080377
 MonoBehaviour:
   m_ObjectHideFlags: 0

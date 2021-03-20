@@ -12,7 +12,7 @@ public class HealthUI : MonoBehaviour
     private void Start()
     {
         if (GameManager.Player)
-            health = GameManager.Player.GetComponent<PlayerHealth>();
+            health = GameManager.Player.GetComponentInParent<PlayerHealth>();
         UpdateUI();
     }
 

@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     VfxsController vfxs;
 
     PoolVfxs particleDamage, particleExplo;
+
     public static Action OnDie;
     public static Action OnChangeLife;
     public static Action OnGettingHurt;

@@ -74,12 +74,12 @@ public class GameManager : MonoBehaviour
         if (player)
         {
             if (player.name == "Player")
-                player.GetComponent<PlayerMovement>().enabled = false;
+                player.GetComponentInParent<PlayerMovement>().enabled = false;
             else if (player.name == "Player 2")
-                player.GetComponent<PlayerMovementVels>().enabled = false;
+                player.GetComponentInParent<PlayerMovementVels>().enabled = false;
             else
-                player.GetComponent<SCT_TankMovement>().enabled = false;
-            player.GetComponent<ReticleController>().enabled = false;
+                player.GetComponentInParent<SCT_TankMovement>().enabled = false;
+            player.GetComponentInParent<ReticleController>().enabled = false;
         }
 
         if (EnemySpawnManager.Instance)

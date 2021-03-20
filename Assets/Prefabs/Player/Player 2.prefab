@@ -15,7 +15,42 @@ MonoBehaviour:
   maxSpeedBase: 15
   acceleration: 3
   crashCoolDown: 2.5
+  initialDirection: 0
   rotationTime: 0.3
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: -0.04795394
+      outSlope: -0.04795394
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.20946807
+    - serializedVersion: 3
+      time: 0.72412896
+      value: 1.5237889
+      inSlope: -1.4388463
+      outSlope: -1.4388463
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.17707825
+    - serializedVersion: 3
+      time: 0.9970703
+      value: 0.99681926
+      inSlope: -1.6185172
+      outSlope: -1.6185172
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19684213
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curveDuration: 3
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
@@ -25,6 +60,7 @@ MonoBehaviour:
   movementSpeed: 0
   maxSpeed: 0
   crashCoolDownTimer: 0
+  lastDir: 0
 --- !u!1001 &6177860047497837436
 PrefabInstance:
   m_ObjectHideFlags: 0

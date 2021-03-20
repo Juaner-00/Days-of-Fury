@@ -12,6 +12,7 @@ public class PlayerMovementVels : MonoBehaviour
     [SerializeField] float crashCoolDown;
     [SerializeField] Directions initialDirection;
     [SerializeField] float rotationTime;
+    [SerializeField] AnimationCurve accelerationCurve;
 
     [Header("Ray Properties")]
     [SerializeField] LayerMask obstacleMask;
@@ -29,6 +30,7 @@ public class PlayerMovementVels : MonoBehaviour
 
     float horizontal;
     float vertical;
+    float curveTimer;
 
     CharacterController controller;
 

@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     [SerializeField] float timeDead;
     [SerializeField] ParticleSystem damagedSmoke;
 
+    public static event Action<string> Mision = delegate { };
+
     Vector3 inicialPosition;
    
     int healthPoints;
@@ -116,6 +118,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             }
             
             enemyAnimator.SetTrigger("Dead4");
+            Mision("Mision1"); //Sistema de misiones :)
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 
             OnDie?.Invoke(transform.position);

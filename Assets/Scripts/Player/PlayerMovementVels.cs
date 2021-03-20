@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -13,13 +13,13 @@ public class PlayerMovementVels : MonoBehaviour
     [SerializeField] Directions initialDirection;
     [SerializeField] float rotationTime;
     [SerializeField] AnimationCurve accelerationCurve;
+    [SerializeField] float curveDuration;
 
     [Header("Ray Properties")]
     [SerializeField] LayerMask obstacleMask;
     [SerializeField] float frontLenght;
     [SerializeField] float leftLenght;
     [SerializeField] float rightLenght;
-
 
     [Header("Debug")]
     [SerializeField] float movementSpeed;
@@ -55,6 +55,7 @@ public class PlayerMovementVels : MonoBehaviour
         state = PlayerStates.Stoped;
         movementSpeed = 0;
         maxSpeed = maxSpeedBase;
+        curveTimer = 0;
 
         crashCoolDownTimer = crashCoolDown;
         lastDir = initialDirection;
@@ -118,11 +119,16 @@ public class PlayerMovementVels : MonoBehaviour
             // Si está parado y presiona cualquier tecla se pone en acelerando
             case PlayerStates.Stoped:
                 if (Input.anyKey)
+                {
+                    curveTimer = 0;
                     state = PlayerStates.Accelerating;
+                }
                 break;
             // Si está acelerando se incrementa la velocidad
             case PlayerStates.Accelerating:
-                movementSpeed += acceleration * Time.deltaTime;
+                float accelerationMagnitud = accelerationCurve.Evaluate(curveTimer / curveDuration);
+                movementSpeed += acceleration * accelerationMagnitud * Time.deltaTime;
+                curveTimer += Time.deltaTime;
                 controller.SimpleMove(transform.forward * movementSpeed);
                 OnMoving?.Invoke();
                 break;

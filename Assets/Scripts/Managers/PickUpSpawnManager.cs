@@ -16,11 +16,13 @@ public class PickUpSpawnManager : MonoBehaviour
     [SerializeField] bool health;
     [SerializeField] bool movementSpeed;
     [SerializeField] bool shootSpeed;
+    [SerializeField] bool score;
 
 
     Pool healthPool;
     Pool movementPool;
     Pool shootPool;
+    Pool scorePool;
 
 
     List<Pool> pools = new List<Pool>();
@@ -60,6 +62,7 @@ public class PickUpSpawnManager : MonoBehaviour
         healthPool = GameObject.Find("Health (Pool)")?.GetComponent<Pool>();
         movementPool = GameObject.Find("Movement (Pool)")?.GetComponent<Pool>();
         shootPool = GameObject.Find("Shoot (Pool)")?.GetComponent<Pool>();
+        scorePool = GameObject.Find("Score (Pool)")?.GetComponent<Pool>();
 
         // Añadir a la lista de pools los que tienen el bool true
         if (health)
@@ -68,6 +71,8 @@ public class PickUpSpawnManager : MonoBehaviour
             pools.Add(movementPool);
         if (shootSpeed)
             pools.Add(shootPool);
+        if (score)
+            pools.Add(scorePool);
 
         // LLenar el diccionario donde están los spawnpoints disponibles
         foreach (Transform trans in spawnPos)

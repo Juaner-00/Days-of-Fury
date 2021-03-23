@@ -11,7 +11,8 @@ public class PlayerMovementVels : MonoBehaviour
     [SerializeField] float acceleration;
     [SerializeField] float crashCoolDown;
     [SerializeField] Directions initialDirection;
-    [SerializeField] float rotationTime;
+    [SerializeField] float rotationTimeBase;
+    [SerializeField] float oppositeRotationMultiplier;
     [SerializeField] AnimationCurve accelerationCurve;
     [SerializeField] float curveDuration;
 
@@ -27,10 +28,13 @@ public class PlayerMovementVels : MonoBehaviour
     [SerializeField] float crashCoolDownTimer;
     [SerializeField] Directions lastDir;
 
+    Directions turnDir;
 
     float horizontal;
     float vertical;
     float curveTimer;
+
+    float rotationTime;
 
     CharacterController controller;
 
@@ -59,15 +63,14 @@ public class PlayerMovementVels : MonoBehaviour
 
         crashCoolDownTimer = crashCoolDown;
         lastDir = initialDirection;
-
-        frontRay = new Ray(transform.position, transform.forward * frontLenght);
-        leftRay = new Ray(transform.position, transform.right * -1 * leftLenght);
-        rightRay = new Ray(transform.position, transform.right * rightLenght);
     }
 
     private void Update()
     {
         HandleInputs();
+        // Solo se llama si hay un input
+        if (Input.anyKeyDown)
+            HandleDirection();
         HandleRotation();
 
         HandleRayCast();
@@ -76,6 +79,10 @@ public class PlayerMovementVels : MonoBehaviour
 
     void HandleRayCast()
     {
+        frontRay = new Ray(transform.position, transform.forward * frontLenght);
+        leftRay = new Ray(transform.position, transform.right * -1 * leftLenght);
+        rightRay = new Ray(transform.position, transform.right * rightLenght);
+
         // Si no tiene el coolDown
         if (crashCoolDownTimer > crashCoolDown)
         {
@@ -146,10 +153,8 @@ public class PlayerMovementVels : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
     }
 
-    void HandleRotation()
+    void HandleDirection()
     {
-        Directions turnDir = Directions.North;
-
         Directions oppositeDirection = GetOpositeDirection();
 
         // Obtener la dirección a girar
@@ -162,42 +167,53 @@ public class PlayerMovementVels : MonoBehaviour
         else if (horizontal < -0.1f)
             turnDir = Directions.West;
 
-        // Que no se pueda girar en la direccion
-        if (turnDir != oppositeDirection)
+        // Cambiar la duración de la rotación
+        if (lastDir != turnDir && turnDir == oppositeDirection)
+            rotationTime = rotationTimeBase * oppositeRotationMultiplier;
+        else
+            rotationTime = rotationTimeBase;
+    }
+
+    void HandleRotation()
+    {
+        // Girar el tanque con DoTween
+        if (vertical > 0.1f && turnDir != lastDir)
         {
-            if (vertical > 0.1f && turnDir != lastDir)
-            {
-                transform.DORotate(Vector3.up * 0, rotationTime, RotateMode.Fast);
-                lastDir = Directions.North;
-            }
-            else if (vertical < -0.1f)
-            {
-                transform.DORotate(Vector3.up * 180, rotationTime, RotateMode.Fast);
-                lastDir = Directions.South;
-            }
-            else if (horizontal > 0.1f)
-            {
-                transform.DORotate(Vector3.up * 90, rotationTime, RotateMode.Fast);
-                lastDir = Directions.East;
-            }
-            else if (horizontal < -0.1f)
-            {
-                transform.DORotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
-                lastDir = Directions.West;
-            }
+            transform.DOLocalRotate(Vector3.up * 0, rotationTime, RotateMode.Fast);
+            lastDir = Directions.North;
+        }
+        else if (vertical < -0.1f)
+        {
+            transform.DOLocalRotate(Vector3.up * -180, rotationTime, RotateMode.Fast);
+            lastDir = Directions.South;
+        }
+        else if (horizontal > 0.1f)
+        {
+            transform.DOLocalRotate(Vector3.up * 90, rotationTime, RotateMode.Fast);
+            lastDir = Directions.East;
+        }
+        else if (horizontal < -0.1f)
+        {
+            transform.DOLocalRotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
+            lastDir = Directions.West;
         }
     }
 
     Directions GetOpositeDirection()
     {
-        if (lastDir == Directions.North)
-            return Directions.South;
-        else if (lastDir == Directions.South)
-            return Directions.North;
-        else if (lastDir == Directions.East)
-            return Directions.West;
-        else
-            return Directions.East;
+        switch (lastDir)
+        {
+            case Directions.North:
+                return Directions.South;
+            case Directions.East:
+                return Directions.West;
+            case Directions.South:
+                return Directions.North;
+            case Directions.West:
+                return Directions.East;
+            default:
+                return Directions.South;
+        }
     }
 
     // Método para aumentar la velocidad de movimiento

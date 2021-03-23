@@ -134,5 +134,6 @@ public class EnemySpawnManager : MonoBehaviour
     public int EnemiesToStopSpawn => maxEnemiesToStopSpawn;
     public int EnemiesKilled => countEnemiesKilled;
     public int EnemiesAlived => currentEnemiesAlive;
+    public int TotalEnemiesToKill => maxEnemiesAtTime + maxEnemiesToStopSpawn;
     public bool CanSpawn => canSpawn;
 }

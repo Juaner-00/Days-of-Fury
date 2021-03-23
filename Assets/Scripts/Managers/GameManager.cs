@@ -57,13 +57,8 @@ public class GameManager : MonoBehaviour
                 if (ScoreManager.Instance.TotalScore >= scoreToWin)
                     WinGame(player.transform.position);
 
-            if (spawnEnemies)
-                // Parar de spawnear si ya alcanzó la cantidad de enemigos matado
-                if (EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.EnemiesToStopSpawn)
-                    EnemySpawnManager.Instance.StopSpawn();
-
             // Ganar el juego si ya no hay enemigos vivos 
-            if (spawnEnemies && !EnemySpawnManager.Instance.CanSpawn && EnemySpawnManager.Instance.EnemiesAlived <= 0)
+            if (spawnEnemies && !EnemySpawnManager.Instance.CanSpawn && EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.TotalEnemiesToKill)
                 WinGame(EnemySpawnManager.LastPos);
         }
     }

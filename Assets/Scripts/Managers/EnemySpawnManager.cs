@@ -7,7 +7,7 @@ public class EnemySpawnManager : MonoBehaviour
     [Header("Spawner Properties")]
     [Tooltip("Tiempo que pasa para spawnear después de matar")]
     [SerializeField] float spawnTime;
-    [SerializeField] int maxEnemiesToStopSpawn;
+    [SerializeField] int totalEnemiesToKill;
     [SerializeField] int maxEnemiesAtTime;
     [SerializeField] Transform[] spawnPos;
 
@@ -26,7 +26,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     List<Pool> pools = new List<Pool>();
 
-    int countEnemiesKilled;
+    int enemiesKilled;
     int currentEnemiesAlive;
 
     float time;
@@ -70,19 +70,33 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (time >= spawnTime && currentEnemiesAlive < maxEnemiesAtTime && canSpawn)
+        if (enemiesKilled + currentEnemiesAlive < totalEnemiesToKill)
         {
-            Spawn();
-            time = 0;
+            if (time >= spawnTime && currentEnemiesAlive < maxEnemiesAtTime && canSpawn)
+            {
+                Spawn();
+                time = 0;
+            }
         }
+        else
+            StopSpawn();
 
         time += Time.deltaTime;
     }
 
     void Spawn()
     {
+        int cant = 0;
+
         // Cantidad de enemigos a spawnear
-        int cant = maxEnemiesAtTime - currentEnemiesAlive;
+        if (enemiesKilled + maxEnemiesAtTime <= totalEnemiesToKill)
+        {
+            cant = maxEnemiesAtTime - currentEnemiesAlive;
+        }
+        else
+        {
+            cant = totalEnemiesToKill - enemiesKilled;
+        }
 
         // Spawnear [cant] de enemigos
         for (int i = 0; i < cant; i++)
@@ -123,7 +137,7 @@ public class EnemySpawnManager : MonoBehaviour
     {
         lastPos = pos;
         currentEnemiesAlive--;
-        countEnemiesKilled++;
+        enemiesKilled++;
 
         time = 0;
     }
@@ -131,9 +145,8 @@ public class EnemySpawnManager : MonoBehaviour
 
     public static Vector3 LastPos => lastPos;
     public static EnemySpawnManager Instance { get; private set; }
-    public int EnemiesToStopSpawn => maxEnemiesToStopSpawn;
-    public int EnemiesKilled => countEnemiesKilled;
+    public int EnemiesKilled => enemiesKilled;
     public int EnemiesAlived => currentEnemiesAlive;
-    public int TotalEnemiesToKill => maxEnemiesAtTime + maxEnemiesToStopSpawn;
+    public int TotalEnemiesToKill => totalEnemiesToKill;
     public bool CanSpawn => canSpawn;
 }

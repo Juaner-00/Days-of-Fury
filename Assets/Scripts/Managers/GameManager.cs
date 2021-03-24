@@ -57,13 +57,8 @@ public class GameManager : MonoBehaviour
                 if (ScoreManager.Instance.TotalScore >= scoreToWin)
                     WinGame(player.transform.position);
 
-            if (spawnEnemies)
-                // Parar de spawnear si ya alcanzó la cantidad de enemigos matado
-                if (EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.EnemiesToStopSpawn)
-                    EnemySpawnManager.Instance.StopSpawn();
-
             // Ganar el juego si ya no hay enemigos vivos 
-            if (spawnEnemies && !EnemySpawnManager.Instance.CanSpawn && EnemySpawnManager.Instance.EnemiesAlived <= 0)
+            if (spawnEnemies && !EnemySpawnManager.Instance.CanSpawn && EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.TotalEnemiesToKill)
                 WinGame(EnemySpawnManager.LastPos);
         }
     }
@@ -74,12 +69,12 @@ public class GameManager : MonoBehaviour
         if (player)
         {
             if (player.name == "Player")
-                player.GetComponent<PlayerMovement>().enabled = false;
+                player.GetComponentInParent<PlayerMovement>().enabled = false;
             else if (player.name == "Player 2")
-                player.GetComponent<PlayerMovementVels>().enabled = false;
+                player.GetComponentInParent<PlayerMovementVels>().enabled = false;
             else
-                player.GetComponent<SCT_TankMovement>().enabled = false;
-            player.GetComponent<ReticleController>().enabled = false;
+                player.GetComponentInParent<SCT_TankMovement>().enabled = false;
+            player.GetComponentInParent<ReticleController>().enabled = false;
         }
 
         if (EnemySpawnManager.Instance)

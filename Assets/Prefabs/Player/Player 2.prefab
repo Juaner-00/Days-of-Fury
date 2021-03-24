@@ -14,9 +14,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeedBase: 15
   acceleration: 3
-  rotationTime: 0.3
+  crashCoolDown: 2.5
+  initialDirection: 0
+  rotationTimeBase: 0.3
+  oppositeRotationMultiplier: 2
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: -0.04795394
+      outSlope: -0.04795394
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -3.1746123
+      outSlope: -3.1746123
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12963778
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curveDuration: 3
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  frontLenght: 2.4
+  leftLenght: 2.1
+  rightLenght: 2.1
   movementSpeed: 0
   maxSpeed: 0
+  crashCoolDownTimer: 0
+  lastDir: 0
 --- !u!1001 &6177860047497837436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46,6 +82,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackSpeedBase
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020538782831695071, guid: ead32fde9fe95324bbebed8872b06aa0,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7020538783977343664, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}
@@ -85,7 +126,7 @@ PrefabInstance:
     - target: {fileID: 7020538783977343669, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -42
+      value: -40.7
       objectReference: {fileID: 0}
     - target: {fileID: 7020538783977343669, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}

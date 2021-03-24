@@ -7,15 +7,6 @@ public class HealthUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI lifesText;
 
-    PlayerHealth health;
-
-    private void Start()
-    {
-        if (GameManager.Player)
-            health = GameManager.Player.GetComponent<PlayerHealth>();
-        UpdateUI();
-    }
-
     private void OnEnable()
     {
         PlayerHealth.OnChangeLife += UpdateUI;
@@ -26,9 +17,8 @@ public class HealthUI : MonoBehaviour
         PlayerHealth.OnChangeLife -= UpdateUI;
     }
 
-    void UpdateUI()
+    void UpdateUI(int lives)
     {
-        if (health)
-            lifesText.text = $"x {health.HealthPoints}";
+        lifesText.text = $"{lives}";
     }
 }

@@ -16,8 +16,9 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     VfxsController vfxs;
 
     PoolVfxs particleDamage, particleExplo;
+
     public static Action OnDie;
-    public static Action OnChangeLife;
+    public static Action <int>OnChangeLife;
     public static Action OnGettingHurt;
 
     int healthPoints;
@@ -32,6 +33,11 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         vfxs = GetComponent<VfxsController>();
         healthPoints = maxHealthPoints;
         isDead = (healthPoints <= 0) ? true : false;
+    }
+
+    private void Start()
+    {
+        OnChangeLife?.Invoke(healthPoints);
     }
 
     void Update()
@@ -51,7 +57,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         OnGettingHurt?.Invoke();
         healthPoints--;
-        OnChangeLife?.Invoke();
+        OnChangeLife?.Invoke(healthPoints);
 
 
         isDead = (healthPoints <= 0) ? true : false;
@@ -73,7 +79,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public void GainLife()
     {
         healthPoints++;
-        OnChangeLife?.Invoke();
+        OnChangeLife?.Invoke(healthPoints);
     }
 
 

@@ -8,8 +8,8 @@ public class MovementSpeedPickUp : PickUpBase
 
     protected override void Pick()
     {
-        GameManager.Player.GetComponent<PlayerMovement>()?.GainSpeed(speedPorcentGain);
-        GameManager.Player.GetComponent<PlayerMovementVels>()?.GainSpeed(speedPorcentGain);
+        GameManager.Player.GetComponentInParent<PlayerMovement>()?.GainSpeed(speedPorcentGain);
+        GameManager.Player.GetComponentInParent<PlayerMovementVels>()?.GainSpeed(speedPorcentGain);
         base.Pick();
     }
 }

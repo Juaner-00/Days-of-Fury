@@ -81,12 +81,12 @@ PrefabInstance:
     - target: {fileID: 7020538782831695071, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}
       propertyPath: attackSpeedBase
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7020538782831695071, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}
       propertyPath: attackSpeed
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7020538783977343664, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}

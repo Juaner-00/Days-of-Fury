@@ -47,12 +47,12 @@ public class EnemyStateMachine : MonoBehaviour
         switch (state)
         {
             case States.Patrol:
-                target = ;
+                //target = ;
                 ChangeTarget(target);
                 TurretPatrol();
                 break;
             case States.Listen:
-                target = ;
+                //target = ;
                 ChangeTarget(target);
                 break;
             case States.Chasing:

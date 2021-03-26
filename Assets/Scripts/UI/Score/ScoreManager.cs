@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -15,12 +15,11 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
     [SerializeField] GameObject threeStarMedal;
 
     [SerializeField] private int totalScore;
-    int state = 0;
 
-    //0= Sin estrellas
-    //1= 1 Estrella
-    //2= 2 Estrellas
-    //3= 3 Estrellas
+    Medals starState;
+
+    public static Action<Medals> OnStarObtained;
+
 
     private void Awake()
     {
@@ -29,12 +28,12 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
         Instance = this;
     }
 
-    private void Update()
+    private void Start()
     {
-        //scoreText.text = "" + totalScore;
+        starState = Medals.None;
     }
 
-
+    // Método para añadir score
     public void Addscore(int score)
     {
         totalScore += score;
@@ -43,20 +42,23 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
 
     void Checkscore()
     {
-        if (totalScore >= oneStar)
-        {
-            state = 1;
-            oneStarMedal.SetActive(true);
-        }
-        if (totalScore >= twoStar)
-        {
-            state = 2;
-            twoStarMedal.SetActive(true);
-        }
         if (totalScore >= threeStar)
         {
-            state = 3;
+            starState = Medals.ThreeMedal;
             threeStarMedal.SetActive(true);
+            OnStarObtained?.Invoke(starState);
+        }
+        else if (totalScore >= twoStar)
+        {
+            starState = Medals.TwoMedal;
+            twoStarMedal.SetActive(true);
+            OnStarObtained?.Invoke(starState);
+        }
+        else if (totalScore >= oneStar)
+        {
+            starState = Medals.OneMedal;
+            oneStarMedal.SetActive(true);
+            OnStarObtained?.Invoke(starState);
         }
     }
 
@@ -67,4 +69,12 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
 
     public int TotalScore => totalScore;
     public static ScoreManager Instance { get; private set; }
+}
+
+public enum Medals
+{
+    None,
+    OneMedal,
+    TwoMedal,
+    ThreeMedal
 }

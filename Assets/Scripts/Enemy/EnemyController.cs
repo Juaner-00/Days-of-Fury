@@ -11,12 +11,12 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     [SerializeField] float timeDead;
     [SerializeField] ParticleSystem damagedSmoke;
 
-    public static event Action<string,int> Mission = delegate { };
+    public static event Action<string, int> Mission = delegate { };
     public static event Action Kill = delegate { };
 
 
     Vector3 inicialPosition;
-   
+
     int healthPoints;
     bool isDead;
     Animator enemyAnimator;
@@ -75,6 +75,9 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         {
             aIDestinationSetter.target = GameManager.Player.transform;
         }
+
+        enemyAnimator.SetTrigger("Init");
+
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
@@ -107,7 +110,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         {
             damagedSmoke.Play();
         }
-        
+
         OnGettingHurt?.Invoke();
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
@@ -121,18 +124,18 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             {
                 damagedSmoke.Stop();
             }
-            
+
             enemyAnimator.SetTrigger("Dead4");
 
-            if (mM.missions[mM.actualMision].opcion == Missions.Opcion.Enemys)  Mission("Enemy", 1); //Sistema de misiones :)
+            if (mM.missions[mM.actualMision].opcion == Missions.Opcion.Enemys) Mission("Enemy", 1); //Sistema de misiones :)
 
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 
             OnDie?.Invoke(transform.position);
-            
+
             if (ScoreManager.Instance)
-            {               
-                if(mM.missions[mM.actualMision].opcion == Missions.Opcion.Score)   Mission("Score",scorePoints); //Sistema de misiones :)
+            {
+                if (mM.missions[mM.actualMision].opcion == Missions.Opcion.Score) Mission("Score", scorePoints); //Sistema de misiones :)
                 ScoreManager.Instance.Addscore(scorePoints);
             }
             if (aIPath)

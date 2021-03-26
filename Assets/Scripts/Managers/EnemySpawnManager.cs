@@ -7,7 +7,6 @@ public class EnemySpawnManager : MonoBehaviour
     [Header("Spawner Properties")]
     [Tooltip("Tiempo que pasa para spawnear después de matar")]
     [SerializeField] float spawnTime;
-    [SerializeField] int totalEnemiesToKill;
     [SerializeField] int maxEnemiesAtTime;
     [SerializeField] Transform[] spawnPos;
 
@@ -52,7 +51,6 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
-
         normalEnemyPool = GameObject.Find("Normal Enemy (Pool)")?.GetComponent<Pool>();
         robustTankPool = GameObject.Find("Robust Tank (Pool)")?.GetComponent<Pool>();
         turretPool = GameObject.Find("Turret (Pool)")?.GetComponent<Pool>();
@@ -70,33 +68,18 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (enemiesKilled + currentEnemiesAlive < totalEnemiesToKill)
+        if (time >= spawnTime && currentEnemiesAlive < maxEnemiesAtTime && canSpawn)
         {
-            if (time >= spawnTime && currentEnemiesAlive < maxEnemiesAtTime && canSpawn)
-            {
-                Spawn();
-                time = 0;
-            }
+            Spawn();
+            time = 0;
         }
-        else
-            StopSpawn();
 
         time += Time.deltaTime;
     }
 
     void Spawn()
     {
-        int cant = 0;
-
-        // Cantidad de enemigos a spawnear
-        if (enemiesKilled + maxEnemiesAtTime <= totalEnemiesToKill)
-        {
-            cant = maxEnemiesAtTime - currentEnemiesAlive;
-        }
-        else
-        {
-            cant = totalEnemiesToKill - enemiesKilled;
-        }
+        int cant = cant = maxEnemiesAtTime - currentEnemiesAlive;
 
         // Spawnear [cant] de enemigos
         for (int i = 0; i < cant; i++)
@@ -147,6 +130,5 @@ public class EnemySpawnManager : MonoBehaviour
     public static EnemySpawnManager Instance { get; private set; }
     public int EnemiesKilled => enemiesKilled;
     public int EnemiesAlived => currentEnemiesAlive;
-    public int TotalEnemiesToKill => totalEnemiesToKill;
     public bool CanSpawn => canSpawn;
 }

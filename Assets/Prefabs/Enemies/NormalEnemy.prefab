@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 8930489646064082264}
   - component: {fileID: 5491860505292135606}
   - component: {fileID: 6744038053857644895}
+  - component: {fileID: -2780555251600778122}
   m_Layer: 9
-  m_Name: AstarEnemy
+  m_Name: NormalEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,6 +35,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3962709536808257478}
+  - {fileID: 3022791000240878852}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -130,6 +132,7 @@ MonoBehaviour:
   maxHealthPoints: 1
   scorePoints: 50
   timeDead: 2
+  damagedSmoke: {fileID: 0}
 --- !u!114 &5491860505292135606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,10 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretTank: {fileID: 3959426235147392057}
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 256
+  NoAiming: {fileID: 3022791000240878852}
   Dead: 0
+  Aiming: 0
 --- !u!65 &6744038053857644895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,6 +162,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.91, y: 2.5, z: 2.4495609}
   m_Center: {x: 0, y: 1.5, z: -0.28021967}
+--- !u!114 &-2780555251600778122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988548298858404030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 2917441164421594061
+  updateError: 0.2
+  checkTime: 0.2
 --- !u!1 &3959426235147392056
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,9 +224,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 40
-  attackSpeed: 1
+  attackSpeedBase: 0.5
   reference: {fileID: 3962803469022186132}
   smokeFire: {fileID: 3761631285256366158}
+  attackSpeed: 1
 --- !u!1 &3959822627371217698
 GameObject:
   m_ObjectHideFlags: 0
@@ -15364,3 +15383,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &5317834485952372195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3022791000240878852}
+  m_Layer: 9
+  m_Name: NoAiming
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3022791000240878852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5317834485952372195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.24, z: 2.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 988548298858404031}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

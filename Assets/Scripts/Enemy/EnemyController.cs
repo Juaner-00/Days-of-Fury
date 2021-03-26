@@ -118,7 +118,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             }
             
             enemyAnimator.SetTrigger("Dead4");
-            Mision("Mision1"); //Sistema de misiones :)
+            Mision("Mision1"); //Sistema de misiones
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 
             OnDie?.Invoke(transform.position);

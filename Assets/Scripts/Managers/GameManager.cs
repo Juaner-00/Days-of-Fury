@@ -39,11 +39,13 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
+        DestruibleWall.WallDestroyed += Scan;
         PlayerHealth.OnDie += LoseGame;
     }
 
     private void OnDisable()
     {
+        DestruibleWall.WallDestroyed -= Scan;
         PlayerHealth.OnDie -= LoseGame;
     }
 
@@ -117,6 +119,11 @@ public class GameManager : MonoBehaviour
         DeathScreen.Instance.LoseGame();
     }
 
+
+    public void Scan()
+    {
+        AstarPath.active.Scan();
+    }
 
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }

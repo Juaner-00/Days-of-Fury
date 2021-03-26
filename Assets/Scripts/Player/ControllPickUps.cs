@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ControllPickUps : MonoBehaviour
 {
+    [SerializeField]
+    ParticleSystem lifeUp, fastShot, pointUp;
+    [SerializeField]
+    GameObject life, atackSpeed, scoreUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +19,21 @@ public class ControllPickUps : MonoBehaviour
     {
         
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other == life)
+        {
+            lifeUp.Play();
+        }
+        if (other == atackSpeed)
+        {
+            fastShot.Play();
+        }
+        if (other == scoreUp)
+        {
+            pointUp.Play();
+        }
+    }
+
+
 }

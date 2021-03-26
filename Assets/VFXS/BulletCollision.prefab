@@ -4765,6 +4765,7 @@ GameObject:
   - component: {fileID: 5376186787326349097}
   - component: {fileID: 5376186787326349098}
   - component: {fileID: 5376186787326349099}
+  - component: {fileID: -3703298416284226469}
   m_Layer: 0
   m_Name: BulletCollision
   m_TagString: Untagged
@@ -9510,6 +9511,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-3703298416284226469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376186787326349100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7402527e29b4841ae7836862b73650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 10
 --- !u!1 &5376186787412558073
 GameObject:
   m_ObjectHideFlags: 0

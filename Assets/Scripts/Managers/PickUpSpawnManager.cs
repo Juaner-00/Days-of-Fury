@@ -40,6 +40,7 @@ public class PickUpSpawnManager : MonoBehaviour
     {
         PickUpBase.OnDespawn += CountPickUps;
         PickUpBase.OnPick += CountPickUps;
+
     }
 
     private void OnDisable()
@@ -147,13 +148,18 @@ public class PickUpSpawnManager : MonoBehaviour
         time = 0;
     }
 
+    void CountPickUps(Vector3 pos,PickUpType pType)
+    {
+        spawns[pos] = true;
+        currentPickUpsInScene--;
+        time = 0;
+    }
     void CountPickUps(Vector3 pos)
     {
         spawns[pos] = true;
         currentPickUpsInScene--;
         time = 0;
     }
-
 
     public static PickUpSpawnManager Instance { get; private set; }
     public int PickUpsInScene => currentPickUpsInScene;

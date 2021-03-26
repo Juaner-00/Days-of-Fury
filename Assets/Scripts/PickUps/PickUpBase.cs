@@ -4,9 +4,10 @@ using UnityEngine;
 
 public abstract class PickUpBase : MonoBehaviour, IPool
 {
-    public static Action<Vector3> OnPick;
+    public static Action<Vector3,PickUpType> OnPick;
     public static Action<Vector3> OnDespawn;
-
+    [SerializeField]
+    PickUpType pType;
     Vector3 inicialPosition;
 
     bool hasPicked;
@@ -37,7 +38,7 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 
     protected virtual void Pick()
     {
-        OnDespawn?.Invoke(pickupSpawn);
+        OnPick?.Invoke(pickupSpawn,pType);
         hasPicked = true;
     }
 
@@ -73,4 +74,11 @@ public abstract class PickUpBase : MonoBehaviour, IPool
     }
 
     public static float DespawnTime { get => despawnTime; set => despawnTime = value; }
+    
+}
+
+public enum PickUpType
+{
+    Shoot, Score, Speed,  Life
+
 }

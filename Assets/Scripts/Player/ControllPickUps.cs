@@ -5,35 +5,38 @@ using UnityEngine;
 public class ControllPickUps : MonoBehaviour
 {
     [SerializeField]
-    ParticleSystem lifeUp, fastShot, pointUp;
-    [SerializeField]
-    GameObject life, atackSpeed, scoreUp;
-    // Start is called before the first frame update
-    void Start()
+    ParticleSystem plifeUp, pfastShoot, ppointUp, pfastMove;
+
+    private void OnEnable()
     {
-        
+        PickUpBase.OnPick += ActivateVfx;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        PickUpBase.OnPick -= ActivateVfx;
+
     }
-    private void OnTriggerEnter(Collider other)
+    
+    void ActivateVfx(Vector3 _,PickUpType pType)
     {
-        if(other == life)
+        switch (pType)
         {
-            lifeUp.Play();
-        }
-        if (other == atackSpeed)
-        {
-            fastShot.Play();
-        }
-        if (other == scoreUp)
-        {
-            pointUp.Play();
+            case PickUpType.Life:
+                plifeUp.Play();
+                break;
+            case PickUpType.Shoot:
+                pfastShoot.Play();
+                break;
+            case PickUpType.Speed:
+                pfastMove.Play();
+                break;
+            case PickUpType.Score:
+                ppointUp.Play();
+                break;   
         }
     }
+    
 
 
 }

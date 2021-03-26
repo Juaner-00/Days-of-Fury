@@ -76,8 +76,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             aIDestinationSetter.target = GameManager.Player.transform;
         }
 
-        enemyAnimator.SetTrigger("Init");
-
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
@@ -96,6 +94,8 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         }
         transform.position = inicialPosition;
         healthPoints = maxHealthPoints;
+
+        enemyAnimator.SetTrigger("Init");
     }
 
     // Método para hacer que el enemigo tome daño

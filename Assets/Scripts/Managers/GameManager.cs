@@ -5,13 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] Texture2D cursorImage;
-    [SerializeField] int scoreToWin;
 
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
 
     bool hasFinished;
-
+    Medals playerMedals;
 
     static GameObject player;
 
@@ -35,32 +34,20 @@ public class GameManager : MonoBehaviour
 
         if (spawnPickUps)
             PickUpSpawnManager.Instance.StartSpawning();
+
+        playerMedals = Medals.None;
     }
 
     private void OnEnable()
     {
-        PlayerHealth.OnDie += LoseGame;
+        PlayerHealth.OnDie += PlayerDie;
+        ScoreManager.OnStarObtained += VictoryCheck;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnDie -= LoseGame;
-    }
-
-    private void Update()
-    {
-        // Si ya se terminó el juego no haga nada
-        if (!hasFinished)
-        {
-            // Ganar por la cantidad de score
-            if (ScoreManager.Instance)
-                if (ScoreManager.Instance.TotalScore >= scoreToWin)
-                    WinGame(player.transform.position);
-
-            // Ganar el juego si ya no hay enemigos vivos 
-            if (spawnEnemies && !EnemySpawnManager.Instance.CanSpawn && EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.TotalEnemiesToKill)
-                WinGame(EnemySpawnManager.LastPos);
-        }
+        PlayerHealth.OnDie -= PlayerDie;
+        ScoreManager.OnStarObtained -= VictoryCheck;
     }
 
     // Método para finalizar el juego
@@ -75,6 +62,9 @@ public class GameManager : MonoBehaviour
             else
                 player.GetComponentInParent<SCT_TankMovement>().enabled = false;
             player.GetComponentInParent<ReticleController>().enabled = false;
+
+            if (CamaraManager.Instance)
+                CamaraManager.Instance.ChangeCam(player.transform.position);
         }
 
         if (EnemySpawnManager.Instance)
@@ -86,35 +76,52 @@ public class GameManager : MonoBehaviour
         hasFinished = true;
     }
 
-    // Método que se llama si el jugador perdió
-    public void LoseGame()
+    // Método que se cuando el jugador muere
+    void PlayerDie()
     {
         FinishGame();
-        //delay para que se vea la muerte del player
-        Invoke("DeadTank", 2f);
 
+        if (playerMedals == Medals.None)
+            LoseGame();
+        else
+            WinGame();
     }
 
-    // Método que se llama si el jugador ganó
-    public void WinGame(Vector3 pos)
+    void WinGame()
     {
-        if (CamaraManager.Instance)
-            CamaraManager.Instance.ChangeCam(pos);
         FinishGame();
+
         //delay para que se vea el efecto de acercamiento
-        Invoke("WiningTank", 2f);
+        Invoke("OpenWin", 1.5f);
+    }
+
+    void LoseGame()
+    {
+        FinishGame();
+
+        //delay para que se vea el efecto de acercamiento
+        Invoke("OpenLose", 1.5f);
     }
 
     // Método que se llama si el jugador gana
-    public void WiningTank()
+    public void OpenWin()
     {
         VictoryScreen.Instance.WinGame();
     }
 
-    // Método que se llama si el jugador gana
-    public void DeadTank()
+    // Método que se llama si el jugador muere y no tiene medallas
+    public void OpenLose()
     {
         DeathScreen.Instance.LoseGame();
+    }
+
+    // Método para chequear las estrellas y la condición de victoria
+    public void VictoryCheck(Medals star)
+    {
+        playerMedals = star;
+
+        if (playerMedals == Medals.ThreeMedal)
+            WinGame();
     }
 
 

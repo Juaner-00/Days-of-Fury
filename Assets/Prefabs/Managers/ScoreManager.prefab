@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737467c0c0af78c47b0f69aef3f4018f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oneStar: 100
-  twoStar: 200
-  threeStar: 300
+  oneStar: 50
+  twoStar: 100
+  threeStar: 150
   oneStarMedal: {fileID: 0}
   twoStarMedal: {fileID: 0}
   threeStarMedal: {fileID: 0}

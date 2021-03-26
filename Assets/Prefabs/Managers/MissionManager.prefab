@@ -43,10 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56bc78634c28d074b8f288fb7b95ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actualMision: 1
   misionText: {fileID: 0}
-  enemymision1: 3
-  Mision1Text: Destroy enemy tanks
-  scorePoints1: 200
-  Mision2Text: 
-  Mision3Text: 
+  OneMedalObjective: 1
+  TwoMedalObjective: 2
+  ThreeMedalObjective: 3
+  actualMision: 0
+  missions:
+  - {fileID: 11400000, guid: 1b6857edbddc7504ca46a0c7567d467c, type: 2}
+  - {fileID: 11400000, guid: 09a5d50466231f343b829a9302347a92, type: 2}
+  - {fileID: 11400000, guid: 3182d51159741a9479a4cd20e8de0a3c, type: 2}

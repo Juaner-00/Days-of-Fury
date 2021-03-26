@@ -9,12 +9,18 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
     [SerializeField] int twoStar;
     [SerializeField] int threeStar;
 
+    bool oneStar1;
+    bool twoStar1;
+    bool threeStar1;
+
 
     [SerializeField] GameObject oneStarMedal;
     [SerializeField] GameObject twoStarMedal;
     [SerializeField] GameObject threeStarMedal;
 
     [SerializeField] private int totalScore;
+
+
 
     Medals starState;
 
@@ -37,29 +43,30 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
     public void Addscore(int score)
     {
         totalScore += score;
-        Checkscore();
     }
-
-    void Checkscore()
+    public void ActiveOneStarMedal()
     {
-        if (totalScore >= threeStar)
-        {
-            starState = Medals.ThreeMedal;
-            threeStarMedal.SetActive(true);
-            OnStarObtained?.Invoke(starState);
-        }
-        else if (totalScore >= twoStar)
-        {
-            starState = Medals.TwoMedal;
-            twoStarMedal.SetActive(true);
-            OnStarObtained?.Invoke(starState);
-        }
-        else if (totalScore >= oneStar)
-        {
-            starState = Medals.OneMedal;
-            oneStarMedal.SetActive(true);
-            OnStarObtained?.Invoke(starState);
-        }
+        oneStarMedal.SetActive(true);
+        oneStar1 = true;
+        starState = Medals.OneMedal;
+        oneStarMedal.SetActive(true);
+        OnStarObtained?.Invoke(starState);
+    }
+    public void ActiveTwoStarMedal()
+    {
+        twoStarMedal.SetActive(true);
+        twoStar1 = true;
+        starState = Medals.TwoMedal;
+        twoStarMedal.SetActive(true);
+        OnStarObtained?.Invoke(starState);
+    }
+    public void ActiveThreeStarMedal()
+    {
+        threeStarMedal.SetActive(true);
+        threeStar1 = true;
+        starState = Medals.ThreeMedal;
+        threeStarMedal.SetActive(true);
+        OnStarObtained?.Invoke(starState);
     }
 
     public int GetValue()
@@ -69,6 +76,9 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
 
     public int TotalScore => totalScore;
     public static ScoreManager Instance { get; private set; }
+    public bool OneStar1 { get; private set; }
+    public bool TwoStar1 { get; private set; }
+    public bool ThreeStar1 { get; private set; }
 }
 
 public enum Medals

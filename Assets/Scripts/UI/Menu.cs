@@ -21,6 +21,9 @@ public abstract class Menu : MonoBehaviour
 
     void Start()
     {
+        IsDead = false;
+        HasWon = false;
+
         ColorButton();
     }
 

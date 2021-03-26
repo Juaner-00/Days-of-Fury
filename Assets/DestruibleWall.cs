@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class DestruibleWall : MonoBehaviour, IDamagable
 {
@@ -8,8 +9,12 @@ public class DestruibleWall : MonoBehaviour, IDamagable
 
     public int HealthPoints => 0;
 
+    public static event WallEvent WallDestroyed;
+    public delegate void WallEvent();
+
     public void TakeDamage()
     {
+        WallDestroyed?.Invoke();
         Destroy(gameObject);
     }
 }

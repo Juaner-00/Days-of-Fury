@@ -26339,7 +26339,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh643606
+  m_Name: pb_Mesh873488
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -46395,7 +46395,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam1: {fileID: 1426457815}
   cam2: {fileID: 1329725804}
+  cam3: {fileID: 0}
   offSet: {x: 0, y: 10, z: 0}
+  offSetZoom: {x: 0, y: 0, z: 0}
 --- !u!1 &779231974
 GameObject:
   m_ObjectHideFlags: 0
@@ -101237,7 +101239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d72fa0938bdce47b572d7624dcf242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speedBase: 0
   rotationTime: 0.1
 --- !u!1 &1566464380
 GameObject:

@@ -42,14 +42,14 @@ public class GameManager : MonoBehaviour
     {
         PlayerHealth.OnDie += PlayerDie;
         ScoreManager.OnStarObtained += VictoryCheck;
-        DestruibleWall.WallDestroyed += Scan;
+        DestructibleWall.WallDestroyed += Scan;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnDie -= PlayerDie;
         ScoreManager.OnStarObtained -= VictoryCheck;
-        DestruibleWall.WallDestroyed -= Scan;
+        DestructibleWall.WallDestroyed -= Scan;
     }
 
     // Método para finalizar el juego

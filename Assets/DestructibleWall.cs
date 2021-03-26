@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class DestruibleWall : MonoBehaviour, IDamagable
+public class DestructibleWall : MonoBehaviour, IDamagable
 {
     public int MaxHealthPoints => 0;
 

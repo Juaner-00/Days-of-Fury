@@ -78,6 +78,8 @@ public class VictoryScreen : Menu
         else if (Option.gameObject.name == "Restart")
         {
             RestartLevel();
+            MisionManager.Instance.actualMision = 0;
+            MisionManager.Instance.actualCount = 0;
         }
     }
 }

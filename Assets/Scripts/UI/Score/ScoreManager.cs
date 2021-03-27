@@ -5,14 +5,9 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour, ICounterValueContainer
 {
-    [SerializeField] int oneStar;
-    [SerializeField] int twoStar;
-    [SerializeField] int threeStar;
-
     bool oneStar1;
     bool twoStar1;
     bool threeStar1;
-
 
     [SerializeField] GameObject oneStarMedal;
     [SerializeField] GameObject twoStarMedal;
@@ -20,6 +15,7 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
 
     [SerializeField] private int totalScore;
 
+    public static event Action<int> OnGetScore = delegate { };
 
 
     Medals starState;
@@ -43,6 +39,7 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
     public void Addscore(int score)
     {
         totalScore += score;
+        OnGetScore?.Invoke(score);
     }
     public void ActiveOneStarMedal()
     {

@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     [SerializeField] float timeDead;
     [SerializeField] ParticleSystem damagedSmoke;
 
-    public static event Action<string, int> Mission = delegate { };
+    public static event Action<int> Mission = delegate { };
     public static event Action Kill = delegate { };
 
 
@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     AIPath aIPath;
     AIDestinationSetter aIDestinationSetter;
     EnemyShootController enemyShootController;
+
 
     void Awake()
     {
@@ -96,12 +97,12 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         }
         transform.position = inicialPosition;
         healthPoints = maxHealthPoints;
+        enemyAnimator.SetTrigger("Init");
     }
 
     // Método para hacer que el enemigo tome daño
     public void TakeDamage()
     {
-        MisionManager mM = MisionManager.Instance; //Piratada. Para tenerlo rapido jiji
 
         if (isDead)
             return;
@@ -127,7 +128,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
             enemyAnimator.SetTrigger("Dead4");
 
-            if (mM.missions[mM.actualMision].opcion == Missions.Opcion.Enemys) Mission("Enemy", 1); //Sistema de misiones :)
 
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 
@@ -135,15 +135,14 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
             if (ScoreManager.Instance)
             {
-                if (mM.missions[mM.actualMision].opcion == Missions.Opcion.Score) Mission("Score", scorePoints); //Sistema de misiones :)
                 ScoreManager.Instance.Addscore(scorePoints);
             }
-            if (aIPath)
+            if (aIPath) 
             {
                 aIPath.canSearch = false;
                 aIPath.canMove = false;
                 enemyShootController.Dead = true;
-            }
+            }            
             Invoke("End", timeDead);
             Kill(); //Misiones D:
         }

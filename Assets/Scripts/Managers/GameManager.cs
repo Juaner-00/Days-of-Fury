@@ -42,14 +42,12 @@ public class GameManager : MonoBehaviour
     {
         PlayerHealth.OnDie += PlayerDie;
         ScoreManager.OnStarObtained += VictoryCheck;
-        DestructibleWall.WallDestroyed += Scan;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnDie -= PlayerDie;
         ScoreManager.OnStarObtained -= VictoryCheck;
-        DestructibleWall.WallDestroyed -= Scan;
     }
 
     // Método para finalizar el juego
@@ -124,11 +122,6 @@ public class GameManager : MonoBehaviour
 
         if (playerMedals == Medals.ThreeMedal)
             WinGame();
-    }
-
-    void Scan()
-    {
-        AstarPath.active.Scan();
     }
 
     public static GameObject Player => player;

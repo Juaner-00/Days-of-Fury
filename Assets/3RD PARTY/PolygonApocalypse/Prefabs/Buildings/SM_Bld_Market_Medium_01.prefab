@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1068461212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1068461213}
+  - component: {fileID: 1068461215}
+  - component: {fileID: 1068461214}
+  m_Layer: 0
+  m_Name: GameObject (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1068461213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068461212}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4452399110222254}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1068461215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068461212}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 23.227045, y: 4.4507127, z: 6.8294487}
+  m_Center: {x: -8.259038, y: 1.9799044, z: 0.0951705}
+--- !u!114 &1068461214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068461212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 4274852677305712066
+  updateError: 1
+  checkTime: 2000
 --- !u!1 &1034914013274238
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,12 +72,12 @@ GameObject:
   - component: {fileID: 4007914276099494}
   - component: {fileID: 33376231546156950}
   - component: {fileID: 23427292301873008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_Market_Medium_01_Overgrowth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4007914276099494
 Transform:
@@ -93,12 +154,13 @@ GameObject:
   - component: {fileID: 23164135955667806}
   - component: {fileID: 8962447785554834954}
   - component: {fileID: 691023401073591275}
-  m_Layer: 0
+  - component: {fileID: 2017010695}
+  m_Layer: 8
   m_Name: SM_Bld_Market_Medium_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4452399110222254
 Transform:
@@ -114,6 +176,7 @@ Transform:
   - {fileID: 4979998041338468}
   - {fileID: 4238359659806776}
   - {fileID: 4007914276099494}
+  - {fileID: 1068461213}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -190,6 +253,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.7958407, y: 4.4507127, z: 18.15775}
   m_Center: {x: 0.37074018, y: 1.9799044, z: 5.3664837}
+--- !u!114 &2017010695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575535087174988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1630596080288352
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,12 +276,12 @@ GameObject:
   - component: {fileID: 4238359659806776}
   - component: {fileID: 33512420612180462}
   - component: {fileID: 23362508881711860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_Market_Medium_01_Glass_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4238359659806776
 Transform:
@@ -280,12 +355,12 @@ GameObject:
   - component: {fileID: 4979998041338468}
   - component: {fileID: 33451601330738990}
   - component: {fileID: 23993368085856846}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_Market_Medium_01_Door_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4979998041338468
 Transform:

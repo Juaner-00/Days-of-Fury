@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &901440592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 901440593}
+  - component: {fileID: 901440595}
+  - component: {fileID: 901440594}
+  m_Layer: 0
+  m_Name: GameObject (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &901440593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901440592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4929893710783578}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &901440595
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901440592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.280418, y: 15.666376, z: 13.126139}
+  m_Center: {x: -0.6365576, y: 7.682496, z: 0.7978904}
+--- !u!114 &901440594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901440592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 5822275500097742211
+  updateError: 1
+  checkTime: 2000
 --- !u!1 &1375373276123708
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,12 +72,12 @@ GameObject:
   - component: {fileID: 4196625852242730}
   - component: {fileID: 33076890582783826}
   - component: {fileID: 23106362091818492}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_Industrial_Medium_01_Overgrowth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4196625852242730
 Transform:
@@ -92,12 +153,13 @@ GameObject:
   - component: {fileID: 33708375683215500}
   - component: {fileID: 23974130997710876}
   - component: {fileID: 4396490827679909496}
-  m_Layer: 0
+  - component: {fileID: 1439982589}
+  m_Layer: 8
   m_Name: SM_Bld_Industrial_Medium_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4929893710783578
 Transform:
@@ -108,10 +170,11 @@ Transform:
   m_GameObject: {fileID: 1475890670718598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1, z: 1}
   m_Children:
   - {fileID: 4703752181212660}
   - {fileID: 4196625852242730}
+  - {fileID: 901440593}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,6 +238,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14.280418, y: 15.666376, z: 13.126139}
   m_Center: {x: -0.6365576, y: 7.682496, z: 0.7978904}
+--- !u!114 &1439982589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475890670718598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1987315619940972
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,12 +261,12 @@ GameObject:
   - component: {fileID: 4703752181212660}
   - component: {fileID: 33158593446459492}
   - component: {fileID: 23261966930213076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_Industrial_Medium_01_Glass_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4703752181212660
 Transform:

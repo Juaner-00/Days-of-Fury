@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1427632064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1427632065}
+  - component: {fileID: 1427632067}
+  - component: {fileID: 1427632066}
+  m_Layer: 0
+  m_Name: GameObject (22)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1427632065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427632064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4318878452688410}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1427632067
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427632064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 19.186329, y: 7.0618176, z: 9.575285}
+  m_Center: {x: -1.3255234, y: 3.1553948, z: 0.82195497}
+--- !u!114 &1427632066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427632064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 2780274164586703428
+  updateError: 1
+  checkTime: 2000
 --- !u!1 &1138675350965082
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,12 +72,12 @@ GameObject:
   - component: {fileID: 4343571380782114}
   - component: {fileID: 33982687888009632}
   - component: {fileID: 23822427692748754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_AutoRepair_01_Door_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4343571380782114
 Transform:
@@ -91,12 +152,13 @@ GameObject:
   - component: {fileID: 33569476797997216}
   - component: {fileID: 23915277858330662}
   - component: {fileID: 5091038939495380410}
-  m_Layer: 0
+  - component: {fileID: 14510043}
+  m_Layer: 8
   m_Name: SM_Bld_AutoRepair_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4318878452688410
 Transform:
@@ -113,6 +175,7 @@ Transform:
   - {fileID: 4448396866882952}
   - {fileID: 4575242216002664}
   - {fileID: 4977871315942884}
+  - {fileID: 1427632065}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -176,6 +239,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 19.186329, y: 7.0618176, z: 9.575285}
   m_Center: {x: -1.3255234, y: 3.1553948, z: 0.82195497}
+--- !u!114 &14510043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189608471415440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1300321656722868
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,12 +262,12 @@ GameObject:
   - component: {fileID: 4575242216002664}
   - component: {fileID: 33839459225547374}
   - component: {fileID: 23499962023598048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_AutoRepair_01_Glass_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4575242216002664
 Transform:
@@ -266,12 +341,12 @@ GameObject:
   - component: {fileID: 4977871315942884}
   - component: {fileID: 33386663720330046}
   - component: {fileID: 23531085292794866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_AutoRepair_01_Overgrowth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4977871315942884
 Transform:
@@ -346,12 +421,12 @@ GameObject:
   - component: {fileID: 4448396866882952}
   - component: {fileID: 33704448027276128}
   - component: {fileID: 23859071587060226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_AutoRepair_01_Door_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4448396866882952
 Transform:

@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &392631384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 392631385}
+  - component: {fileID: 392631387}
+  - component: {fileID: 392631386}
+  m_Layer: 0
+  m_Name: GameObject (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &392631385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392631384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4896280115133080}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &392631387
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392631384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 42.30667, y: 15.666376, z: 13.048174}
+  m_Center: {x: 2.0282516, y: 7.682496, z: 0.7483978}
+--- !u!114 &392631386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392631384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 5037035700663167422
+  updateError: 1
+  checkTime: 2000
 --- !u!1 &1092085058724832
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,13 +72,13 @@ GameObject:
   - component: {fileID: 4217708159440550}
   - component: {fileID: 33479532865079254}
   - component: {fileID: 23050457441154900}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_Industrial_Large_01_Glass_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 0
 --- !u!4 &4217708159440550
 Transform:
   m_ObjectHideFlags: 0
@@ -91,13 +152,13 @@ GameObject:
   - component: {fileID: 4520255404454068}
   - component: {fileID: 33849257545934758}
   - component: {fileID: 23782570311143480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_Industrial_Large_01_Attachments_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 0
 --- !u!4 &4520255404454068
 Transform:
   m_ObjectHideFlags: 0
@@ -173,13 +234,14 @@ GameObject:
   - component: {fileID: 33957089526936360}
   - component: {fileID: 23556521196797926}
   - component: {fileID: 3421083423954058207}
-  m_Layer: 0
+  - component: {fileID: 1416492246}
+  m_Layer: 8
   m_Name: SM_Bld_Industrial_Large_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 0
 --- !u!4 &4896280115133080
 Transform:
   m_ObjectHideFlags: 0
@@ -189,11 +251,12 @@ Transform:
   m_GameObject: {fileID: 1672350215538858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_Children:
   - {fileID: 4520255404454068}
   - {fileID: 4217708159440550}
   - {fileID: 4065657591006538}
+  - {fileID: 392631385}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -257,6 +320,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 42.30667, y: 15.666376, z: 13.048174}
   m_Center: {x: 2.0282516, y: 7.682496, z: 0.7483978}
+--- !u!114 &1416492246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672350215538858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1688880353748222
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,13 +343,13 @@ GameObject:
   - component: {fileID: 4065657591006538}
   - component: {fileID: 33239216782317442}
   - component: {fileID: 23748695418669054}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Bld_Industrial_Large_01_Overgrowth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 0
 --- !u!4 &4065657591006538
 Transform:
   m_ObjectHideFlags: 0

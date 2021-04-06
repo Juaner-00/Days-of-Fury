@@ -15,6 +15,4 @@ MonoBehaviour:
   names: Mision1
   description: Reach 200 Score
   objetive: 200
-  actual: 0
-  itsActive: 0
   opcion: 3

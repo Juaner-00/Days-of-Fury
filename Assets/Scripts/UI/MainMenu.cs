@@ -43,6 +43,7 @@ public class MainMenu : Menu
     public void PlayGame()
     {
         MainMenuOpen = false;
+        GameManager.Instance.LoadGame();
         _SceneManager.LoadScene(gameSceneName);
     }
 }

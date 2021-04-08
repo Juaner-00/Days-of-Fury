@@ -53,6 +53,13 @@ public class Pool : MonoBehaviour
 
         ipoolTemp.Begin(position, tag, pos);
         GameObject tmp = objects[index];
+
+        if (ipoolTemp.StayOnScene)
+        {
+            objects.RemoveAt(index);
+            items.RemoveAt(index);
+        }
+
         index++;
 
         if (index >= items.Count)

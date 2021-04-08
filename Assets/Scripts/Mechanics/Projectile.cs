@@ -19,9 +19,9 @@ public class Projectile : MonoBehaviour, IPool
 
     public void Instantiate()
     {
-        
+
         poolBullet = GameObject.Find("VFXsBulletCollision(Pool)").GetComponent<PoolVfxs>();
-        if(poolBullet== null)
+        if (poolBullet == null)
         {
             print("null");
         }
@@ -30,6 +30,8 @@ public class Projectile : MonoBehaviour, IPool
         initial = transform.position;
         GetComponent<SphereCollider>().enabled = false;
         trail.enabled = false;
+
+        StayOnScene = false;
     }
 
     public void Begin(Vector3 position, string tag, Vector3 _)
@@ -77,4 +79,6 @@ public class Projectile : MonoBehaviour, IPool
                 End();
         }
     }
+
+    public bool StayOnScene { get; set; }
 }

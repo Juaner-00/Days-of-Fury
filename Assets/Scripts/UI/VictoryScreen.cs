@@ -34,7 +34,7 @@ public class VictoryScreen : Menu
 
     private void OnEnable()
     {
-        ScoreManager.OnStarObtained += AsignMedals;
+        ScoreManager.OnMedalObtained += AsignMedals;
     }
 
     // Se llama al gamar el juego
@@ -63,7 +63,7 @@ public class VictoryScreen : Menu
     {
         medals = medal;
     }
-    
+
     // Maneja los botones
     public override void Action()
     {

@@ -8,6 +8,12 @@ public class VictoryScreen : Menu
     //[SerializeField] GameObject victoryScreen;
     public static VictoryScreen Instance { get; private set; }
 
+    [Header("Medal's Win")]
+    [SerializeField] GameObject OneMedalWin; //Medalla1
+    [SerializeField] GameObject TwoMedalWin; //Medalla2
+    [SerializeField] GameObject ThreeMedalWin; //Medalla3
+    Medals medals;
+
     private void Awake()
     {
         if (Instance)
@@ -26,13 +32,38 @@ public class VictoryScreen : Menu
             Navigate();
     }
 
+    private void OnEnable()
+    {
+        ScoreManager.OnMedalObtained += AsignMedals;
+    }
+
     // Se llama al gamar el juego
     public void WinGame()
     {
         Pause();
         HasWon = true;
+        switch (medals)
+        {
+            case Medals.OneMedal:
+                OneMedalWin.SetActive(true);
+                break;
+            case Medals.TwoMedal:
+                OneMedalWin.SetActive(true);
+                TwoMedalWin.SetActive(true);
+                break;
+            case Medals.ThreeMedal:
+                ThreeMedalWin.SetActive(true);
+                OneMedalWin.SetActive(true);
+                TwoMedalWin.SetActive(true);
+                break;
+        }
     }
-    
+
+    void AsignMedals(Medals medal)
+    {
+        medals = medal;
+    }
+
     // Maneja los botones
     public override void Action()
     {
@@ -47,6 +78,8 @@ public class VictoryScreen : Menu
         else if (Option.gameObject.name == "Restart")
         {
             RestartLevel();
+            MisionManager.Instance.actualMision = 0;
+            MisionManager.Instance.actualCount = 0;
         }
     }
 }

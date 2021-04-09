@@ -7,7 +7,6 @@ public class EnemySpawnManager : MonoBehaviour
     [Header("Spawner Properties")]
     [Tooltip("Tiempo que pasa para spawnear después de matar")]
     [SerializeField] float spawnTime;
-    [SerializeField] int maxEnemiesToStopSpawn;
     [SerializeField] int maxEnemiesAtTime;
     [SerializeField] Transform[] spawnPos;
 
@@ -26,7 +25,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     List<Pool> pools = new List<Pool>();
 
-    int countEnemiesKilled;
+    int enemiesKilled;
     int currentEnemiesAlive;
 
     float time;
@@ -52,7 +51,6 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
-
         normalEnemyPool = GameObject.Find("Normal Enemy (Pool)")?.GetComponent<Pool>();
         robustTankPool = GameObject.Find("Robust Tank (Pool)")?.GetComponent<Pool>();
         turretPool = GameObject.Find("Turret (Pool)")?.GetComponent<Pool>();
@@ -81,23 +79,22 @@ public class EnemySpawnManager : MonoBehaviour
 
     void Spawn()
     {
-        // Cantidad de enemigos a spawnear
-        int cant = maxEnemiesAtTime - currentEnemiesAlive;
+        // int cant = cant = maxEnemiesAtTime - currentEnemiesAlive;
 
-        // Spawnear [cant] de enemigos
-        for (int i = 0; i < cant; i++)
+        // // Spawnear [cant] de enemigos
+        // for (int i = 0; i < cant; i++)
+        // {
+        if (spawnPos.Length > 0 && pools.Count > 0)
         {
-            if (spawnPos.Length > 0 && pools.Count > 0)
-            {
-                Vector3 pos = spawnPos[Random.Range(0, spawnPos.Length)].position;
+            Vector3 pos = spawnPos[Random.Range(0, spawnPos.Length)].position;
 
-                // Obtener el enemigo de un pool aleatorio
-                GameObject enemy = pools[Random.Range(0, pools.Count)].GetItem(pos, Vector3.zero);
+            // Obtener el enemigo de un pool aleatorio
+            GameObject enemy = pools[Random.Range(0, pools.Count)].GetItem(pos, Vector3.zero);
 
-                // Aumetar el contador de enemigos vivos
-                currentEnemiesAlive++;
-            }
+            // Aumetar el contador de enemigos vivos
+            currentEnemiesAlive++;
         }
+        // }
     }
 
     // Parar que se puedan spawnear enemigos
@@ -123,7 +120,7 @@ public class EnemySpawnManager : MonoBehaviour
     {
         lastPos = pos;
         currentEnemiesAlive--;
-        countEnemiesKilled++;
+        enemiesKilled++;
 
         time = 0;
     }
@@ -131,8 +128,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     public static Vector3 LastPos => lastPos;
     public static EnemySpawnManager Instance { get; private set; }
-    public int EnemiesToStopSpawn => maxEnemiesToStopSpawn;
-    public int EnemiesKilled => countEnemiesKilled;
+    public int EnemiesKilled => enemiesKilled;
     public int EnemiesAlived => currentEnemiesAlive;
     public bool CanSpawn => canSpawn;
 }

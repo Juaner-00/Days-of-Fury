@@ -4,25 +4,43 @@ using UnityEngine;
 
 public class WanderingPoint : MonoBehaviour
 {
-    GameObject enemy;
     [SerializeField] int randomXmin, randomXmax, randomZmin, randomZmax;
+    [SerializeField]
+    float radius;
+    public LayerMask ColliderMask;
+
+    [HideInInspector]
+    public GameObject enemy;
+    public bool taken;
 
     void Awake()
     {
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        taken = false;
+    }
+
+    private void Start()
+    {
+        NewPosition();
     }
 
     void Update()
     {
-        float randomX = Random.Range(randomXmin, randomXmax);
-        float randomZ = Random.Range(randomZmin, randomZmax);
-        
-        if(gameObject.transform.position == enemy.transform.position)
+        if (enemy)
         {
-            gameObject.transform.position = new Vector3(randomX, transform.position.y, randomZ);
+            if (Vector3.Distance(transform.position, enemy.transform.position) <= 0.5f)
+            {
+                NewPosition();
+            } 
+        }
+        
+        Collider[] wallNoWalking = Physics.OverlapSphere(transform.position, radius, ColliderMask);
+        if (wallNoWalking.Length >= 1)
+        {
+            NewPosition();
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    void NewPosition()
     {
         float randomX = Random.Range(randomXmin, randomXmax);
         float randomZ = Random.Range(randomZmin, randomZmax);

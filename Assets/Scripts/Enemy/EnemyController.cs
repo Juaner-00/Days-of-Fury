@@ -10,11 +10,14 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     [SerializeField] int scorePoints;
     [SerializeField] float timeDead;
     [SerializeField] ParticleSystem damagedSmoke;
+    [SerializeField, Range(0, 1)] float stayOnLevelProbability;
 
-    public static event Action<string> Mision = delegate { };
+    public static event Action<int> Mission = delegate { };
+    public static event Action Kill = delegate { };
+
 
     Vector3 inicialPosition;
-   
+
     int healthPoints;
     bool isDead;
     Animator enemyAnimator;
@@ -31,6 +34,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     AIPath aIPath;
     AIDestinationSetter aIDestinationSetter;
     EnemyShootController enemyShootController;
+
 
     void Awake()
     {
@@ -56,7 +60,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         {
             aIDestinationSetter.target = null;
         }
+
         inicialPosition = transform.position;
+
+        float prob = UnityEngine.Random.Range(0f, 1f);
+        StayOnScene = prob <= stayOnLevelProbability;
     }
 
     // Se llama cuando el pool devuelve el objeto
@@ -73,6 +81,9 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         {
             aIDestinationSetter.target = GameManager.Player.transform;
         }
+
+        enemyAnimator.SetTrigger("Init");
+
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
@@ -89,13 +100,19 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         {
             aIDestinationSetter.target = null;
         }
-        transform.position = inicialPosition;
-        healthPoints = maxHealthPoints;
+
+        if (!StayOnScene)
+        {
+            transform.position = inicialPosition;
+            healthPoints = maxHealthPoints;
+            enemyAnimator.SetTrigger("Init");
+        }
     }
 
     // Método para hacer que el enemigo tome daño
     public void TakeDamage()
     {
+
         if (isDead)
             return;
 
@@ -103,7 +120,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         {
             damagedSmoke.Play();
         }
-        
+
         OnGettingHurt?.Invoke();
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
@@ -112,17 +129,22 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         if (isDead)
         {
+
             if (damagedSmoke)
             {
                 damagedSmoke.Stop();
             }
-            
-            enemyAnimator.SetTrigger("Dead4");
-            Mision("Mision1"); //Sistema de misiones :)
+
+            if (StayOnScene)
+                enemyAnimator.SetTrigger($"Dead{UnityEngine.Random.Range(3, 5)}");
+            else
+                enemyAnimator.SetTrigger($"Dead{UnityEngine.Random.Range(1, 5)}");
+
+
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 
             OnDie?.Invoke(transform.position);
-            
+
             if (ScoreManager.Instance)
             {
                 ScoreManager.Instance.Addscore(scorePoints);
@@ -134,6 +156,9 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
                 enemyShootController.Dead = true;
             }
             Invoke("End", timeDead);
+            Kill(); //Misiones D:
         }
     }
+
+    public bool StayOnScene { get; set; }
 }

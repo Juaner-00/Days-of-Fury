@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Expandable]
+    [SerializeField] DataObject dataObject;
+    [SerializeField] int actualLevel;
     [SerializeField] Texture2D cursorImage;
 
     [SerializeField] bool spawnEnemies;
@@ -30,10 +33,12 @@ public class GameManager : MonoBehaviour
         Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
 
         if (spawnEnemies)
-            EnemySpawnManager.Instance.StartSpawning();
+            if (EnemySpawnManager.Instance)
+                EnemySpawnManager.Instance.StartSpawning();
 
         if (spawnPickUps)
-            PickUpSpawnManager.Instance.StartSpawning();
+            if (PickUpSpawnManager.Instance)
+                PickUpSpawnManager.Instance.StartSpawning();
 
         playerMedals = Medals.None;
     }
@@ -41,18 +46,20 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnDie += PlayerDie;
-        ScoreManager.OnStarObtained += VictoryCheck;
+        ScoreManager.OnMedalObtained += VictoryCheck;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnDie -= PlayerDie;
-        ScoreManager.OnStarObtained -= VictoryCheck;
+        ScoreManager.OnMedalObtained -= VictoryCheck;
     }
 
     // Método para finalizar el juego
     public void FinishGame()
     {
+        SaveGame();
+
         if (player)
         {
             if (player.name == "Player")
@@ -124,6 +131,34 @@ public class GameManager : MonoBehaviour
             WinGame();
     }
 
+    void SaveGame()
+    {
+        switch (ScoreManager.Instance.CurrentMedal)
+        {
+            case Medals.None:
+                dataObject.AssignMedals(actualLevel, 0);
+                break;
+            case Medals.OneMedal:
+                dataObject.AssignMedals(actualLevel, 1);
+                break;
+            case Medals.TwoMedal:
+                dataObject.AssignMedals(actualLevel, 2);
+                break;
+            case Medals.ThreeMedal:
+                dataObject.AssignMedals(actualLevel, 3);
+                break;
+        }
+
+        SaveAndLoad.Save("LevelData", dataObject.Data);
+    }
+
+    public void LoadGame()
+    {
+        SaveData data = SaveAndLoad.Load("LevelData") as SaveData;
+        dataObject.Data = data;
+    }
+
+    public int ActualLevel { get => actualLevel; set => actualLevel = value; }
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }
 }

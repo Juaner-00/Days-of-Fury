@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 7708365929994086763
+  uniqueID: 5198418002182417352
   updateError: 1
   checkTime: 2000
 --- !u!1 &1611046470452428
@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 33287932807828580}
   - component: {fileID: 23950991984154110}
   - component: {fileID: 2647460253364206852}
-  - component: {fileID: 861331113}
   - component: {fileID: 1474184072}
   m_Layer: 8
   m_Name: SM_Bld_Diner_01
@@ -160,18 +159,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 15.416346, y: 4.5089893, z: 8.137027}
   m_Center: {x: 0.032055855, y: 2.2544947, z: 0.07990646}
---- !u!114 &861331113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611046470452428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1474184072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!1 &1759231548712978
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4515645449055246}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &430396829
 BoxCollider:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 8131280348024853580
+  uniqueID: 3238231928326189229
   updateError: 1
   checkTime: 2000
 --- !u!1 &1146754433227282
@@ -312,8 +312,6 @@ GameObject:
   - component: {fileID: 23775090170111850}
   - component: {fileID: 830624100103953107}
   - component: {fileID: 983063824}
-  - component: {fileID: 1161889251}
-  - component: {fileID: 1098090005}
   m_Layer: 8
   m_Name: SM_Bld_Trailer_01
   m_TagString: Untagged
@@ -335,8 +333,8 @@ Transform:
   - {fileID: 4948093637969782}
   - {fileID: 4223692242065566}
   - {fileID: 4924837935301232}
-  - {fileID: 430396827}
   - {fileID: 3611301581393735301}
+  - {fileID: 430396827}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -412,30 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1161889251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718806199345174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1098090005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718806199345174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!1 &1820501109715680
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +520,7 @@ Transform:
   m_LocalScale: {x: 3.5296435, y: 1.01669, z: 9.542489}
   m_Children: []
   m_Father: {fileID: 4515645449055246}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6550631031265426940
 MeshFilter:

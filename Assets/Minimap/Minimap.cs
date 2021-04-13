@@ -8,6 +8,9 @@ public class Minimap : MonoBehaviour
     void Update()
     {
         if (GameManager.Player)
-            transform.position = Vector3.MoveTowards(transform.position, GameManager.Player.transform.position, 1);
+        {
+            Vector3 newPos = new Vector3(GameManager.Player.transform.position.x, transform.position.y, GameManager.Player.transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, newPos, 1);
+        }
     }
 }

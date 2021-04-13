@@ -43,7 +43,20 @@ public class MisionManager : MonoBehaviour
         actualMision = 0;
         missionsComplets = 0;
         missionObjective = missions[0].objetive;
+
+        fristMissionComplete = false;
+        secondMissionComplete = false;
+        ThreeMissionComplete = false;      
+
         Texts();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ScoreManager.Instance.Addscore(50);
+        }
     }
 
     public void OnEnable()
@@ -54,16 +67,21 @@ public class MisionManager : MonoBehaviour
 
     void OnScoreGet(int score)
     {
-        if (missions[actualMision].opcion == Missions.Opcion.Score) actualCount += score;
-        IsComplete();
+        if (missions[actualMision].opcion == Missions.Opcion.Score)
+        {
+            actualCount += score;
+            IsComplete();
+        }
     }
     
     void OnEnemyDead(Vector3 _)
     {
-        if (missions[actualMision].opcion == Missions.Opcion.Enemys) actualCount++;
-        print($"Actual Objective {actualCount}/{missionObjective}");
-        IsComplete();
-           
+        if (missions[actualMision].opcion == Missions.Opcion.Enemys)
+        {
+            actualCount++;
+            print($"Actual Objective {actualCount}/{missionObjective}");
+            IsComplete();
+        }           
     }
 
     void IsComplete()
@@ -77,6 +95,7 @@ public class MisionManager : MonoBehaviour
                 missionObjective = missions[actualMision].objetive;
             }
             missionsComplets++;
+
             switch (missionsComplets)
             {
                 case 1:
@@ -90,9 +109,14 @@ public class MisionManager : MonoBehaviour
                     break;
             }
 
-
             if (fristMissionComplete) ScoreManager.Instance.ActiveOneStarMedal();
-            if (fristMissionComplete && secondMissionComplete) ScoreManager.Instance.ActiveTwoStarMedal();
+            if (fristMissionComplete && secondMissionComplete) 
+            {
+                ScoreManager.Instance.ActiveTwoStarMedal();
+                print("Misiones actuales" + missionsComplets);
+            }
+
+
             if (fristMissionComplete && (secondMissionComplete && ThreeMissionComplete) ) ScoreManager.Instance.ActiveThreeStarMedal();
 
 

@@ -19,7 +19,7 @@ public class ReticleController : MonoBehaviour
 
         HandleInputs();
 
-        if (Input.GetButtonDown("Fire1")) 
+        if (Input.GetButtonUp("Fire1")) 
         {
             if (turretTank == true && turretTank.Available == true)
             {

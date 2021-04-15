@@ -18,9 +18,6 @@ TagManager:
   - UI
   - 
   - 
-  - Obstacle
-  - enemy
-  - Player
   - 
   - 
   - 
@@ -41,6 +38,9 @@ TagManager:
   - 
   - 
   - 
+  - 
+  - UI RADAR
+  - NoRender
   - Minimap
   m_SortingLayers:
   - name: Default

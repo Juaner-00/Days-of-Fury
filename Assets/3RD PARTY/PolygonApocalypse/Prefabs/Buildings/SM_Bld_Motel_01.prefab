@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 444803852944104816
+  uniqueID: 231002523107734286
   updateError: 1
   checkTime: 2000
 --- !u!1 &1277001794708716
@@ -1070,7 +1070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &540393951674341786
 Transform:
   m_ObjectHideFlags: 0

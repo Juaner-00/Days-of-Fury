@@ -147,6 +147,7 @@ public abstract class Menu : MonoBehaviour
     {
         Resume();
         _SceneManager.ResetScene();
+        MisionManager.Instance.Resetear();
     }
 
     // Carga el menú principal

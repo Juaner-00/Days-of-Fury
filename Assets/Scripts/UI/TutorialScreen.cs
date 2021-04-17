@@ -6,13 +6,47 @@ public class TutorialScreen : MonoBehaviour
 {
     [SerializeField] GameObject [] coreRays, texts;
     [SerializeField] GameObject lastRay, text;
-    [SerializeField] float distance;
+
+    [SerializeField] float distance, time = 0f, enemyTotalTime;
+    [SerializeField] float[] totalTime;
+
     RaycastHit [] ray;
     RaycastHit enemyRay;
+
+    [SerializeField] bool firstClick = false;
 
     private void Start()
     {
         ray = new RaycastHit[coreRays.Length];
+    }
+
+    private void Update()
+    {
+        //if(firstClick == false)
+        //{
+        //    if(Input.anyKey)
+        //    {
+        //        firstClick = true;
+        //    }
+        //}
+
+        //if (firstClick == true)
+        //{
+        //    time += Time.deltaTime;
+        //}
+
+        //for (int i = 0; i < coreRays.Length; i++)
+        //{
+        //    if (time <= totalTime[i])
+        //    {
+        //        texts[i].SetActive(false);
+        //    }
+        //}
+
+        //if(time <= enemyTotalTime)
+        //{
+        //    text.SetActive(false);
+        //}
     }
 
     private void FixedUpdate()

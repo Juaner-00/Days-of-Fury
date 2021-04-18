@@ -171,7 +171,6 @@ GameObject:
   - component: {fileID: 23444515548266370}
   - component: {fileID: 4002654941068324737}
   - component: {fileID: 1734424742}
-  - component: {fileID: 4668856}
   m_Layer: 8
   m_Name: SM_Bld_ContainerBridge_01
   m_TagString: Untagged
@@ -269,18 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4668856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804672514264270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!1 &3867586614900882378
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 1286620203359154548
+  uniqueID: 7638425493192727792
   updateError: 1
   checkTime: 2000
 --- !u!1 &4242713476693959741
@@ -359,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &104573581367435814
 Transform:
   m_ObjectHideFlags: 0

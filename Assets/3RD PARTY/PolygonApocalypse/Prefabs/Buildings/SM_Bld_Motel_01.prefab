@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 4725618844610858903
+  uniqueID: 231002523107734286
   updateError: 1
   checkTime: 2000
 --- !u!1 &1277001794708716
@@ -945,7 +945,6 @@ GameObject:
   - component: {fileID: 23879275630151400}
   - component: {fileID: 4885111114058847333}
   - component: {fileID: 1250763787}
-  - component: {fileID: 1057475749}
   m_Layer: 8
   m_Name: SM_Bld_Motel_01
   m_TagString: Untagged
@@ -1053,18 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1057475749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895244190239012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!1 &3324146236183603794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,7 +1070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &540393951674341786
 Transform:
   m_ObjectHideFlags: 0

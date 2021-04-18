@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 5491860505292135606}
   - component: {fileID: 6744038053857644895}
   - component: {fileID: -2780555251600778122}
+  - component: {fileID: 2326655279437223689}
   m_Layer: 9
   m_Name: NormalEnemy
   m_TagString: Enemy
@@ -272,6 +273,32 @@ MonoBehaviour:
   uniqueID: 2917441164421594061
   updateError: 0.2
   checkTime: 0.2
+--- !u!114 &2326655279437223689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988548298858404030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMusicController: 0
+  actionClips:
+  - actionName: Shooting
+    actionVolume: 1
+    clips:
+    - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
+  - actionName: Moving
+    actionVolume: 1
+    clips:
+    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
+  - actionName: GettingHurt
+    actionVolume: 0.5
+    clips:
+    - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}
 --- !u!1 &3959426235147392056
 GameObject:
   m_ObjectHideFlags: 0

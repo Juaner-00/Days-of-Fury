@@ -21,7 +21,6 @@ public class PlayerShoot : TurretTank
     
 
 
-
     protected override void Start()
     {
         coldDownTimer = 0;
@@ -48,9 +47,6 @@ public class PlayerShoot : TurretTank
         /*if (counter < 3) multiplier = 1f;
         if (counter < 2) multiplier = 0.66f;
         if (counter < 1) multiplier = 0.33f ;*/
-
-
-
     }
 
     public override void Shot()
@@ -73,7 +69,6 @@ public class PlayerShoot : TurretTank
             coldDownTimer = coldDown;
             counter = 2;
         }
-
        
         Vector3 force = -transform.up * this.force;
         GameObject clone = cartrigde.GetItem(reference.position, Vector3.zero, tag);

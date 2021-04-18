@@ -19,7 +19,7 @@ public class EnemyTowerController : MonoBehaviour, IDamagable
 
     public int MaxHealthPoints => maxHealthPoints;
     public int HealthPoints => healthPoints;
-    public static event Action<string, int> Mission = delegate { };
+    public static event Action<int> Mission = delegate { };
     public static event Action Kill = delegate { };
     public Action OnGettingHurt;
     public static event EnemyEvent OnDie;
@@ -87,15 +87,12 @@ public class EnemyTowerController : MonoBehaviour, IDamagable
 
             enemyAnimator.SetTrigger("Dead");
 
-            if (mM.missions[mM.actualMision].opcion == Missions.Opcion.Enemys) Mission("Enemy", 1); //Sistema de misiones
-
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 
             OnDie?.Invoke(transform.position);
 
             if (ScoreManager.Instance)
             {
-                if (mM.missions[mM.actualMision].opcion == Missions.Opcion.Score) Mission("Score", scorePoints); //Sistema de misiones
                 ScoreManager.Instance.Addscore(scorePoints);
             }
             Kill(); //Misiones

@@ -13,7 +13,7 @@ public class EnemyStateMachine : MonoBehaviour
 {
     [SerializeField] Transform[] moveSpots;
     [SerializeField] TurretTank turretTank;
-    [SerializeField] Transform NoAiming, strafeLeft, strafeRight;
+    [SerializeField] Transform NoAiming, strafeLeft, strafeRight, noisePosition;
     [SerializeField] float t_minStrafe, t_maxStrafe, chaseRadius = 20f, facePlayerFactor = 20f,
         moveSpotReachedDistance = 5f, ChaseReachedDistance = 20f, fieldOfViewAngle = 160f, losRadius = 45f,
         memoryStartTime = 10f, noiseTravelDistance, spinSpeed = 3f, spinTime = 3f;
@@ -25,7 +25,6 @@ public class EnemyStateMachine : MonoBehaviour
     GameObject player;
     AIPath aIPath;
     Quaternion target;
-    Transform noisePosition;
     bool playerIsInLos, aiMemorizesPlayer, aiHeardPlayer = false, canSpin = false;
 
     public bool Alive;
@@ -94,7 +93,6 @@ public class EnemyStateMachine : MonoBehaviour
                 StopCoroutine(AiMemory());
 
                 aIDestinationSetter.target = moveSpots[randomSpot];
-                //aIPath.endReachedDistance = moveSpotReachedDistance;
 
                 if (aIPath.reachedDestination)
                 {
@@ -110,7 +108,6 @@ public class EnemyStateMachine : MonoBehaviour
             case State.Chase:
 
                 TurretAiming();
-                //aIPath.endReachedDistance = ChaseReachedDistance;
 
                 if (distance <= chaseRadius && distance > ChaseReachedDistance)
                 {
@@ -138,7 +135,7 @@ public class EnemyStateMachine : MonoBehaviour
 
             case State.Heard:
 
-                //aIDestinationSetter = POS SONIDO
+                aIDestinationSetter.target = noisePosition;
                 
                 if (Vector3.Distance(transform.position, noisePosition.position) <= 5f && canSpin)
                 {
@@ -181,12 +178,17 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (distance <= noiseTravelDistance)
         {
-            //posicion de sonido
-        }
-        else
-        {
-            aiHeardPlayer = false;
-            canSpin = false;
+
+            if (Input.GetButton("Fire1"))
+            {
+                noisePosition.position = player.transform.position;
+                aiHeardPlayer = true; 
+            }
+            else
+            {
+                aiHeardPlayer = false;
+                canSpin = false;
+            }
         }
     }
 
@@ -227,6 +229,18 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, losRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, noiseTravelDistance);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, chaseRadius);
+
+        Vector3 fovLine1 = Quaternion.AngleAxis(fieldOfViewAngle, transform.up) * transform.forward * losRadius;
+        Vector3 fovLine2 = Quaternion.AngleAxis(-fieldOfViewAngle, transform.up) * transform.forward * losRadius;
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, fovLine1);
+        Gizmos.DrawRay(transform.position, fovLine2);
     }
 }

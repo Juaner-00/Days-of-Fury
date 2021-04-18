@@ -44,9 +44,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTime: 2
-  maxEnemiesToStopSpawn: 2
-  maxEnemiesAtTime: 2
-  spawnPos: []
+  maxEnemiesAtTime: 3
+  spawnPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   normalEnemy: 1
-  robustTank: 1
+  robustTank: 0
   turret: 0

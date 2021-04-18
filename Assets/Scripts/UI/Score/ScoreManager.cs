@@ -5,14 +5,9 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour, ICounterValueContainer
 {
-    [SerializeField] int oneStar;
-    [SerializeField] int twoStar;
-    [SerializeField] int threeStar;
-
     bool oneStar1;
     bool twoStar1;
     bool threeStar1;
-
 
     [SerializeField] GameObject oneStarMedal;
     [SerializeField] GameObject twoStarMedal;
@@ -20,11 +15,12 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
 
     [SerializeField] private int totalScore;
 
+    public static event Action<int> OnGetScore = delegate { };
 
 
-    Medals starState;
+    Medals medalState;
 
-    public static Action<Medals> OnStarObtained;
+    public static Action<Medals> OnMedalObtained;
 
 
     private void Awake()
@@ -36,37 +32,41 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
 
     private void Start()
     {
-        starState = Medals.None;
+        medalState = Medals.None;
     }
 
     // Método para añadir score
     public void Addscore(int score)
     {
         totalScore += score;
+        OnGetScore?.Invoke(score);
     }
+
     public void ActiveOneStarMedal()
     {
         oneStarMedal.SetActive(true);
         oneStar1 = true;
-        starState = Medals.OneMedal;
+        medalState = Medals.OneMedal;
         oneStarMedal.SetActive(true);
-        OnStarObtained?.Invoke(starState);
+        OnMedalObtained?.Invoke(medalState);
     }
+
     public void ActiveTwoStarMedal()
     {
         twoStarMedal.SetActive(true);
         twoStar1 = true;
-        starState = Medals.TwoMedal;
+        medalState = Medals.TwoMedal;
         twoStarMedal.SetActive(true);
-        OnStarObtained?.Invoke(starState);
+        OnMedalObtained?.Invoke(medalState);
     }
+
     public void ActiveThreeStarMedal()
     {
         threeStarMedal.SetActive(true);
         threeStar1 = true;
-        starState = Medals.ThreeMedal;
+        medalState = Medals.ThreeMedal;
         threeStarMedal.SetActive(true);
-        OnStarObtained?.Invoke(starState);
+        OnMedalObtained?.Invoke(medalState);
     }
 
     public int GetValue()
@@ -79,6 +79,7 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
     public bool OneStar1 { get; private set; }
     public bool TwoStar1 { get; private set; }
     public bool ThreeStar1 { get; private set; }
+    public Medals CurrentMedal { get => medalState; }
 }
 
 public enum Medals

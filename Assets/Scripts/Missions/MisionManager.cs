@@ -18,73 +18,92 @@ public class MisionManager : MonoBehaviour
     [Header("Missions")]
     public int actualMision = 0; //Mision actual
     public Missions[] missions;
-    int ActualM;
-    int ObjectiveM;
-    int actualMission2;
+    public int actualCount;
+    int missionObjective;
+    int missionsComplets;
+
+    bool fristMissionComplete;
+    bool secondMissionComplete;
+    bool ThreeMissionComplete;
+
 
     private void Awake()
     {
         if (Instance)
             Destroy(gameObject);
         Instance = this;
+
+        actualCount = 0;
+        actualMision = 0;
+        missionsComplets = 0;
     }
     public void Start()
     {
-        ActualM= missions[actualMision].actual;
-        ObjectiveM = missions[actualMision].objetive;
+        actualCount = 0;
+        actualMision = 0;
+        missionsComplets = 0;
+        missionObjective = missions[0].objetive;
         Texts();
-    }
-    public void Update()
-    {
-        
     }
 
     public void OnEnable()
     {
-        EnemyController.Mission += EnemyController_MisionNotification;
+        EnemyController.OnDie += OnEnemyDead;
+        ScoreManager.OnGetScore += OnScoreGet;
     }
 
-    //Notificacion del sistema
-    void EnemyController_MisionNotification(string a, int b)
+    void OnScoreGet(int score)
     {
-        switch (a)
-        {
-            case "Enemy":
-                ActualM += b;
-                break;
+        if (missions[actualMision].opcion == Missions.Opcion.Score) actualCount += score;
+        IsComplete();
+    }
+    
+    void OnEnemyDead(Vector3 _)
+    {
+        if (missions[actualMision].opcion == Missions.Opcion.Enemys) actualCount++;
+        print($"Actual Objective {actualCount}/{missionObjective}");
+        IsComplete();
+           
+    }
 
-            case "Score":
-                ActualM += b;
-                break;
-
-            case "Pickups":
-                ActualM += b ;
-                break;
-
-            case "Walls":
-                ActualM += b;
-                break;
-        }
-
-        if (ActualM >= ObjectiveM)
+    void IsComplete()
+    {
+        if (actualCount >= missionObjective)
         {
             if (actualMision < missions.Length-1)
             {
                 actualMision++;
-                ActualM = missions[actualMision].actual;
-                ObjectiveM = missions[actualMision].objetive;
-            }            
-            actualMission2++;
-            if (actualMision == OneMedalObjective) ScoreManager.Instance.ActiveOneStarMedal();
-            if (actualMision == TwoMedalObjective) ScoreManager.Instance.ActiveTwoStarMedal();
-            if (actualMission2 == ThreeMedalObjective) ScoreManager.Instance.ActiveThreeStarMedal();
-        }
-        Texts();        
-    }
+                actualCount = 0;
+                missionObjective = missions[actualMision].objetive;
+            }
+            missionsComplets++;
+            switch (missionsComplets)
+            {
+                case 1:
+                    fristMissionComplete = true;
+                    break;
+                case 2:
+                    secondMissionComplete = true;
+                    break;
+                case 3:
+                    ThreeMissionComplete = true;
+                    break;
+            }
 
+
+            if (fristMissionComplete) ScoreManager.Instance.ActiveOneStarMedal();
+            if (fristMissionComplete && secondMissionComplete) ScoreManager.Instance.ActiveTwoStarMedal();
+            if (fristMissionComplete && (secondMissionComplete && ThreeMissionComplete) ) ScoreManager.Instance.ActiveThreeStarMedal();
+
+
+            /*if (missionsComplets == OneMedalObjective) ScoreManager.Instance.ActiveOneStarMedal();
+            if (missionsComplets == TwoMedalObjective) ScoreManager.Instance.ActiveTwoStarMedal();
+            if (missionsComplets == ThreeMedalObjective) ScoreManager.Instance.ActiveThreeStarMedal();*/
+        }
+        Texts();
+    }
     void Texts()
     {
-        misionText.text = $"{missions[actualMision].description} ( {ActualM} / {missions[actualMision].objetive} )";
+        misionText.text = $"{missions[actualMision].description} ( {actualCount} / {missions[actualMision].objetive} )";
     }
-
 }

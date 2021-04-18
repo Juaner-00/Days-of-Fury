@@ -34,7 +34,7 @@ public class VictoryScreen : Menu
 
     private void OnEnable()
     {
-        ScoreManager.OnStarObtained += AsignMedals;
+        ScoreManager.OnMedalObtained += AsignMedals;
     }
 
     // Se llama al gamar el juego
@@ -63,7 +63,7 @@ public class VictoryScreen : Menu
     {
         medals = medal;
     }
-    
+
     // Maneja los botones
     public override void Action()
     {
@@ -78,6 +78,8 @@ public class VictoryScreen : Menu
         else if (Option.gameObject.name == "Restart")
         {
             RestartLevel();
+            MisionManager.Instance.actualMision = 0;
+            MisionManager.Instance.actualCount = 0;
         }
     }
 }

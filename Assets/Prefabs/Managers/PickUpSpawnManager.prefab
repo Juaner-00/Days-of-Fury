@@ -43,11 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628f56e24b0f73b47aa694d4935eb062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 3
+  spawnTime: 8
   despawnTime: 5
   maxPickUpsAtTime: 1
   spawnPos:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   health: 1
-  movementSpeed: 0
-  shootSpeed: 0
+  movementSpeed: 1
+  shootSpeed: 1
+  score: 1

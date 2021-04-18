@@ -79,22 +79,22 @@ public class EnemySpawnManager : MonoBehaviour
 
     void Spawn()
     {
-        int cant = cant = maxEnemiesAtTime - currentEnemiesAlive;
+        // int cant = cant = maxEnemiesAtTime - currentEnemiesAlive;
 
-        // Spawnear [cant] de enemigos
-        for (int i = 0; i < cant; i++)
+        // // Spawnear [cant] de enemigos
+        // for (int i = 0; i < cant; i++)
+        // {
+        if (spawnPos.Length > 0 && pools.Count > 0)
         {
-            if (spawnPos.Length > 0 && pools.Count > 0)
-            {
-                Vector3 pos = spawnPos[Random.Range(0, spawnPos.Length)].position;
+            Vector3 pos = spawnPos[Random.Range(0, spawnPos.Length)].position;
 
-                // Obtener el enemigo de un pool aleatorio
-                GameObject enemy = pools[Random.Range(0, pools.Count)].GetItem(pos, Vector3.zero);
+            // Obtener el enemigo de un pool aleatorio
+            GameObject enemy = pools[Random.Range(0, pools.Count)].GetItem(pos, Vector3.zero);
 
-                // Aumetar el contador de enemigos vivos
-                currentEnemiesAlive++;
-            }
+            // Aumetar el contador de enemigos vivos
+            currentEnemiesAlive++;
         }
+        // }
     }
 
     // Parar que se puedan spawnear enemigos

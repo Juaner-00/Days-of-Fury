@@ -21,6 +21,8 @@ public class VfxsController : MonoBehaviour, IPool
     public void Instantiate()
     {
         initial = transform.position;
+
+        StayOnScene = false;
     }
 
     // Se llama cuando el pool obtiene el objeto
@@ -39,4 +41,6 @@ public class VfxsController : MonoBehaviour, IPool
         thisparticle.Stop();
         transform.position = initial;
     }
+
+    public bool StayOnScene { get; set; }
 }

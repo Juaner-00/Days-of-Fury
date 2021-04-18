@@ -15,7 +15,24 @@ public class DestructibleWall : MonoBehaviour, IDamagable
     public void TakeDamage()
     {
         WallDestroyed?.Invoke();
-        Destroy(gameObject);
+
+        // Desactivar los renderer de los hijos
+        foreach (Renderer render in GetComponentsInChildren<Renderer>())
+            render.enabled = false;
+
+        // Desactivar los renderer y el collider
+        GetComponent<Renderer>().enabled = false;
+
+        foreach (Collider collider in GetComponents<Collider>())
+            collider.enabled = false;
+
+        DynamicGridObstacle dynamic = GetComponentInChildren<DynamicGridObstacle>();
+
+        // Updatear el grid
+        dynamic.DoUpdateGraphs();
+        // Desactivar el collider
+        foreach (Collider collider in dynamic.gameObject.GetComponents<Collider>())
+            collider.enabled = false;
     }
 }
 

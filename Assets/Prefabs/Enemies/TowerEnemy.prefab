@@ -5582,7 +5582,7 @@ GameObject:
   - component: {fileID: 1942721831741151535}
   - component: {fileID: 1877622284717632591}
   - component: {fileID: 1936882247130811154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TowerEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5631,6 +5631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 1
   scorePoints: 50
+  damagedSmoke: {fileID: 0}
   radius: 20
   timeDead: 2
   turretTank: {fileID: 1937282129062286460}

@@ -194,8 +194,6 @@ public abstract class Menu : MonoBehaviour
 
 
 
-
-
     //if (index > menuList.transform.childCount - 1)
     //    index = 0;
     //else if (index < 0)

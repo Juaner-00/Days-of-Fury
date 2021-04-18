@@ -26,12 +26,14 @@ public class EnemyStateMachine : MonoBehaviour
     AIPath aIPath;
     Quaternion target;
     bool playerIsInLos, aiMemorizesPlayer, aiHeardPlayer = false, canSpin = false;
+    Animator animator;
 
     public bool Alive;
     public Action OnShooting;
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         aIDestinationSetter = GetComponent<AIDestinationSetter>();
         player = GameManager.Player;
         waitTime = startWaitTime;

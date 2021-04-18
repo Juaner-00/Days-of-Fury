@@ -114,7 +114,8 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         if (isDead)
         {
-
+            stateMachine.Alive = false;
+            
             if (damagedSmoke)
             {
                 damagedSmoke.Stop();
@@ -139,7 +140,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
                 aIPath.canSearch = false;
                 aIPath.canMove = false;
             }
-            stateMachine.Alive = false;
             Invoke("End", timeDead);
             Kill(); //Misiones
         }

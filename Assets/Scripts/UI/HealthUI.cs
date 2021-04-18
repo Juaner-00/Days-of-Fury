@@ -48,7 +48,7 @@ public class HealthUI : MonoBehaviour
 
         divisor = (float)pHealth.HealthPoints;
         if (glass)
-            glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0.7f - (divisor / pHealth.MaxHealthPoints));
+            glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0.4f - (divisor / pHealth.MaxHealthPoints));
         if(damaged)
             damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0.7f - (divisor / pHealth.MaxHealthPoints));
         lifesText.text = $"{lives}";      

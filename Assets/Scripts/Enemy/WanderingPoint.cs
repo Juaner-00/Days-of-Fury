@@ -9,7 +9,7 @@ public class WanderingPoint : MonoBehaviour
     float radius;
     public LayerMask ColliderMask;
 
-    [HideInInspector]
+    /*[HideInInspector]
     public GameObject enemy;
     public bool taken;
 
@@ -17,7 +17,7 @@ public class WanderingPoint : MonoBehaviour
     {
         taken = false;
     }
-
+    */
     private void Start()
     {
         NewPosition();
@@ -25,13 +25,13 @@ public class WanderingPoint : MonoBehaviour
 
     void Update()
     {
-        if (enemy)
+        /*if (enemy)
         {
             if (Vector3.Distance(transform.position, enemy.transform.position) <= 0.5f)
             {
                 NewPosition();
             } 
-        }
+        }*/
         
         Collider[] wallNoWalking = Physics.OverlapSphere(transform.position, radius, ColliderMask);
         if (wallNoWalking.Length >= 1)

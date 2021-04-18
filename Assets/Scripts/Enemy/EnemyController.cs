@@ -30,14 +30,16 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     public Action OnGettingHurt;
 
+    EnemyStateMachine stateMachine;
     AIPath aIPath;
-    AIDestinationSetter aIDestinationSetter;
-    EnemyShootController enemyShootController;
+    //AIDestinationSetter aIDestinationSetter;
+    //EnemyShootController enemyShootController;
 
     void Awake()
     {
-        enemyShootController = GetComponent<EnemyShootController>();
-        aIDestinationSetter = GetComponent<AIDestinationSetter>();
+        //enemyShootController = GetComponent<EnemyShootController>();
+        //aIDestinationSetter = GetComponent<AIDestinationSetter>();
+        stateMachine = GetComponent<EnemyStateMachine>();
         aIPath = GetComponent<AIPath>();
         enemyAnimator = GetComponentInChildren<Animator>();
         particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
@@ -52,12 +54,13 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             aIPath.usingGravity = false;
             aIPath.canSearch = false;
             aIPath.canMove = false;
-            enemyShootController.Dead = true;
+            stateMachine.Alive = false;
+            //enemyShootController.Dead = true;
         }
-        if (aIDestinationSetter)
+        /*if (aIDestinationSetter)
         {
             aIDestinationSetter.target = null;
-        }
+        }*/
         inicialPosition = transform.position;
     }
 
@@ -69,12 +72,13 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             aIPath.usingGravity = true;
             aIPath.canSearch = true;
             aIPath.canMove = true;
-            enemyShootController.Dead = false;
+            stateMachine.Alive = true;
+            //enemyShootController.Dead = false;
         }
-        if (aIDestinationSetter)
+        /*if (aIDestinationSetter)
         {
             aIDestinationSetter.target = GameManager.Player.transform;
-        }
+        }*/
 
         enemyAnimator.SetTrigger("Init");
 
@@ -90,10 +94,10 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         {
             aIPath.usingGravity = false;
         }
-        if (aIDestinationSetter)
+        /*if (aIDestinationSetter)
         {
             aIDestinationSetter.target = null;
-        }
+        }*/
         transform.position = inicialPosition;
         healthPoints = maxHealthPoints;
     }
@@ -142,10 +146,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             {
                 aIPath.canSearch = false;
                 aIPath.canMove = false;
-                enemyShootController.Dead = true;
+                stateMachine.Alive = false;
+                //enemyShootController.Dead = true;
             }
             Invoke("End", timeDead);
-            Kill(); //Misiones D:
+            Kill(); //Misiones
         }
     }
 }

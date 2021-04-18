@@ -4,88 +4,229 @@ using UnityEngine;
 using Pathfinding;
 using System;
 
-public enum States
+public enum State
 {
-    Dead,
-    Patrol,
-    Listen,
-    Chasing,
-    Attack,
+    Patrol, Chase, Dead, Heard
 }
 
 public class EnemyStateMachine : MonoBehaviour
 {
-    public States state;
-
-    Vector3 dirTarget;
-    Quaternion targetAim;
-    Transform target;
-    GameObject player;
-    AIDestinationSetter aIDestinationSetter;
-
+    [SerializeField] Transform[] moveSpots;
     [SerializeField] TurretTank turretTank;
-    [SerializeField] Transform NoAiming;
-    [SerializeField] float soundRadius, shotRadius, normalSpeed = 5f, targetSpeed = 8f;
+    [SerializeField] Transform NoAiming, strafeLeft, strafeRight;
+    [SerializeField] float t_minStrafe, t_maxStrafe, chaseRadius = 20f, facePlayerFactor = 20f,
+        moveSpotReachedDistance = 5f, ChaseReachedDistance = 20f, fieldOfViewAngle = 160f, losRadius = 45f,
+        memoryStartTime = 10f, noiseTravelDistance, spinSpeed = 3f, spinTime = 3f;
 
-    Transform[] wayPoints;
+    int randomSpot, randomStrafeDir;
+    float waitTime, startWaitTime, randomStrafeStartTime, waitStrafeTime, distance, inCreasingMemoryTime, isSpiningTime;
+    AIDestinationSetter aIDestinationSetter;
+    State state;
+    GameObject player;
+    AIPath aIPath;
+    Quaternion target;
+    Transform noisePosition;
+    bool playerIsInLos, aiMemorizesPlayer, aiHeardPlayer = false, canSpin = false;
 
+    public bool Alive;
     public Action OnShooting;
 
     private void Start()
     {
         aIDestinationSetter = GetComponent<AIDestinationSetter>();
         player = GameManager.Player;
+        waitTime = startWaitTime;
+        randomSpot = UnityEngine.Random.Range(0, moveSpots.Length);
+        aIPath = GetComponent<AIPath>();
     }
 
     private void Update()
     {
-        SwitchStates();
+        if (Alive)
+        {
+            distance = Vector3.Distance(player.transform.position, transform.position);
+
+            /*if (distance > chaseRadius)
+            {
+                state = State.Patrol;
+            }
+            else if (distance <= chaseRadius)
+            {
+                state = State.Chase;
+            }*/
+            if (distance <= losRadius)
+            {
+                checkLos();
+            }
+            if (!playerIsInLos && !aiMemorizesPlayer && !aiHeardPlayer)
+            {
+                state = State.Patrol;
+            }
+            else if (aiHeardPlayer && !playerIsInLos && !aiMemorizesPlayer)
+            {
+                canSpin = true;
+                state = State.Heard;
+            }
+            else if (playerIsInLos)
+            {
+                aiMemorizesPlayer = true;
+                state = State.Chase;
+            }
+            else if (aiMemorizesPlayer && !playerIsInLos)
+            {
+                state = State.Chase;
+                StartCoroutine(AiMemory());
+            }
+        }
+        else state = State.Dead;
+        
+        States();
     }
 
-    void SwitchStates()
+    void States()
     {
         switch (state)
         {
-            case States.Patrol:
-                //target = ;
-                ChangeTarget(target);
+            case State.Patrol:
+
                 TurretPatrol();
+                NoiseCheck();
+                StopCoroutine(AiMemory());
+
+                aIDestinationSetter.target = moveSpots[randomSpot];
+                //aIPath.endReachedDistance = moveSpotReachedDistance;
+
+                if (aIPath.reachedDestination)
+                {
+                    if (waitTime <= 0)
+                    {
+                        randomSpot = UnityEngine.Random.Range(0, moveSpots.Length);
+                        waitTime = startWaitTime;
+                    }
+                    else waitTime -= Time.deltaTime;
+                }
                 break;
-            case States.Listen:
-                //target = ;
-                ChangeTarget(target);
-                break;
-            case States.Chasing:
-                ChangeTarget(player.transform);
+
+            case State.Chase:
+
                 TurretAiming();
+                //aIPath.endReachedDistance = ChaseReachedDistance;
+
+                if (distance <= chaseRadius && distance > ChaseReachedDistance)
+                {
+                    aIDestinationSetter.target = player.transform;
+                }
+                else if (distance <= ChaseReachedDistance)
+                {
+                    randomStrafeDir = UnityEngine.Random.Range(0, 2);
+                    randomStrafeStartTime = UnityEngine.Random.Range(t_minStrafe, t_maxStrafe);
+
+                    if (waitStrafeTime <= 0)
+                    {
+                        if (randomStrafeDir == 0)
+                        {
+                            aIDestinationSetter.target = strafeLeft;
+                        }
+                        else if (randomStrafeDir == 1)
+                        {
+                            aIDestinationSetter.target = strafeRight;
+                        }
+                    }
+                    else waitStrafeTime -= Time.deltaTime;
+                }
                 break;
-            case States.Attack:
-                turretTank.Shot();
-                OnShooting?.Invoke();
+
+            case State.Heard:
+
+                //aIDestinationSetter = POS SONIDO
+                
+                if (Vector3.Distance(transform.position, noisePosition.position) <= 5f && canSpin)
+                {
+                    isSpiningTime += Time.deltaTime;
+                    transform.Rotate(Vector3.up * spinSpeed, Space.World);
+
+                    if (isSpiningTime >= spinTime)
+                    {
+                        canSpin = false;
+                        aiHeardPlayer = false;
+                        isSpiningTime = 0f;
+                    }
+                }
                 break;
-            case States.Dead:
+
+            case State.Dead:
+
+                aIDestinationSetter.target = null;
                 break;
         }
-    }
-
-    void ChangeTarget(Transform newTarget)
-    {
-        aIDestinationSetter.target = newTarget;
     }
 
     void TurretAiming()
     {
         Vector3 turretLookDir = player.transform.position - turretTank.gameObject.transform.position;
-        Vector3 newDir = Vector3.RotateTowards(turretTank.transform.forward, turretLookDir, 1, 0.0F);
-        targetAim = Quaternion.LookRotation(newDir);
+        Vector3 newDir = Vector3.RotateTowards(turretTank.transform.forward, turretLookDir, 1, 0f);
+        target = Quaternion.LookRotation(newDir);
         turretTank.transform.rotation = Quaternion.Euler(-90, target.eulerAngles.y, 0);
     }
 
     void TurretPatrol()
     {
         Vector3 turretLookDir = NoAiming.transform.position - turretTank.gameObject.transform.position;
-        Vector3 newDir = Vector3.RotateTowards(turretTank.transform.forward, turretLookDir, 1, 0.0F);
-        targetAim = Quaternion.LookRotation(newDir);
+        Vector3 newDir = Vector3.RotateTowards(turretTank.transform.forward, turretLookDir, 1, 0f);
+        target = Quaternion.LookRotation(newDir);
         turretTank.transform.rotation = Quaternion.Euler(-90, target.eulerAngles.y, 0);
+    }
+
+    void NoiseCheck()
+    {
+        if (distance <= noiseTravelDistance)
+        {
+            //posicion de sonido
+        }
+        else
+        {
+            aiHeardPlayer = false;
+            canSpin = false;
+        }
+    }
+
+    IEnumerator AiMemory()
+    {
+        inCreasingMemoryTime = 0;
+
+        while (inCreasingMemoryTime < memoryStartTime)
+        {
+            inCreasingMemoryTime += Time.deltaTime;
+            aiMemorizesPlayer = true;
+            yield return null;
+        }
+
+        aiHeardPlayer = false;
+        aiMemorizesPlayer = false;
+    }
+
+    void checkLos()
+    {
+        Vector3 direction = player.transform.position - transform.position;
+        float angle = Vector3.Angle(direction, transform.forward);
+
+        if (angle < fieldOfViewAngle * 0.5f)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, direction.normalized, out hit, losRadius))
+            {
+                if (hit.collider.tag == "Player")
+                {
+                    playerIsInLos = true;
+                    aiMemorizesPlayer = true;
+                }
+                else playerIsInLos = false;
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        
     }
 }

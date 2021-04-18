@@ -222,8 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe13b638f571dd4982ae339662a5525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camTransform: {fileID: 0}
-  player: {fileID: 3806065227112198601}
 --- !u!1 &1459718932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1567,7 @@ PrefabInstance:
     - target: {fileID: 7020538783977343667, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}
       propertyPath: m_Name
-      value: Player 2 (1)
+      value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 7020538783977343667, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}
@@ -1579,7 +1577,7 @@ PrefabInstance:
     - target: {fileID: 7020538783977343667, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7020538783977343668, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}

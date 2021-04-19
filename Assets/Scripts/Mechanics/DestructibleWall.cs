@@ -20,6 +20,7 @@ public class DestructibleWall : MonoBehaviour, IDamagable
     {
         particleDestruction = GameObject.Find("VFXsBuildExplo(Pool)").GetComponent<PoolVfxs>();
     }
+
     public void TakeDamage()
     {
         healthPoints--;
@@ -32,7 +33,7 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
     void Die()
     {
-        
+
         ParticleSystem destruction = particleDestruction.GetItem(transform.position, tag);
 
         WallDestroyed?.Invoke();

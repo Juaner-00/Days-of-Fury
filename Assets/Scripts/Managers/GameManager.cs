@@ -86,8 +86,6 @@ public class GameManager : MonoBehaviour
     // Método que se cuando el jugador muere
     void PlayerDie()
     {
-        FinishGame();
-
         if (playerMedals == Medals.None)
             LoseGame();
         else
@@ -148,6 +146,8 @@ public class GameManager : MonoBehaviour
                 dataObject.AssignMedals(actualLevel, 3);
                 break;
         }
+
+        dataObject.AssignScore(actualLevel, ScoreManager.Instance.TotalScore);
 
         SaveAndLoad.Save("LevelData", dataObject.Data);
     }

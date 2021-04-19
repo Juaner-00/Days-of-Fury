@@ -21,13 +21,20 @@ public class DataObject : ScriptableObject
         {
             data = new SaveData(medalsLVLs, scoreLVLs);
 
+            // Para ver en consola
+            ///---------------------------------------------
             string[] test = new string[data.MedalsLVL.Length];
             for (int i = 0; i < test.Length; i++)
-            {
                 test[i] = data.MedalsLVL[i].ToString();
-            }
 
-            Debug.Log(string.Join(", ", test));
+            Debug.Log("Get Medals " + string.Join(", ", test));
+
+            for (int i = 0; i < test.Length; i++)
+                test[i] = data.ScoreLVL[i].ToString();
+
+            Debug.Log("Get Score " + string.Join(", ", test));
+            ///---------------------------------------------
+
             return data;
         }
         set
@@ -36,18 +43,28 @@ public class DataObject : ScriptableObject
             medalsLVLs = data.MedalsLVL;
             scoreLVLs = data.ScoreLVL;
 
+            // Para ver en consola
+            ///---------------------------------------------
+            Debug.Log("Set");
             string[] test = new string[data.MedalsLVL.Length];
             for (int i = 0; i < test.Length; i++)
-            {
                 test[i] = data.MedalsLVL[i].ToString();
-            }
 
-            Debug.Log(string.Join(", ", test));
+            Debug.Log("Set Medals " + string.Join(", ", test));
+
+            for (int i = 0; i < test.Length; i++)
+                test[i] = data.ScoreLVL[i].ToString();
+
+            Debug.Log("Set Score " + string.Join(", ", test));
+            ///---------------------------------------------
+
         }
     }
 
     private void OnValidate()
     {
+        levelsCant = levelsCant < 0 ? 0 : levelsCant;
+
         int[] medals = new int[levelsCant];
         int[] score = new int[levelsCant];
 

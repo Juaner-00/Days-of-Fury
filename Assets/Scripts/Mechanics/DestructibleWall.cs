@@ -41,6 +41,7 @@ public class DestructibleWall : MonoBehaviour, IDamagable
         // Desactivar los renderer de los hijos
         foreach (Renderer render in GetComponentsInChildren<Renderer>())
             render.enabled = false;
+        transform.GetChild(0).gameObject.SetActive(true);
 
         // Desactivar los renderer y el collider
         GetComponent<Renderer>().enabled = false;

@@ -63,6 +63,8 @@ public class DataObject : ScriptableObject
 
     private void OnValidate()
     {
+        levelsCant = levelsCant < 0 ? 0 : levelsCant;
+
         int[] medals = new int[levelsCant];
         int[] score = new int[levelsCant];
 

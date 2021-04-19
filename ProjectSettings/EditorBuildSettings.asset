@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MariScenes/TutorialLevel.unity
     guid: 32f02548a7ce7964ba5ecd72791d4a4b
+  - enabled: 1
+    path: Assets/3RD PARTY/Loading Screen Studio/Scenes/Demo.unity
+    guid: a0c7c2db1dc9801459e5236db993a808
+  - enabled: 1
+    path: Assets/3RD PARTY/Loading Screen Studio/Scenes/Test.unity
+    guid: 0b52bbbd706aede42abed82b6422f8a7
   m_configObjects: {}

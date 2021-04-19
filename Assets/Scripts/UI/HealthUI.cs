@@ -11,15 +11,14 @@ public class HealthUI : MonoBehaviour
     [SerializeField] AnimationCurve curve;
     [SerializeField] Color color1, color2;
 
+    [SerializeField] PlayerHealth health;
 
-    PlayerHealth pHealth;
     float t = 0;
     public float tileDuration;
     public float divisor;
 
     void Start()
     {
-        pHealth = GameManager.Player.GetComponent<PlayerHealth>();
         if (damaged)
             damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0);
         if (glass)
@@ -45,12 +44,12 @@ public class HealthUI : MonoBehaviour
 
     void UpdateUI(int lives)
     {
+        divisor = (float)health.HealthPoints;
 
-        divisor = (float)pHealth.HealthPoints;
         if (glass)
-            glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0.4f - (divisor / pHealth.MaxHealthPoints));
+            glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0.4f - (divisor / health.MaxHealthPoints));
         if (damaged)
-            damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0.7f - (divisor / pHealth.MaxHealthPoints));
+            damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0.7f - (divisor / health.MaxHealthPoints));
         lifesText.text = $"{lives}";
     }
 }

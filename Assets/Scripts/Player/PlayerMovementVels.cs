@@ -38,6 +38,8 @@ public class PlayerMovementVels : MonoBehaviour
 
     CharacterController controller;
 
+    bool available;
+
     PlayerStates state;
 
     Ray frontRay;
@@ -52,6 +54,16 @@ public class PlayerMovementVels : MonoBehaviour
     public static Action OnMovingObjetive;
 
 
+    private void OnEnable()
+    {
+        FirstScreen.OnFirstClick += FirstClick;
+    }
+
+    private void OnDisable()
+    {
+        FirstScreen.OnFirstClick -= FirstClick;
+    }
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -64,27 +76,32 @@ public class PlayerMovementVels : MonoBehaviour
         maxSpeed = maxSpeedBase;
         curveTimer = 0;
 
+        available = false;
+
         crashCoolDownTimer = crashCoolDown;
         lastDir = initialDirection;
     }
 
     private void Update()
     {
-        HandleInputs();
-        // Solo se llama si hay un input
-        if (Input.anyKeyDown)
-            HandleDirection();
-
-        HandleRotation();
-
-        HandleRayCast();
-        HandleSpeed();
-
-
-        
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        if (available)
         {
-            OnMovingObjetive?.Invoke();
+            HandleInputs();
+            // Solo se llama si hay un input
+            if (Input.anyKeyDown)
+                HandleDirection();
+
+            HandleRotation();
+
+            HandleRayCast();
+            HandleSpeed();
+
+
+
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            {
+                OnMovingObjetive?.Invoke();
+            }
         }
 
 
@@ -227,6 +244,11 @@ public class PlayerMovementVels : MonoBehaviour
             default:
                 return Directions.South;
         }
+    }
+
+    void FirstClick()
+    {
+        available = true;
     }
 
     // Método para aumentar la velocidad de movimiento

@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
     {
         Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
 
+        playerMedals = Medals.None;
+    }
+
+    void StartSpawn()
+    {
         if (spawnEnemies)
             if (EnemySpawnManager.Instance)
                 EnemySpawnManager.Instance.StartSpawning();
@@ -39,8 +44,6 @@ public class GameManager : MonoBehaviour
         if (spawnPickUps)
             if (PickUpSpawnManager.Instance)
                 PickUpSpawnManager.Instance.StartSpawning();
-
-        playerMedals = Medals.None;
     }
 
     private void OnEnable()
@@ -106,6 +109,11 @@ public class GameManager : MonoBehaviour
 
         //delay para que se vea el efecto de acercamiento
         Invoke("OpenLose", 1.5f);
+    }
+
+    void FirstClick()
+    {
+        StartSpawn();
     }
 
     // Método que se llama si el jugador gana

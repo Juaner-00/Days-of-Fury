@@ -19,7 +19,7 @@ public class HealthUI : MonoBehaviour
 
     void Start()
     {
-        pHealth = GameManager.Player.GetComponentInParent<PlayerHealth>();
+        pHealth = GameManager.Player.GetComponent<PlayerHealth>();
         if(damaged)
             damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0);
         if(glass)

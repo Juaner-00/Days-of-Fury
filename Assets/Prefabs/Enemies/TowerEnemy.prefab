@@ -5632,7 +5632,7 @@ MonoBehaviour:
   maxHealthPoints: 1
   scorePoints: 50
   damagedSmoke: {fileID: 0}
-  radius: 20
+  radius: 50
   timeDead: 2
   turretTank: {fileID: 1937282129062286460}
 --- !u!1 &1936898917583691975

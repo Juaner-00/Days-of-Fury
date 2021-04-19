@@ -8,14 +8,17 @@ public class TutorialScreen : MonoBehaviour
     [SerializeField] GameObject lastRay, text;
 
     [SerializeField] float distance;
-
+   
     bool[] confirm;
     bool confirmEnemy;
+
+    GameObject activeText;
 
     RaycastHit [] ray;
     RaycastHit enemyRay;
 
     [SerializeField] bool firstClick = false;
+
 
     private void Start()
     {
@@ -37,11 +40,9 @@ public class TutorialScreen : MonoBehaviour
 
             if (isHit && ray[i].transform.CompareTag("Player") && confirm[i] == false)
             {
-                texts[i].SetActive(true);
                 Debug.DrawRay(coreRays[i].transform.position, coreRays[i].transform.TransformDirection(Vector3.forward) * ray[i].distance, Color.green);
                 confirm[i] = true;
-
-                DeactivateText(texts[i]);
+                StartCoroutine(ShowText(texts[i]));           
             }
             else
                 Debug.DrawRay(coreRays[i].transform.position, coreRays[i].transform.TransformDirection(Vector3.forward) * ray[i].distance, Color.red);
@@ -51,25 +52,21 @@ public class TutorialScreen : MonoBehaviour
 
         if (isHitEnemy && enemyRay.transform.CompareTag("Enemy") && confirmEnemy == false)
         {
-            text.SetActive(false);
             Debug.DrawRay(lastRay.transform.position, lastRay.transform.TransformDirection(Vector3.forward) * enemyRay.distance, Color.green);
         }
         else
         {
-            text.SetActive(true);
             Debug.DrawRay(lastRay.transform.position, lastRay.transform.TransformDirection(Vector3.forward) * enemyRay.distance, Color.red);
             confirmEnemy = true;
-            DeactivateText(text);
+            StartCoroutine(ShowText(text));
         }
     }
 
-    public void DeactivateText(GameObject activatedText)
+    IEnumerator ShowText(GameObject activatedText)
     {
-        float time = 2f; 
-        while(time > 0)
-        {
-            time -= Time.deltaTime;
-        }
+        activatedText.SetActive(true);
+        yield return new WaitForSeconds(2);
         activatedText.SetActive(false);
     }
+
 }

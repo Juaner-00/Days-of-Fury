@@ -130,6 +130,7 @@ public abstract class Menu : MonoBehaviour
     // Resume el juego
     public void Resume()
     {
+        IsPaused = false;
         Time.timeScale = 1;
         screen.SetActive(false);
         HUD.SetActive(true);
@@ -162,7 +163,7 @@ public abstract class Menu : MonoBehaviour
     {
 
     }
-    
+
     // Abre el panel anterior
     public void GoBack()
     {

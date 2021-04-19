@@ -15,11 +15,9 @@ public class ReticleController : MonoBehaviour
 
     private void Update()
     {
-
-
         HandleInputs();
 
-        if (Input.GetButtonUp("Fire1")) 
+        if (Input.GetButtonUp("Fire1") && !Menu.IsPaused)
         {
             if (turretTank == true && turretTank.Available == true)
             {

@@ -11,7 +11,7 @@ public class FirstScreen : Menu
         Invoke("First", 0.1f);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (Input.anyKeyDown && firstClick == false)
         {
@@ -23,6 +23,7 @@ public class FirstScreen : Menu
     void First()
     {
         Time.timeScale = 0;
+        IsPaused = true;
     }
 
     // Maneja los botones

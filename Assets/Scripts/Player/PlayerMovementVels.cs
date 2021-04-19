@@ -49,6 +49,9 @@ public class PlayerMovementVels : MonoBehaviour
     public static Action OnStoped;
 
 
+    public static Action OnMovingObjetive;
+
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -71,10 +74,20 @@ public class PlayerMovementVels : MonoBehaviour
         // Solo se llama si hay un input
         if (Input.anyKeyDown)
             HandleDirection();
+
         HandleRotation();
 
         HandleRayCast();
         HandleSpeed();
+
+
+        
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        {
+            OnMovingObjetive?.Invoke();
+        }
+
+
     }
 
     void HandleRayCast()
@@ -125,7 +138,7 @@ public class PlayerMovementVels : MonoBehaviour
         {
             // Si está parado y presiona cualquier tecla se pone en acelerando
             case PlayerStates.Stoped:
-                if (Input.anyKey)
+                if (Input.anyKey && !Menu.IsPaused)
                 {
                     curveTimer = 0;
                     state = PlayerStates.Accelerating;

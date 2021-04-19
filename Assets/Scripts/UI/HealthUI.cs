@@ -20,9 +20,9 @@ public class HealthUI : MonoBehaviour
     void Start()
     {
         pHealth = GameManager.Player.GetComponent<PlayerHealth>();
-        if(damaged)
+        if (damaged)
             damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0);
-        if(glass)
+        if (glass)
             glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0);
 
     }
@@ -35,12 +35,12 @@ public class HealthUI : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnChangeLife += UpdateUI; 
+        PlayerHealth.OnChangeLife += UpdateUI;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnChangeLife -= UpdateUI;  
+        PlayerHealth.OnChangeLife -= UpdateUI;
     }
 
     void UpdateUI(int lives)
@@ -49,8 +49,8 @@ public class HealthUI : MonoBehaviour
         divisor = (float)pHealth.HealthPoints;
         if (glass)
             glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0.4f - (divisor / pHealth.MaxHealthPoints));
-        if(damaged)
+        if (damaged)
             damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0.7f - (divisor / pHealth.MaxHealthPoints));
-        lifesText.text = $"{lives}";      
+        lifesText.text = $"{lives}";
     }
 }

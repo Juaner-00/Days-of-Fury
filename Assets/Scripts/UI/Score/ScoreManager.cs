@@ -17,6 +17,10 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
 
     public static event Action<int> OnGetScore = delegate { };
 
+    public static Action OnOneMedalObtain;
+    public static Action OnTwoMedalObtain;
+    public static Action OnThreeMedalObtain;
+
 
     Medals medalState;
 
@@ -49,6 +53,7 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
         medalState = Medals.OneMedal;
         oneStarMedal.SetActive(true);
         OnMedalObtained?.Invoke(medalState);
+        OnOneMedalObtain?.Invoke();
     }
 
     public void ActiveTwoStarMedal()
@@ -58,6 +63,7 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
         medalState = Medals.TwoMedal;
         twoStarMedal.SetActive(true);
         OnMedalObtained?.Invoke(medalState);
+        OnTwoMedalObtain?.Invoke();
     }
 
     public void ActiveThreeStarMedal()
@@ -67,6 +73,7 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
         medalState = Medals.ThreeMedal;
         threeStarMedal.SetActive(true);
         OnMedalObtained?.Invoke(medalState);
+        OnThreeMedalObtain?.Invoke();
     }
 
     public int GetValue()

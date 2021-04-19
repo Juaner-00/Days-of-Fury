@@ -50,12 +50,14 @@ public class GameManager : MonoBehaviour
     {
         PlayerHealth.OnDie += PlayerDie;
         ScoreManager.OnMedalObtained += VictoryCheck;
+        FirstScreen.OnFirstClick += StartSpawn;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnDie -= PlayerDie;
         ScoreManager.OnMedalObtained -= VictoryCheck;
+        FirstScreen.OnFirstClick -= StartSpawn;
     }
 
     // Método para finalizar el juego

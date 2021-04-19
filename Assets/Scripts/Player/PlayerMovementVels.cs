@@ -49,6 +49,9 @@ public class PlayerMovementVels : MonoBehaviour
     public static Action OnStoped;
 
 
+    public static Action OnMovingObjetive;
+
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -76,6 +79,15 @@ public class PlayerMovementVels : MonoBehaviour
 
         HandleRayCast();
         HandleSpeed();
+
+
+        
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        {
+            OnMovingObjetive?.Invoke();
+        }
+
+
     }
 
     void HandleRayCast()

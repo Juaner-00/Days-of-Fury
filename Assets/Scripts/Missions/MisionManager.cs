@@ -23,12 +23,17 @@ public class MisionManager : MonoBehaviour
     int missionObjective;
     int missionsComplets;
 
+    public GameObject playerPosition;
+    public GameObject Objetive1;
 
     private void Awake()
     {
        if (Instance)
             Destroy(gameObject);
         Instance = this;
+
+        Texts();
+        //layerPosition.transform.localPosition = gameObject.GetComponent<PlayerMovementVels>().transform.localPosition;
     }
     public void Start()
     {
@@ -60,7 +65,10 @@ public class MisionManager : MonoBehaviour
     public void OnEnable()
     {
         EnemyController.OnDie += OnEnemyDead;
-        ScoreManager.OnGetScore += OnScoreGet;
+        ScoreManager.OnGetScore += OnScoreGet;       
+        PlayerMovementVels.OnMovingObjetive += OnMove;
+        ObjetiveManager.OnReachObjetive += OnReachObj;
+        EnemyTowerController.OnDie += TowerDead;
     }
 
     void OnScoreGet(int score)
@@ -71,7 +79,25 @@ public class MisionManager : MonoBehaviour
             IsComplete();
         }
     }
-    
+
+    void OnMove()
+    {        
+        if (missions[actualMision].opcion == Missions.Opcion.Move)
+        {
+            actualCount++;
+            IsComplete();
+        }
+    }
+
+    void OnReachObj()
+    {
+        if (missions[actualMision].opcion == Missions.Opcion.Objetive)
+        {
+            actualCount = missions[actualMision].objetive;
+            IsComplete();
+        }
+    }
+
     void OnEnemyDead(Vector3 _)
     {
         if (missions[actualMision].opcion == Missions.Opcion.Enemys)
@@ -81,6 +107,18 @@ public class MisionManager : MonoBehaviour
             IsComplete();
         }           
     }
+
+    void TowerDead(Vector3 _)
+    {
+        if (missions[actualMision].opcion == Missions.Opcion.Tower)
+        {
+            actualCount++;
+            print($"Actual Objective {actualCount}/{missionObjective}");
+            IsComplete();
+        }
+    }
+
+
 
     void IsComplete()
     {

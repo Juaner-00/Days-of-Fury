@@ -12,13 +12,12 @@ public class PlayerShoot : TurretTank
     [SerializeField]
     Slider fill;
     [SerializeField]
-    float coldDown,cdLastShoot;
+    float coldDown, cdLastShoot;
     [SerializeField]
     Image bgSlider;
     [SerializeField]
     AnimationCurve curveAlpha;
     float counter, coldDownTimer;
-    
 
 
     protected override void Start()
@@ -28,21 +27,23 @@ public class PlayerShoot : TurretTank
         fill.maxValue = numShoots;
         counter = numShoots;
     }
+
     void Update()
     {
         available = counter >= 1;
-        if(coldDownTimer == 0)
+        if (coldDownTimer == 0)
         {
             counter += Time.deltaTime * AttackSpeed;
             counter = Mathf.Clamp(counter, 0f, numShoots);
-            
+
         }
         else
         {
-            bgSlider.color = new Color(bgSlider.color.r, bgSlider.color.g, bgSlider.color.b, curveAlpha.Evaluate(coldDown- coldDownTimer / coldDown));
+            bgSlider.color = new Color(bgSlider.color.r, bgSlider.color.g, bgSlider.color.b, curveAlpha.Evaluate(coldDown - coldDownTimer / coldDown));
             coldDownTimer -= Time.deltaTime;
-            coldDownTimer  = Mathf.Clamp(coldDownTimer, 0f, cdLastShoot);
+            coldDownTimer = Mathf.Clamp(coldDownTimer, 0f, cdLastShoot);
         }
+
         fill.value = counter;
         /*if (counter < 3) multiplier = 1f;
         if (counter < 2) multiplier = 0.66f;
@@ -53,7 +54,6 @@ public class PlayerShoot : TurretTank
     {
         if (smokeFire)
             smokeFire.Play();
-
         if (counter < 2)
         {
             coldDownTimer = cdLastShoot;
@@ -64,12 +64,12 @@ public class PlayerShoot : TurretTank
             coldDownTimer = coldDown;
             counter = 1;
         }
-        else if(counter == 3)
+        else if (counter == 3)
         {
             coldDownTimer = coldDown;
             counter = 2;
         }
-       
+
         Vector3 force = -transform.up * this.force;
         GameObject clone = cartrigde.GetItem(reference.position, Vector3.zero, tag);
         //clone.transform.LookAt(clone.transform.position + transform.forward);

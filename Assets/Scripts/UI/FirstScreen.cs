@@ -8,7 +8,8 @@ public class FirstScreen : Menu
 
     private void Start()
     {
-        Invoke("First", 0.1f);
+        // Invoke("First", 0.1f);
+        IsPaused = true;
     }
 
     private void LateUpdate()

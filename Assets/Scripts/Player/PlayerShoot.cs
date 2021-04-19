@@ -52,23 +52,15 @@ public class PlayerShoot : TurretTank
 
     public override void Shot()
     {
+        if (counter < 1)
+            return;
+
         if (smokeFire)
             smokeFire.Play();
-        if (counter < 2)
-        {
-            coldDownTimer = cdLastShoot;
-            counter = 0;
-        }
-        else if (counter < 3)
-        {
-            coldDownTimer = coldDown;
-            counter = 1;
-        }
-        else if (counter == 3)
-        {
-            coldDownTimer = coldDown;
-            counter = 2;
-        }
+
+        counter--;
+        coldDownTimer = coldDown;
+
 
         Vector3 force = -transform.up * this.force;
         GameObject clone = cartrigde.GetItem(reference.position, Vector3.zero, tag);

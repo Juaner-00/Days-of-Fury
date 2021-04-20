@@ -18,7 +18,7 @@ public class EnemyStateMachine : MonoBehaviour
         memoryStartTime = 5f, noiseTravelDistance = 80f, spinSpeed = 3f, spinTime = 3f;
 
     Transform noisePosition;
-    [SerializeField] Transform[] moveSpots;
+    Transform[] moveSpots;
     GameObject goMoveSpots;
     int randomSpot, randomStrafeDir;
     float waitTime, startWaitTime, randomStrafeStartTime, waitStrafeTime, distance, inCreasingMemoryTime, isSpiningTime;
@@ -36,11 +36,14 @@ public class EnemyStateMachine : MonoBehaviour
     private void Start()
     {
         goMoveSpots = GameObject.Find("PatrolEnemySpots");
-        for (int i = 0; i < goMoveSpots.transform.childCount ; i++)
+        int lenght = goMoveSpots.transform.childCount;
+        moveSpots = new Transform[lenght];
+
+        for (int i = 0; i < lenght; i++)
         {
-            moveSpots = new Transform[goMoveSpots.transform.childCount];
             moveSpots[i] = goMoveSpots.transform.GetChild(i);
         }
+
         noisePosition = GameObject.Find("NoisePosition").GetComponent<Transform>();
         animator = GetComponentInChildren<Animator>();
         aIDestinationSetter = GetComponent<AIDestinationSetter>();
@@ -249,8 +252,8 @@ public class EnemyStateMachine : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, chaseRadius);
 
-        Vector3 fovLine1 = Quaternion.AngleAxis(fieldOfViewAngle, transform.up) * transform.forward * losRadius;
-        Vector3 fovLine2 = Quaternion.AngleAxis(-fieldOfViewAngle, transform.up) * transform.forward * losRadius;
+        Vector3 fovLine1 = Quaternion.AngleAxis(fieldOfViewAngle, transform.up) * -transform.forward * losRadius;
+        Vector3 fovLine2 = Quaternion.AngleAxis(-fieldOfViewAngle, transform.up) * -transform.forward * losRadius;
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, fovLine1);

@@ -18,11 +18,15 @@ public class FirstScreen : Menu
         if (Input.anyKeyDown && firstClick == false)
         {
             firstClick = true;
-            OnFirstClick?.Invoke();
             Resume();
+            Invoke("CallEvent", 0.2f);
         }
     }
 
+    void CallEvent()
+    {
+        OnFirstClick?.Invoke();
+    }
 
     // Maneja los botones
     public override void Action()

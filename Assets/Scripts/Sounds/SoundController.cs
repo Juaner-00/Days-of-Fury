@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public abstract class SoundController : MonoBehaviour
 {
@@ -15,10 +16,10 @@ public abstract class SoundController : MonoBehaviour
     [SerializeField] protected ActionClips[] actionClips;
     protected List<AudioSource> sources;
 
-    protected virtual void Awake() {
+    public virtual void Awake() {
         sources = new List<AudioSource>();
 
-        for(int i = 0; i < actionClips.Length; i++){
+        for(int i = 0; i < actionClips.Length; i++) {
             Debug.Log("Source Added");
             var source = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
             source.loop = false;
@@ -31,7 +32,7 @@ public abstract class SoundController : MonoBehaviour
         ChildAwake();
     }
 
-    // Reproduce un sonido
+        // Reproduce un sonido
     public void Play(int index, bool? randomClip = null, bool? loop = null) {
         if(actionClips[index].Clips.Length > 0) { 
             sources[index].clip = randomClip == null? 
@@ -67,7 +68,7 @@ public abstract class SoundController : MonoBehaviour
         {
             if (actionClips[i].ActionName == sourceName)
             {
-                if (sources[i].isPlaying == false)
+                if (sources[i].isPlaying == false || sources[i] == null)
                 { 
                     if(gameObject.activeSelf == true)
                     { 

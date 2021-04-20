@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 750350602476612445}
   - component: {fileID: 6351791494922216182}
   - component: {fileID: 317745624992038896}
-  - component: {fileID: -3707088519617214889}
   m_Layer: 0
   m_Name: Score+50 PickUp
   m_TagString: Untagged
@@ -156,24 +155,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 1.21, z: 1.37}
   m_Center: {x: 0, y: -0.07, z: 0}
---- !u!114 &-3707088519617214889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652189564951397605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d51efa47d22d9e4a91181356d47a9a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMusicController: 0
-  actionClips:
-  - actionName: SFX
-    actionVolume: 0.3
-    clips:
-    - {fileID: 8300000, guid: 565d3b04f9d1cc345b07364e2956a9b9, type: 3}
 --- !u!1001 &3207674119654170779
 PrefabInstance:
   m_ObjectHideFlags: 0

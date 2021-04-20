@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial-Mision1
   m_EditorClassIdentifier: 
   names: Mision1
-  description: Reach The Objetive
-  objetive: 40
-  opcion: 4
+  description: Complete The Obstacle Course
+  objetive: 1
+  opcion: 5

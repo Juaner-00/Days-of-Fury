@@ -10,7 +10,7 @@ public class TextsTutorial : MonoBehaviour
     bool isDestroy = false;
     private void Update()
     {
-        if(gameObject.name == "ColliderText4" )
+        if(gameObject.name == "ColliderText6" )
         {
             
             if (tower == null && isDestroy == false)

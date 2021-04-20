@@ -18,13 +18,13 @@ public class MisionManager : MonoBehaviour
     [Header("Missions")]
     [SerializeField] int actualMision = 0; //Mision actual
     [SerializeField] Missions[] missions;
-    [SerializeField] int actualCount;
 
+    int actualCount;
     int missionObjective;
     int missionsComplets;
 
-    public GameObject playerPosition;
-    public GameObject Objetive1;
+    //public GameObject playerPosition;
+    public ObjetiveManager[] Objetives;
 
     private void Awake()
     {
@@ -89,12 +89,14 @@ public class MisionManager : MonoBehaviour
         }
     }
 
-    void OnReachObj()
+    void OnReachObj(int _Objetive)
     {
         if (missions[actualMision].opcion == Missions.Opcion.Objetive)
         {
-            actualCount = missions[actualMision].objetive;
-            IsComplete();
+            if (_Objetive == missions[actualMision].objetive) {
+                actualCount = missions[actualMision].objetive;
+                IsComplete();
+            }
         }
     }
 

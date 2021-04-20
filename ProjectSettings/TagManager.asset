@@ -9,6 +9,7 @@ TagManager:
   - Shell
   - obstaculo
   - DestuctibleWall
+  - MoveSpot
   layers:
   - Default
   - TransparentFX

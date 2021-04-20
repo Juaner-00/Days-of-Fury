@@ -37,7 +37,7 @@ public class MusicManager : SoundController
         SceneManager.sceneLoaded += UpdateMusicToLoadedScene;
     }
     private void ApplyAudioMixer() {
-        for(int i = 0; i < sources.Length; i++) {
+        for(int i = 0; i < sources.Count; i++) {
             sources[i].outputAudioMixerGroup = Resources.Load<AudioMixerGroup>(MIXER_PATH);
         }
     }

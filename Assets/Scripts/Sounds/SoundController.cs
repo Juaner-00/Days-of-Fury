@@ -13,18 +13,19 @@ public abstract class SoundController : MonoBehaviour
     public bool isMusicController = false;
 
     [SerializeField] protected ActionClips[] actionClips;
-    protected AudioSource[] sources;
+    protected List<AudioSource> sources;
 
     protected virtual void Awake() {
-        sources = new AudioSource[actionClips.Length];
+        sources = new List<AudioSource>();
 
-        for(int i = 0; i < sources.Length; i++){
+        for(int i = 0; i < actionClips.Length; i++){
+            Debug.Log("Source Added");
             var source = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
-            sources[i] = source;
-            sources[i].loop = false;
-            sources[i].playOnAwake = false;
+            source.loop = false;
+            source.playOnAwake = false;
+            if(actionClips[i].Clips.Length > 0) source.clip = actionClips[i].Clips[0];
 
-            if(actionClips[i].Clips.Length > 0) sources[i].clip = actionClips[i].Clips[0];
+            sources.Add(source);
         }
 
         ChildAwake();
@@ -34,7 +35,7 @@ public abstract class SoundController : MonoBehaviour
     public void Play(int index, bool? randomClip = null, bool? loop = null) {
         if(actionClips[index].Clips.Length > 0) { 
             sources[index].clip = randomClip == null? 
-                sources[index].clip : actionClips[index].Clips[UnityEngine.Random.Range(0, actionClips[index].Clips.Length)];
+            sources[index].clip : actionClips[index].Clips[UnityEngine.Random.Range(0, actionClips[index].Clips.Length)];
             sources[index].loop = loop == null? false : (bool)loop;
             sources[index].volume = actionClips[index].ActionVolume /* (isMusicController == true? _MusicVolumeMultiplier : _VolumeMultiplier)*/;
 
@@ -49,7 +50,7 @@ public abstract class SoundController : MonoBehaviour
     
     // Detiene todos los sonidos que se reproducen
     public void StopAll() {
-        for(int i = 0; i < sources.Length; i++) sources[i].Stop();
+        for(int i = 0; i < sources.Count; i++) sources[i].Stop();
     }
 
     // Agrega un sonido al un audiosource
@@ -62,14 +63,51 @@ public abstract class SoundController : MonoBehaviour
         bool isRandom = randomClip != null ? (bool)randomClip : false;
         bool isLoop = loop != null ? (bool)loop : false;
 
-        for (int i = 0; i < actionClips.Length; i++)
+        for (int i = 0; i < sources.Count; i++)
         {
             if (actionClips[i].ActionName == sourceName)
             {
-                if (sources[i].isPlaying == false && gameObject.activeSelf == true) Play(i, isRandom, isLoop);
+                if (sources[i].isPlaying == false)
+                { 
+                    if(gameObject.activeSelf == true)
+                    { 
+                        Play(i, isRandom, isLoop);
+                    }
+                }
+                else
+                {
+                    AudioClip clip = default;
+                    for (int h = 0; h < actionClips.Length; h++)
+                    {
+                        if (actionClips[i].ActionName == sourceName)
+                        {
+                            clip = actionClips[i].Clips[isRandom == true? UnityEngine.Random.Range(0, actionClips[i].Clips.Length) : 0];
+                        }
+                    }
+
+                    AudioSource newAudioSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+                    newAudioSource.playOnAwake = false;
+                    newAudioSource.loop = isLoop;
+                    newAudioSource.clip = clip;
+
+                    StartCoroutine(PlaySourceCorroutine(newAudioSource, clip.length));
+
+                    sources.Add(newAudioSource);
+                }
+                
             }
         }
     }
+
+    private IEnumerator PlaySourceCorroutine(AudioSource source, float duration) 
+    {
+        source.Play();
+
+        yield return new WaitForSecondsRealtime(duration);
+
+        source.Stop();
+    }
+
     protected void StopSourceByName(string sourceName)
     {
         for (int i = 0; i < actionClips.Length; i++)

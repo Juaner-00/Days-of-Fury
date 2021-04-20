@@ -8,14 +8,11 @@ public class HealthUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI lifesText;
     [SerializeField] Image damaged, glass;
-    [SerializeField] AnimationCurve curve;
     [SerializeField] Color color1, color2;
 
     [SerializeField] PlayerHealth health;
 
-    float t = 0;
-    public float tileDuration;
-    public float divisor;
+    float divisor;
 
     void Start()
     {
@@ -24,12 +21,6 @@ public class HealthUI : MonoBehaviour
         if (glass)
             glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0);
 
-    }
-
-    void Update()
-    {
-        t += Time.deltaTime;
-        float c = (curve.Evaluate(t / tileDuration));
     }
 
     private void OnEnable()

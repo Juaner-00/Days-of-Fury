@@ -11,13 +11,15 @@ public enum State
 
 public class EnemyStateMachine : MonoBehaviour
 {
-    [SerializeField] Transform[] moveSpots;
     [SerializeField] TurretTank turretTank;
-    [SerializeField] Transform NoAiming, strafeLeft, strafeRight, noisePosition;
-    [SerializeField] float t_minStrafe, t_maxStrafe, chaseRadius = 20f, facePlayerFactor = 20f,
-        moveSpotReachedDistance = 5f, ChaseReachedDistance = 20f, fieldOfViewAngle = 160f, losRadius = 45f,
-        memoryStartTime = 10f, noiseTravelDistance, spinSpeed = 3f, spinTime = 3f;
+    [SerializeField] Transform NoAiming, strafeLeft, strafeRight;
+    [SerializeField] float t_minStrafe, t_maxStrafe = 2f, chaseRadius = 38f,
+        ChaseReachedDistance = 20f, fieldOfViewAngle = 160f, losRadius = 55f,
+        memoryStartTime = 5f, noiseTravelDistance = 80f, spinSpeed = 3f, spinTime = 3f;
 
+    Transform noisePosition;
+    [SerializeField] Transform[] moveSpots;
+    GameObject[] goMoveSpots;
     int randomSpot, randomStrafeDir;
     float waitTime, startWaitTime, randomStrafeStartTime, waitStrafeTime, distance, inCreasingMemoryTime, isSpiningTime;
     AIDestinationSetter aIDestinationSetter;
@@ -28,11 +30,17 @@ public class EnemyStateMachine : MonoBehaviour
     bool playerIsInLos, aiMemorizesPlayer, aiHeardPlayer = false, canSpin = false;
     Animator animator;
 
-    public bool Alive;
+    [HideInInspector] public bool Alive;
     public Action OnShooting;
 
     private void Start()
     {
+        goMoveSpots = GameObject.FindGameObjectsWithTag("MoveSpot");
+        for (int i = 0; i < goMoveSpots.Length; i++)
+        {
+            moveSpots[i] = goMoveSpots[i].transform;
+        }
+        noisePosition = GameObject.Find("NoisePosition").GetComponent<Transform>();
         animator = GetComponentInChildren<Animator>();
         aIDestinationSetter = GetComponent<AIDestinationSetter>();
         player = GameManager.Player;
@@ -119,6 +127,8 @@ public class EnemyStateMachine : MonoBehaviour
                 {
                     randomStrafeDir = UnityEngine.Random.Range(0, 2);
                     randomStrafeStartTime = UnityEngine.Random.Range(t_minStrafe, t_maxStrafe);
+
+                    turretTank.Shot();
 
                     if (waitStrafeTime <= 0)
                     {

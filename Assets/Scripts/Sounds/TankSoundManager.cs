@@ -16,7 +16,7 @@ public class TankSoundManager : SoundController
 
         //  Estos son los llamados que escucha el scrpit para funcionar con los distintos audios:
         //  Moviéndose
-        PlayerMovement.OnMoving += PlayMoving;
+        PlayerMovementVels.OnMoving += PlayMoving;
         //  Apuntando
         //reticle.OnAiming += PlayAiming;
         //reticle.OnStopAiming += StopAiming;

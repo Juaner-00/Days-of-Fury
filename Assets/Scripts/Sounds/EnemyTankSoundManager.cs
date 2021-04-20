@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyTankSoundManager : SoundController
 {
-    EnemyShootController fov;
+    EnemyStateMachine fov;
     EnemyController controller;
 
     protected override void ChildAwake()
     {
-        fov = GetComponent<EnemyShootController>();
+        fov = GetComponent<EnemyStateMachine>();
         controller = GetComponent<EnemyController>();
 
         //fov.OnMoving += PlayMoving;

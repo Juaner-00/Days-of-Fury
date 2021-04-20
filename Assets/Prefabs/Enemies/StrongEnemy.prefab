@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2040538478797389086}
   - component: {fileID: -6518847683244076126}
   - component: {fileID: 3513836849608794357}
+  - component: {fileID: 3553608432911208098}
   m_Layer: 8
   m_Name: StrongEnemy
   m_TagString: Enemy
@@ -220,9 +221,34 @@ MonoBehaviour:
   losRadius: 55
   memoryStartTime: 5
   noiseTravelDistance: 80
-  spinSpeed: 3
   spinTime: 3
   Alive: 0
+--- !u!114 &3553608432911208098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512079935350027519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMusicController: 0
+  actionClips:
+  - actionName: Shooting
+    actionVolume: 1
+    clips:
+    - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
+  - actionName: Moving
+    actionVolume: 1
+    clips:
+    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
+  - actionName: GettingHurt
+    actionVolume: 1
+    clips:
+    - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}
 --- !u!1 &5529381431989583863
 GameObject:
   m_ObjectHideFlags: 0

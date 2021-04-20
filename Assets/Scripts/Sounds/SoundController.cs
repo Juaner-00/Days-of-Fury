@@ -74,7 +74,7 @@ public abstract class SoundController : MonoBehaviour
                         Play(i, isRandom, isLoop);
                     }
                 }
-                else
+                else if(isLoop == false)
                 {
                     AudioClip clip = default;
                     for (int h = 0; h < actionClips.Length; h++)

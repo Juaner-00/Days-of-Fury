@@ -131,7 +131,9 @@ public class EnemyStateMachine : MonoBehaviour
                     randomStrafeDir = UnityEngine.Random.Range(0, 2);
                     randomStrafeStartTime = UnityEngine.Random.Range(t_minStrafe, t_maxStrafe);
 
-                    turretTank.Shot();
+                    //  Audio
+                    if(turretTank.Shot()) OnShooting?.Invoke();
+
 
                     if (waitStrafeTime <= 0)
                     {

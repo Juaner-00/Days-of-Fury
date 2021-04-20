@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial-Mision3
   m_EditorClassIdentifier: 
   names: Mision3
-  description: Reach The Final Objetive
+  description: Explore The City
   objetive: 1
   opcion: 5

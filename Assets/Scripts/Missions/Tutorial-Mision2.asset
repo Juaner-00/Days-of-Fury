@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abaafcaf14bc00442b95a08ef11a91ef, type: 3}
   m_Name: Tutorial-Mision2
   m_EditorClassIdentifier: 
-  names: Mision3
-  description: Destroy The Turrent
+  names: Mision2
+  description: Destroy The Turrents
   objetive: 2
   opcion: 6

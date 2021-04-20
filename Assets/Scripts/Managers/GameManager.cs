@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
     {
         Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
 
+        playerMedals = Medals.None;
+    }
+
+    void StartSpawn()
+    {
         if (spawnEnemies)
             if (EnemySpawnManager.Instance)
                 EnemySpawnManager.Instance.StartSpawning();
@@ -39,20 +44,20 @@ public class GameManager : MonoBehaviour
         if (spawnPickUps)
             if (PickUpSpawnManager.Instance)
                 PickUpSpawnManager.Instance.StartSpawning();
-
-        playerMedals = Medals.None;
     }
 
     private void OnEnable()
     {
         PlayerHealth.OnDie += PlayerDie;
         ScoreManager.OnMedalObtained += VictoryCheck;
+        FirstScreen.OnFirstClick += StartSpawn;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnDie -= PlayerDie;
         ScoreManager.OnMedalObtained -= VictoryCheck;
+        FirstScreen.OnFirstClick -= StartSpawn;
     }
 
     // Método para finalizar el juego
@@ -86,8 +91,6 @@ public class GameManager : MonoBehaviour
     // Método que se cuando el jugador muere
     void PlayerDie()
     {
-        FinishGame();
-
         if (playerMedals == Medals.None)
             LoseGame();
         else
@@ -108,6 +111,11 @@ public class GameManager : MonoBehaviour
 
         //delay para que se vea el efecto de acercamiento
         Invoke("OpenLose", 1.5f);
+    }
+
+    void FirstClick()
+    {
+        StartSpawn();
     }
 
     // Método que se llama si el jugador gana
@@ -148,6 +156,8 @@ public class GameManager : MonoBehaviour
                 dataObject.AssignMedals(actualLevel, 3);
                 break;
         }
+
+        dataObject.AssignScore(actualLevel, ScoreManager.Instance.TotalScore);
 
         SaveAndLoad.Save("LevelData", dataObject.Data);
     }

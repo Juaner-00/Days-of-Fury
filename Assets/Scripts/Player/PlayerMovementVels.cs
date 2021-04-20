@@ -38,6 +38,8 @@ public class PlayerMovementVels : MonoBehaviour
 
     CharacterController controller;
 
+    bool available;
+
     PlayerStates state;
 
     Ray frontRay;
@@ -48,6 +50,19 @@ public class PlayerMovementVels : MonoBehaviour
     public static Action OnMoving;
     public static Action OnStoped;
 
+
+    public static Action OnMovingObjetive;
+
+
+    private void OnEnable()
+    {
+        FirstScreen.OnFirstClick += FirstClick;
+    }
+
+    private void OnDisable()
+    {
+        FirstScreen.OnFirstClick -= FirstClick;
+    }
 
     private void Awake()
     {
@@ -61,20 +76,35 @@ public class PlayerMovementVels : MonoBehaviour
         maxSpeed = maxSpeedBase;
         curveTimer = 0;
 
+        available = false;
+
         crashCoolDownTimer = crashCoolDown;
         lastDir = initialDirection;
     }
 
     private void Update()
     {
-        HandleInputs();
-        // Solo se llama si hay un input
-        if (Input.anyKeyDown)
-            HandleDirection();
-        HandleRotation();
+        if (available)
+        {
+            HandleInputs();
+            // Solo se llama si hay un input
+            if (Input.anyKeyDown)
+                HandleDirection();
 
-        HandleRayCast();
-        HandleSpeed();
+            HandleRotation();
+
+            HandleRayCast();
+            HandleSpeed();
+
+
+
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            {
+                OnMovingObjetive?.Invoke();
+            }
+        }
+
+
     }
 
     void HandleRayCast()
@@ -125,7 +155,7 @@ public class PlayerMovementVels : MonoBehaviour
         {
             // Si está parado y presiona cualquier tecla se pone en acelerando
             case PlayerStates.Stoped:
-                if (Input.anyKey)
+                if (Input.anyKey && !Menu.IsPaused)
                 {
                     curveTimer = 0;
                     state = PlayerStates.Accelerating;
@@ -214,6 +244,11 @@ public class PlayerMovementVels : MonoBehaviour
             default:
                 return Directions.South;
         }
+    }
+
+    void FirstClick()
+    {
+        available = true;
     }
 
     // Método para aumentar la velocidad de movimiento

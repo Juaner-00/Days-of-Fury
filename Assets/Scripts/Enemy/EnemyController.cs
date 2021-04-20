@@ -36,14 +36,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
 
     AIPath aIPath;
-    AIDestinationSetter aIDestinationSetter;
-    EnemyShootController enemyShootController;
-
+    EnemyStateMachine stateMachine;
 
     void Awake()
     {
-        enemyShootController = GetComponent<EnemyShootController>();
-        aIDestinationSetter = GetComponent<AIDestinationSetter>();
+        stateMachine = GetComponent<EnemyStateMachine>();
         aIPath = GetComponent<AIPath>();
         enemyAnimator = GetComponentInChildren<Animator>();
         particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
@@ -58,13 +55,9 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             aIPath.usingGravity = false;
             aIPath.canSearch = false;
             aIPath.canMove = false;
-            enemyShootController.Dead = true;
-        }
-        if (aIDestinationSetter)
-        {
-            aIDestinationSetter.target = null;
         }
 
+        stateMachine.Alive = false;
         inicialPosition = transform.position;
 
         float prob = UnityEngine.Random.Range(0f, 1f);
@@ -79,15 +72,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             aIPath.usingGravity = true;
             aIPath.canSearch = true;
             aIPath.canMove = true;
-            enemyShootController.Dead = false;
-        }
-        if (aIDestinationSetter)
-        {
-            aIDestinationSetter.target = GameManager.Player.transform;
         }
 
         enemyAnimator.SetTrigger("Init");
 
+        stateMachine.Alive = true;
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
@@ -99,10 +88,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         if (aIPath)
         {
             aIPath.usingGravity = false;
-        }
-        if (aIDestinationSetter)
-        {
-            aIDestinationSetter.target = null;
         }
 
         if (!StayOnScene)
@@ -133,7 +118,8 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         if (isDead)
         {
-
+            stateMachine.Alive = false;
+            
             if (damagedSmoke)
             {
                 damagedSmoke.Stop();
@@ -157,10 +143,9 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             {
                 aIPath.canSearch = false;
                 aIPath.canMove = false;
-                enemyShootController.Dead = true;
             }
             Invoke("End", timeDead);
-            Kill(); //Misiones D:
+            Kill(); //Misiones
         }
     }
 

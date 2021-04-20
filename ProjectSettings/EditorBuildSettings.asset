@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Final scenes/Home.unity
     guid: 03425f7556ca07c4a83cf162254450ac
   - enabled: 1
+    path: Assets/Scenes/Final scenes/Tutorial.unity
+    guid: a99b1e2c330590646a7f2b23d48a9848
+  - enabled: 1
     path: Assets/Scenes/Final scenes/Level1.unity
     guid: cceb7ad8c45d29b4b9195c9fcaf54714
+  - enabled: 1
+    path: Assets/Scenes/MariScenes/TutorialLevel.unity
+    guid: 32f02548a7ce7964ba5ecd72791d4a4b
+  - enabled: 1
+    path: Assets/3RD PARTY/Loading Screen Studio/Scenes/Demo.unity
+    guid: a0c7c2db1dc9801459e5236db993a808
+  - enabled: 1
+    path: Assets/3RD PARTY/Loading Screen Studio/Scenes/Test.unity
+    guid: 0b52bbbd706aede42abed82b6422f8a7
   m_configObjects: {}

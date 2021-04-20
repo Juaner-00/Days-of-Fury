@@ -106,11 +106,10 @@ GameObject:
   - component: {fileID: 988548298858404024}
   - component: {fileID: 988548298858404026}
   - component: {fileID: 8930489646064082264}
-  - component: {fileID: 5491860505292135606}
   - component: {fileID: 6744038053857644895}
   - component: {fileID: -2780555251600778122}
-  - component: {fileID: 2326655279437223689}
-  m_Layer: 9
+  - component: {fileID: 6207197306603583796}
+  m_Layer: 8
   m_Name: NormalEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -131,6 +130,8 @@ Transform:
   - {fileID: 3962709536808257478}
   - {fileID: 3022791000240878852}
   - {fileID: 5087022688276852788}
+  - {fileID: 2874193823486265285}
+  - {fileID: 4250271203312413910}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -193,7 +194,7 @@ MonoBehaviour:
   rotationSpeed: 450
   slowdownDistance: 0.6
   pickNextWaypointDist: 2
-  endReachedDistance: 20
+  endReachedDistance: 5
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
@@ -229,21 +230,6 @@ MonoBehaviour:
   timeDead: 2
   damagedSmoke: {fileID: 0}
   stayOnLevelProbability: 0.2
---- !u!114 &5491860505292135606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988548298858404030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 443584078dadbff42b34f1b537f10266, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretTank: {fileID: 3959426235147392057}
-  Dead: 0
-  Aiming: 0
 --- !u!65 &6744038053857644895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -273,7 +259,7 @@ MonoBehaviour:
   uniqueID: 2917441164421594061
   updateError: 0.2
   checkTime: 0.2
---- !u!114 &2326655279437223689
+--- !u!114 &6207197306603583796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,23 +268,54 @@ MonoBehaviour:
   m_GameObject: {fileID: 988548298858404030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b9cc39326fa3bb4d893818630204679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMusicController: 0
-  actionClips:
-  - actionName: Shooting
-    actionVolume: 1
-    clips:
-    - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
-  - actionName: Moving
-    actionVolume: 1
-    clips:
-    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
-  - actionName: GettingHurt
-    actionVolume: 0.5
-    clips:
-    - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}
+  turretTank: {fileID: 3959426235147392057}
+  NoAiming: {fileID: 3022791000240878852}
+  strafeLeft: {fileID: 4250271203312413910}
+  strafeRight: {fileID: 2874193823486265285}
+  t_minStrafe: 0
+  t_maxStrafe: 2
+  chaseRadius: 38
+  ChaseReachedDistance: 30
+  fieldOfViewAngle: 160
+  losRadius: 55
+  memoryStartTime: 5
+  noiseTravelDistance: 80
+  spinSpeed: 3
+  spinTime: 3
+  Alive: 0
+--- !u!1 &1468456703620120177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2874193823486265285}
+  m_Layer: 8
+  m_Name: StrafeRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2874193823486265285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468456703620120177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 988548298858404031}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3959426235147392056
 GameObject:
   m_ObjectHideFlags: 0
@@ -15533,4 +15550,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 988548298858404031}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8391489216603149554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4250271203312413910}
+  m_Layer: 8
+  m_Name: StrafeLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4250271203312413910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391489216603149554}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 988548298858404031}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

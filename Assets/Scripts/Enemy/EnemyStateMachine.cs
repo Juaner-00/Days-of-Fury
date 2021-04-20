@@ -19,7 +19,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     Transform noisePosition;
     [SerializeField] Transform[] moveSpots;
-    GameObject[] goMoveSpots;
+    GameObject goMoveSpots;
     int randomSpot, randomStrafeDir;
     float waitTime, startWaitTime, randomStrafeStartTime, waitStrafeTime, distance, inCreasingMemoryTime, isSpiningTime;
     AIDestinationSetter aIDestinationSetter;
@@ -35,10 +35,11 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Start()
     {
-        goMoveSpots = GameObject.FindGameObjectsWithTag("MoveSpot");
-        for (int i = 0; i < goMoveSpots.Length; i++)
+        goMoveSpots = GameObject.Find("PatrolEnemySpots");
+        for (int i = 0; i < goMoveSpots.transform.childCount ; i++)
         {
-            moveSpots[i] = goMoveSpots[i].transform;
+            moveSpots = new Transform[goMoveSpots.transform.childCount];
+            moveSpots[i] = goMoveSpots.transform.GetChild(i);
         }
         noisePosition = GameObject.Find("NoisePosition").GetComponent<Transform>();
         animator = GetComponentInChildren<Animator>();

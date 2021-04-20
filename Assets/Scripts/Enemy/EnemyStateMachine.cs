@@ -15,7 +15,7 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] Transform NoAiming, strafeLeft, strafeRight;
     [SerializeField] float t_minStrafe, t_maxStrafe = 2f, chaseRadius = 38f,
         ChaseReachedDistance = 20f, fieldOfViewAngle = 160f, losRadius = 55f,
-        memoryStartTime = 5f, noiseTravelDistance = 80f, spinSpeed = 3f, spinTime = 3f;
+        memoryStartTime = 5f, noiseTravelDistance = 80f, spinTime = 3f;
 
     Transform noisePosition;
     Transform[] moveSpots;
@@ -27,7 +27,7 @@ public class EnemyStateMachine : MonoBehaviour
     GameObject player;
     AIPath aIPath;
     Quaternion target;
-    bool playerIsInLos, aiMemorizesPlayer, aiHeardPlayer = false, canSpin = false;
+    bool playerIsInLos, aiMemorizesPlayer, aiHeardPlayer = false;
     Animator animator;
 
     [HideInInspector] public bool Alive;
@@ -77,7 +77,6 @@ public class EnemyStateMachine : MonoBehaviour
             }
             else if (aiHeardPlayer && !playerIsInLos && !aiMemorizesPlayer)
             {
-                canSpin = true;
                 state = State.Heard;
             }
             else if (playerIsInLos)
@@ -153,14 +152,12 @@ public class EnemyStateMachine : MonoBehaviour
 
                 aIDestinationSetter.target = noisePosition;
                 
-                if (Vector3.Distance(transform.position, noisePosition.position) <= 5f && canSpin)
+                if (aIPath.reachedDestination)
                 {
                     isSpiningTime += Time.deltaTime;
-                    transform.Rotate(Vector3.up * spinSpeed, Space.World);
 
                     if (isSpiningTime >= spinTime)
                     {
-                        canSpin = false;
                         aiHeardPlayer = false;
                         isSpiningTime = 0f;
                     }
@@ -203,7 +200,6 @@ public class EnemyStateMachine : MonoBehaviour
             else
             {
                 aiHeardPlayer = false;
-                canSpin = false;
             }
         }
     }

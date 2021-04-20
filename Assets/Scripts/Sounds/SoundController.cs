@@ -63,7 +63,7 @@ public abstract class SoundController : MonoBehaviour
         bool isRandom = randomClip != null ? (bool)randomClip : false;
         bool isLoop = loop != null ? (bool)loop : false;
 
-        for (int i = 0; i < sources.Count; i++)
+        for (int i = 0; i < actionClips.Length; i++)
         {
             if (actionClips[i].ActionName == sourceName)
             {
@@ -74,7 +74,7 @@ public abstract class SoundController : MonoBehaviour
                         Play(i, isRandom, isLoop);
                     }
                 }
-                else if(isLoop == false)
+                else if(isLoop == false && isMusicController == false)
                 {
                     AudioClip clip = default;
                     for (int h = 0; h < actionClips.Length; h++)

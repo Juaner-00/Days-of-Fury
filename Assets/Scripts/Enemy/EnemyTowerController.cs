@@ -21,9 +21,15 @@ public class EnemyTowerController : MonoBehaviour, IDamagable
     public int HealthPoints => healthPoints;
     public static event Action<int> Mission = delegate { };
     public static event Action Kill = delegate { };
-    public Action OnGettingHurt;
     public static event EnemyEvent OnDie;
     public delegate void EnemyEvent(Vector3 pos);
+
+    #region Sound
+
+    public Action OnShooting;
+    public Action OnGettingHurt;
+
+    #endregion
 
     void Awake()
     {
@@ -48,7 +54,7 @@ public class EnemyTowerController : MonoBehaviour, IDamagable
             if (distance <= radius)
             {
                 enemyAnimator.SetTrigger("Shooting");
-                turretTank.Shot();
+                if(turretTank.Shot()) OnShooting?.Invoke();
             } 
         }
     }

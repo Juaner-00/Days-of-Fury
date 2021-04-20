@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9be1895dc0158498d9738b98341c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMusicController: 0
+  isMusicController: 1
   actionClips:
   - actionName: InGame
     actionVolume: 0.1

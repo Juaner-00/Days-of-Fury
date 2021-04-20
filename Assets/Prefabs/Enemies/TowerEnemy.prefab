@@ -5582,6 +5582,7 @@ GameObject:
   - component: {fileID: 1942721831741151535}
   - component: {fileID: 1877622284717632591}
   - component: {fileID: 1936882247130811154}
+  - component: {fileID: 4245156880008425978}
   m_Layer: 8
   m_Name: TowerEnemy
   m_TagString: Enemy
@@ -5635,6 +5636,28 @@ MonoBehaviour:
   radius: 50
   timeDead: 2
   turretTank: {fileID: 1937282129062286460}
+--- !u!114 &4245156880008425978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936882247130811157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf15e6ef17eea9f4d956dc8803a62f14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMusicController: 0
+  actionClips:
+  - actionName: Shooting
+    actionVolume: 1
+    clips:
+    - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
+  - actionName: GettingHurt
+    actionVolume: 1
+    clips:
+    - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}
 --- !u!1 &1936898917583691975
 GameObject:
   m_ObjectHideFlags: 0

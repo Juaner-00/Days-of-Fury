@@ -44,7 +44,7 @@ public class Radar : MonoBehaviour {
             colliderList.Clear();
         }
 
-        /* RaycastHit2D[] raycastHit2DArray = Physics2D.RaycastAll(transform.position, UtilsClass.GetVectorFromAngle(sweepTransform.eulerAngles.z), radarDistance, radarLayerMask);
+        /*RaycastHit2D[] raycastHit2DArray = Physics2D.RaycastAll(transform.position, UtilsClass.GetVectorFromAngle(sweepTransform.eulerAngles.z), radarDistance, radarLayerMask);
         foreach (RaycastHit2D raycastHit2D in raycastHit2DArray) {
             if (raycastHit2D.collider != null) {
                 // Hit something
@@ -54,15 +54,15 @@ public class Radar : MonoBehaviour {
                     //CMDebug.TextPopup("Ping!", raycastHit2D.point);
                     //RadarPing radarPing = Instantiate(pfRadarPing, raycastHit2D.point, Quaternion.identity).GetComponent<RadarPing>();
                     //radarPing.transform.SetParent(transform);
-                    /*if (raycastHit2D.collider.gameObject.GetComponent<ItemHandler>() != null) {
+                    if (raycastHit2D.collider.gameObject.GetComponent<ItemHandler>() != null) {
                         // Hit an Item
                         radarPing.SetColor(new Color(0, 1, 0));
                     }
-                    /*if (raycastHit2D.collider.gameObject.GetComponent<CharacterWaypointsHandler>() != null) {
+                    if (raycastHit2D.collider.gameObject.GetComponent<CharacterWaypointsHandler>() != null) {
                         // Hit an Enemy
                         radarPing.SetColor(new Color(1, 0, 0));
                     }
-                    //radarPing.SetDisappearTimer(360f / rotationSpeed * 1f);
+                    radarPing.SetDisappearTimer(360f / rotationSpeed * 1f);
                 }
             }
         }*/

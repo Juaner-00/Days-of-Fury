@@ -15,6 +15,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     public static event Action<int> Mission = delegate { };
     public static event Action Kill = delegate { };
 
+    #region Sound
+
+    public Action OnGettingHurt;
+
+    #endregion
 
     Vector3 inicialPosition;
 
@@ -29,7 +34,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     public int MaxHealthPoints => maxHealthPoints;
     public int HealthPoints => healthPoints;
 
-    public Action OnGettingHurt;
 
     AIPath aIPath;
     EnemyStateMachine stateMachine;

@@ -50,10 +50,10 @@ public class PlayerShoot : TurretTank
         if (counter < 1) multiplier = 0.33f ;*/
     }
 
-    public override void Shot()
+    public override bool Shot()
     {
         if (counter < 1)
-            return;
+            return false;
 
         if (smokeFire)
             smokeFire.Play();
@@ -66,6 +66,6 @@ public class PlayerShoot : TurretTank
         GameObject clone = cartrigde.GetItem(reference.position, Vector3.zero, tag);
         //clone.transform.LookAt(clone.transform.position + transform.forward);
         clone.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
-
+        return true;
     }
 }

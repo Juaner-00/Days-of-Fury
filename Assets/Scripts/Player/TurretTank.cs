@@ -26,7 +26,7 @@ public class TurretTank : MonoBehaviour
     }
 
     // Método para disparar una bala
-    public virtual void Shot()
+    public virtual bool Shot()
     {
         if (available)
         {
@@ -40,7 +40,9 @@ public class TurretTank : MonoBehaviour
             GameObject clone = cartrigde.GetItem(reference.position, Vector3.zero, tag);
             //clone.transform.LookAt(clone.transform.position + transform.forward);
             clone.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+            return true;
         }
+        return false;
     }
 
     void Reload()

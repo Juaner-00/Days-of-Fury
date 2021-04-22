@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [Expandable]
     [SerializeField] DataObject dataObject;
     [SerializeField] int actualLevel;
-    [SerializeField] Texture2D cursorImage;
+
 
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
@@ -23,14 +23,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         Instance = this;
 
-        hasFinished = false;
+        HasFinished = false;
 
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start()
     {
-        Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
+      
 
         playerMedals = Medals.None;
     }
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         if (PickUpSpawnManager.Instance)
             PickUpSpawnManager.Instance.StopSpawn();
 
-        hasFinished = true;
+        HasFinished = true;
     }
 
     // Método que se cuando el jugador muere
@@ -171,4 +171,5 @@ public class GameManager : MonoBehaviour
     public int ActualLevel { get => actualLevel; set => actualLevel = value; }
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }
+    public static bool HasFinished { get; private set; }
 }

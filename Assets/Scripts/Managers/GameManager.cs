@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         Instance = this;
 
-        hasFinished = false;
+        HasFinished = false;
 
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         if (PickUpSpawnManager.Instance)
             PickUpSpawnManager.Instance.StopSpawn();
 
-        hasFinished = true;
+        HasFinished = true;
     }
 
     // Método que se cuando el jugador muere
@@ -171,4 +171,5 @@ public class GameManager : MonoBehaviour
     public int ActualLevel { get => actualLevel; set => actualLevel = value; }
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }
+    public static bool HasFinished { get; private set; }
 }

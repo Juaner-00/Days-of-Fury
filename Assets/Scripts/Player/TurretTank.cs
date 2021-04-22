@@ -38,8 +38,7 @@ public class TurretTank : MonoBehaviour
             Vector3 force = -transform.up * this.force;
 
             GameObject clone = cartrigde.GetItem(reference.position, Vector3.zero, tag);
-            clone.transform.LookAt(clone.transform.position + transform.up);
-
+            clone.transform.LookAt(clone.transform.position - transform.up);
             clone.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
             return true;
         }

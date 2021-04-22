@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2adbd18d95dc1a94483e32ede6fe165b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 3525691548229270211, guid: e63be93d366bee041b45debdbea77710, type: 3}
+  item: {fileID: 2091521271594613765, guid: 4ae2851edb0e6de49843627a1ea84194, type: 3}
   length: 10
+  cantEnemiesThatStay: 0

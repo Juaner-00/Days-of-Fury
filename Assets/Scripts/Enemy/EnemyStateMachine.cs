@@ -54,7 +54,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Update()
     {
-        if (Alive)
+        if (Alive && !GameManager.HasFinished)
         {
             distance = Vector3.Distance(player.transform.position, transform.position);
 

@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour, IPool
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.isKinematic = true;
         initial = transform.position;
-        GetComponent<SphereCollider>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
         trail.enabled = false;
 
         StayOnScene = false;
@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour, IPool
         rigidbody.velocity = Vector3.zero;
         rigidbody.isKinematic = false;
         Invoke("End", lifeTime);
-        GetComponent<SphereCollider>().enabled = true;
+        GetComponent<CapsuleCollider>().enabled = true;
     }
 
     public void End()
@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour, IPool
         trail.enabled = false;
         transform.position = initial;
         rigidbody.isKinematic = true;
-        GetComponent<SphereCollider>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
     }
 
     void OnCollisionEnter(Collision collision)

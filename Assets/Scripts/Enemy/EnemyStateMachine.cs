@@ -14,7 +14,7 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] TurretTank turretTank;
     [SerializeField] Transform NoAiming, strafeLeft, strafeRight;
     [SerializeField] float t_minStrafe, t_maxStrafe = 2f, chaseRadius = 38f,
-        ChaseReachedDistance = 20f, fieldOfViewAngle = 160f, losRadius = 55f,
+        ChaseReachedDistance = 20f, fieldOfViewAngle = 20f, losRadius = 55f,
         memoryStartTime = 5f, noiseTravelDistance = 80f, spinTime = 3f;
 
     Transform noisePosition;
@@ -226,7 +226,7 @@ public class EnemyStateMachine : MonoBehaviour
         Vector3 direction = player.transform.position - transform.position;
         float angle = Vector3.Angle(direction, transform.forward);
 
-        if (angle < fieldOfViewAngle * 0.5f)
+        if (angle < fieldOfViewAngle && angle > -fieldOfViewAngle)
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, direction.normalized, out hit, losRadius))
@@ -250,8 +250,8 @@ public class EnemyStateMachine : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, chaseRadius);
 
-        Vector3 fovLine1 = Quaternion.AngleAxis(fieldOfViewAngle, transform.up) * -transform.forward * losRadius;
-        Vector3 fovLine2 = Quaternion.AngleAxis(-fieldOfViewAngle, transform.up) * -transform.forward * losRadius;
+        Vector3 fovLine1 = Quaternion.AngleAxis(fieldOfViewAngle, transform.up) * transform.forward * losRadius;
+        Vector3 fovLine2 = Quaternion.AngleAxis(-fieldOfViewAngle, transform.up) * transform.forward * losRadius;
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, fovLine1);

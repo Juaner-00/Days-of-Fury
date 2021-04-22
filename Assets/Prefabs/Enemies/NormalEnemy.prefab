@@ -280,7 +280,7 @@ MonoBehaviour:
   t_maxStrafe: 2
   chaseRadius: 38
   ChaseReachedDistance: 30
-  fieldOfViewAngle: 160
+  fieldOfViewAngle: 20
   losRadius: 55
   memoryStartTime: 5
   noiseTravelDistance: 80

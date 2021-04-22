@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [Expandable]
     [SerializeField] DataObject dataObject;
     [SerializeField] int actualLevel;
-    [SerializeField] Texture2D cursorImage;
+
 
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
+      
 
         playerMedals = Medals.None;
     }

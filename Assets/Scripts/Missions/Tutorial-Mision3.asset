@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   names: Mision3
   description: Explore The City
-  objetive: 2
+  objetive: 1
+  numObjetive: 2
   opcion: 5

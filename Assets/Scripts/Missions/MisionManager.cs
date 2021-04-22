@@ -93,8 +93,9 @@ public class MisionManager : MonoBehaviour
     {
         if (missions[actualMision].opcion == Missions.Opcion.Objetive)
         {
-            if (_Objetive == missions[actualMision].objetive) {
-                actualCount = missions[actualMision].objetive;
+            if (_Objetive == missions[actualMision].numObjetive)
+            {
+                actualCount = missions[actualCount].objetive;
                 IsComplete();
             }
         }

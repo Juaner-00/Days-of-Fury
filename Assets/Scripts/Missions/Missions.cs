@@ -9,6 +9,7 @@ public class Missions : ScriptableObject
     [SerializeField] public string description;
 
     [SerializeField] public int objetive;
+    [SerializeField] public int numObjetive;
 
     public enum Opcion
     {

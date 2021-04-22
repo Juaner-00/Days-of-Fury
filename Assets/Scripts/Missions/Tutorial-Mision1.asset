@@ -15,4 +15,5 @@ MonoBehaviour:
   names: Mision1
   description: Complete The Obstacle Course
   objetive: 1
+  numObjetive: 1
   opcion: 5

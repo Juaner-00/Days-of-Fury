@@ -13,9 +13,8 @@ public class EnemyStateMachine : MonoBehaviour
 {
     [SerializeField] TurretTank turretTank;
     [SerializeField] Transform NoAiming, strafeLeft, strafeRight;
-    [SerializeField] float t_minStrafe, t_maxStrafe = 2f, chaseRadius = 38f,
-        ChaseReachedDistance = 20f, fieldOfViewAngle = 20f, losRadius = 55f,
-        memoryStartTime = 5f, noiseTravelDistance = 80f, spinTime = 3f;
+    [SerializeField] float t_minStrafe, t_maxStrafe = 2f, chaseRadius = 38f, ChaseReachedDistance = 20f, fieldOfViewAngle = 20f,
+        fovRadius = 55f, memoryStartTime = 5f, noiseTravelDistance = 80f, spinTime = 3f;
 
     Transform noisePosition;
     Transform[] moveSpots;
@@ -27,7 +26,7 @@ public class EnemyStateMachine : MonoBehaviour
     GameObject player;
     AIPath aIPath;
     Quaternion target;
-    bool playerIsInLos, aiMemorizesPlayer, aiHeardPlayer = false;
+    bool playerIsInFov, aiMemorizesPlayer, aiHeardPlayer = false;
     Animator animator;
 
     [HideInInspector] public bool Alive;
@@ -59,32 +58,24 @@ public class EnemyStateMachine : MonoBehaviour
         {
             distance = Vector3.Distance(player.transform.position, transform.position);
 
-            /*if (distance > chaseRadius)
-            {
-                state = State.Patrol;
-            }
-            else if (distance <= chaseRadius)
-            {
-                state = State.Chase;
-            }*/
-            if (distance <= losRadius)
+            if (distance <= fovRadius)
             {
                 checkLos();
             }
-            if (!playerIsInLos && !aiMemorizesPlayer && !aiHeardPlayer)
+            if (!playerIsInFov && !aiMemorizesPlayer && !aiHeardPlayer)
             {
                 state = State.Patrol;
             }
-            else if (aiHeardPlayer && !playerIsInLos && !aiMemorizesPlayer)
+            else if (aiHeardPlayer && !playerIsInFov && !aiMemorizesPlayer)
             {
                 state = State.Heard;
             }
-            else if (playerIsInLos)
+            else if (playerIsInFov)
             {
                 aiMemorizesPlayer = true;
                 state = State.Chase;
             }
-            else if (aiMemorizesPlayer && !playerIsInLos)
+            else if (aiMemorizesPlayer && !playerIsInFov)
             {
                 state = State.Chase;
                 StartCoroutine(AiMemory());
@@ -229,14 +220,14 @@ public class EnemyStateMachine : MonoBehaviour
         if (angle < fieldOfViewAngle && angle > -fieldOfViewAngle)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, direction.normalized, out hit, losRadius))
+            if (Physics.Raycast(transform.position, direction.normalized, out hit, fovRadius))
             {
                 if (hit.collider.tag == "Player")
                 {
-                    playerIsInLos = true;
+                    playerIsInFov = true;
                     aiMemorizesPlayer = true;
                 }
-                else playerIsInLos = false;
+                else playerIsInFov = false;
             }
         }
     }
@@ -244,14 +235,14 @@ public class EnemyStateMachine : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, losRadius);
+        Gizmos.DrawWireSphere(transform.position, fovRadius);
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, noiseTravelDistance);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, chaseRadius);
 
-        Vector3 fovLine1 = Quaternion.AngleAxis(fieldOfViewAngle, transform.up) * transform.forward * losRadius;
-        Vector3 fovLine2 = Quaternion.AngleAxis(-fieldOfViewAngle, transform.up) * transform.forward * losRadius;
+        Vector3 fovLine1 = Quaternion.AngleAxis(fieldOfViewAngle, transform.up) * transform.forward * fovRadius;
+        Vector3 fovLine2 = Quaternion.AngleAxis(-fieldOfViewAngle, transform.up) * transform.forward * fovRadius;
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, fovLine1);

@@ -5633,7 +5633,7 @@ MonoBehaviour:
   maxHealthPoints: 1
   scorePoints: 50
   damagedSmoke: {fileID: 0}
-  radius: 50
+  radius: 20
   timeDead: 2
   turretTank: {fileID: 1937282129062286460}
 --- !u!114 &4245156880008425978
@@ -6207,7 +6207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677f8602f8ade614a895794f3ad607ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 10
+  force: 40
   attackSpeedBase: 0.5
   reference: {fileID: 1939478200668063709}
   smokeFire: {fileID: 1740220858228002331}

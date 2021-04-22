@@ -522,7 +522,7 @@ MonoBehaviour:
   curveDuration: 3
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
   frontLenght: 2.4
   leftLenght: 2.1
   rightLenght: 2.1
@@ -1582,7 +1582,7 @@ PrefabInstance:
     - target: {fileID: 7020538783977343668, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7020538783977343669, guid: ead32fde9fe95324bbebed8872b06aa0,
         type: 3}
@@ -1657,6 +1657,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7020538783977343664, guid: ead32fde9fe95324bbebed8872b06aa0, type: 3}
     - {fileID: 7020538782831695071, guid: ead32fde9fe95324bbebed8872b06aa0, type: 3}
+    - {fileID: 7020538783977343671, guid: ead32fde9fe95324bbebed8872b06aa0, type: 3}
+    - {fileID: 7020538783977343668, guid: ead32fde9fe95324bbebed8872b06aa0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ead32fde9fe95324bbebed8872b06aa0, type: 3}
 --- !u!4 &3806065227112198601 stripped
 Transform:

@@ -3028,15 +3028,15 @@ MonoBehaviour:
   keyCode: 32
   useSpecificKey: 0
   pakCountdownTimer: 5
-  virtualLoadingTimer: 3
-  enableVirtualLoading: 0
+  virtualLoadingTimer: 1.5
+  enableVirtualLoading: 1
   enableTitle: 0
   enableDescription: 0
   enableStatusLabel: 0
   enableRandomHints: 0
   enableRandomImages: 0
   enablePressAnyKey: 0
-  fadingAnimationSpeed: 10
+  fadingAnimationSpeed: 0.5
   onBeginEvents:
     m_PersistentCalls:
       m_Calls: []

@@ -9,7 +9,7 @@ public class EnemyDetection : MonoBehaviour
     [SerializeField]
     int numeroTanks;
     public LayerMask targetMask;
-    //[HideInInspector]
+    [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
  
    

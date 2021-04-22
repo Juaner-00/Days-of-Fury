@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI lifesText;
+    [SerializeField] Image damaged, glass;
+    [SerializeField] Color color1, color2;
 
-    PlayerHealth health;
+    [SerializeField] PlayerHealth health;
 
-    private void Start()
+    float divisor;
+
+    void Start()
     {
-        if (GameManager.Player)
-            health = GameManager.Player.GetComponentInParent<PlayerHealth>();
-        UpdateUI();
+        if (damaged)
+            damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0);
+        if (glass)
+            glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0);
+
     }
 
     private void OnEnable()
@@ -26,9 +33,14 @@ public class HealthUI : MonoBehaviour
         PlayerHealth.OnChangeLife -= UpdateUI;
     }
 
-    void UpdateUI()
+    void UpdateUI(int lives)
     {
-        if (health)
-            lifesText.text = $"x {health.HealthPoints}";
+        divisor = (float)health.HealthPoints;
+
+        if (glass)
+            glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0.4f - (divisor / health.MaxHealthPoints));
+        if (damaged)
+            damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0.7f - (divisor / health.MaxHealthPoints));
+        lifesText.text = $"{lives}";
     }
 }

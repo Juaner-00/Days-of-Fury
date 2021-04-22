@@ -43,6 +43,7 @@ public class DeathScreen : Menu
         else if (Option.gameObject.name == "Restart")
         {
             RestartLevel();
+            MisionManager.Instance.Resetear();
         }
     }
 }

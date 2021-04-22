@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Expandable]
+    [SerializeField] DataObject dataObject;
+    [SerializeField] int actualLevel;
     [SerializeField] Texture2D cursorImage;
-    [SerializeField] int scoreToWin;
 
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
 
     bool hasFinished;
-
+    Medals playerMedals;
 
     static GameObject player;
 
@@ -30,47 +32,39 @@ public class GameManager : MonoBehaviour
     {
         Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
 
+        playerMedals = Medals.None;
+    }
+
+    void StartSpawn()
+    {
         if (spawnEnemies)
-            EnemySpawnManager.Instance.StartSpawning();
+            if (EnemySpawnManager.Instance)
+                EnemySpawnManager.Instance.StartSpawning();
 
         if (spawnPickUps)
-            PickUpSpawnManager.Instance.StartSpawning();
+            if (PickUpSpawnManager.Instance)
+                PickUpSpawnManager.Instance.StartSpawning();
     }
 
     private void OnEnable()
     {
-        PlayerHealth.OnDie += LoseGame;
+        PlayerHealth.OnDie += PlayerDie;
+        ScoreManager.OnMedalObtained += VictoryCheck;
+        FirstScreen.OnFirstClick += StartSpawn;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnDie -= LoseGame;
-    }
-
-    private void Update()
-    {
-        // Si ya se terminó el juego no haga nada
-        if (!hasFinished)
-        {
-            // Ganar por la cantidad de score
-            if (ScoreManager.Instance)
-                if (ScoreManager.Instance.TotalScore >= scoreToWin)
-                    WinGame(player.transform.position);
-
-            if (spawnEnemies)
-                // Parar de spawnear si ya alcanzó la cantidad de enemigos matado
-                if (EnemySpawnManager.Instance.EnemiesKilled >= EnemySpawnManager.Instance.EnemiesToStopSpawn)
-                    EnemySpawnManager.Instance.StopSpawn();
-
-            // Ganar el juego si ya no hay enemigos vivos 
-            if (spawnEnemies && !EnemySpawnManager.Instance.CanSpawn && EnemySpawnManager.Instance.EnemiesAlived <= 0)
-                WinGame(EnemySpawnManager.LastPos);
-        }
+        PlayerHealth.OnDie -= PlayerDie;
+        ScoreManager.OnMedalObtained -= VictoryCheck;
+        FirstScreen.OnFirstClick -= StartSpawn;
     }
 
     // Método para finalizar el juego
     public void FinishGame()
     {
+        SaveGame();
+
         if (player)
         {
             if (player.name == "Player")
@@ -80,6 +74,9 @@ public class GameManager : MonoBehaviour
             else
                 player.GetComponentInParent<SCT_TankMovement>().enabled = false;
             player.GetComponentInParent<ReticleController>().enabled = false;
+
+            if (CamaraManager.Instance)
+                CamaraManager.Instance.ChangeCam(player.transform.position);
         }
 
         if (EnemySpawnManager.Instance)
@@ -91,38 +88,87 @@ public class GameManager : MonoBehaviour
         hasFinished = true;
     }
 
-    // Método que se llama si el jugador perdió
-    public void LoseGame()
+    // Método que se cuando el jugador muere
+    void PlayerDie()
     {
-        FinishGame();
-        //delay para que se vea la muerte del player
-        Invoke("DeadTank", 2f);
-
+        if (playerMedals == Medals.None)
+            LoseGame();
+        else
+            WinGame();
     }
 
-    // Método que se llama si el jugador ganó
-    public void WinGame(Vector3 pos)
+    void WinGame()
     {
-        if (CamaraManager.Instance)
-            CamaraManager.Instance.ChangeCam(pos);
         FinishGame();
+
         //delay para que se vea el efecto de acercamiento
-        Invoke("WiningTank", 2f);
+        Invoke("OpenWin", 1.5f);
+    }
+
+    void LoseGame()
+    {
+        FinishGame();
+
+        //delay para que se vea el efecto de acercamiento
+        Invoke("OpenLose", 1.5f);
+    }
+
+    void FirstClick()
+    {
+        StartSpawn();
     }
 
     // Método que se llama si el jugador gana
-    public void WiningTank()
+    public void OpenWin()
     {
         VictoryScreen.Instance.WinGame();
     }
 
-    // Método que se llama si el jugador gana
-    public void DeadTank()
+    // Método que se llama si el jugador muere y no tiene medallas
+    public void OpenLose()
     {
         DeathScreen.Instance.LoseGame();
     }
 
+    // Método para chequear las estrellas y la condición de victoria
+    public void VictoryCheck(Medals star)
+    {
+        playerMedals = star;
 
+        if (playerMedals == Medals.ThreeMedal)
+            WinGame();
+    }
+
+    void SaveGame()
+    {
+        switch (ScoreManager.Instance.CurrentMedal)
+        {
+            case Medals.None:
+                dataObject.AssignMedals(actualLevel, 0);
+                break;
+            case Medals.OneMedal:
+                dataObject.AssignMedals(actualLevel, 1);
+                break;
+            case Medals.TwoMedal:
+                dataObject.AssignMedals(actualLevel, 2);
+                break;
+            case Medals.ThreeMedal:
+                dataObject.AssignMedals(actualLevel, 3);
+                break;
+        }
+
+        dataObject.AssignScore(actualLevel, ScoreManager.Instance.TotalScore);
+
+        SaveAndLoad.Save("LevelData", dataObject.Data);
+    }
+
+    public void LoadGame()
+    {
+        SaveData data = SaveAndLoad.Load("LevelData") as SaveData;
+        dataObject.Data = data;
+    }
+
+    public int ActualLevel { get => actualLevel; set => actualLevel = value; }
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }
 }

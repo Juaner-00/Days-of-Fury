@@ -10,9 +10,19 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     [SerializeField] int scorePoints;
     [SerializeField] float timeDead;
     [SerializeField] ParticleSystem damagedSmoke;
+    [SerializeField, Range(0, 1)] float stayOnLevelProbability;
+
+    public static event Action<int> Mission = delegate { };
+    public static event Action Kill = delegate { };
+
+    #region Sound
+
+    public Action OnGettingHurt;
+
+    #endregion
 
     Vector3 inicialPosition;
-   
+
     int healthPoints;
     bool isDead;
     Animator enemyAnimator;
@@ -24,16 +34,13 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     public int MaxHealthPoints => maxHealthPoints;
     public int HealthPoints => healthPoints;
 
-    public Action OnGettingHurt;
 
     AIPath aIPath;
-    AIDestinationSetter aIDestinationSetter;
-    EnemyShootController enemyShootController;
+    EnemyStateMachine stateMachine;
 
     void Awake()
     {
-        enemyShootController = GetComponent<EnemyShootController>();
-        aIDestinationSetter = GetComponent<AIDestinationSetter>();
+        stateMachine = GetComponent<EnemyStateMachine>();
         aIPath = GetComponent<AIPath>();
         enemyAnimator = GetComponentInChildren<Animator>();
         particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
@@ -48,13 +55,13 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             aIPath.usingGravity = false;
             aIPath.canSearch = false;
             aIPath.canMove = false;
-            enemyShootController.Dead = true;
         }
-        if (aIDestinationSetter)
-        {
-            aIDestinationSetter.target = null;
-        }
+
+        stateMachine.Alive = false;
         inicialPosition = transform.position;
+
+        float prob = UnityEngine.Random.Range(0f, 1f);
+        StayOnScene = prob <= stayOnLevelProbability;
     }
 
     // Se llama cuando el pool devuelve el objeto
@@ -65,12 +72,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             aIPath.usingGravity = true;
             aIPath.canSearch = true;
             aIPath.canMove = true;
-            enemyShootController.Dead = false;
         }
-        if (aIDestinationSetter)
-        {
-            aIDestinationSetter.target = GameManager.Player.transform;
-        }
+
+        enemyAnimator.SetTrigger("Init");
+
+        stateMachine.Alive = true;
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
@@ -83,17 +89,19 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         {
             aIPath.usingGravity = false;
         }
-        if (aIDestinationSetter)
+
+        if (!StayOnScene)
         {
-            aIDestinationSetter.target = null;
+            transform.position = inicialPosition;
+            healthPoints = maxHealthPoints;
+            enemyAnimator.SetTrigger("Init");
         }
-        transform.position = inicialPosition;
-        healthPoints = maxHealthPoints;
     }
 
     // Método para hacer que el enemigo tome daño
     public void TakeDamage()
     {
+
         if (isDead)
             return;
 
@@ -101,7 +109,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         {
             damagedSmoke.Play();
         }
-        
+
         OnGettingHurt?.Invoke();
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
@@ -110,16 +118,23 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         if (isDead)
         {
+            stateMachine.Alive = false;
+            
             if (damagedSmoke)
             {
                 damagedSmoke.Stop();
             }
-            
-            enemyAnimator.SetTrigger("Dead4");
+
+            if (StayOnScene)
+                enemyAnimator.SetTrigger($"Dead{UnityEngine.Random.Range(3, 5)}");
+            else
+                enemyAnimator.SetTrigger($"Dead{UnityEngine.Random.Range(1, 5)}");
+
+
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 
             OnDie?.Invoke(transform.position);
-            
+
             if (ScoreManager.Instance)
             {
                 ScoreManager.Instance.Addscore(scorePoints);
@@ -128,9 +143,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             {
                 aIPath.canSearch = false;
                 aIPath.canMove = false;
-                enemyShootController.Dead = true;
             }
             Invoke("End", timeDead);
+            Kill(); //Misiones
         }
     }
+
+    public bool StayOnScene { get; set; }
 }

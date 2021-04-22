@@ -1,26 +1,31 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class ScoreManager : MonoBehaviour, ICounterValueContainer
 {
-    [SerializeField] int oneStar;
-    [SerializeField] int twoStar;
-    [SerializeField] int threeStar;
-
+    bool oneStar1;
+    bool twoStar1;
+    bool threeStar1;
 
     [SerializeField] GameObject oneStarMedal;
     [SerializeField] GameObject twoStarMedal;
     [SerializeField] GameObject threeStarMedal;
 
     [SerializeField] private int totalScore;
-    int state = 0;
 
-    //0= Sin estrellas
-    //1= 1 Estrella
-    //2= 2 Estrellas
-    //3= 3 Estrellas
+    public static event Action<int> OnGetScore = delegate { };
+
+    public static Action OnOneMedalObtain;
+    public static Action OnTwoMedalObtain;
+    public static Action OnThreeMedalObtain;
+
+
+    Medals medalState;
+
+    public static Action<Medals> OnMedalObtained;
+
 
     private void Awake()
     {
@@ -29,35 +34,46 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
         Instance = this;
     }
 
-    private void Update()
+    private void Start()
     {
-        //scoreText.text = "" + totalScore;
+        medalState = Medals.None;
     }
 
-
+    // Método para añadir score
     public void Addscore(int score)
     {
         totalScore += score;
-        Checkscore();
+        OnGetScore?.Invoke(score);
     }
 
-    void Checkscore()
+    public void ActiveOneStarMedal()
     {
-        if (totalScore >= oneStar)
-        {
-            state = 1;
-            oneStarMedal.SetActive(true);
-        }
-        if (totalScore >= twoStar)
-        {
-            state = 2;
-            twoStarMedal.SetActive(true);
-        }
-        if (totalScore >= threeStar)
-        {
-            state = 3;
-            threeStarMedal.SetActive(true);
-        }
+        oneStarMedal.SetActive(true);
+        oneStar1 = true;
+        medalState = Medals.OneMedal;
+        oneStarMedal.SetActive(true);
+        OnMedalObtained?.Invoke(medalState);
+        OnOneMedalObtain?.Invoke();
+    }
+
+    public void ActiveTwoStarMedal()
+    {
+        twoStarMedal.SetActive(true);
+        twoStar1 = true;
+        medalState = Medals.TwoMedal;
+        twoStarMedal.SetActive(true);
+        OnMedalObtained?.Invoke(medalState);
+        OnTwoMedalObtain?.Invoke();
+    }
+
+    public void ActiveThreeStarMedal()
+    {
+        threeStarMedal.SetActive(true);
+        threeStar1 = true;
+        medalState = Medals.ThreeMedal;
+        threeStarMedal.SetActive(true);
+        OnMedalObtained?.Invoke(medalState);
+        OnThreeMedalObtain?.Invoke();
     }
 
     public int GetValue()
@@ -67,4 +83,16 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
 
     public int TotalScore => totalScore;
     public static ScoreManager Instance { get; private set; }
+    public bool OneStar1 { get; private set; }
+    public bool TwoStar1 { get; private set; }
+    public bool ThreeStar1 { get; private set; }
+    public Medals CurrentMedal { get => medalState; }
+}
+
+public enum Medals
+{
+    None,
+    OneMedal,
+    TwoMedal,
+    ThreeMedal
 }

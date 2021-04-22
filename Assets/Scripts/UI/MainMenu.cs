@@ -25,6 +25,10 @@ public class MainMenu : Menu
         {
             PlayGame();
         }
+        if (Option.gameObject.name == "Tutorial")
+        {
+            LoadTutorial();
+        }
         else if (Option.gameObject.name == "Options")
         {
             //Options
@@ -43,6 +47,12 @@ public class MainMenu : Menu
     public void PlayGame()
     {
         MainMenuOpen = false;
+        GameManager.Instance.LoadGame();
         _SceneManager.LoadScene(gameSceneName);
+    }
+
+    public void LoadTutorial()
+    {
+        _SceneManager.LoadScene("Tutorial");
     }
 }

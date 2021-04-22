@@ -9,6 +9,7 @@ TagManager:
   - Shell
   - obstaculo
   - DestuctibleWall
+  - MoveSpot
   layers:
   - Default
   - TransparentFX
@@ -18,9 +19,9 @@ TagManager:
   - UI
   - 
   - 
-  - Obstacle
-  - enemy
+  - Enemy
   - Player
+  - Obstacle
   - 
   - 
   - 
@@ -39,9 +40,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - UI RADAR
+  - NoRender
+  - Minimap
   m_SortingLayers:
   - name: Default
     uniqueID: 0

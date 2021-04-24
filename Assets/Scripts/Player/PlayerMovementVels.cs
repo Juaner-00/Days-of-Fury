@@ -76,9 +76,9 @@ public class PlayerMovementVels : MonoBehaviour
         maxSpeed = maxSpeedBase;
         curveTimer = 0;
 
-        available = false;
+        available = true;
 
-        crashCoolDownTimer = crashCoolDown;
+        crashCoolDownTimer = 0;
         lastDir = initialDirection;
     }
 
@@ -114,7 +114,7 @@ public class PlayerMovementVels : MonoBehaviour
         rightRay = new Ray(transform.position, transform.right * rightLenght);
 
         // Si no tiene el coolDown
-        if (crashCoolDownTimer > crashCoolDown)
+        if (crashCoolDownTimer <= 0)
         {
             // Choca con el rayo del frente o el de la derecha o izquierda
             if (Physics.Raycast(frontRay, frontLenght, obstacleMask) ||
@@ -136,21 +136,16 @@ public class PlayerMovementVels : MonoBehaviour
                         break;
                 }
 
-                crashCoolDownTimer = 0;
+                crashCoolDownTimer = crashCoolDown;
             }
         }
 
-        crashCoolDownTimer += Time.deltaTime;
+        crashCoolDownTimer -= Time.deltaTime;
+        crashCoolDownTimer = Mathf.Clamp(crashCoolDownTimer, 0, crashCoolDown);
     }
 
     void HandleSpeed()
     {
-        if (movementSpeed > maxSpeed)
-        {
-            movementSpeed = maxSpeed;
-            state = PlayerStates.MaxSpeed;
-        }
-
         switch (state)
         {
             // Si está parado y presiona cualquier tecla se pone en acelerando
@@ -166,12 +161,18 @@ public class PlayerMovementVels : MonoBehaviour
                 float accelerationMagnitud = accelerationCurve.Evaluate(curveTimer / curveDuration);
                 movementSpeed += acceleration * accelerationMagnitud * Time.deltaTime;
                 curveTimer += Time.deltaTime;
-                controller.SimpleMove(transform.forward * movementSpeed);
+                controller.Move(transform.forward * movementSpeed * Time.deltaTime);
                 OnMoving?.Invoke();
+
+                if (movementSpeed > maxSpeed)
+                {
+                    movementSpeed = maxSpeed;
+                    state = PlayerStates.MaxSpeed;
+                }
                 break;
             // Si está en máxima velodicad se mueve a máxima velocidad
             case PlayerStates.MaxSpeed:
-                controller.SimpleMove(transform.forward * movementSpeed);
+                controller.Move(transform.forward * movementSpeed * Time.deltaTime);
                 OnMoving?.Invoke();
                 break;
         }
@@ -198,7 +199,7 @@ public class PlayerMovementVels : MonoBehaviour
             turnDir = Directions.West;
 
         // Cambiar la duración de la rotación
-        if (lastDir != turnDir && turnDir == oppositeDirection)
+        if (turnDir == oppositeDirection)
             rotationTime = rotationTimeBase * oppositeRotationMultiplier;
         else
             rotationTime = rotationTimeBase;
@@ -206,26 +207,29 @@ public class PlayerMovementVels : MonoBehaviour
 
     void HandleRotation()
     {
-        // Girar el tanque con DoTween
-        if (vertical > 0.1f && turnDir != lastDir)
+        if (turnDir != lastDir)
         {
-            transform.DOLocalRotate(Vector3.up * 0, rotationTime, RotateMode.Fast);
-            lastDir = Directions.North;
-        }
-        else if (vertical < -0.1f)
-        {
-            transform.DOLocalRotate(Vector3.up * -180, rotationTime, RotateMode.Fast);
-            lastDir = Directions.South;
-        }
-        else if (horizontal > 0.1f)
-        {
-            transform.DOLocalRotate(Vector3.up * 90, rotationTime, RotateMode.Fast);
-            lastDir = Directions.East;
-        }
-        else if (horizontal < -0.1f)
-        {
-            transform.DOLocalRotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
-            lastDir = Directions.West;
+            // Girar el tanque con DoTween
+            if (vertical > 0.1f)
+            {
+                transform.DOLocalRotate(Vector3.up * 0, rotationTime, RotateMode.Fast);
+                lastDir = Directions.North;
+            }
+            else if (vertical < -0.1f)
+            {
+                transform.DOLocalRotate(Vector3.up * -180, rotationTime, RotateMode.Fast);
+                lastDir = Directions.South;
+            }
+            else if (horizontal > 0.1f)
+            {
+                transform.DOLocalRotate(Vector3.up * 90, rotationTime, RotateMode.Fast);
+                lastDir = Directions.East;
+            }
+            else if (horizontal < -0.1f)
+            {
+                transform.DOLocalRotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
+                lastDir = Directions.West;
+            }
         }
     }
 

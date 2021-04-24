@@ -199,10 +199,7 @@ public class PlayerMovementVels : MonoBehaviour
             turnDir = Directions.West;
 
         // Cambiar la duración de la rotación
-        if (turnDir == oppositeDirection)
-            rotationTime = rotationTimeBase * oppositeRotationMultiplier;
-        else
-            rotationTime = rotationTimeBase;
+        rotationTime = (turnDir == oppositeDirection) ? rotationTimeBase * oppositeRotationMultiplier : rotationTime = rotationTimeBase; ;
     }
 
     void HandleRotation()
@@ -235,19 +232,20 @@ public class PlayerMovementVels : MonoBehaviour
 
     Directions GetOpositeDirection()
     {
-        switch (lastDir)
-        {
-            case Directions.North:
-                return Directions.South;
-            case Directions.East:
-                return Directions.West;
-            case Directions.South:
-                return Directions.North;
-            case Directions.West:
-                return Directions.East;
-            default:
-                return Directions.South;
-        }
+        return (Directions)(((int)lastDir + 2) % 4);
+        // switch (lastDir)
+        // {
+        //     case Directions.North:
+        //         return Directions.South;
+        //     case Directions.East:
+        //         return Directions.West;
+        //     case Directions.South:
+        //         return Directions.North;
+        //     case Directions.West:
+        //         return Directions.East;
+        //     default:
+        //         return Directions.South;
+        // }
     }
 
     void FirstClick()

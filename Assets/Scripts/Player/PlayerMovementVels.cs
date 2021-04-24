@@ -161,7 +161,7 @@ public class PlayerMovementVels : MonoBehaviour
                 float accelerationMagnitud = accelerationCurve.Evaluate(curveTimer / curveDuration);
                 movementSpeed += acceleration * accelerationMagnitud * Time.deltaTime;
                 curveTimer += Time.deltaTime;
-                controller.SimpleMove(transform.forward * movementSpeed);
+                controller.Move(transform.forward * movementSpeed * Time.deltaTime);
                 OnMoving?.Invoke();
 
                 if (movementSpeed > maxSpeed)
@@ -172,7 +172,7 @@ public class PlayerMovementVels : MonoBehaviour
                 break;
             // Si está en máxima velodicad se mueve a máxima velocidad
             case PlayerStates.MaxSpeed:
-                controller.SimpleMove(transform.forward * movementSpeed);
+                controller.Move(transform.forward * movementSpeed * Time.deltaTime);
                 OnMoving?.Invoke();
                 break;
         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4211720408153442}
   - component: {fileID: 33376659768417008}
   - component: {fileID: 23780722640108424}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: SM_Bld_Shop_Large_Glass_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4441552029072990}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33376659768417008
 MeshFilter:
@@ -92,7 +92,9 @@ GameObject:
   - component: {fileID: 23879856690301244}
   - component: {fileID: 4886820521870868693}
   - component: {fileID: 2957154705249797725}
-  m_Layer: 8
+  - component: {fileID: 2112087475}
+  - component: {fileID: 371970954}
+  m_Layer: 10
   m_Name: SM_Bld_Shop_Large_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,11 +110,11 @@ Transform:
   m_GameObject: {fileID: 1730336916111372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0.002}
-  m_LocalScale: {x: 1.000001, y: 1, z: 1.0523293}
+  m_LocalScale: {x: 1.000001, y: 1, z: 1.5}
   m_Children:
   - {fileID: 4895157873718003531}
-  - {fileID: 4211720408153442}
   - {fileID: 3987346448429970977}
+  - {fileID: 4211720408153442}
   - {fileID: 7348887532914691074}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -190,6 +192,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
+--- !u!114 &2112087475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730336916111372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 3
+--- !u!114 &371970954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730336916111372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!1 &2478488361892371599
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +230,7 @@ GameObject:
   - component: {fileID: 7287062394723638316}
   - component: {fileID: 3716677607914130875}
   - component: {fileID: 6330088910901798392}
-  m_Layer: 31
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +322,7 @@ GameObject:
   - component: {fileID: 3987346448429970977}
   - component: {fileID: 9084821186651028309}
   - component: {fileID: 5096017331591082571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +341,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4441552029072990}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &9084821186651028309
 BoxCollider:
@@ -341,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 4288049289290918582
+  uniqueID: 413328863977585498
   updateError: 1
   checkTime: 2000
 --- !u!1001 &2196112413495075626
@@ -361,10 +389,35 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2893564532277052265, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786855753705308257, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880922329977472143, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382469552492525929, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567034667981612010, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.63
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
@@ -374,7 +427,7 @@ PrefabInstance:
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.92
+      value: 3.29
       objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
@@ -419,12 +472,27 @@ PrefabInstance:
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621139597980850709, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621172968114433228, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621290952073782521, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4fc20c830887e4e81bb37ff125cacb, type: 3}

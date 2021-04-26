@@ -477,6 +477,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!136 &615076017
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3806065227112198607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.3509855
+  m_Height: 3.1864452
+  m_Direction: 1
+  m_Center: {x: -0.009257317, y: 0.315863, z: 0}
 --- !u!114 &6373592622040593059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d0331e657b8ea40b5f9d76d4e9fd83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeedBase: 15
+  maxSpeedBase: 12
+  slowDownPercentage: 30
   acceleration: 3
   crashCoolDown: 2.5
   initialDirection: 0
@@ -530,6 +545,7 @@ MonoBehaviour:
   maxSpeed: 0
   crashCoolDownTimer: 0
   lastDir: 0
+  isSlowDown: 0
 --- !u!114 &7006034829088994500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,20 +562,6 @@ MonoBehaviour:
   pfastShoot: {fileID: 5563112528800798625}
   ppointUp: {fileID: 4764549160429334924}
   pfastMove: {fileID: 1059838773567731088}
---- !u!136 &615076017
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3806065227112198607}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.3509855
-  m_Height: 3.1864452
-  m_Direction: 1
-  m_Center: {x: -0.009257317, y: 0.315863, z: 0}
 --- !u!114 &776714151
 MonoBehaviour:
   m_ObjectHideFlags: 0

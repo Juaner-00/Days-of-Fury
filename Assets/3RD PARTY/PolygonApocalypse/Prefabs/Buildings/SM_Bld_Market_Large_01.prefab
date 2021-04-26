@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4571099864761204}
   - component: {fileID: 33639844707801840}
   - component: {fileID: 23044024194667370}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: SM_Bld_Market_Large_01_Overgrowth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4245169943814210}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33639844707801840
 MeshFilter:
@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 5485085361966847238}
   - component: {fileID: 1490777874445076309}
   - component: {fileID: 5224986814782521429}
-  m_Layer: 8
+  - component: {fileID: 181985428}
+  m_Layer: 10
   m_Name: SM_Bld_Market_Large_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,8 +116,8 @@ Transform:
   - {fileID: 7639965384319168772}
   - {fileID: 4333973284976082}
   - {fileID: 4321076784874808}
-  - {fileID: 4571099864761204}
   - {fileID: 5078923612960203375}
+  - {fileID: 4571099864761204}
   - {fileID: 3646648439300545091}
   - {fileID: 8275583439043497436}
   m_Father: {fileID: 0}
@@ -208,6 +209,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
+--- !u!114 &181985428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296973436143936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!1 &1579529730549556
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +233,7 @@ GameObject:
   - component: {fileID: 4333973284976082}
   - component: {fileID: 33608834278323310}
   - component: {fileID: 23859593466099258}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: SM_Bld_Market_Large_01_Attachments_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +312,7 @@ GameObject:
   - component: {fileID: 4321076784874808}
   - component: {fileID: 33008065513024650}
   - component: {fileID: 23634014615461336}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: SM_Bld_Market_Large_01_Glass_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +392,7 @@ GameObject:
   - component: {fileID: 3646648439300545091}
   - component: {fileID: 491916798739663380}
   - component: {fileID: 3955768513245318620}
-  m_Layer: 31
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7639965384319168772}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Escombros Juntos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,8 +484,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4393608911044159395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.1}
+  m_LocalScale: {x: 0.72, y: 1, z: 0.81}
   m_Children:
   - {fileID: 2114062449335132871}
   - {fileID: 2167650239905116283}
@@ -494,7 +508,7 @@ GameObject:
   - component: {fileID: 6770198912729953062}
   - component: {fileID: 2113303840642591290}
   - component: {fileID: 1125466819612696880}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,7 +527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4245169943814210}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6770198912729953062
 BoxCollider:
@@ -541,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 2978783451591467604
+  uniqueID: 2048402018706682586
   updateError: 1
   checkTime: 2000
 --- !u!65 &1125466819612696880
@@ -568,7 +582,7 @@ GameObject:
   - component: {fileID: 8275583439043497436}
   - component: {fileID: 4108262337332756820}
   - component: {fileID: 8683992396226587186}
-  m_Layer: 31
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,6 +662,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escombros (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2893564532277052265, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786855753705308257, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880922329977472143, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382469552492525929, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567034667981612010, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -703,6 +742,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621139597980850709, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621172968114433228, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621290952073782521, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4fc20c830887e4e81bb37ff125cacb, type: 3}
 --- !u!4 &6369193129250245726 stripped
@@ -718,10 +777,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7639965384319168772}
     m_Modifications:
+    - target: {fileID: 3987463749752903363, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987615999147026479, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641100863238507045, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641248778975278281, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_Name
       value: Escombros2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
@@ -778,6 +862,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 032630ca645916f41ba383be0d960220, type: 3}
 --- !u!4 &7247050852100661504 stripped
@@ -793,15 +892,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7639965384319168772}
     m_Modifications:
+    - target: {fileID: 3987463749752903363, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987615999147026479, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641100863238507045, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641248778975278281, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_Name
       value: Escombros2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.11
+      value: -4.91
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
@@ -811,7 +935,7 @@ PrefabInstance:
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.5
+      value: -6.03
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
@@ -856,7 +980,7 @@ PrefabInstance:
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
@@ -888,10 +1012,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escombros
       objectReference: {fileID: 0}
+    - target: {fileID: 2893564532277052265, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786855753705308257, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880922329977472143, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382469552492525929, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567034667981612010, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.48
+      value: -7.79
       objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
@@ -901,7 +1050,7 @@ PrefabInstance:
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.03
+      value: -2.93
       objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
@@ -943,6 +1092,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621139597980850709, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621172968114433228, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621290952073782521, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4fc20c830887e4e81bb37ff125cacb, type: 3}
 --- !u!4 &2114062449335132871 stripped
@@ -962,6 +1131,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escombros (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893564532277052265, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786855753705308257, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880922329977472143, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382469552492525929, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567034667981612010, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
@@ -1018,6 +1212,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621139597980850709, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621172968114433228, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621290952073782521, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4fc20c830887e4e81bb37ff125cacb, type: 3}
 --- !u!4 &1775303097755447366 stripped
@@ -1033,10 +1247,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7639965384319168772}
     m_Modifications:
+    - target: {fileID: 3987463749752903363, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987615999147026479, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641100863238507045, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641248778975278281, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_Name
       value: Escombros2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}

@@ -18,6 +18,8 @@ public class LevelsEditor : Editor
     {
         base.OnInspectorGUI();
 
+        if (GUILayout.Button("Save"))
+            lvlObj.Save();
         if (GUILayout.Button("Reset"))
             lvlObj.Reset();
     }

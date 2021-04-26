@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 901440593}
   - component: {fileID: 901440595}
   - component: {fileID: 901440594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4929893710783578}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &901440595
 BoxCollider:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 2751018968863605018
+  uniqueID: 283398234159507800
   updateError: 1
   checkTime: 2000
 --- !u!1 &1375373276123708
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4196625852242730}
   - component: {fileID: 33076890582783826}
   - component: {fileID: 23106362091818492}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: SM_Bld_Industrial_Medium_01_Overgrowth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4929893710783578}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33076890582783826
 MeshFilter:
@@ -154,7 +154,8 @@ GameObject:
   - component: {fileID: 23974130997710876}
   - component: {fileID: 4396490827679909496}
   - component: {fileID: 1439982589}
-  m_Layer: 8
+  - component: {fileID: 1863577721}
+  m_Layer: 10
   m_Name: SM_Bld_Industrial_Medium_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,12 +171,12 @@ Transform:
   m_GameObject: {fileID: 1475890670718598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.196}
-  m_LocalScale: {x: 1.2000006, y: 1, z: 1.0251112}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8263817653482271230}
   - {fileID: 4703752181212660}
-  - {fileID: 4196625852242730}
   - {fileID: 901440593}
+  - {fileID: 4196625852242730}
   - {fileID: 299900629751525295}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -253,6 +254,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
+--- !u!114 &1863577721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475890670718598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!1 &1987315619940972
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +278,7 @@ GameObject:
   - component: {fileID: 4703752181212660}
   - component: {fileID: 33158593446459492}
   - component: {fileID: 23261966930213076}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: SM_Bld_Industrial_Medium_01_Glass_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8263817653482271230}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: EscombrosJuntos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 4337227634530932892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.88, y: 1, z: 1}
   m_Children:
   - {fileID: 1181320745422141512}
   - {fileID: 514204453549778428}
@@ -375,7 +389,7 @@ GameObject:
   - component: {fileID: 299900629751525295}
   - component: {fileID: 8430051181402642621}
   - component: {fileID: 6236188854573090257}
-  m_Layer: 31
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,6 +469,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escombros
       objectReference: {fileID: 0}
+    - target: {fileID: 2893564532277052265, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786855753705308257, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880922329977472143, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382469552492525929, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567034667981612010, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -463,7 +502,7 @@ PrefabInstance:
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
@@ -520,6 +559,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8621139597980850709, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621172968114433228, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621290952073782521, guid: af4fc20c830887e4e81bb37ff125cacb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4fc20c830887e4e81bb37ff125cacb, type: 3}
 --- !u!4 &1181320745422141512 stripped
@@ -535,10 +589,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8263817653482271230}
     m_Modifications:
+    - target: {fileID: 3987463749752903363, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987615999147026479, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641100863238507045, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641248778975278281, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_Name
       value: Escombros2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}

@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 2179360965415458318
+  uniqueID: 146246438435280006
   updateError: 1
   checkTime: 2000
 --- !u!1 &1092085058724832
@@ -1243,10 +1243,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8468440483520139797}
     m_Modifications:
+    - target: {fileID: 3987463749752903363, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987615999147026479, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641100863238507045, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641248778975278281, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_Name
       value: Escombros2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}

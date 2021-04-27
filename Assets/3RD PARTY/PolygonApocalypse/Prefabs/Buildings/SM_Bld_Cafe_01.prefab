@@ -73,6 +73,8 @@ GameObject:
   - component: {fileID: 33114185724284244}
   - component: {fileID: 23066927348910956}
   - component: {fileID: 6799009367917809825}
+  - component: {fileID: 1818693031}
+  - component: {fileID: 221972411}
   m_Layer: 10
   m_Name: SM_Bld_Cafe_01
   m_TagString: Untagged
@@ -157,6 +159,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.547303, y: 6.1582537, z: 7.06613}
   m_Center: {x: -0.011975765, y: 2.9454422, z: 1.0454042}
+--- !u!114 &1818693031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320579335083028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 3
+--- !u!114 &221972411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320579335083028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 3
 --- !u!1 &1534361701798564
 GameObject:
   m_ObjectHideFlags: 0

@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 5485085361966847238}
   - component: {fileID: 1490777874445076309}
   - component: {fileID: 5224986814782521429}
+  - component: {fileID: 181985428}
   m_Layer: 10
   m_Name: SM_Bld_Market_Large_01
   m_TagString: Untagged
@@ -196,6 +197,19 @@ BoxCollider:
   m_Size: {x: 9.377535, y: 11.01516, z: 9.304571}
   m_Center: {x: 10.351324, y: 5.2757883, z: -6.91807}
 --- !u!114 &5224986814782521429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296973436143936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 3
+--- !u!114 &181985428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

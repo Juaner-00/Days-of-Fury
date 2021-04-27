@@ -91,8 +91,6 @@ GameObject:
   - component: {fileID: 33147953558931468}
   - component: {fileID: 23879856690301244}
   - component: {fileID: 4886820521870868693}
-  - component: {fileID: 2957154705249797725}
-  - component: {fileID: 2112087475}
   - component: {fileID: 371970954}
   m_Layer: 10
   m_Name: SM_Bld_Shop_Large_02
@@ -179,32 +177,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.653631, y: 12.297922, z: 7.279519}
   m_Center: {x: 0.0072402954, y: 6.106805, z: 0.24381733}
---- !u!114 &2957154705249797725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730336916111372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
---- !u!114 &2112087475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730336916111372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
 --- !u!114 &371970954
 MonoBehaviour:
   m_ObjectHideFlags: 0

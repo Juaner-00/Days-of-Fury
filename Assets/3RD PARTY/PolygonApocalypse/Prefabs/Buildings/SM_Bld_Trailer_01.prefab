@@ -312,8 +312,6 @@ GameObject:
   - component: {fileID: 23775090170111850}
   - component: {fileID: 830624100103953107}
   - component: {fileID: 983063824}
-  - component: {fileID: 239261707}
-  - component: {fileID: 1069266335}
   m_Layer: 10
   m_Name: SM_Bld_Trailer_01
   m_TagString: Untagged
@@ -402,32 +400,6 @@ BoxCollider:
   m_Size: {x: 3.332532, y: 3.9136372, z: 9.274271}
   m_Center: {x: 0.0042672157, y: 1.955761, z: -0.036191702}
 --- !u!114 &983063824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718806199345174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
---- !u!114 &239261707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718806199345174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
---- !u!114 &1069266335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -74,8 +74,6 @@ GameObject:
   - component: {fileID: 23297058132453602}
   - component: {fileID: 5126642186582641139}
   - component: {fileID: 1533094519}
-  - component: {fileID: 157879612}
-  - component: {fileID: 1575281521}
   m_Layer: 10
   m_Name: SM_Bld_HighRise_Medium_01_Base_01
   m_TagString: Untagged
@@ -163,32 +161,6 @@ BoxCollider:
   m_Size: {x: 12.952826, y: 4.0156517, z: 10.692916}
   m_Center: {x: -0.28012562, y: 1.8145983, z: 0.5391402}
 --- !u!114 &1533094519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067120093303164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
---- !u!114 &157879612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067120093303164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
---- !u!114 &1575281521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

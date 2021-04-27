@@ -155,8 +155,6 @@ GameObject:
   - component: {fileID: 8962447785554834954}
   - component: {fileID: 691023401073591275}
   - component: {fileID: 2017010695}
-  - component: {fileID: 1660566074}
-  - component: {fileID: 360662598}
   m_Layer: 10
   m_Name: SM_Bld_Market_Medium_01
   m_TagString: Untagged
@@ -259,32 +257,6 @@ BoxCollider:
   m_Size: {x: 5.7958407, y: 4.4507127, z: 18.15775}
   m_Center: {x: 0.37074018, y: 1.9799044, z: 5.3664837}
 --- !u!114 &2017010695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575535087174988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
---- !u!114 &1660566074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575535087174988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
---- !u!114 &360662598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

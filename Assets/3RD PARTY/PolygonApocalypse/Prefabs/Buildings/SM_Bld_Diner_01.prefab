@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 23950991984154110}
   - component: {fileID: 2647460253364206852}
   - component: {fileID: 1474184072}
-  - component: {fileID: 921329085}
   m_Layer: 10
   m_Name: SM_Bld_Diner_01
   m_TagString: Untagged
@@ -162,19 +161,6 @@ BoxCollider:
   m_Size: {x: 15.416346, y: 4.5089893, z: 8.137027}
   m_Center: {x: 0.032055855, y: 2.2544947, z: 0.07990646}
 --- !u!114 &1474184072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611046470452428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
---- !u!114 &921329085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

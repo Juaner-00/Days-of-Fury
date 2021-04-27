@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 480997953145271949
+  uniqueID: 4703282425244660869
   updateError: 1
   checkTime: 2000
 --- !u!1 &1277001794708716
@@ -945,7 +945,6 @@ GameObject:
   - component: {fileID: 23879275630151400}
   - component: {fileID: 4885111114058847333}
   - component: {fileID: 1250763787}
-  - component: {fileID: 1326472555}
   m_Layer: 10
   m_Name: SM_Bld_Motel_01
   m_TagString: Untagged
@@ -1043,19 +1042,6 @@ BoxCollider:
   m_Size: {x: 27.607416, y: 7.2748094, z: 8.930229}
   m_Center: {x: -0.078840256, y: 3.5063899, z: 1.1367118}
 --- !u!114 &1250763787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895244190239012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
---- !u!114 &1326472555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1172,7 +1158,7 @@ Transform:
   m_GameObject: {fileID: 5205803121814019517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.85, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.82, y: 0.7, z: 1}
   m_Children:
   - {fileID: 8983122699354391418}
   - {fileID: 7632186549677366478}

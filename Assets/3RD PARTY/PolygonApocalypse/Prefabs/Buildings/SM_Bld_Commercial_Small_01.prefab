@@ -314,7 +314,6 @@ GameObject:
   - component: {fileID: 1927524767378046609}
   - component: {fileID: 5710320661361329841}
   - component: {fileID: 205572892}
-  - component: {fileID: 1101905935}
   m_Layer: 10
   m_Name: SM_Bld_Commercial_Small_01
   m_TagString: Untagged
@@ -416,19 +415,6 @@ BoxCollider:
   m_Size: {x: 4.9051285, y: 8.035493, z: 3.1208243}
   m_Center: {x: 6.5963554, y: 3.7731895, z: 6.318327}
 --- !u!114 &205572892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443285041389150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
---- !u!114 &1101905935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

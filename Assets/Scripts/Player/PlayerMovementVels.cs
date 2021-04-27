@@ -8,6 +8,7 @@ public class PlayerMovementVels : MonoBehaviour
 {
     [Header("Movement Properties")]
     [SerializeField] float maxSpeedBase;
+    [SerializeField] float slowDownPercentage;
     [SerializeField] float acceleration;
     [SerializeField] float crashCoolDown;
     [SerializeField] Directions initialDirection;
@@ -36,9 +37,13 @@ public class PlayerMovementVels : MonoBehaviour
 
     float rotationTime;
 
+    float slowDownMultiplier;
+
     CharacterController controller;
 
     bool available;
+    [SerializeField]
+    bool isSlowDown;
 
     PlayerStates state;
 
@@ -159,7 +164,9 @@ public class PlayerMovementVels : MonoBehaviour
             // Si está acelerando se incrementa la velocidad
             case PlayerStates.Accelerating:
                 float accelerationMagnitud = accelerationCurve.Evaluate(curveTimer / curveDuration);
-                movementSpeed += acceleration * accelerationMagnitud * Time.deltaTime;
+
+                float accelerationMultiplier = isSlowDown ? 0f : 1f;
+                movementSpeed += acceleration * accelerationMagnitud * Time.deltaTime * accelerationMultiplier;
                 curveTimer += Time.deltaTime;
                 controller.Move(transform.forward * movementSpeed * Time.deltaTime);
                 OnMoving?.Invoke();
@@ -271,6 +278,19 @@ public class PlayerMovementVels : MonoBehaviour
         Debug.DrawRay(frontRay.origin, frontRay.direction.normalized * frontLenght, Color.red, 0.1f);
         Debug.DrawRay(leftRay.origin, leftRay.direction.normalized * leftLenght, Color.blue, 0.1f);
         Debug.DrawRay(rightRay.origin, rightRay.direction.normalized * rightLenght, Color.magenta, 0.1f);
+    }
+
+    public bool IsSlowDown
+    {
+        get => isSlowDown;
+        set
+        {
+            isSlowDown = value;
+
+            slowDownMultiplier = isSlowDown ? 1f - slowDownPercentage / 100f : 1f;
+            movementSpeed *= slowDownMultiplier;
+            state = PlayerStates.Accelerating;
+        }
     }
 
 }

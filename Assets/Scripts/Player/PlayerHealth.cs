@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     PoolVfxs particleDamage, particleExplo;
 
     public static Action OnDie;
-    public static Action <int>OnChangeLife;
+    public static Action<int> OnChangeLife;
     public static Action OnGettingHurt;
 
 
@@ -44,10 +44,10 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
-        {
             TakeDamage();
-        }
+#endif
     }
 
     // Se utiliza para que el jugador tome daño

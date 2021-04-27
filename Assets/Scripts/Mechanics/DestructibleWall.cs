@@ -11,7 +11,7 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
     public int HealthPoints => healthPoints;
 
-    public static event WallEvent WallDestroyed;
+    public event WallEvent OnWallDestroyed;
     public delegate void WallEvent();
 
     PoolVfxs particleDestruction;
@@ -33,15 +33,13 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
     void Die()
     {
-
         ParticleSystem destruction = particleDestruction.GetItem(transform.position, tag);
 
-        WallDestroyed?.Invoke();
+        OnWallDestroyed?.Invoke();
 
         // Desactivar los renderer de los hijos
         foreach (Renderer render in GetComponentsInChildren<Renderer>())
             render.enabled = false;
-        transform.GetChild(0).gameObject.SetActive(true);
 
         // Desactivar los renderer y el collider
         GetComponent<Renderer>().enabled = false;
@@ -53,9 +51,23 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
         // Updatear el grid
         dynamic.DoUpdateGraphs();
+
         // Desactivar el collider
         foreach (Collider collider in dynamic.gameObject.GetComponents<Collider>())
             collider.enabled = false;
+
+        // Activar el render de los escombros
+        transform.GetChild(0).gameObject.SetActive(true);
+
+        // Intentar obtener el collider y encenderlo
+        Collider childCollider;
+        if (transform.GetChild(0).TryGetComponent(out childCollider))
+            childCollider.enabled = true;
+        // Si no se puede es que es un objeto con los prefabs dentro
+        else
+            // Acceder a cada hijo y encederle el collider
+            for (int i = 0; i < transform.GetChild(0).childCount; i++)
+                transform.GetChild(0).GetChild(i).GetComponent<Collider>().enabled = true;
     }
 }
 

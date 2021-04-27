@@ -10,7 +10,6 @@ TagManager:
   - obstaculo
   - DestuctibleWall
   - MoveSpot
-  - Remains
   layers:
   - Default
   - TransparentFX

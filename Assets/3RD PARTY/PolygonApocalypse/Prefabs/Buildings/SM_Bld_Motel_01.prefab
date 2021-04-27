@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1020639077}
   - component: {fileID: 1020639079}
   - component: {fileID: 1020639078}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GameObject (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4853959395997210}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1020639079
 BoxCollider:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 480997953145271949
+  uniqueID: 231002523107734286
   updateError: 1
   checkTime: 2000
 --- !u!1 &1277001794708716
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4630540673354656}
   - component: {fileID: 33704613399420394}
   - component: {fileID: 23383914296901162}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_Door_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 4137307330304232}
   - component: {fileID: 33901887447079034}
   - component: {fileID: 23978790381929744}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_Door_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 4124158907964244}
   - component: {fileID: 33064580327316244}
   - component: {fileID: 23535550589883200}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_Door_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 4141027285680860}
   - component: {fileID: 33137566113632162}
   - component: {fileID: 23044227047217634}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_01_Barricades_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 4253932287672760}
   - component: {fileID: 33584569865740200}
   - component: {fileID: 23857755216456544}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_Door_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4853959395997210}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33584569865740200
 MeshFilter:
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 4754447491211150}
   - component: {fileID: 33564126219351874}
   - component: {fileID: 23822440503734152}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_Door_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 4772294867563082}
   - component: {fileID: 33200945346009158}
   - component: {fileID: 23703695120136356}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_Door_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 4817193832876732}
   - component: {fileID: 33018131352522282}
   - component: {fileID: 23079313598161228}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_01_Attachments_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 4916883599678674}
   - component: {fileID: 33006780278848416}
   - component: {fileID: 23235039311825844}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_Door_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +784,7 @@ GameObject:
   - component: {fileID: 4281073008399882}
   - component: {fileID: 33262428365526206}
   - component: {fileID: 23909050816397824}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_01_Overgrowth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,7 +864,7 @@ GameObject:
   - component: {fileID: 4551845109716626}
   - component: {fileID: 33618590131542390}
   - component: {fileID: 23948955255457296}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_01_Sign_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,8 +945,7 @@ GameObject:
   - component: {fileID: 23879275630151400}
   - component: {fileID: 4885111114058847333}
   - component: {fileID: 1250763787}
-  - component: {fileID: 1326472555}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_Motel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -975,9 +974,9 @@ Transform:
   - {fileID: 4754447491211150}
   - {fileID: 4630540673354656}
   - {fileID: 4137307330304232}
-  - {fileID: 540393951674341786}
   - {fileID: 4253932287672760}
   - {fileID: 1020639077}
+  - {fileID: 540393951674341786}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1055,19 +1054,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
---- !u!114 &1326472555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895244190239012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599a24f040a18ba4a93a3970cf78a1fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 3
 --- !u!1 &3324146236183603794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1065,7 @@ GameObject:
   - component: {fileID: 540393951674341786}
   - component: {fileID: 4303441601908504073}
   - component: {fileID: 6956307632172833837}
-  m_Layer: 10
+  m_Layer: 31
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1084,7 @@ Transform:
   m_LocalScale: {x: 28.243746, y: 1.01669, z: 10.710968}
   m_Children: []
   m_Father: {fileID: 4853959395997210}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4303441601908504073
 MeshFilter:
@@ -1156,7 +1142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7376306641375261196}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: EscombrosJuntos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1171,8 +1157,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5205803121814019517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.85, y: 0.7, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8983122699354391418}
   - {fileID: 7632186549677366478}
@@ -1187,35 +1173,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7376306641375261196}
     m_Modifications:
-    - target: {fileID: 3987463749752903363, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3987615999147026479, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5641100863238507045, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5641248778975278281, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_Name
       value: Escombros2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
@@ -1275,17 +1236,12 @@ PrefabInstance:
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.4832532
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.210938
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 032630ca645916f41ba383be0d960220, type: 3}
@@ -1306,31 +1262,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escombros
-      objectReference: {fileID: 0}
-    - target: {fileID: 2893564532277052265, guid: af4fc20c830887e4e81bb37ff125cacb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5786855753705308257, guid: af4fc20c830887e4e81bb37ff125cacb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5880922329977472143, guid: af4fc20c830887e4e81bb37ff125cacb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6382469552492525929, guid: af4fc20c830887e4e81bb37ff125cacb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6567034667981612010, guid: af4fc20c830887e4e81bb37ff125cacb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
@@ -1390,27 +1321,12 @@ PrefabInstance:
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.2012875
       objectReference: {fileID: 0}
     - target: {fileID: 6743349602199020641, guid: af4fc20c830887e4e81bb37ff125cacb,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8621139597980850709, guid: af4fc20c830887e4e81bb37ff125cacb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8621172968114433228, guid: af4fc20c830887e4e81bb37ff125cacb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8621290952073782521, guid: af4fc20c830887e4e81bb37ff125cacb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
+      value: 1.0335276
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4fc20c830887e4e81bb37ff125cacb, type: 3}
@@ -1431,36 +1347,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escombros3
-      objectReference: {fileID: 0}
-    - target: {fileID: 734484951527539788, guid: 82d42bbbbaeea2e4da30d5d5bef4a7b7,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3709398005023974606, guid: 82d42bbbbaeea2e4da30d5d5bef4a7b7,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3709531701868321314, guid: 82d42bbbbaeea2e4da30d5d5bef4a7b7,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6869410897779414348, guid: 82d42bbbbaeea2e4da30d5d5bef4a7b7,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6869544587946404768, guid: 82d42bbbbaeea2e4da30d5d5bef4a7b7,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6869642087177780316, guid: 82d42bbbbaeea2e4da30d5d5bef4a7b7,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7668305323955840519, guid: 82d42bbbbaeea2e4da30d5d5bef4a7b7,
         type: 3}
@@ -1520,7 +1406,7 @@ PrefabInstance:
     - target: {fileID: 7668305323955840519, guid: 82d42bbbbaeea2e4da30d5d5bef4a7b7,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.1032133
       objectReference: {fileID: 0}
     - target: {fileID: 7668305323955840519, guid: 82d42bbbbaeea2e4da30d5d5bef4a7b7,
         type: 3}

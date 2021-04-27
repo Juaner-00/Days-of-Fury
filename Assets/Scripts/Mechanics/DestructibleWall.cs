@@ -41,7 +41,7 @@ public class DestructibleWall : MonoBehaviour, IDamagable
         // Desactivar los renderer de los hijos
         foreach (Renderer render in GetComponentsInChildren<Renderer>())
             render.enabled = false;
-        transform.GetChild(0).gameObject.SetActive(true);
+
 
         // Desactivar los renderer y el collider
         GetComponent<Renderer>().enabled = false;
@@ -56,6 +56,16 @@ public class DestructibleWall : MonoBehaviour, IDamagable
         // Desactivar el collider
         foreach (Collider collider in dynamic.gameObject.GetComponents<Collider>())
             collider.enabled = false;
+
+        // Encender el collider de los escombros
+        transform.GetChild(0).gameObject.SetActive(true);
+        Collider trigger;
+
+        if (transform.GetChild(0).TryGetComponent(out trigger))
+            trigger.enabled = true;
+        else
+            for (int i = 0; i < transform.GetChild(0).childCount; i++)
+                transform.GetChild(0).GetChild(i).GetComponent<Collider>().enabled = true;
     }
 }
 

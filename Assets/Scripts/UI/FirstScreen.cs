@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,23 +6,26 @@ public class FirstScreen : Menu
 {
     bool firstClick = false;
 
+    public static Action OnFirstClick;
+
     private void Start()
     {
-        Invoke("First", 0.1f);
+        IsPaused = true;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (Input.anyKeyDown && firstClick == false)
         {
             firstClick = true;
             Resume();
+            Invoke("CallEvent", 0.2f);
         }
     }
 
-    void First()
+    void CallEvent()
     {
-        Time.timeScale = 0;
+        OnFirstClick?.Invoke();
     }
 
     // Maneja los botones

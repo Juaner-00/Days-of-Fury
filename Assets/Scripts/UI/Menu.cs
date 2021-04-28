@@ -130,6 +130,7 @@ public abstract class Menu : MonoBehaviour
     // Resume el juego
     public void Resume()
     {
+        IsPaused = false;
         Time.timeScale = 1;
         screen.SetActive(false);
         HUD.SetActive(true);
@@ -147,6 +148,7 @@ public abstract class Menu : MonoBehaviour
     {
         Resume();
         _SceneManager.ResetScene();
+        MisionManager.Instance.Resetear();
     }
 
     // Carga el menú principal
@@ -161,7 +163,7 @@ public abstract class Menu : MonoBehaviour
     {
 
     }
-    
+
     // Abre el panel anterior
     public void GoBack()
     {
@@ -173,8 +175,6 @@ public abstract class Menu : MonoBehaviour
     {
         Application.Quit();
     }
-
-
 
 
 

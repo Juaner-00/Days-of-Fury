@@ -31,6 +31,11 @@ public class _SceneManager : MonoBehaviour
         lsm.LoadScene(name);
     }
 
+    public void LoadSceneByString(string name)
+    {
+        lsm.LoadScene(name);
+    }
+
     // Se vuelve a cargar la escena actual
     public static void ResetScene()
     {

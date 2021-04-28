@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [Expandable]
     [SerializeField] DataObject dataObject;
     [SerializeField] int actualLevel;
-    [SerializeField] Texture2D cursorImage;
+
 
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
@@ -23,15 +23,20 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         Instance = this;
 
-        hasFinished = false;
+        HasFinished = false;
 
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start()
     {
-        Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
+      
 
+        playerMedals = Medals.None;
+    }
+
+    void StartSpawn()
+    {
         if (spawnEnemies)
             if (EnemySpawnManager.Instance)
                 EnemySpawnManager.Instance.StartSpawning();
@@ -39,20 +44,20 @@ public class GameManager : MonoBehaviour
         if (spawnPickUps)
             if (PickUpSpawnManager.Instance)
                 PickUpSpawnManager.Instance.StartSpawning();
-
-        playerMedals = Medals.None;
     }
 
     private void OnEnable()
     {
         PlayerHealth.OnDie += PlayerDie;
         ScoreManager.OnMedalObtained += VictoryCheck;
+        FirstScreen.OnFirstClick += StartSpawn;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnDie -= PlayerDie;
         ScoreManager.OnMedalObtained -= VictoryCheck;
+        FirstScreen.OnFirstClick -= StartSpawn;
     }
 
     // Método para finalizar el juego
@@ -80,14 +85,12 @@ public class GameManager : MonoBehaviour
         if (PickUpSpawnManager.Instance)
             PickUpSpawnManager.Instance.StopSpawn();
 
-        hasFinished = true;
+        HasFinished = true;
     }
 
     // Método que se cuando el jugador muere
     void PlayerDie()
     {
-        FinishGame();
-
         if (playerMedals == Medals.None)
             LoseGame();
         else
@@ -108,6 +111,11 @@ public class GameManager : MonoBehaviour
 
         //delay para que se vea el efecto de acercamiento
         Invoke("OpenLose", 1.5f);
+    }
+
+    void FirstClick()
+    {
+        StartSpawn();
     }
 
     // Método que se llama si el jugador gana
@@ -149,6 +157,8 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
+        dataObject.AssignScore(actualLevel, ScoreManager.Instance.TotalScore);
+
         SaveAndLoad.Save("LevelData", dataObject.Data);
     }
 
@@ -161,4 +171,5 @@ public class GameManager : MonoBehaviour
     public int ActualLevel { get => actualLevel; set => actualLevel = value; }
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }
+    public static bool HasFinished { get; private set; }
 }

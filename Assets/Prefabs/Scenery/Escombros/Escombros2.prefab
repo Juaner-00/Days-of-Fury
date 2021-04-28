@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5509434773703753501}
+  - component: {fileID: 1045112360455104426}
   m_Layer: 0
   m_Name: Escombros2
-  m_TagString: Untagged
+  m_TagString: Remains
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5509434773703753501
 Transform:
@@ -33,6 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1045112360455104426
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8715410719042046438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.8912554, y: 1, z: 4.2301784}
+  m_Center: {x: 0.31892562, y: 0.48, z: 0.1364708}
 --- !u!1001 &1233664688898959151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43,6 +57,10 @@ PrefabInstance:
     - target: {fileID: 1807302060084696, guid: cddb4418665888940979528407839723, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rubble_Pile_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807302060084696, guid: cddb4418665888940979528407839723, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4870983424253146, guid: cddb4418665888940979528407839723, type: 3}
       propertyPath: m_LocalPosition.x
@@ -111,6 +129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Brick_Debris_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1687501879796204, guid: 033e631b10e13a547ac9fa729caf3b56, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4551407110906298, guid: 033e631b10e13a547ac9fa729caf3b56, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.0727887
@@ -170,9 +192,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5509434773703753501}
     m_Modifications:
+    - target: {fileID: 1744683167109508, guid: 84c9f99decdc5cc4d8cdcfb2aec3b0b2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1891707264020328, guid: 84c9f99decdc5cc4d8cdcfb2aec3b0b2, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rubble_Pile (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891707264020328, guid: 84c9f99decdc5cc4d8cdcfb2aec3b0b2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4537512208504720, guid: 84c9f99decdc5cc4d8cdcfb2aec3b0b2, type: 3}
       propertyPath: m_LocalPosition.x

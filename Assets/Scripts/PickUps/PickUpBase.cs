@@ -17,6 +17,12 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 
     Vector3 pickupSpawn;
 
+    #region Sound
+
+    public Action OnPicked;
+
+    #endregion
+
     private void OnTriggerEnter(Collider other)
     {
         if (!hasPicked)

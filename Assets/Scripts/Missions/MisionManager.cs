@@ -16,26 +16,24 @@ public class MisionManager : MonoBehaviour
     [SerializeField] int ThreeMedalObjective;
 
     [Header("Missions")]
-    public int actualMision = 0; //Mision actual
-    public Missions[] missions;
-    public int actualCount;
+    [SerializeField] int actualMision = 0; //Mision actual
+    [SerializeField] Missions[] missions;
+
+    int actualCount;
     int missionObjective;
     int missionsComplets;
 
-    bool fristMissionComplete;
-    bool secondMissionComplete;
-    bool ThreeMissionComplete;
-
+    //public GameObject playerPosition;
+    public ObjetiveManager[] Objetives;
 
     private void Awake()
     {
-        if (Instance)
+       if (Instance)
             Destroy(gameObject);
         Instance = this;
 
-        actualCount = 0;
-        actualMision = 0;
-        missionsComplets = 0;
+        Texts();
+        //layerPosition.transform.localPosition = gameObject.GetComponent<PlayerMovementVels>().transform.localPosition;
     }
     public void Start()
     {
@@ -44,11 +42,16 @@ public class MisionManager : MonoBehaviour
         missionsComplets = 0;
         missionObjective = missions[0].objetive;
 
-        fristMissionComplete = false;
-        secondMissionComplete = false;
-        ThreeMissionComplete = false;      
-
         Texts();
+    }
+
+    public void Resetear()
+    {
+        actualCount = 0;
+        missionsComplets = 0;
+        actualMision = 0;
+        missionsComplets = 0;
+        missionObjective = missions[0].objetive;
     }
 
     private void Update()
@@ -62,7 +65,10 @@ public class MisionManager : MonoBehaviour
     public void OnEnable()
     {
         EnemyController.OnDie += OnEnemyDead;
-        ScoreManager.OnGetScore += OnScoreGet;
+        ScoreManager.OnGetScore += OnScoreGet;       
+        PlayerMovementVels.OnMovingObjetive += OnMove;
+        ObjetiveManager.OnReachObjetive += OnReachObj;
+        EnemyTowerController.OnDie += TowerDead;
     }
 
     void OnScoreGet(int score)
@@ -73,7 +79,28 @@ public class MisionManager : MonoBehaviour
             IsComplete();
         }
     }
-    
+
+    void OnMove()
+    {        
+        if (missions[actualMision].opcion == Missions.Opcion.Move)
+        {
+            actualCount++;
+            IsComplete();
+        }
+    }
+
+    void OnReachObj(int _Objetive)
+    {
+        if (missions[actualMision].opcion == Missions.Opcion.Objetive)
+        {
+            if (_Objetive == missions[actualMision].numObjetive)
+            {
+                actualCount = missions[actualCount].objetive;
+                IsComplete();
+            }
+        }
+    }
+
     void OnEnemyDead(Vector3 _)
     {
         if (missions[actualMision].opcion == Missions.Opcion.Enemys)
@@ -83,6 +110,18 @@ public class MisionManager : MonoBehaviour
             IsComplete();
         }           
     }
+
+    void TowerDead(Vector3 _)
+    {
+        if (missions[actualMision].opcion == Missions.Opcion.Tower)
+        {
+            actualCount++;
+            print($"Actual Objective {actualCount}/{missionObjective}");
+            IsComplete();
+        }
+    }
+
+
 
     void IsComplete()
     {
@@ -96,33 +135,9 @@ public class MisionManager : MonoBehaviour
             }
             missionsComplets++;
 
-            switch (missionsComplets)
-            {
-                case 1:
-                    fristMissionComplete = true;
-                    break;
-                case 2:
-                    secondMissionComplete = true;
-                    break;
-                case 3:
-                    ThreeMissionComplete = true;
-                    break;
-            }
-
-            if (fristMissionComplete) ScoreManager.Instance.ActiveOneStarMedal();
-            if (fristMissionComplete && secondMissionComplete) 
-            {
-                ScoreManager.Instance.ActiveTwoStarMedal();
-                print("Misiones actuales" + missionsComplets);
-            }
-
-
-            if (fristMissionComplete && (secondMissionComplete && ThreeMissionComplete) ) ScoreManager.Instance.ActiveThreeStarMedal();
-
-
-            /*if (missionsComplets == OneMedalObjective) ScoreManager.Instance.ActiveOneStarMedal();
+            if (missionsComplets == OneMedalObjective) ScoreManager.Instance.ActiveOneStarMedal();
             if (missionsComplets == TwoMedalObjective) ScoreManager.Instance.ActiveTwoStarMedal();
-            if (missionsComplets == ThreeMedalObjective) ScoreManager.Instance.ActiveThreeStarMedal();*/
+            if (missionsComplets == ThreeMedalObjective) ScoreManager.Instance.ActiveThreeStarMedal();
         }
         Texts();
     }

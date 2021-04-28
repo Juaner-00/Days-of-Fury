@@ -9,6 +9,8 @@ TagManager:
   - Shell
   - obstaculo
   - DestuctibleWall
+  - MoveSpot
+  - Remains
   layers:
   - Default
   - TransparentFX
@@ -18,9 +20,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Obstacle
   - 
   - 
   - 

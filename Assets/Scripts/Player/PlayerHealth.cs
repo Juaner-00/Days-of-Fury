@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public static Action <int>OnChangeLife;
     public static Action OnGettingHurt;
 
+
     int healthPoints;
     bool isDead;
 
@@ -32,6 +33,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
         vfxs = GetComponent<VfxsController>();
         healthPoints = maxHealthPoints;
+
         isDead = (healthPoints <= 0) ? true : false;
     }
 

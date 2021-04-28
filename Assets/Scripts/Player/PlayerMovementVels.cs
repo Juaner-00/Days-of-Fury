@@ -8,6 +8,7 @@ public class PlayerMovementVels : MonoBehaviour
 {
     [Header("Movement Properties")]
     [SerializeField] float maxSpeedBase;
+    [SerializeField] float slowDownPercentage;
     [SerializeField] float acceleration;
     [SerializeField] float crashCoolDown;
     [SerializeField] Directions initialDirection;
@@ -36,7 +37,13 @@ public class PlayerMovementVels : MonoBehaviour
 
     float rotationTime;
 
+    float slowDownMultiplier;
+
     CharacterController controller;
+
+    bool available;
+    [SerializeField]
+    bool isSlowDown;
 
     PlayerStates state;
 
@@ -48,6 +55,19 @@ public class PlayerMovementVels : MonoBehaviour
     public static Action OnMoving;
     public static Action OnStoped;
 
+
+    public static Action OnMovingObjetive;
+
+
+    private void OnEnable()
+    {
+        FirstScreen.OnFirstClick += FirstClick;
+    }
+
+    private void OnDisable()
+    {
+        FirstScreen.OnFirstClick -= FirstClick;
+    }
 
     private void Awake()
     {
@@ -61,20 +81,35 @@ public class PlayerMovementVels : MonoBehaviour
         maxSpeed = maxSpeedBase;
         curveTimer = 0;
 
-        crashCoolDownTimer = crashCoolDown;
+        available = true;
+
+        crashCoolDownTimer = 0;
         lastDir = initialDirection;
     }
 
     private void Update()
     {
-        HandleInputs();
-        // Solo se llama si hay un input
-        if (Input.anyKeyDown)
-            HandleDirection();
-        HandleRotation();
+        if (available)
+        {
+            HandleInputs();
+            // Solo se llama si hay un input
+            if (Input.anyKeyDown)
+                HandleDirection();
 
-        HandleRayCast();
-        HandleSpeed();
+            HandleRotation();
+
+            HandleRayCast();
+            HandleSpeed();
+
+
+
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            {
+                OnMovingObjetive?.Invoke();
+            }
+        }
+
+
     }
 
     void HandleRayCast()
@@ -84,7 +119,7 @@ public class PlayerMovementVels : MonoBehaviour
         rightRay = new Ray(transform.position, transform.right * rightLenght);
 
         // Si no tiene el coolDown
-        if (crashCoolDownTimer > crashCoolDown)
+        if (crashCoolDownTimer <= 0)
         {
             // Choca con el rayo del frente o el de la derecha o izquierda
             if (Physics.Raycast(frontRay, frontLenght, obstacleMask) ||
@@ -106,26 +141,21 @@ public class PlayerMovementVels : MonoBehaviour
                         break;
                 }
 
-                crashCoolDownTimer = 0;
+                crashCoolDownTimer = crashCoolDown;
             }
         }
 
-        crashCoolDownTimer += Time.deltaTime;
+        crashCoolDownTimer -= Time.deltaTime;
+        crashCoolDownTimer = Mathf.Clamp(crashCoolDownTimer, 0, crashCoolDown);
     }
 
     void HandleSpeed()
     {
-        if (movementSpeed > maxSpeed)
-        {
-            movementSpeed = maxSpeed;
-            state = PlayerStates.MaxSpeed;
-        }
-
         switch (state)
         {
             // Si está parado y presiona cualquier tecla se pone en acelerando
             case PlayerStates.Stoped:
-                if (Input.anyKey)
+                if (Input.anyKey && !Menu.IsPaused)
                 {
                     curveTimer = 0;
                     state = PlayerStates.Accelerating;
@@ -134,14 +164,22 @@ public class PlayerMovementVels : MonoBehaviour
             // Si está acelerando se incrementa la velocidad
             case PlayerStates.Accelerating:
                 float accelerationMagnitud = accelerationCurve.Evaluate(curveTimer / curveDuration);
-                movementSpeed += acceleration * accelerationMagnitud * Time.deltaTime;
+
+                float accelerationMultiplier = isSlowDown ? 0f : 1f;
+                movementSpeed += acceleration * accelerationMagnitud * Time.deltaTime * accelerationMultiplier;
                 curveTimer += Time.deltaTime;
-                controller.SimpleMove(transform.forward * movementSpeed);
+                controller.Move(transform.forward * movementSpeed * Time.deltaTime);
                 OnMoving?.Invoke();
+
+                if (movementSpeed > maxSpeed)
+                {
+                    movementSpeed = maxSpeed;
+                    state = PlayerStates.MaxSpeed;
+                }
                 break;
             // Si está en máxima velodicad se mueve a máxima velocidad
             case PlayerStates.MaxSpeed:
-                controller.SimpleMove(transform.forward * movementSpeed);
+                controller.Move(transform.forward * movementSpeed * Time.deltaTime);
                 OnMoving?.Invoke();
                 break;
         }
@@ -168,7 +206,7 @@ public class PlayerMovementVels : MonoBehaviour
             turnDir = Directions.West;
 
         // Cambiar la duración de la rotación
-        if (lastDir != turnDir && turnDir == oppositeDirection)
+        if (turnDir == oppositeDirection)
             rotationTime = rotationTimeBase * oppositeRotationMultiplier;
         else
             rotationTime = rotationTimeBase;
@@ -176,26 +214,29 @@ public class PlayerMovementVels : MonoBehaviour
 
     void HandleRotation()
     {
-        // Girar el tanque con DoTween
-        if (vertical > 0.1f && turnDir != lastDir)
+        if (turnDir != lastDir)
         {
-            transform.DOLocalRotate(Vector3.up * 0, rotationTime, RotateMode.Fast);
-            lastDir = Directions.North;
-        }
-        else if (vertical < -0.1f)
-        {
-            transform.DOLocalRotate(Vector3.up * -180, rotationTime, RotateMode.Fast);
-            lastDir = Directions.South;
-        }
-        else if (horizontal > 0.1f)
-        {
-            transform.DOLocalRotate(Vector3.up * 90, rotationTime, RotateMode.Fast);
-            lastDir = Directions.East;
-        }
-        else if (horizontal < -0.1f)
-        {
-            transform.DOLocalRotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
-            lastDir = Directions.West;
+            // Girar el tanque con DoTween
+            if (vertical > 0.1f)
+            {
+                transform.DOLocalRotate(Vector3.up * 0, rotationTime, RotateMode.Fast);
+                lastDir = Directions.North;
+            }
+            else if (vertical < -0.1f)
+            {
+                transform.DOLocalRotate(Vector3.up * -180, rotationTime, RotateMode.Fast);
+                lastDir = Directions.South;
+            }
+            else if (horizontal > 0.1f)
+            {
+                transform.DOLocalRotate(Vector3.up * 90, rotationTime, RotateMode.Fast);
+                lastDir = Directions.East;
+            }
+            else if (horizontal < -0.1f)
+            {
+                transform.DOLocalRotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
+                lastDir = Directions.West;
+            }
         }
     }
 
@@ -216,6 +257,11 @@ public class PlayerMovementVels : MonoBehaviour
         }
     }
 
+    void FirstClick()
+    {
+        available = true;
+    }
+
     // Método para aumentar la velocidad de movimiento
     public void GainSpeed(float porcent)
     {
@@ -232,6 +278,19 @@ public class PlayerMovementVels : MonoBehaviour
         Debug.DrawRay(frontRay.origin, frontRay.direction.normalized * frontLenght, Color.red, 0.1f);
         Debug.DrawRay(leftRay.origin, leftRay.direction.normalized * leftLenght, Color.blue, 0.1f);
         Debug.DrawRay(rightRay.origin, rightRay.direction.normalized * rightLenght, Color.magenta, 0.1f);
+    }
+
+    public bool IsSlowDown
+    {
+        get => isSlowDown;
+        set
+        {
+            isSlowDown = value;
+
+            slowDownMultiplier = isSlowDown ? 1f - slowDownPercentage / 100f : 1f;
+            movementSpeed *= slowDownMultiplier;
+            state = PlayerStates.Accelerating;
+        }
     }
 
 }

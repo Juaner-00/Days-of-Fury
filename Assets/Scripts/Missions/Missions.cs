@@ -9,10 +9,11 @@ public class Missions : ScriptableObject
     [SerializeField] public string description;
 
     [SerializeField] public int objetive;
+    [SerializeField] public int numObjetive;
 
     public enum Opcion
     {
-        Enemys, Pickups, Walls, Score,
+        Enemys, Pickups, Walls, Score, Move, Objetive,Tower,
     }
     public Opcion opcion = Opcion.Score;
 }

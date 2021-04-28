@@ -7,27 +7,22 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI lifesText;
-    [SerializeField] Image damaged;
-    PlayerHealth pHealth;
+    [SerializeField] Image damaged, glass;
+    [SerializeField] Color color1, color2;
+
+    [SerializeField] PlayerHealth health;
+
+    float divisor;
 
     void Start()
     {
+        if (damaged)
+            damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0);
+        if (glass)
+            glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0);
 
-        pHealth = GameManager.Player.GetComponentInParent<PlayerHealth>(); 
     }
-    void Update()
-    {
-        
-        if (pHealth.MaxHealthPoints > pHealth.HealthPoints)
-        {
-            damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b,  0.8f);
 
-        }
-        else
-        {
-            damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0f);
-        }
-    }
     private void OnEnable()
     {
         PlayerHealth.OnChangeLife += UpdateUI;
@@ -36,12 +31,16 @@ public class HealthUI : MonoBehaviour
     private void OnDisable()
     {
         PlayerHealth.OnChangeLife -= UpdateUI;
-        
     }
 
     void UpdateUI(int lives)
     {
+        divisor = (float)health.HealthPoints;
+
+        if (glass)
+            glass.color = new Color(glass.color.r, glass.color.g, glass.color.b, 0.4f - (divisor / health.MaxHealthPoints));
+        if (damaged)
+            damaged.color = new Color(damaged.color.r, damaged.color.g, damaged.color.b, 0.7f - (divisor / health.MaxHealthPoints));
         lifesText.text = $"{lives}";
-        
     }
 }

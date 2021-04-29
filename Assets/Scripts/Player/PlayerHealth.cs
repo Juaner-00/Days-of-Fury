@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     ParticleSystem vfxscontainer;
     VfxsController vfxs;
-    Renderer[] materialPlayer;
+
     PoolVfxs particleDamage, particleExplo;
 
     public static Action OnDie;
@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
         vfxs = GetComponent<VfxsController>();
         healthPoints = maxHealthPoints;
-        materialPlayer = GetComponentsInChildren<Renderer>();
+
         isDead = (healthPoints <= 0) ? true : false;
     }
 
@@ -48,14 +48,11 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         {
             TakeDamage();
         }
-
-
     }
 
     // Se utiliza para que el jugador tome daño
     public void TakeDamage()
     {
-
         if (isDead)
             return;
 
@@ -63,11 +60,8 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         OnGettingHurt?.Invoke();
         healthPoints--;
         OnChangeLife?.Invoke(healthPoints);
-        foreach (Renderer ma in materialPlayer)
-        {
-            ma.material.SetFloat("damageChanger",(float) healthPoints / maxHealthPoints);
-        }
-       
+
+
         isDead = (healthPoints <= 0) ? true : false;
         SimpleCameraShakeInCinemachine.Instance.Shake();
 

@@ -117,10 +117,6 @@ public class DataObject : ScriptableObject
         SaveAndLoad.Save("LevelData", Data);
     }
 
-    public void Save()
-    {
-        SaveAndLoad.Save("LevelData", Data);
-    }
 
     public int[] MedalsLVLs { get => medalsLVLs; set => medalsLVLs = value; }
     public int[] ScoreLVLs { get => scoreLVLs; set => scoreLVLs = value; }

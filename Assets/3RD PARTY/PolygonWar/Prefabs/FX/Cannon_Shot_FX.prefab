@@ -41,7 +41,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1472325922009524}
   serializedVersion: 6
   lengthInSec: 0.1
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
@@ -150,8 +150,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 10
-      minScalar: -5
+      scalar: 15
+      minScalar: -2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1226,7 +1226,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.38235295, g: 0.38235295, b: 0.38235295, a: 0.54901963}
+        key0: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0.54901963}
         key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0.42745098, g: 0, b: 0, a: 1}
         key3: {r: 0.42745098, g: 0, b: 0, a: 0}
@@ -4611,7 +4611,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1938979120316268}
   serializedVersion: 6
   lengthInSec: 0.1
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
@@ -4720,7 +4720,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 30
+      scalar: 15
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4756,7 +4756,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.95686275, g: 0.8039216, b: 0.47843137, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4818,7 +4818,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5861,16 +5861,16 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 0.6413793, b: 0, a: 1}
-        key2: {r: 0.5955882, g: 0.3182108, b: 0.1051038, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key2: {r: 0.688, g: 0.36663157, b: 0.12221052, a: 0}
+        key3: {r: 0.688, g: 0.36663157, b: 0.12221052, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 22745
-        ctime1: 44911
+        ctime0: 15227
+        ctime1: 40478
         ctime2: 65535
-        ctime3: 0
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0

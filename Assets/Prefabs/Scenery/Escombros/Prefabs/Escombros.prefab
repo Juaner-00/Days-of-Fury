@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6743349602199020641}
-  - component: {fileID: 8704838937598894658}
+  - component: {fileID: 8369310577396020252}
   m_Layer: 0
   m_Name: Escombros
   m_TagString: Remains
@@ -35,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -113.75001, z: 0}
---- !u!65 &8704838937598894658
+--- !u!65 &8369310577396020252
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.752317, y: 1, z: 9.237594}
-  m_Center: {x: -3.461824, y: 0.24, z: 2.8641684}
+  m_Size: {x: 10.295982, y: 1, z: 8.07391}
+  m_Center: {x: -3.3563375, y: 0.37, z: 3.5369275}
 --- !u!1 &5786855753705308257
 GameObject:
   m_ObjectHideFlags: 0

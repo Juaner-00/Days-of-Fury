@@ -8,44 +8,24 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TanqueNormal
-  m_Shader: {fileID: -6465566751694194690, guid: 871253fb7a4ea1b4f800e8b7e2db16ed,
-    type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2050
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_1B372048:
+    - _BaseMap:
         m_Texture: {fileID: 2800000, guid: f70e18bc9ac14b241b7a5c88e1b99489, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - Texture2D_261B65FB:
-        m_Texture: {fileID: 2800000, guid: 1611c4166f95a394fb41d41425b0d4e6, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C44054D0:
-        m_Texture: {fileID: 2800000, guid: 8b74782b796dcf34f82c305ef8235bd7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_D3780905:
-        m_Texture: {fileID: 2800000, guid: a8a189d564a7b934281b994121805fca, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_F72F5A61:
-        m_Texture: {fileID: 2800000, guid: 025d09b8e187d104f85fb48932cd144a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 73f070a561c4a50429188f82373947cb, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 1101b034404c3c84c8dd589ac04eb636, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5fe817fe9675cdb4da5bdb24d6fb00cc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -53,35 +33,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 73f070a561c4a50429188f82373947cb, type: 3}
+        m_Texture: {fileID: 2800000, guid: f70e18bc9ac14b241b7a5c88e1b99489, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 9ed77089b1f2f8741b113d9f7ca20876, type: 3}
+        m_Texture: {fileID: 2800000, guid: 823f8e477ce4cb943a9ce69c72c12e6b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_128B7018_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 73f070a561c4a50429188f82373947cb, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_1ACB6134_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 9ed77089b1f2f8741b113d9f7ca20876, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_48E0032B_Texture_1:
-        m_Texture: {fileID: 2800000, guid: f1859c07445f16146bd4e05adfe1f5a6, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_8512930D_Texture_1:
-        m_Texture: {fileID: 2800000, guid: c72f89b3f40a89c41befc98f4682b3b7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_A73A83A4_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 1101b034404c3c84c8dd589ac04eb636, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -103,20 +63,19 @@ Material:
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.111
+    - _Smoothness: 0.115
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - damageRobust: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.8970588, g: 0.8970588, b: 0.8970588, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999993, g: 0.19999993, b: 0.19999993, a: 1}
---- !u!114 &7217984140268418143
+--- !u!114 &7557133735272223225
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

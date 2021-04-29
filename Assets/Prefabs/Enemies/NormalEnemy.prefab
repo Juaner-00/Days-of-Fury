@@ -281,7 +281,7 @@ MonoBehaviour:
   chaseRadius: 38
   ChaseReachedDistance: 30
   fieldOfViewAngle: 20
-  fovRadius: 55
+  losRadius: 55
   memoryStartTime: 5
   noiseTravelDistance: 80
   spinTime: 3

@@ -8,18 +8,38 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TanqueRobusto
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 58692948e860eb6489bda919276d6b7d,
+    type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2050
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_14C56D87:
+        m_Texture: {fileID: 2800000, guid: f1859c07445f16146bd4e05adfe1f5a6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_4CCB1281:
+        m_Texture: {fileID: 2800000, guid: c72f89b3f40a89c41befc98f4682b3b7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_70F0EC3B:
+        m_Texture: {fileID: 2800000, guid: 73f070a561c4a50429188f82373947cb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_95FC1FC4:
+        m_Texture: {fileID: 2800000, guid: c8bdd95ecd980684e8b17f4127cd081f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_9F766EDA:
+        m_Texture: {fileID: 2800000, guid: 3a194db0d5f1c7740a7e6243797d0be8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 73f070a561c4a50429188f82373947cb, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -42,6 +62,26 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_1E706BDB_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 0b24cfb63cdfa1b4b9bfcd9498c8fe9c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_72D41410_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 0c47327ab4e52be43aff34378d24bb51, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_B68E3F23_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1fd287ea9598a7741bfd19bf04d5f8a7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_B74E2002_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 7c9aa72d23a25bf42af39c58b91ba625, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_F7B40821_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 0b24cfb63cdfa1b4b9bfcd9498c8fe9c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -70,6 +110,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - damageChanger: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.8970588, g: 0.8970588, b: 0.8970588, a: 1}

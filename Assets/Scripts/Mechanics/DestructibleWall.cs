@@ -26,14 +26,14 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
     void Die()
     {
-
-
         OnWallDestroyed?.Invoke();
 
-        // Desactivar los renderer de los hijos
-        foreach (Renderer render in GetComponentsInChildren<Renderer>())
-            render.enabled = false;
+        // // Desactivar los renderer de los hijos
+        Renderer[] renders = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renders.Length - 1; i++)
+            renders[i].enabled = false;
 
+        GetComponentInChildren<ParticleSystem>().Play();
 
         // Desactivar los renderer y el collider
         GetComponent<Renderer>().enabled = false;

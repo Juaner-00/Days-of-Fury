@@ -12,8 +12,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     [SerializeField] ParticleSystem damagedSmoke;
     [SerializeField, Range(0, 1)] float stayOnLevelProbability;
 
-    Renderer[] materialRobust;
-
     public static event Action<int> Mission = delegate { };
     public static event Action Kill = delegate { };
 
@@ -47,7 +45,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         enemyAnimator = GetComponentInChildren<Animator>();
         particleDamage = GameObject.Find("VFXsChispas(Pool)").GetComponent<PoolVfxs>();
         particleExplo = GameObject.Find("VFXsExplosiones(Pool)").GetComponent<PoolVfxs>();
-        materialRobust = GetComponentsInChildren<Renderer>();
     }
 
     // Se llama cuando se instancia el objeto
@@ -117,11 +114,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         healthPoints--;
-        foreach (Renderer mr in materialRobust)
-        {
-            mr.material.SetFloat("damageRobust", (float)healthPoints / maxHealthPoints);
-        }
-
         isDead = (healthPoints <= 0) ? true : false;
 
         if (isDead)

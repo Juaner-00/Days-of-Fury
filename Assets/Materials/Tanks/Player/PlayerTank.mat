@@ -8,14 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerTank
-  m_Shader: {fileID: -6465566751694194690, guid: 58692948e860eb6489bda919276d6b7d,
-    type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP
-  m_LightmapFlags: 2
+  m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2050
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -44,30 +44,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_1E706BDB_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 0b24cfb63cdfa1b4b9bfcd9498c8fe9c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_72D41410_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 0c47327ab4e52be43aff34378d24bb51, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_B68E3F23_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 1fd287ea9598a7741bfd19bf04d5f8a7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_B74E2002_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 7c9aa72d23a25bf42af39c58b91ba625, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_CF002D89_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 07a20132703c5ff4fb3ce7b81d00425b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_F7B40821_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 0b24cfb63cdfa1b4b9bfcd9498c8fe9c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -94,7 +70,6 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - damageChanger: 1
     m_Colors:
     - _BaseColor: {r: 0.7924528, g: 0.7887148, b: 0.7887148, a: 1}
     - _Color: {r: 0.8970588, g: 0.8970588, b: 0.8970588, a: 1}

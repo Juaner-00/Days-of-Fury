@@ -35,9 +35,9 @@ public class PlayerMovementVels : MonoBehaviour
     float vertical;
     float curveTimer;
 
-    float slowDownMultiplier;
-
     float rotationTime;
+
+    float slowDownMultiplier;
 
     CharacterController controller;
 
@@ -80,8 +80,6 @@ public class PlayerMovementVels : MonoBehaviour
         movementSpeed = 0;
         maxSpeed = maxSpeedBase;
         curveTimer = 0;
-
-        slowDownMultiplier = 1;
 
         available = true;
 
@@ -166,6 +164,7 @@ public class PlayerMovementVels : MonoBehaviour
             // Si está acelerando se incrementa la velocidad
             case PlayerStates.Accelerating:
                 float accelerationMagnitud = accelerationCurve.Evaluate(curveTimer / curveDuration);
+
                 float accelerationMultiplier = isSlowDown ? 0f : 1f;
                 movementSpeed += acceleration * accelerationMagnitud * Time.deltaTime * accelerationMultiplier;
                 curveTimer += Time.deltaTime;
@@ -207,7 +206,10 @@ public class PlayerMovementVels : MonoBehaviour
             turnDir = Directions.West;
 
         // Cambiar la duración de la rotación
-        rotationTime = (turnDir == oppositeDirection) ? rotationTimeBase * oppositeRotationMultiplier : rotationTime = rotationTimeBase; ;
+        if (turnDir == oppositeDirection)
+            rotationTime = rotationTimeBase * oppositeRotationMultiplier;
+        else
+            rotationTime = rotationTimeBase;
     }
 
     void HandleRotation()
@@ -240,20 +242,19 @@ public class PlayerMovementVels : MonoBehaviour
 
     Directions GetOpositeDirection()
     {
-        return (Directions)(((int)lastDir + 2) % 4);
-        // switch (lastDir)
-        // {
-        //     case Directions.North:
-        //         return Directions.South;
-        //     case Directions.East:
-        //         return Directions.West;
-        //     case Directions.South:
-        //         return Directions.North;
-        //     case Directions.West:
-        //         return Directions.East;
-        //     default:
-        //         return Directions.South;
-        // }
+        switch (lastDir)
+        {
+            case Directions.North:
+                return Directions.South;
+            case Directions.East:
+                return Directions.West;
+            case Directions.South:
+                return Directions.North;
+            case Directions.West:
+                return Directions.East;
+            default:
+                return Directions.South;
+        }
     }
 
     void FirstClick()
@@ -278,7 +279,6 @@ public class PlayerMovementVels : MonoBehaviour
         Debug.DrawRay(leftRay.origin, leftRay.direction.normalized * leftLenght, Color.blue, 0.1f);
         Debug.DrawRay(rightRay.origin, rightRay.direction.normalized * rightLenght, Color.magenta, 0.1f);
     }
-
 
     public bool IsSlowDown
     {

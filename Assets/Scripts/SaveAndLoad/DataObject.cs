@@ -110,11 +110,6 @@ public class DataObject : ScriptableObject
             scoreLVLs[i] = 0;
         }
 
-        Save();
-    }
-
-    public void Save()
-    {
         SaveAndLoad.Save("LevelData", Data);
     }
 

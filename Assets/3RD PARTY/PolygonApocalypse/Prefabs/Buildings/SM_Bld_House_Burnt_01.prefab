@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1892436141}
   - component: {fileID: 1892436143}
   - component: {fileID: 1892436142}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GameObject (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 3447220011389491543
+  uniqueID: 4281479875976852661
   updateError: 1
   checkTime: 2000
 --- !u!1 &1470566109861164
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4888160512304414}
   - component: {fileID: 33646492893078966}
   - component: {fileID: 23115557861023428}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_House_Burnt_01_Overgrowth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 23970654101815414}
   - component: {fileID: 1926785322375445086}
   - component: {fileID: 632805545}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_House_Burnt_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 4261433386580166}
   - component: {fileID: 33431923499624022}
   - component: {fileID: 23614118325418036}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SM_Bld_House_Burnt_01_Barricades_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 4929615862812481828}
   - component: {fileID: 256228516962577473}
   - component: {fileID: 1052956709012024002}
-  m_Layer: 10
+  m_Layer: 31
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,26 +418,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4577485891372396}
     m_Modifications:
-    - target: {fileID: 3987463749752903363, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3987615999147026479, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5641100863238507045, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5641248778975278281, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_Name
@@ -448,15 +428,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6826729126426025314, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.86
+      value: -6.74
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
@@ -466,7 +441,7 @@ PrefabInstance:
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.19
+      value: 1.71
       objectReference: {fileID: 0}
     - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
         type: 3}
@@ -507,21 +482,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7654786326348589977, guid: 032630ca645916f41ba383be0d960220,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 032630ca645916f41ba383be0d960220, type: 3}

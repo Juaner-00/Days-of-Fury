@@ -26,6 +26,8 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
     void Die()
     {
+        
+
         OnWallDestroyed?.Invoke();
 
         // Desactivar los renderer de los hijos

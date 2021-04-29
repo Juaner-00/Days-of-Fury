@@ -45,7 +45,6 @@ public class DataObject : ScriptableObject
 
             // Para ver en consola
             ///---------------------------------------------
-            Debug.Log("Set");
             string[] test = new string[data.MedalsLVL.Length];
             for (int i = 0; i < test.Length; i++)
                 test[i] = data.MedalsLVL[i].ToString();
@@ -112,6 +111,7 @@ public class DataObject : ScriptableObject
 
         SaveAndLoad.Save("LevelData", Data);
     }
+
 
     public int[] MedalsLVLs { get => medalsLVLs; set => medalsLVLs = value; }
     public int[] ScoreLVLs { get => scoreLVLs; set => scoreLVLs = value; }

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [Expandable]
     [SerializeField] DataObject dataObject;
     [SerializeField] int actualLevel;
-
+    [SerializeField] bool isTutorial;
 
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
@@ -30,8 +30,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-      
-
         playerMedals = Medals.None;
     }
 
@@ -63,7 +61,8 @@ public class GameManager : MonoBehaviour
     // Método para finalizar el juego
     public void FinishGame()
     {
-        SaveGame();
+        if (!isTutorial)
+            SaveGame();
 
         if (player)
         {
@@ -172,4 +171,5 @@ public class GameManager : MonoBehaviour
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }
     public static bool HasFinished { get; private set; }
+    public DataObject DataObject { get => dataObject; }
 }

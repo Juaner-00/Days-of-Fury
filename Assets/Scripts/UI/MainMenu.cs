@@ -53,6 +53,8 @@ public class MainMenu : Menu
 
     public void LoadTutorial()
     {
+        MainMenuOpen = false;
+        GameManager.Instance.LoadGame();
         _SceneManager.LoadScene("Tutorial");
     }
 }

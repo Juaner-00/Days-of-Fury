@@ -26,7 +26,7 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
     void Die()
     {
-        
+
 
         OnWallDestroyed?.Invoke();
 

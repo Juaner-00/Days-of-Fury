@@ -218,7 +218,7 @@ MonoBehaviour:
   chaseRadius: 38
   ChaseReachedDistance: 30
   fieldOfViewAngle: 160
-  losRadius: 55
+  fovRadius: 55
   memoryStartTime: 5
   noiseTravelDistance: 80
   spinTime: 3
@@ -9789,7 +9789,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 505e5b15f93540a4681fc4c89798be51, type: 2}
+  - {fileID: 2100000, guid: cb07b27264e35b24a9a119ea45ca672e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14832,7 +14832,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 505e5b15f93540a4681fc4c89798be51, type: 2}
+  - {fileID: 2100000, guid: cb07b27264e35b24a9a119ea45ca672e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15201,7 +15201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 505e5b15f93540a4681fc4c89798be51, type: 2}
+  - {fileID: 2100000, guid: cb07b27264e35b24a9a119ea45ca672e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15413,7 +15413,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 505e5b15f93540a4681fc4c89798be51, type: 2}
+  - {fileID: 2100000, guid: cb07b27264e35b24a9a119ea45ca672e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

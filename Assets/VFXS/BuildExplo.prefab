@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4661,7 +4661,6 @@ GameObject:
   - component: {fileID: 4070324366562018}
   - component: {fileID: 198349147568493502}
   - component: {fileID: 199838715979905174}
-  - component: {fileID: 233723399782489248}
   m_Layer: 0
   m_Name: BuildExplo
   m_TagString: Untagged
@@ -4702,7 +4701,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -9232,19 +9231,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &233723399782489248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431530912211830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d7402527e29b4841ae7836862b73650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 10
 --- !u!1 &1481943692512946
 GameObject:
   m_ObjectHideFlags: 0
@@ -9293,7 +9279,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -9360,7 +9346,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
+      scalar: 2.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10130,7 +10116,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 300
+        scalar: 600
         minScalar: 250
         maxCurve:
           serializedVersion: 2
@@ -10196,33 +10182,24 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 0
+          inSlope: 15.599473
+          outSlope: 15.599473
           tangentMode: 0
-          weightedMode: 0
+          weightedMode: 3
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.07882582
         - serializedVersion: 3
-          time: 0.037677675
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.8985618
-          value: 0.36933059
-          inSlope: -0.8157737
-          outSlope: -0.8157737
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
+          time: 0.9118204
+          value: 0.9854585
+          inSlope: 0.03622862
+          outSlope: -6.5138283
+          tangentMode: 1
+          weightedMode: 3
+          inWeight: 0.39681104
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 0
+          value: 0.41107178
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -13871,7 +13848,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -14708,7 +14685,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 800
+        scalar: 700
         minScalar: 250
         maxCurve:
           serializedVersion: 2
@@ -14774,29 +14751,20 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 0
+          inSlope: 1.8764948
+          outSlope: 1.8764948
           tangentMode: 0
-          weightedMode: 0
+          weightedMode: 3
           inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.037677675
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.6340338
         - serializedVersion: 3
           time: 0.9118204
           value: 0.9854585
-          inSlope: -0.016635163
+          inSlope: 0.03622862
           outSlope: -6.5138283
-          tangentMode: 69
-          weightedMode: 0
-          inWeight: 0.33333334
+          tangentMode: 1
+          weightedMode: 3
+          inWeight: 0.39681104
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1

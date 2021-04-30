@@ -14,7 +14,8 @@ public abstract class Menu : MonoBehaviour
     protected Transform Option { get => menuList.transform.GetChild(index); }
     [SerializeField] GameObject screen;
     protected int index = 0;
-    //bool buttonPressed = false;
+    bool navigate = false;
+    int lastButtonDown = -1;
 
     public Action OnNavigating;
     public Action OnSelecting;
@@ -30,34 +31,54 @@ public abstract class Menu : MonoBehaviour
     // Maneja el movimiento del cursor selector de botones
     public void Navigate()
     {
-        bool up = Input.GetKeyDown(KeyCode.UpArrow);
-        bool down = Input.GetKeyDown(KeyCode.DownArrow);
-        bool left = Input.GetKeyDown(KeyCode.LeftArrow);
-        bool right = Input.GetKeyDown(KeyCode.RightArrow);
+        float vertival = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (up)
+        if (vertival < 0.2f && vertival > -0.2f && horizontal < 0.2f && horizontal > -0.2f)
+        {
+            lastButtonDown = -1;
+            navigate = false;
+        }
+        if (vertival > 0.2f && lastButtonDown != 0)
+        {
             index--;
-        if (down)
+            lastButtonDown = 0;
+            navigate = true;
+        }
+        if (vertival < -0.2f && lastButtonDown != 1)
+        {
             index++;
-        if (left)
+            lastButtonDown = 1;
+            navigate = true;
+        }
+        if (horizontal > 0.2f && lastButtonDown != 2)
+        {
+            index++;
+            lastButtonDown = 2;
+            navigate = true;
+        }
+        if (horizontal < -0.2f && lastButtonDown != 3)
+        {
             index--;
-        if (right)
-            index++;
+            lastButtonDown = 3;
+            navigate = true;
+        }
+
 
         index = index < 0 ? menuList.transform.childCount - 1 : index > menuList.transform.childCount - 1 ? 0 : index;
 
-        if (up || down || left || right)
+        if (navigate)
         {
             ColorButton();
             OnNavigating?.Invoke();
+            navigate = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetButtonDown("Submit"))
         {
             Action();
             OnSelecting?.Invoke();
         }
-
 
 
 

@@ -128,6 +128,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         if (isDead)
         {
+
+            foreach (Renderer material in GetComponentsInChildren<Renderer>())
+            {
+                material.material.SetFloat("damageChanger", 0f);
+            }
             stateMachine.Alive = false;
             
             if (damagedSmoke)

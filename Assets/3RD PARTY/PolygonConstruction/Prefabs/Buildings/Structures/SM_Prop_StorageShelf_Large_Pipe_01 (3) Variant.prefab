@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1956975090502586, guid: ad3e524ae128de348a2f6b7299d9b618, type: 3}
       propertyPath: m_Name
-      value: SM_Prop_StorageShelf_Large_Pipe_01 (3)
+      value: SM_Prop_StorageShelf_Large_Pipe_01 (3) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4843626960435112, guid: ad3e524ae128de348a2f6b7299d9b618, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,5 +51,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.99999976
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64318130995694594, guid: ad3e524ae128de348a2f6b7299d9b618, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ad3e524ae128de348a2f6b7299d9b618, type: 3}

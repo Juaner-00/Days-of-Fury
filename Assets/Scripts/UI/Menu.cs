@@ -9,8 +9,10 @@ public abstract class Menu : MonoBehaviour
     public static bool IsPaused { get; protected set; } = false;
     public static bool IsDead { get; protected set; } = false;
     public static bool HasWon { get; protected set; } = false;
-    public static bool OptionsOpen { get; protected set; } = false;
-    public static bool MainMenuOpen { get; protected set; } = false;
+    public static bool OptionsOpen { get; protected set; }
+    public static bool MainMenuOpen { get; protected set; }
+    public static bool LevelSelectionOpen { get; protected set; }
+    public GameObject MenuList { get => menuList; }
     protected Transform Option { get => menuList.transform.GetChild(index); }
     [SerializeField] GameObject screen;
     protected int index = 0;

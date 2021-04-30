@@ -11,6 +11,7 @@ public class DataObject : ScriptableObject
     [SerializeField] int levelsCant;
     [SerializeField, Range(0, 3)] int[] medalsLVLs;
     [SerializeField] int[] scoreLVLs;
+    [SerializeField] bool playedOnce;
 
     SaveData data;
 
@@ -19,7 +20,7 @@ public class DataObject : ScriptableObject
     {
         get
         {
-            data = new SaveData(medalsLVLs, scoreLVLs);
+            data = new SaveData(medalsLVLs, scoreLVLs, playedOnce);
 
             // Para ver en consola
             ///---------------------------------------------
@@ -42,6 +43,7 @@ public class DataObject : ScriptableObject
             data = value;
             medalsLVLs = data.MedalsLVL;
             scoreLVLs = data.ScoreLVL;
+            playedOnce = data.PlayedOnce;
 
             // Para ver en consola
             ///---------------------------------------------
@@ -101,6 +103,11 @@ public class DataObject : ScriptableObject
         scoreLVLs[nivel - 1] = score > scoreLVLs[nivel - 1] ? score : scoreLVLs[nivel - 1];
     }
 
+    public void SetPlayed()
+    {
+        playedOnce = true;
+    }
+
     public void Reset()
     {
         for (int i = 0; i < levelsCant; i++)
@@ -109,6 +116,7 @@ public class DataObject : ScriptableObject
             scoreLVLs[i] = 0;
         }
 
+        playedOnce = false;
         Save();
     }
 
@@ -120,6 +128,7 @@ public class DataObject : ScriptableObject
 
     public int[] MedalsLVLs { get => medalsLVLs; set => medalsLVLs = value; }
     public int[] ScoreLVLs { get => scoreLVLs; set => scoreLVLs = value; }
+    public bool PlayedOnce { get => playedOnce; }
 }
 
 
@@ -128,12 +137,14 @@ public class SaveData
 {
     int[] medalsLVL;
     int[] scoreLVL;
+    bool playedOnce;
 
-    public SaveData(int[] medalsLVL, int[] scoreLVL)
+    public SaveData(int[] medalsLVL, int[] scoreLVL, bool playedOnce)
     {
         int length = medalsLVL.Length;
         this.medalsLVL = new int[length];
         this.scoreLVL = new int[length];
+        this.playedOnce = playedOnce;
 
         for (int i = 0; i < length; i++)
         {
@@ -144,4 +155,5 @@ public class SaveData
 
     public int[] MedalsLVL { get => medalsLVL; set => medalsLVL = value; }
     public int[] ScoreLVL { get => scoreLVL; set => scoreLVL = value; }
+    public bool PlayedOnce { get => playedOnce; }
 }

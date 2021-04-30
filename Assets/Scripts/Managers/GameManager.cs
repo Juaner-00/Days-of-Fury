@@ -8,9 +8,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] DataObject dataObject;
     [SerializeField] int actualLevel;
     [SerializeField] bool isTutorial;
+    [SerializeField] bool isLevel1;
 
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
+
 
     bool hasFinished;
     Medals playerMedals;
@@ -31,6 +33,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         playerMedals = Medals.None;
+        if(isLevel1)
+        {
+            dataObject.SetPlayed();
+        }
     }
 
     void StartSpawn()

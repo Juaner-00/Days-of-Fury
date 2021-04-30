@@ -14,13 +14,6 @@ public class DestructibleWall : MonoBehaviour, IDamagable
     public event WallEvent OnWallDestroyed;
     public delegate void WallEvent();
 
-    PoolVfxs particleDestruction;
-
-    public void Awake()
-    {
-        particleDestruction = GameObject.Find("VFXsBuildExplo(Pool)").GetComponent<PoolVfxs>();
-    }
-
     public void TakeDamage()
     {
         healthPoints--;
@@ -33,15 +26,14 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
     void Die()
     {
-
-        ParticleSystem destruction = particleDestruction.GetItem(transform.position, tag);
-
         OnWallDestroyed?.Invoke();
 
-        // Desactivar los renderer de los hijos
-        foreach (Renderer render in GetComponentsInChildren<Renderer>())
-            render.enabled = false;
+        // // Desactivar los renderer de los hijos
+        Renderer[] renders = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renders.Length - 1; i++)
+            renders[i].enabled = false;
 
+        GetComponentInChildren<ParticleSystem>().Play();
 
         // Desactivar los renderer y el collider
         GetComponent<Renderer>().enabled = false;

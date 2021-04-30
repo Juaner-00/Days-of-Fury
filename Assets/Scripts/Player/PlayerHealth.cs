@@ -61,6 +61,10 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         healthPoints--;
         OnChangeLife?.Invoke(healthPoints);
 
+        foreach (Renderer material in GetComponentsInChildren<Renderer>())
+        {
+            material.material.SetFloat("damageChanger", (float)healthPoints / maxHealthPoints);
+        }
 
         isDead = (healthPoints <= 0) ? true : false;
         SimpleCameraShakeInCinemachine.Instance.Shake();

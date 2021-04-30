@@ -16,7 +16,7 @@ public class MainMenu : Menu
         if (GameManager.Instance.DataObject.PlayedOnce)
         {
             MenuList.transform.GetChild(0).name = "LevelSelection";
-            MenuList.transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>().text = "Level Selection";
+            MenuList.transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>().text = "LEVEL SELECTION";
         }
     }
 

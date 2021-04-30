@@ -33,28 +33,9 @@ public class EnemyDetection : MonoBehaviour
             Vector3 dirToTarget = (target.position - transform.position).normalized;
             float dstToTarget = Vector3.Distance(transform.position, target.position);
 
-
             visibleTargets.Add(target);
-                  
-               
-                
-
-            
         }
-
-        if (targetsInViewRadius.Length >= numeroTanks)
-        {
-            CamaraManager.Instance.ZoomCam();
-
-        }
-        else if(targetsInViewRadius.Length<numeroTanks)
-        {
-            CamaraManager.Instance.EndZoom();
-        }
-
     }
-
-    
 
     void OnDrawGizmosSelected()
     {

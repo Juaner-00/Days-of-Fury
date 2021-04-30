@@ -2715,8 +2715,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1634629794}
-        m_MethodName: LoadTutorial
+      - m_Target: {fileID: 1634629801}
+        m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4239,7 +4239,7 @@ MonoBehaviour:
   arrow: {fileID: 1409040328}
   menuList: {fileID: 1025056742}
   HUD: {fileID: 0}
-  screen: {fileID: 1750775936}
+  screen: {fileID: 0}
 --- !u!1 &1671468343
 GameObject:
   m_ObjectHideFlags: 0

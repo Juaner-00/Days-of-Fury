@@ -24,7 +24,6 @@ public class LevelSelection : Menu
         }
         else 
         {
-            Debug.Log("Action Else");
             Resume();
             _SceneManager.LoadScene(Option.gameObject.name);
             LevelSelectionOpen = false;

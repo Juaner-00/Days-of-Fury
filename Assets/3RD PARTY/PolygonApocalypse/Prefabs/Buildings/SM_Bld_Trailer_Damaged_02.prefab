@@ -329,7 +329,7 @@ MonoBehaviour:
   version: 1
   uniqueID: 8828686104809040564
   updateError: 1
-  checkTime: 0.2
+  checkTime: 2000
 --- !u!1001 &4599855006073751711
 PrefabInstance:
   m_ObjectHideFlags: 0

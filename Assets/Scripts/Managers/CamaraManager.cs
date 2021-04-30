@@ -5,7 +5,7 @@ using UnityEngine;
 public class CamaraManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject cam1, cam2, cam3;
+    GameObject cam1, cam2;
     [SerializeField]
     Vector3 offSet, offSetZoom;
         
@@ -24,20 +24,6 @@ public class CamaraManager : MonoBehaviour
         cam1.SetActive(false);
         cam2.SetActive(true);
         Time.timeScale = 0.5f;
-    }
-    public void ZoomCam()
-    {
-        cam3.transform.position = cam1.transform.position - offSetZoom;
-        cam1.SetActive(false);
-        cam3.SetActive(true);
-    }
-
-    public void EndZoom()
-    {
-        cam1.transform.position = cam3.transform.position + offSetZoom;
-        cam3.SetActive(false);
-        cam1.SetActive(true);
-
     }
     public static CamaraManager Instance { get; private set; }
 }

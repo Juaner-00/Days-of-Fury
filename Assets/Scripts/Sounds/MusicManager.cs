@@ -34,11 +34,13 @@ public class MusicManager : SoundController
     [SerializeField] ScenesAction[] scenesActions;
 
     private void SubscribeEvents() {
+        SceneManager.sceneLoaded -= UpdateMusicToLoadedScene;
         SceneManager.sceneLoaded += UpdateMusicToLoadedScene;
     }
     private void ApplyAudioMixer() {
         for(int i = 0; i < sources.Count; i++) {
-            sources[i].outputAudioMixerGroup = Resources.Load<AudioMixerGroup>(MIXER_PATH);
+            
+            sources[actionClips[i].ActionName][0].outputAudioMixerGroup = Resources.Load<AudioMixerGroup>(MIXER_PATH);
         }
     }
     void UpdateMusicToLoadedScene(Scene scene, LoadSceneMode loadMode) {

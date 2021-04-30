@@ -30,23 +30,17 @@ public abstract class Menu : MonoBehaviour
     // Maneja el movimiento del cursor selector de botones
     public void Navigate()
     {
-        bool up = Input.GetKeyDown(KeyCode.UpArrow);
-        bool down = Input.GetKeyDown(KeyCode.DownArrow);
-        bool left = Input.GetKeyDown(KeyCode.LeftArrow);
-        bool right = Input.GetKeyDown(KeyCode.RightArrow);
+        float verticalNavigation = Input.GetAxisRaw("Vertical");
+        float horizontalNavigation = Input.GetAxisRaw("Horizontal");
 
-        if (up)
+        if (verticalNavigation > 0.1f || horizontalNavigation > 0.1f)
             index--;
-        if (down)
-            index++;
-        if (left)
-            index--;
-        if (right)
+        if (verticalNavigation < -0.1f || horizontalNavigation < -0.1f)
             index++;
 
         index = index < 0 ? menuList.transform.childCount - 1 : index > menuList.transform.childCount - 1 ? 0 : index;
 
-        if (up || down || left || right)
+        if (verticalNavigation > 0.1f || horizontalNavigation > 0.1f || verticalNavigation < -0.1f || horizontalNavigation < -0.1f)
         {
             ColorButton();
             OnNavigating?.Invoke();
@@ -57,6 +51,37 @@ public abstract class Menu : MonoBehaviour
             Action();
             OnSelecting?.Invoke();
         }
+
+
+
+
+        //bool up = Input.GetKeyDown(KeyCode.UpArrow);
+        //bool down = Input.GetKeyDown(KeyCode.DownArrow);
+        //bool left = Input.GetKeyDown(KeyCode.LeftArrow);
+        //bool right = Input.GetKeyDown(KeyCode.RightArrow);
+
+        //if (up)
+        //    index--;
+        //if (down)
+        //    index++;
+        //if (left)
+        //    index--;
+        //if (right)
+        //    index++;
+
+        //index = index < 0 ? menuList.transform.childCount - 1 : index > menuList.transform.childCount - 1 ? 0 : index;
+
+        //if (up || down || left || right)
+        //{
+        //    ColorButton();
+        //    OnNavigating?.Invoke();
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    Action();
+        //    OnSelecting?.Invoke();
+        //}
 
 
 

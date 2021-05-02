@@ -72,12 +72,7 @@ public class GameManager : MonoBehaviour
 
         if (player)
         {
-            if (player.name == "Player")
-                player.GetComponentInParent<PlayerMovement>().enabled = false;
-            else if (player.name == "Player 2")
-                player.GetComponentInParent<PlayerMovementVels>().enabled = false;
-            else
-                player.GetComponentInParent<SCT_TankMovement>().enabled = false;
+            player.GetComponentInParent<PlayerMovementVels>().enabled = false;
             player.GetComponentInParent<ReticleController>().enabled = false;
 
             if (CamaraManager.Instance)

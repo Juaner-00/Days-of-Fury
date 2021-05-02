@@ -104,8 +104,10 @@ public abstract class Menu : MonoBehaviour
     {
         IsPaused = false;
         Time.timeScale = 1;
-        screen.SetActive(false);
-        HUD.SetActive(true);
+        if (screen)
+            screen.SetActive(false);
+        if (HUD)
+            HUD.SetActive(true);
     }
 
     // Carga la siguiente escena
@@ -128,6 +130,25 @@ public abstract class Menu : MonoBehaviour
     {
         Resume();
         _SceneManager.LoadScene("Home");
+    }
+
+
+    public void PlayGame()
+    {
+        Play("Level1");
+    }
+    public void PlayTutorial()
+    {
+        Play("Tutorial");
+    }
+
+    // Inicia el juego
+    public virtual void Play(string sceneName)
+    {
+        OnSelecting?.Invoke();
+        Resume();
+        GameManager.Instance.LoadGame();
+        _SceneManager.LoadScene(sceneName);
     }
 
     // Abre el menú de opciones

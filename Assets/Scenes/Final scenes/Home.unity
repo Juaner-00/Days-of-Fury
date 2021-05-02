@@ -722,8 +722,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917749763}
-        m_MethodName: LoadSceneByString
+      - m_Target: {fileID: 1634629794}
+        m_MethodName: Play
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1120,18 +1120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 288872239}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1634629794}
-        m_MethodName: PlayGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &288872239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,8 +1361,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917749763}
-        m_MethodName: LoadSceneByString
+      - m_Target: {fileID: 1634629794}
+        m_MethodName: Play
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1966,8 +1955,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917749763}
-        m_MethodName: LoadSceneByString
+      - m_Target: {fileID: 1634629794}
+        m_MethodName: Play
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2716,7 +2705,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1634629801}
-        m_MethodName: GoBack
+        m_MethodName: CloseLevelSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2999,18 +2988,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 643fb1d1495c00143898645c564bf4d9, type: 3}
---- !u!114 &917749763 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 11255042159130872, guid: 643fb1d1495c00143898645c564bf4d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 917749762}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db1613bd9352e2b4d80cdf5394a3afda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1021809165
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,8 +4070,7 @@ MonoBehaviour:
   arrow: {fileID: 1884771326}
   menuList: {fileID: 97039279}
   HUD: {fileID: 0}
-  screen: {fileID: 1189468039}
-  gameSceneName: Level1
+  screen: {fileID: 0}
   levelSelection: {fileID: 1750775936}
 --- !u!114 &1634629795
 MonoBehaviour:
@@ -4240,6 +4216,7 @@ MonoBehaviour:
   menuList: {fileID: 1025056742}
   HUD: {fileID: 0}
   screen: {fileID: 0}
+  levelSelection: {fileID: 1750775936}
 --- !u!1 &1671468343
 GameObject:
   m_ObjectHideFlags: 0
@@ -5216,7 +5193,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1634629794}
-        m_MethodName: LoadTutorial
+        m_MethodName: PlayTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

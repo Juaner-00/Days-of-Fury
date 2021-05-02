@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelection : Menu
 {
+    [SerializeField] GameObject levelSelection;
+
     private void Update()
     {
-        if (MainMenuOpen = false && LevelSelectionOpen == true)
+        if (!MainMenuOpen && LevelSelectionOpen)
         {
             Navigate();
         }
@@ -18,15 +20,20 @@ public class LevelSelection : Menu
     {
         if (Option.gameObject.name == "Back")
         {
-            Resume();
-            MainMenuOpen = true;
-            LevelSelectionOpen = false;
+            CloseLevelSelection();
         }
-        else 
+        else
         {
-            Resume();
-            _SceneManager.LoadScene(Option.gameObject.name);
             LevelSelectionOpen = false;
+            Play(Option.gameObject.name);
         }
+    }
+
+    public void CloseLevelSelection()
+    {
+        OnSelecting?.Invoke();
+        levelSelection.SetActive(false);
+        MainMenuOpen = true;
+        LevelSelectionOpen = false;
     }
 }

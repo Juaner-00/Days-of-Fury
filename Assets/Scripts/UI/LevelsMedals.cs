@@ -20,7 +20,7 @@ public class LevelsMedals : MonoBehaviour
 
     GameObject[] medalsLevels;
 
-    private void Start()
+    private void Awake()
     {
         // Obtener el objeto que guarda la cantidad de medallas y score en cada nivel
         DataObject levelsData = GameManager.Instance.DataObject;

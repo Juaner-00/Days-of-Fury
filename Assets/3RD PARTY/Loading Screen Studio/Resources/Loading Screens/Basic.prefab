@@ -3029,14 +3029,14 @@ MonoBehaviour:
   useSpecificKey: 0
   pakCountdownTimer: 5
   virtualLoadingTimer: 1.5
-  enableVirtualLoading: 1
+  enableVirtualLoading: 0
   enableTitle: 0
   enableDescription: 0
   enableStatusLabel: 0
   enableRandomHints: 0
   enableRandomImages: 0
   enablePressAnyKey: 0
-  fadingAnimationSpeed: 0.5
+  fadingAnimationSpeed: 4
   onBeginEvents:
     m_PersistentCalls:
       m_Calls: []

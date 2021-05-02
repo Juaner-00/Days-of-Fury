@@ -4115,7 +4115,8 @@ MonoBehaviour:
   menuList: {fileID: 97039279}
   HUD: {fileID: 0}
   screen: {fileID: 0}
-  levelSelection: {fileID: 1750775936}
+  levelSelection: {fileID: 1634629801}
+  levelSelectionMenu: {fileID: 1750775936}
 --- !u!114 &1634629795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4260,7 +4261,9 @@ MonoBehaviour:
   menuList: {fileID: 1025056742}
   HUD: {fileID: 0}
   screen: {fileID: 0}
-  levelSelection: {fileID: 1750775936}
+  levelSelectionMenu: {fileID: 1750775936}
+  levelSelection: {fileID: 1634629801}
+  mainMenu: {fileID: 1634629794}
 --- !u!1 &1671468343
 GameObject:
   m_ObjectHideFlags: 0

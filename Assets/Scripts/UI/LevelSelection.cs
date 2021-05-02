@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelection : Menu
 {
-    [SerializeField] GameObject levelSelection;
+    [SerializeField] GameObject levelSelectionMenu;
+    [SerializeField] LevelSelection levelSelection;
+    [SerializeField] MainMenu mainMenu;
 
     private void Update()
     {
@@ -32,8 +34,10 @@ public class LevelSelection : Menu
     public void CloseLevelSelection()
     {
         OnSelecting?.Invoke();
-        levelSelection.SetActive(false);
+        levelSelectionMenu.SetActive(false);
         MainMenuOpen = true;
         LevelSelectionOpen = false;
+        mainMenu.enabled = true; 
+        levelSelection.enabled = false; 
     }
 }

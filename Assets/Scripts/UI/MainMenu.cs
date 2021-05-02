@@ -7,33 +7,35 @@ using TMPro;
 
 public class MainMenu : Menu
 {
-    [SerializeField] GameObject levelSelection;
+    [SerializeField] LevelSelection levelSelection;
+    [SerializeField] GameObject levelSelectionMenu;
 
     private void Start()
     {
         MainMenuOpen = true;
         LevelSelectionOpen = false;
+        levelSelection.enabled = false;
 
         Transform button = MenuList.transform.GetChild(0);
         if (GameManager.Instance.DataObject.PlayedOnce)
         {
             button.name = "LevelSelection";
             button.GetComponentInChildren<TextMeshProUGUI>().text = "LEVEL SELECTION";
-            button.GetComponent<Button>().onClick.RemoveAllListeners();
-            button.GetComponent<Button>().onClick.AddListener(OpenLevelSelection);
+            button.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
+            button.GetComponentInChildren<Button>().onClick.AddListener(OpenLevelSelection);
         }
         else
         {
             button.name = "Play";
             button.GetComponentInChildren<TextMeshProUGUI>().text = "PLAY";
-            button.GetComponent<Button>().onClick.RemoveAllListeners();
-            button.GetComponent<Button>().onClick.AddListener(PlayGame);
+            button.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
+            button.GetComponentInChildren<Button>().onClick.AddListener(PlayGame);
         }
     }
 
     private void Update()
     {
-        if (MainMenuOpen)
+        if (MainMenuOpen && !LevelSelectionOpen)
             Navigate();
     }
 
@@ -71,7 +73,8 @@ public class MainMenu : Menu
     void OpenLevelSelection()
     {
         OnSelecting?.Invoke();
-        levelSelection.SetActive(true);
+        levelSelectionMenu.SetActive(true);
+        levelSelection.enabled = true;
         MainMenuOpen = false;
         LevelSelectionOpen = true;
     }

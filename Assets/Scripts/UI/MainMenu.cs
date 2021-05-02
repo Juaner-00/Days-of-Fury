@@ -10,6 +10,7 @@ public class MainMenu : Menu
     [SerializeField] LevelSelection levelSelection;
     [SerializeField] GameObject levelSelectionMenu;
 
+
     private void Start()
     {
         MainMenuOpen = true;

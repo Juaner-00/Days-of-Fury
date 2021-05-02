@@ -9,6 +9,19 @@ public class LevelSelection : Menu
     [SerializeField] LevelSelection levelSelection;
     [SerializeField] MainMenu mainMenu;
 
+    LevelsMedals levels;
+
+
+    private void Awake()
+    {
+        levels = GetComponent<LevelsMedals>();
+    }
+
+    private void Start()
+    {
+
+    }
+
     private void Update()
     {
         if (!MainMenuOpen && LevelSelectionOpen)
@@ -37,7 +50,7 @@ public class LevelSelection : Menu
         levelSelectionMenu.SetActive(false);
         MainMenuOpen = true;
         LevelSelectionOpen = false;
-        mainMenu.enabled = true; 
-        levelSelection.enabled = false; 
+        mainMenu.enabled = true;
+        levelSelection.enabled = false;
     }
 }

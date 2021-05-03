@@ -28,33 +28,30 @@ public abstract class Menu : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        print("Se llama");
         IsDead = false;
         HasWon = false;
-
-        // options = new List<Transform>();
-
-        if (menuList)
-            print(menuList.transform.parent.name);
 
         if (menuList)
             for (int i = 0; i < menuList.transform.childCount; i++)
             {
-                Button button;
-
-                if (menuList.transform.GetChild(i).GetChild(0).TryGetComponent(out button))
+                if (menuList.transform.GetChild(i).gameObject.activeSelf)
                 {
-                    if (button.interactable)
-                        options.Add(menuList.transform.GetChild(i));
-                }
-                else
-                {
-                    if (menuList.transform.GetChild(i).GetComponent<Button>().interactable)
-                        options.Add(menuList.transform.GetChild(i));
-                }
+                    Button button;
+
+                    if (menuList.transform.GetChild(i).GetChild(0).TryGetComponent(out button))
+                    {
+                        if (button.interactable)
+                            options.Add(menuList.transform.GetChild(i));
+                    }
+                    else
+                    {
+                        if (menuList.transform.GetChild(i).GetComponent<Button>().interactable)
+                            options.Add(menuList.transform.GetChild(i));
+                    }
 
 
-                SelectButton();
+                    SelectButton();
+                }
             }
     }
 

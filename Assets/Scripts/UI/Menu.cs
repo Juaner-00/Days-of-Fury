@@ -21,23 +21,46 @@ public abstract class Menu : MonoBehaviour
     bool navigate = false;
     int lastButtonDown = -1;
 
-    List<Transform> options;
+    List<Transform> options = new List<Transform>();
 
     public Action OnNavigating;
     public Action OnSelecting;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
+        print("Se llama");
         IsDead = false;
         HasWon = false;
 
-        options = new List<Transform>();
+        // options = new List<Transform>();
 
-        for (int i = 0; i < menuList.transform.childCount; i++)
-            if (menuList.transform.GetChild(i).GetComponentInChildren<Button>().interactable)
-                options.Add(menuList.transform.GetChild(i));
+        if (menuList)
+            print(menuList.transform.parent.name);
 
-        SelectButton();
+        if (menuList)
+            for (int i = 0; i < menuList.transform.childCount; i++)
+            {
+                Button button;
+
+                if (menuList.transform.GetChild(i).GetChild(0).TryGetComponent(out button))
+                {
+                    if (button.interactable)
+                        options.Add(menuList.transform.GetChild(i));
+                }
+                else
+                {
+                    if (menuList.transform.GetChild(i).GetComponent<Button>().interactable)
+                        options.Add(menuList.transform.GetChild(i));
+                }
+
+
+                SelectButton();
+            }
+    }
+
+    private void OnDisable()
+    {
+        List<Transform> options = new List<Transform>();
     }
 
     // Maneja el movimiento del cursor selector de botones
@@ -76,8 +99,8 @@ public abstract class Menu : MonoBehaviour
             navigate = true;
         }
 
-
         // index = index < 0 ? menuList.transform.childCount - 1 : index > menuList.transform.childCount - 1 ? 0 : index;
+        // if (options != null)
         index = index < 0 ? options.Count - 1 : index > options.Count - 1 ? 0 : index;
 
         if (navigate)
@@ -90,7 +113,7 @@ public abstract class Menu : MonoBehaviour
         if (Input.GetButtonDown("Submit"))
         {
             Action();
-            OnSelecting?.Invoke();
+            // OnSelecting?.Invoke();
         }
     }
 
@@ -124,6 +147,7 @@ public abstract class Menu : MonoBehaviour
     // Carga la siguiente escena
     public void NextLevel()
     {
+        OnSelecting?.Invoke();
         Resume();
         _SceneManager.LoadScene(1);
     }
@@ -131,6 +155,7 @@ public abstract class Menu : MonoBehaviour
     // Reinicia la escena actual
     public void RestartLevel()
     {
+        OnSelecting?.Invoke();
         Resume();
         _SceneManager.ResetScene();
         MisionManager.Instance.Resetear();
@@ -139,6 +164,7 @@ public abstract class Menu : MonoBehaviour
     // Carga el menú principal
     public void GoHome()
     {
+        OnSelecting?.Invoke();
         Resume();
         _SceneManager.LoadScene("Home");
     }
@@ -177,6 +203,8 @@ public abstract class Menu : MonoBehaviour
     // Cierra el juego
     public void QuitGame()
     {
+        OnSelecting?.Invoke();
         Application.Quit();
     }
+
 }

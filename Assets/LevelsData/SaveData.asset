@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9d6af6891c6824fa3049b581587560, type: 3}
   m_Name: SaveData
   m_EditorClassIdentifier: 
-  levelsCant: 2
-  medalsLVLs: 0100000000000000
-  scoreLVLs: 0000000000000000
+  levelsCant: 3
+  medalsLVLs: 000000000000000000000000
+  scoreLVLs: 000000000000000000000000
   playedOnce: 1

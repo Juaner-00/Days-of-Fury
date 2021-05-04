@@ -100,7 +100,7 @@ public class PlayerMovementVels : MonoBehaviour
 
             HandleRayCast();
             HandleSpeed();
-
+            HandleGravity();
 
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
@@ -238,6 +238,12 @@ public class PlayerMovementVels : MonoBehaviour
                 lastDir = Directions.West;
             }
         }
+    }
+
+    void HandleGravity()
+    {
+        if (!controller.isGrounded)
+            controller.Move(transform.up * Physics.gravity.y * Time.deltaTime);
     }
 
     Directions GetOpositeDirection()

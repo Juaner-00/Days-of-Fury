@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
     [Expandable]
     [SerializeField] DataObject dataObject;
     [SerializeField] int actualLevel;
-
     [SerializeField] bool isTutorial;
+    [SerializeField] bool isLevel1;
+
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
+
 
     bool hasFinished;
     Medals playerMedals;
@@ -31,6 +33,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         playerMedals = Medals.None;
+        if(isLevel1)
+        {
+            dataObject.SetPlayed();
+        }
     }
 
     void StartSpawn()
@@ -66,12 +72,7 @@ public class GameManager : MonoBehaviour
 
         if (player)
         {
-            if (player.name == "Player")
-                player.GetComponentInParent<PlayerMovement>().enabled = false;
-            else if (player.name == "Player 2")
-                player.GetComponentInParent<PlayerMovementVels>().enabled = false;
-            else
-                player.GetComponentInParent<SCT_TankMovement>().enabled = false;
+            player.GetComponentInParent<PlayerMovementVels>().enabled = false;
             player.GetComponentInParent<ReticleController>().enabled = false;
 
             if (CamaraManager.Instance)
@@ -171,4 +172,5 @@ public class GameManager : MonoBehaviour
     public static GameObject Player => player;
     public static GameManager Instance { get; private set; }
     public static bool HasFinished { get; private set; }
+    public DataObject DataObject { get => dataObject; }
 }

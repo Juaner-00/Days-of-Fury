@@ -12,18 +12,14 @@ public class TextsTutorial : MonoBehaviour
     {
         if(gameObject.name == "ColliderText6" )
         {
-            
             if (tower == null && isDestroy == false)
             {
                 text.SetActive(true);
                 Invoke("Deactivate", 5f);
                 isDestroy = true;
             }
-
         }
-
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,11 +27,9 @@ public class TextsTutorial : MonoBehaviour
         {
             text.SetActive(true);
         }
-        
     }
     private void OnTriggerExit(Collider other)
     {
-
         if (other.tag == "Player")
         {
             text.SetActive(false);
@@ -45,6 +39,4 @@ public class TextsTutorial : MonoBehaviour
     {
         text.SetActive(false);
     }
-
-
 }

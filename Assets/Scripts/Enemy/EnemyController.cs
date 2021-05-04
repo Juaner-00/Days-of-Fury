@@ -80,6 +80,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
+
+        foreach (Renderer material in GetComponentsInChildren<Renderer>())
+        {
+            material.material.SetFloat("damageChanger", (float)healthPoints / maxHealthPoints);
+        }
     }
 
     // Se llama cuando el objeto se devuelve al pool
@@ -105,6 +110,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         if (isDead)
             return;
 
+        foreach (Renderer material in GetComponentsInChildren<Renderer>())
+        {
+            material.material.SetFloat("damageChanger", (float)healthPoints / maxHealthPoints);
+        }
+
         if (damagedSmoke)
         {
             damagedSmoke.Play();
@@ -118,6 +128,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         if (isDead)
         {
+
+            foreach (Renderer material in GetComponentsInChildren<Renderer>())
+            {
+                material.material.SetFloat("damageChanger", 0f);
+            }
             stateMachine.Alive = false;
             
             if (damagedSmoke)

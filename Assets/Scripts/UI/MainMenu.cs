@@ -1,20 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenu : Menu
 {
-    [SerializeField] string gameSceneName;
+    [SerializeField] LevelSelection levelSelection;
+    [SerializeField] GameObject levelSelectionMenu;
+
 
     private void Start()
     {
         MainMenuOpen = true;
+        LevelSelectionOpen = false;
+        levelSelection.enabled = false;
+
+        Transform button = MenuList.transform.GetChild(0);
+        if (GameManager.Instance.DataObject.PlayedOnce)
+        {
+            button.name = "LevelSelection";
+            button.GetComponentInChildren<TextMeshProUGUI>().text = "LEVEL SELECTION";
+            button.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
+            button.GetComponentInChildren<Button>().onClick.AddListener(OpenLevelSelection);
+        }
+        else
+        {
+            button.name = "Play";
+            button.GetComponentInChildren<TextMeshProUGUI>().text = "PLAY";
+            button.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
+            button.GetComponentInChildren<Button>().onClick.AddListener(PlayGame);
+        }
     }
 
     private void Update()
     {
-        if (MainMenuOpen)
+        if (MainMenuOpen && !LevelSelectionOpen)
             Navigate();
     }
 
@@ -23,11 +45,17 @@ public class MainMenu : Menu
     {
         if (Option.gameObject.name == "Play")
         {
+            MainMenuOpen = false;
             PlayGame();
         }
-        if (Option.gameObject.name == "Tutorial")
+        else if (Option.gameObject.name == "LevelSelection")
         {
-            LoadTutorial();
+            OpenLevelSelection();
+        }
+        else if (Option.gameObject.name == "Tutorial")
+        {
+            MainMenuOpen = false;
+            PlayTutorial();
         }
         else if (Option.gameObject.name == "Options")
         {
@@ -43,16 +71,12 @@ public class MainMenu : Menu
         }
     }
 
-    // Inicia el juego
-    public void PlayGame()
+    void OpenLevelSelection()
     {
+        OnSelecting?.Invoke();
+        levelSelectionMenu.SetActive(true);
+        levelSelection.enabled = true;
         MainMenuOpen = false;
-        GameManager.Instance.LoadGame();
-        _SceneManager.LoadScene(gameSceneName);
-    }
-
-    public void LoadTutorial()
-    {
-        _SceneManager.LoadScene("Tutorial");
+        LevelSelectionOpen = true;
     }
 }

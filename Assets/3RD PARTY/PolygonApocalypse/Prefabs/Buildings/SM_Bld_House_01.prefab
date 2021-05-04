@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 6724792942288069403
+  uniqueID: 1230821637473136328
   updateError: 1
   checkTime: 2000
 --- !u!1 &1250344563677490
@@ -95,6 +95,7 @@ Transform:
   - {fileID: 5832442816104195321}
   - {fileID: 4998679552763500}
   - {fileID: 606680177}
+  - {fileID: 8789725542452466321}
   - {fileID: 4524117903183667487}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -372,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4070324366562018, guid: 585a1ef8c48a0cf4f97332139e4344de, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4070324366562018, guid: 585a1ef8c48a0cf4f97332139e4344de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -401,4 +402,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4070324366562018, guid: 585a1ef8c48a0cf4f97332139e4344de,
     type: 3}
   m_PrefabInstance: {fileID: 4523461975837127677}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8787754476990991485
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4309182577281348}
+    m_Modifications:
+    - target: {fileID: 1757943916142034, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Name
+      value: SM_Veh_Russian_Tank_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4176004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.9570923
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+--- !u!4 &8789725542452466321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8787754476990991485}
   m_PrefabAsset: {fileID: 0}

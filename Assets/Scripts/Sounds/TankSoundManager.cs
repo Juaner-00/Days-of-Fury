@@ -4,48 +4,64 @@ using UnityEngine;
 
 public class TankSoundManager : SoundController
 {
-    private PlayerHealth health;
-    private PlayerMovement movement;
     private ReticleController reticle;
 
-    protected override void ChildAwake()
+
+    protected override void SetUp(bool child)
     {
-        health = GetComponent<PlayerHealth>();
-        movement = GetComponent<PlayerMovement>();
         reticle = GetComponent<ReticleController>();
 
-        //  Estos son los llamados que escucha el scrpit para funcionar con los distintos audios:
-        //  Moviéndose
-        PlayerMovementVels.OnMoving += PlayMoving;
-        //  Apuntando
-        //reticle.OnAiming += PlayAiming;
-        //reticle.OnStopAiming += StopAiming;
-        //  Disparando
-        reticle.OnShooting += PlayShooting;
-        //  Recibiendo daño
-        PlayerHealth.OnGettingHurt += PlayGettingHurt;
+        
     }
 
-    private void PlayMoving() {
-        PlaySourceByName("Moving", null, true);
-    }
-    private void PlayAiming() {
-        PlaySourceByName("Aiming");
-    }
-    private void PlayShooting() {
-        PlaySourceByName("Shooting");
-    }
-    private void PlayGettingHurt() {
-        PlaySourceByName("GettingHurt");
+
+    private void SetSubscribeEvents(bool setSubscription)
+    {
+        if (setSubscription)
+        {
+            reticle.OnShooting += PlayShooting;
+
+            PlayerMovementVels.OnMoving += PlayMoving;
+            PlayerMovementVels.OnStoped += StopMoving;
+
+            PlayerHealth.OnGettingHurt += PlayGettingHurt;
+            PlayerHealth.OnDie += PlayDying;
+        }
+        else
+        {
+            reticle.OnShooting -= PlayShooting;
+
+            PlayerMovementVels.OnMoving -= PlayMoving;
+            PlayerMovementVels.OnStoped -= StopMoving;
+
+            PlayerHealth.OnGettingHurt -= PlayGettingHurt;
+            PlayerHealth.OnDie -= PlayDying;
+        }
     }
 
-    private void StopAiming() {
-        StopSourceByName("Aiming");
+
+    private void PlayShooting()
+    {
+        PlayActionByName("Shooting");
     }
 
-    private void OnDisable() {
-        PlayerMovement.OnMoving -= PlayMoving;
-        reticle.OnShooting -= PlayShooting;
-        PlayerHealth.OnGettingHurt -= PlayGettingHurt;
+    private void PlayMoving()
+    {
+        PlayActionByName("Moving", false, true);
+    }
+
+    private void PlayGettingHurt()
+    {
+        PlayActionByName("GettingHurt");
+    }
+
+    private void PlayDying()
+    {
+        PlayActionByName("Dying");
+    }
+
+    private void StopMoving()
+    {
+        StopActionByName("Moving");
     }
 }

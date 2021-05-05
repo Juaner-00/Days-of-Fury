@@ -9,13 +9,18 @@ public class TankSoundManager : SoundController
 
     protected override void SetUp(bool child)
     {
-        reticle = GetComponent<ReticleController>();
+        GetEventComponents();
 
-        
+        SetSubscribeEvents(false);
+        SetSubscribeEvents(true);
     }
 
+    protected virtual void GetEventComponents()
+    {
+        reticle = GetComponent<ReticleController>();
+    }
 
-    private void SetSubscribeEvents(bool setSubscription)
+    protected virtual void SetSubscribeEvents(bool setSubscription)
     {
         if (setSubscription)
         {
@@ -40,27 +45,27 @@ public class TankSoundManager : SoundController
     }
 
 
-    private void PlayShooting()
+    protected void PlayShooting()
     {
         PlayActionByName("Shooting");
     }
 
-    private void PlayMoving()
+    protected void PlayMoving()
     {
         PlayActionByName("Moving", false, true);
     }
 
-    private void PlayGettingHurt()
+    protected void PlayGettingHurt()
     {
         PlayActionByName("GettingHurt");
     }
 
-    private void PlayDying()
+    protected void PlayDying()
     {
         PlayActionByName("Dying");
     }
 
-    private void StopMoving()
+    protected void StopMoving()
     {
         StopActionByName("Moving");
     }

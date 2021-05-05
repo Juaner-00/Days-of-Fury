@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 750714425205476491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 199, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 988548298858404031}
   m_RootOrder: 4
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6744038053857644895}
   - component: {fileID: -2780555251600778122}
   - component: {fileID: 6207197306603583796}
-  - component: {fileID: 5310081945673354415}
+  - component: {fileID: 5288502520329056477}
   m_Layer: 8
   m_Name: NormalEnemy
   m_TagString: Enemy
@@ -272,7 +272,7 @@ MonoBehaviour:
   noiseTravelDistance: 80
   spinTime: 3
   Alive: 0
---- !u!114 &5310081945673354415
+--- !u!114 &5288502520329056477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -281,22 +281,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 988548298858404030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c7c29341f3aa5d49afd89d2e905eec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionClips:
-  - actionName: Shooting
+  - actionName: Moving
     actionVolume: 1
     isOverlappable: 0
     clips:
-    - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
-  - actionName: Moving
-    actionVolume: 0.0001
+    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
+  - actionName: Shooting
+    actionVolume: 0.7
     isOverlappable: 0
     clips:
-    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
+    - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
   - actionName: GettingHurt
-    actionVolume: 0.5
+    actionVolume: 1
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}

@@ -5632,7 +5632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 1
-  scorePoints: 50
+  scorePoints: 65
   damagedSmoke: {fileID: 0}
   radius: 20
   timeDead: 2

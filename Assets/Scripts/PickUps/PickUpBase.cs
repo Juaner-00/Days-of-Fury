@@ -54,6 +54,7 @@ public abstract class PickUpBase : MonoBehaviour, IPool
         inicialPosition = transform.position;
 
         StayOnScene = false;
+        hasPicked = true;
     }
 
     // Se llama cuando el pool obtiene el objeto
@@ -62,6 +63,7 @@ public abstract class PickUpBase : MonoBehaviour, IPool
         pickupSpawn = pos;
         hasPicked = false;
         transform.position = position;
+        time = 0;
     }
 
     // Se llama cuando se devuelva al pool
@@ -74,11 +76,13 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 
     private void Update()
     {
-        if (hasPicked)
+        if (!hasPicked)
+        {
             time += Time.deltaTime;
 
-        if (time > despawnTime)
-            Despawn();
+            if (time > despawnTime)
+                Despawn();
+        }
     }
 
     public static float DespawnTime { get => despawnTime; set => despawnTime = value; }

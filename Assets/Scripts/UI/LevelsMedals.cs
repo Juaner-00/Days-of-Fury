@@ -42,13 +42,11 @@ public class LevelsMedals : MonoBehaviour
 
         // Activar la cantidad de medallas que tenga en cada nivel
         for (int i = 0; i < levelsMedalsContainer.Length; i++)
-            if (i < levelsData.MedalsLVLs.Length)
-                for (int j = 0; j < levelsData.MedalsLVLs[i]; j++)
-                    levelsMedalsContainer[i].transform.GetChild(j).gameObject.SetActive(true);
+            for (int j = 0; j < levelsData.MedalsLVLs[i]; j++)
+                levelsMedalsContainer[i].transform.GetChild(j).gameObject.SetActive(true);
 
         // Poner el score de cada nivel
         for (int i = 0; i < levelsScore.Length; i++)
-            if (i < levelsData.ScoreLVLs.Length)
-                levelsScore[i].text = levelsData.ScoreLVLs[i].ToString();
+            levelsScore[i].text = levelsData.ScoreLVLs[i].ToString();
     }
 }

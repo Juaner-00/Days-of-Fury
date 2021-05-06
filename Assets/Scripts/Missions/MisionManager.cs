@@ -56,10 +56,12 @@ public class MisionManager : MonoBehaviour
 
     private void Update()
     {
+    #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.R))
         {
             ScoreManager.Instance.Addscore(50);
         }
+    #endif
     }
 
     public void OnEnable()
@@ -69,6 +71,11 @@ public class MisionManager : MonoBehaviour
         PlayerMovementVels.OnMovingObjetive += OnMove;
         ObjetiveManager.OnReachObjetive += OnReachObj;
         EnemyTowerController.OnDie += TowerDead;
+        PickUpBase.OnPick += OnPickUp;
+        DestructibleWall.OnDestoy += OnWallDestroy;
+
+        EnemyController.KillNormal += OnEnemyNormalDead;
+        EnemyController.KillStrong += OnEnemyStrongDead;
     }
 
     void OnScoreGet(int score)
@@ -111,6 +118,27 @@ public class MisionManager : MonoBehaviour
         }           
     }
 
+    void OnEnemyStrongDead()
+    {
+        if (missions[actualMision].opcion == Missions.Opcion.Strong)
+        {
+            actualCount++;
+            //print($"Actual Objective {actualCount}/{missionObjective}");
+            IsComplete();
+        }
+    }
+
+    void OnEnemyNormalDead()
+    {
+        if (missions[actualMision].opcion == Missions.Opcion.Normal)
+        {
+            actualCount++;
+            //print($"Actual Objective {actualCount}/{missionObjective}");
+            IsComplete();
+        }
+    }
+
+
     void TowerDead(Vector3 _)
     {
         if (missions[actualMision].opcion == Missions.Opcion.Tower)
@@ -121,8 +149,36 @@ public class MisionManager : MonoBehaviour
         }
     }
 
+    void OnPickUp(Vector3 _ , PickUpType Type)
+    {
+        if (missions[actualMision].opcion == Missions.Opcion.PickupAll)
+        {
+            actualCount++;
+            IsComplete();
+            
+        }
+
+        if (missions[actualMision].opcion == Missions.Opcion.PickUpEsp)
+        {
+            if (Type == missions[actualMision].TypePickup)
+            {
+                actualCount++;
+                IsComplete();
+            }
+        }
+    }
+
+    void OnWallDestroy()
+    {
+        if (missions[actualMision].opcion == Missions.Opcion.Walls)
+        {
+            actualCount++;
+            IsComplete();
+        }
+    }
 
 
+    //Buscar si la mision esta completa
     void IsComplete()
     {
         if (actualCount >= missionObjective)

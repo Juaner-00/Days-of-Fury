@@ -34,24 +34,21 @@ public abstract class Menu : MonoBehaviour
         if (menuList)
             for (int i = 0; i < menuList.transform.childCount; i++)
             {
-                if (menuList.transform.GetChild(i).gameObject.activeSelf)
+                Button button;
+
+                if (menuList.transform.GetChild(i).GetChild(0).TryGetComponent(out button))
                 {
-                    Button button;
-
-                    if (menuList.transform.GetChild(i).GetChild(0).TryGetComponent(out button))
-                    {
-                        if (button.interactable)
-                            options.Add(menuList.transform.GetChild(i));
-                    }
-                    else
-                    {
-                        if (menuList.transform.GetChild(i).GetComponent<Button>().interactable)
-                            options.Add(menuList.transform.GetChild(i));
-                    }
-
-
-                    SelectButton();
+                    if (button.interactable)
+                        options.Add(menuList.transform.GetChild(i));
                 }
+                else
+                {
+                    if (menuList.transform.GetChild(i).GetComponent<Button>().interactable)
+                        options.Add(menuList.transform.GetChild(i));
+                }
+
+
+                SelectButton();
             }
     }
 

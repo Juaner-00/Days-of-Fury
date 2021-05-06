@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abaafcaf14bc00442b95a08ef11a91ef, type: 3}
-  m_Name: Llv1-Mision2
+  m_Name: Llv3-Mision1
   m_EditorClassIdentifier: 
-  names: Mision2
-  description: Destroy 3 Enemys
+  names: Mision1
+  description: Destroy 3 Normal Tanks
   objetive: 3
-  opcion: 0
+  numObjetive: 0
+  opcion: 9
+  TypePickup: 3

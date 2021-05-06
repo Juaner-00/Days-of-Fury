@@ -9,6 +9,7 @@ public class PlayerMovementVels : MonoBehaviour
     [Header("Movement Properties")]
     [SerializeField] float maxSpeedBase;
     [SerializeField] float slowDownPercentage;
+    [SerializeField] float minVelPercentage;
     [SerializeField] float acceleration;
     [SerializeField] float crashCoolDown;
     [SerializeField] Directions initialDirection;
@@ -118,34 +119,39 @@ public class PlayerMovementVels : MonoBehaviour
         leftRay = new Ray(transform.position, transform.right * -1 * leftLenght);
         rightRay = new Ray(transform.position, transform.right * rightLenght);
 
-        // Si no tiene el coolDown
-        if (crashCoolDownTimer <= 0)
+        if (!isSlowDown)
         {
-            // Choca con el rayo del frente o el de la derecha o izquierda
-            if (Physics.Raycast(frontRay, frontLenght, obstacleMask) ||
-                Physics.Raycast(leftRay, leftLenght, obstacleMask) ||
-                Physics.Raycast(rightRay, rightLenght, obstacleMask))
+            // Si no tiene el coolDown
+            if (crashCoolDownTimer <= 0)
             {
-                switch (state)
+                // Choca con el rayo del frente o el de la derecha o izquierda
+                if (Physics.Raycast(frontRay, frontLenght, obstacleMask) ||
+                    Physics.Raycast(leftRay, leftLenght, obstacleMask) ||
+                    Physics.Raycast(rightRay, rightLenght, obstacleMask))
                 {
-                    // Si está acelerando se para
-                    case PlayerStates.Accelerating:
-                        state = PlayerStates.Stoped;
-                        movementSpeed = 0;
-                        OnStoped?.Invoke();
-                        break;
-                    // Si tiene la máxima velocidad se le reduce y se pone en el estado acelerando
-                    case PlayerStates.MaxSpeed:
-                        state = PlayerStates.Accelerating;
-                        movementSpeed *= 0.3f;
-                        break;
-                }
+                    switch (state)
+                    {
+                        // Si está acelerando se para
+                        case PlayerStates.Accelerating:
+                            state = PlayerStates.Stoped;
+                            movementSpeed = 0;
+                            OnStoped?.Invoke();
+                            break;
+                        // Si tiene la máxima velocidad se le reduce y se pone en el estado acelerando
+                        case PlayerStates.MaxSpeed:
+                            state = PlayerStates.Accelerating;
+                            movementSpeed *= 0.3f;
+                            break;
+                    }
 
-                crashCoolDownTimer = crashCoolDown;
+
+                    crashCoolDownTimer = crashCoolDown;
+                }
             }
         }
 
-        crashCoolDownTimer -= Time.deltaTime;
+        if (state != PlayerStates.Stoped)
+            crashCoolDownTimer -= Time.deltaTime;
         crashCoolDownTimer = Mathf.Clamp(crashCoolDownTimer, 0, crashCoolDown);
     }
 
@@ -180,6 +186,7 @@ public class PlayerMovementVels : MonoBehaviour
             // Si está en máxima velodicad se mueve a máxima velocidad
             case PlayerStates.MaxSpeed:
                 controller.Move(transform.forward * movementSpeed * Time.deltaTime);
+                curveTimer = 0;
                 OnMoving?.Invoke();
                 break;
         }
@@ -295,6 +302,8 @@ public class PlayerMovementVels : MonoBehaviour
 
             slowDownMultiplier = isSlowDown ? 1f - slowDownPercentage / 100f : 1f;
             movementSpeed *= slowDownMultiplier;
+            movementSpeed = (movementSpeed < maxSpeed * minVelPercentage / 100f) ? maxSpeed * minVelPercentage / 100f : movementSpeed;
+
             state = PlayerStates.Accelerating;
         }
     }

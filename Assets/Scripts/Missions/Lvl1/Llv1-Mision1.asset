@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abaafcaf14bc00442b95a08ef11a91ef, type: 3}
-  m_Name: Llv1-Mision3
+  m_Name: Llv1-Mision1
   m_EditorClassIdentifier: 
-  names: Mision3
-  description: Destroy 5 Tanks
-  objetive: 5
-  actual: 0
-  itsActive: 0
-  opcion: 0
+  names: Mision1
+  description: Reach 200 Score
+  objetive: 200
+  numObjetive: 0
+  opcion: 3
+  TypePickup: 0

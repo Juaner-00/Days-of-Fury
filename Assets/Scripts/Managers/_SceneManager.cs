@@ -37,6 +37,9 @@ public class _SceneManager : MonoBehaviour
                 newName = "Level1";
                 break;
             case "Level1":
+                newName = "Level2";
+                break;
+            case "Level2":
                 newName = "Level3";
                 break;
             default:

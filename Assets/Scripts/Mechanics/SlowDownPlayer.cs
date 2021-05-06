@@ -13,7 +13,7 @@ public class SlowDownPlayer : MonoBehaviour
         movement = GetComponent<PlayerMovementVels>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (!hasCollided)
             if (other.CompareTag("Remains"))

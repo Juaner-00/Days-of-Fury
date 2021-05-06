@@ -913,18 +913,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7c29341f3aa5d49afd89d2e905eec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMusicController: 0
   actionClips:
   - actionName: Moving
     actionVolume: 1
+    isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
   - actionName: Shooting
     actionVolume: 0.7
+    isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
   - actionName: GettingHurt
     actionVolume: 1
+    isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}
 --- !u!136 &615076017
@@ -955,8 +957,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeedBase: 12
   slowDownPercentage: 30
-  acceleration: 3
-  crashCoolDown: 2.5
+  minVelPercentage: 30
+  acceleration: 2.5
+  crashCoolDown: 1.5
   initialDirection: 0
   rotationTimeBase: 0.3
   oppositeRotationMultiplier: 2
@@ -965,7 +968,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 2
+      value: 1.5
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -975,16 +978,16 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.9970703
       value: 1.0018382
-      inSlope: -3.2593896
-      outSlope: -3.2593896
+      inSlope: -1.5728045
+      outSlope: -1.5728045
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.054919627
+      inWeight: 0.029296875
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  curveDuration: 3
+  curveDuration: 5
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1024

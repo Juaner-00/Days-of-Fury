@@ -19,7 +19,7 @@ public class SoundPool
         stoppedSources = new Queue<AudioSource>();
     }
 
-    public IEnumerator PlayCorroutine(AudioClip clip, bool loop)
+    public IEnumerator PlayCorroutine(AudioClip clip, float volume, bool loop)
     {
         if (stoppedSources.Count <= 0)
         {
@@ -49,6 +49,7 @@ public class SoundPool
         var source = stoppedSources.Dequeue();
         source.loop = loop;
         source.clip = clip;
+        source.volume = volume;
         playingSources.Add(source);
         source.Play();
         Debug.Log("Fuente reproduciendo");

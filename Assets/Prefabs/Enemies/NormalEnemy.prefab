@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionClips:
   - actionName: Moving
-    actionVolume: 1
+    actionVolume: 0.027
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}

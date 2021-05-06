@@ -13,7 +13,8 @@ public class Missions : ScriptableObject
 
     public enum Opcion
     {
-        Enemys, Pickups, Walls, Score, Move, Objetive,Tower,
+        Enemys, Pickups, Walls, Score, Move, Objetive,Tower,PickupAll, PickUpEsp, Normal, Strong
     }
     public Opcion opcion = Opcion.Score;
+    [SerializeField] public PickUpType TypePickup;
 }

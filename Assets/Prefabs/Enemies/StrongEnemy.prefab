@@ -218,6 +218,7 @@ MonoBehaviour:
   timeDead: 2
   damagedSmoke: {fileID: 1268635723504433819}
   stayOnLevelProbability: 0.2
+  IsStrong: 1
 --- !u!65 &6819111125155334557
 BoxCollider:
   m_ObjectHideFlags: 0

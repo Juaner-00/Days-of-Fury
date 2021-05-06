@@ -14,6 +14,10 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     public static event Action<int> Mission = delegate { };
     public static event Action Kill = delegate { };
+    public static event Action KillStrong = delegate { };
+    public static event Action KillNormal = delegate { };
+
+    [SerializeField] public bool IsStrong;
 
     #region Sound
 
@@ -110,11 +114,6 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         if (isDead)
             return;
 
-        foreach (Renderer material in GetComponentsInChildren<Renderer>())
-        {
-            material.material.SetFloat("damageChanger", (float)healthPoints / maxHealthPoints);
-        }
-
         if (damagedSmoke)
         {
             damagedSmoke.Play();
@@ -124,6 +123,12 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         healthPoints--;
+
+        foreach (Renderer material in GetComponentsInChildren<Renderer>())
+        {
+            material.material.SetFloat("damageChanger", (float)healthPoints / maxHealthPoints);
+        }
+
         isDead = (healthPoints <= 0) ? true : false;
 
         if (isDead)
@@ -160,6 +165,10 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
                 aIPath.canMove = false;
             }
             Invoke("End", timeDead);
+            
+            if (IsStrong == false) KillNormal?.Invoke();
+            else { KillStrong?.Invoke(); }
+
             Kill(); //Misiones
         }
     }

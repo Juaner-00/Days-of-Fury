@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
@@ -12,6 +13,7 @@ public class DestructibleWall : MonoBehaviour, IDamagable
     public int HealthPoints => healthPoints;
 
     public event WallEvent OnWallDestroyed;
+    public static Action OnDestoy;
     public delegate void WallEvent();
 
     public void TakeDamage()
@@ -27,6 +29,7 @@ public class DestructibleWall : MonoBehaviour, IDamagable
     void Die()
     {
         OnWallDestroyed?.Invoke();
+        OnDestoy?.Invoke();
 
         // // Desactivar los renderer de los hijos
         Renderer[] renders = GetComponentsInChildren<Renderer>();

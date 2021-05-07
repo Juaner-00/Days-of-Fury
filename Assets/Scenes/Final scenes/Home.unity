@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -445,6 +445,24 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &195598906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 408161854700385891, guid: 4ec30961aefb17e4b89145d3b337b44e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3340840305512661565}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &195598907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195598906}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86725a758dc682747acf9d8f87755d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &219458628
 GameObject:
   m_ObjectHideFlags: 0
@@ -4210,16 +4228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10f91fa552a6254495c0227b234074a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMusicController: 0
-  actionClips:
-  - actionName: Navigating
-    actionVolume: 0.5
-    clips:
-    - {fileID: 8300000, guid: 3b0cb0c3685f31f4c9a3c9c23a9eeb58, type: 3}
-  - actionName: Selecting
-    actionVolume: 1
-    clips:
-    - {fileID: 8300000, guid: 429bd429abb36ec40b802365a9882b67, type: 3}
 --- !u!114 &1634629800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5860,16 +5868,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 408161854700385893, guid: 4ec30961aefb17e4b89145d3b337b44e,
-        type: 3}
-      propertyPath: spawnPickUps
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 408161854700385893, guid: 4ec30961aefb17e4b89145d3b337b44e,
-        type: 3}
-      propertyPath: spawnEnemies
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ec30961aefb17e4b89145d3b337b44e, type: 3}

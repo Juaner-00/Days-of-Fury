@@ -6,9 +6,12 @@ using UnityEngine;
 
 public class SaveAndLoad
 {
-    static readonly string path = $"{Application.persistentDataPath}/saves";
+    // #if UNITY_EDITOR
+    static readonly string path = $"{Application.dataPath}/Saves";
+    // #elif UNITY_STANDALONE
+    //     static readonly string path = $"{Application.persistentDataPath}/Saves";
+    // #endif
     static readonly string ext = "save";
-
 
     public static void Save(string saveName, object data)
     {
@@ -26,16 +29,25 @@ public class SaveAndLoad
         formatter.Serialize(file, data);
 
         file.Close();
+        // --------------------------
+
+        // string json = JsonUtility.ToJson(data);
+
+        // FileStream stream = new FileStream(savePath, FileMode.Create, FileAccess.Write);
+
+        // using (StreamWriter writer = new StreamWriter(stream))
+        //     writer.Write(json);
     }
 
     public static object Load(string saveName)
     {
-        if (!File.Exists($"{path}/{saveName}.{ext}"))
-            return null;
+        string savePath = $"{path}/{saveName}.{ext}";
+
+        if (!File.Exists(savePath))
+            SaveAndLoad.Save(saveName, GameManager.Instance.DataObject.Data);
 
         BinaryFormatter formatter = new BinaryFormatter();
 
-        string savePath = $"{path}/{saveName}.{ext}";
 
         Stream file = new FileStream(savePath, FileMode.Open, FileAccess.Read);
 
@@ -51,5 +63,15 @@ public class SaveAndLoad
             file.Close();
             return null;
         }
+        // ---------------------------------
+
+        // SaveData data = new SaveData();
+        // string json = "";
+        // if (File.Exists(savePath))
+        //     using (StreamReader reader = new StreamReader(savePath))
+        //         json = reader.ReadToEnd();
+
+        // JsonUtility.FromJsonOverwrite(json, data);
+        // return data;
     }
 }

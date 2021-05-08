@@ -28,14 +28,8 @@ public abstract class Menu : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        print("Se llama");
         IsDead = false;
         HasWon = false;
-
-        // options = new List<Transform>();
-
-        if (menuList)
-            print(menuList.transform.parent.name);
 
         if (menuList)
             for (int i = 0; i < menuList.transform.childCount; i++)

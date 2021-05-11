@@ -70,10 +70,12 @@ public class VictoryScreen : Menu
         if (Option.gameObject.name == "Home")
         {
             GoHome();
+            MisionManager.Instance.Resetear();
         }
         else if (Option.gameObject.name == "Next Level")
         {
             NextLevel();
+            MisionManager.Instance.Resetear();
         }
         else if (Option.gameObject.name == "Restart")
         {

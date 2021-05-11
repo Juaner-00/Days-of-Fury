@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Llv3-Mision2
   m_EditorClassIdentifier: 
   names: Mision2
-  description: Destroy All Enemy Towers
+  description: Destroy All Enemy Turrets
   objetive: 8
   numObjetive: 0
   opcion: 6

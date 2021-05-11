@@ -35,7 +35,6 @@ public class PlayerShoot : TurretTank
         {
             counter += Time.deltaTime * AttackSpeed;
             counter = Mathf.Clamp(counter, 0f, numShoots);
-
         }
         else
         {

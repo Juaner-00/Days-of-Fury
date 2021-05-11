@@ -16,6 +16,9 @@ public class DestructibleWall : MonoBehaviour, IDamagable
     public static Action OnDestoy;
     public delegate void WallEvent();
 
+    public Action OnDying;
+    public Action OnGettingHurt;
+
     public void TakeDamage()
     {
         healthPoints--;
@@ -24,12 +27,15 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
         if (healthPoints <= 0)
             Die();
+
+        OnGettingHurt?.Invoke();
     }
 
     void Die()
     {
         OnWallDestroyed?.Invoke();
         OnDestoy?.Invoke();
+        OnDying?.Invoke();
 
         // // Desactivar los renderer de los hijos
         Renderer[] renders = GetComponentsInChildren<Renderer>();

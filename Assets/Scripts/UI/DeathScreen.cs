@@ -38,6 +38,7 @@ public class DeathScreen : Menu
         if (Option.gameObject.name == "Home")
         {
             GoHome();
+            MisionManager.Instance.Resetear();
         }
         else if (Option.gameObject.name == "Restart")
         {

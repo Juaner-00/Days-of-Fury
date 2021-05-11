@@ -8,7 +8,6 @@ public class HealthUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI lifesText;
     [SerializeField] Image damaged, glass;
-    [SerializeField] Color color1, color2;
 
     [SerializeField] PlayerHealth health;
 

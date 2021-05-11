@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Llv3-Mision3
   m_EditorClassIdentifier: 
   names: Mision3
-  description: Destroy 5 Robust Tanks
+  description: Destroy 5 Strong Tanks
   objetive: 5
   numObjetive: 0
   opcion: 10

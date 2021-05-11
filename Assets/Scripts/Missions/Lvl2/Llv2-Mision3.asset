@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Llv2-Mision3
   m_EditorClassIdentifier: 
   names: Mision3
-  description: Destroy
+  description: Destroy 5 Enemies
   objetive: 5
   numObjetive: 0
   opcion: 0

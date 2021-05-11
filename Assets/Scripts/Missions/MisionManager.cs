@@ -102,7 +102,7 @@ public class MisionManager : MonoBehaviour
         {
             if (_Objetive == missions[actualMision].numObjetive)
             {
-                actualCount = missions[actualCount].objetive;
+                actualCount++;
                 IsComplete();
             }
         }

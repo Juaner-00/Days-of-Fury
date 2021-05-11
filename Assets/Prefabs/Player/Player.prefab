@@ -999,6 +999,10 @@ MonoBehaviour:
   crashCoolDownTimer: 0
   lastDir: 0
   isSlowDown: 0
+  fromAngle: 0
+  currentAngle: 0
+  toAngle: 0
+  time: 0
 --- !u!114 &7006034829088994500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10952,10 +10956,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 40
-  attackSpeedBase: 0.6
+  attackSpeedBase: 0.8
   reference: {fileID: 3806065226640277910}
   smokeFire: {fileID: 5425343990478286844}
-  attackSpeed: 0.5
+  attackSpeed: 0.7
   numShoots: 3
   fill: {fileID: 2038771910}
   coldDown: 1

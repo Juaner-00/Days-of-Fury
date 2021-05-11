@@ -16,6 +16,7 @@ public abstract class Menu : MonoBehaviour
     public GameObject MenuList { get => menuList; }
     // protected Transform Option { get => menuList.transform.GetChild(index); }
     protected Transform Option { get => options[index]; }
+
     [SerializeField] GameObject screen;
     protected int index = 0;
     bool navigate = false;
@@ -28,6 +29,8 @@ public abstract class Menu : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        options = new List<Transform>();
+
         IsDead = false;
         HasWon = false;
 
@@ -47,14 +50,8 @@ public abstract class Menu : MonoBehaviour
                         options.Add(menuList.transform.GetChild(i));
                 }
 
-
                 SelectButton();
             }
-    }
-
-    private void OnDisable()
-    {
-        List<Transform> options = new List<Transform>();
     }
 
     // Maneja el movimiento del cursor selector de botones
@@ -94,8 +91,8 @@ public abstract class Menu : MonoBehaviour
         }
 
         // index = index < 0 ? menuList.transform.childCount - 1 : index > menuList.transform.childCount - 1 ? 0 : index;
-        // if (options != null)
-        index = index < 0 ? options.Count - 1 : index > options.Count - 1 ? 0 : index;
+        if (options != null)
+            index = index < 0 ? options.Count - 1 : index > options.Count - 1 ? 0 : index;
 
         if (navigate)
         {

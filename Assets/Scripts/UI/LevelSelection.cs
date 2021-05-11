@@ -9,17 +9,10 @@ public class LevelSelection : Menu
     [SerializeField] LevelSelection levelSelection;
     [SerializeField] MainMenu mainMenu;
 
-    LevelsMedals levels;
 
-
-    private void Awake()
+    protected override void OnEnable()
     {
-        levels = GetComponent<LevelsMedals>();
-    }
-
-    private void Start()
-    {
-
+        base.OnEnable();
     }
 
     private void Update()

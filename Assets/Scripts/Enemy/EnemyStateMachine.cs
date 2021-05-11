@@ -31,6 +31,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     [HideInInspector] public bool Alive;
     public Action OnShooting;
+    public Action OnMoving;
 
     private void Start()
     {
@@ -88,6 +89,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     void States()
     {
+        OnMoving?.Invoke();
         switch (state)
         {
             case State.Patrol:

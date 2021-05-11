@@ -5582,7 +5582,7 @@ GameObject:
   - component: {fileID: 1942721831741151535}
   - component: {fileID: 1877622284717632591}
   - component: {fileID: 1936882247130811154}
-  - component: {fileID: 4245156880008425978}
+  - component: {fileID: 2146522230471278990}
   m_Layer: 8
   m_Name: TowerEnemy
   m_TagString: Enemy
@@ -5637,7 +5637,7 @@ MonoBehaviour:
   radius: 20
   timeDead: 2
   turretTank: {fileID: 1937282129062286460}
---- !u!114 &4245156880008425978
+--- !u!114 &2146522230471278990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5646,17 +5646,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1936882247130811157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7c29341f3aa5d49afd89d2e905eec2, type: 3}
+  m_Script: {fileID: 11500000, guid: f405dab3ea6a0654784f14bd35684e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionClips:
-  - actionName: Moving
-    actionVolume: 1
-    isOverlappable: 0
-    clips:
-    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
   - actionName: Shooting
-    actionVolume: 0.7
+    actionVolume: 1
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}

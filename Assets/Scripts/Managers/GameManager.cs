@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
     [Expandable]
     [SerializeField] DataObject dataObject;
     [SerializeField] int actualLevel;
-    [SerializeField] bool isTutorial;
-    [SerializeField] bool isLevel1;
 
     [SerializeField] bool spawnEnemies;
     [SerializeField] bool spawnPickUps;
@@ -27,16 +25,17 @@ public class GameManager : MonoBehaviour
 
         HasFinished = false;
 
+        if (_SceneManager.IsHome)
+            LoadGame();
+
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start()
     {
         playerMedals = Medals.None;
-        if(isLevel1)
-        {
+        if (_SceneManager.IsLevel1)
             dataObject.SetPlayed();
-        }
     }
 
     void StartSpawn()
@@ -67,7 +66,7 @@ public class GameManager : MonoBehaviour
     // Método para finalizar el juego
     public void FinishGame()
     {
-        if (!isTutorial)
+        if (!_SceneManager.IsTutorial)
             SaveGame();
 
         if (player)
@@ -164,7 +163,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadGame()
     {
-        SaveData data = SaveAndLoad.Load("LevelData") as SaveData;
+        SaveData data = (SaveData)SaveAndLoad.Load("LevelData");
         dataObject.Data = data;
     }
 

@@ -77,7 +77,7 @@ public class EnemyTowerController : MonoBehaviour, IDamagable
             damagedSmoke.Play();
         }
 
-       OnGettingHurt?.Invoke();
+        OnGettingHurt?.Invoke();
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         healthPoints--;

@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 6664835830676366907
+  uniqueID: 7661128862467681887
   updateError: 1
   checkTime: 2000
 --- !u!1 &1277001794708716
@@ -945,6 +945,7 @@ GameObject:
   - component: {fileID: 23879275630151400}
   - component: {fileID: 4885111114058847333}
   - component: {fileID: 1250763787}
+  - component: {fileID: 762453670676979916}
   m_Layer: 8
   m_Name: SM_Bld_Motel_01
   m_TagString: Untagged
@@ -1054,6 +1055,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
+--- !u!114 &762453670676979916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895244190239012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575bc11654ac22346bff4d14a81a1c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionClips:
+  - actionName: GettingHurt
+    actionVolume: 1
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 00c947dbc2dedc649b2a2ee368d74a35, type: 3}
+  - actionName: Dying
+    actionVolume: 1
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 199adf232235e8943a7985f87608eb8a, type: 3}
 --- !u!1 &5205803121814019517
 GameObject:
   m_ObjectHideFlags: 0

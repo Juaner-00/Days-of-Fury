@@ -15,7 +15,6 @@ public class DataObject : ScriptableObject
 
     SaveData data;
 
-
     public SaveData Data
     {
         get
@@ -106,6 +105,7 @@ public class DataObject : ScriptableObject
     public void SetPlayed()
     {
         playedOnce = true;
+        Save();
     }
 
     public void Reset()
@@ -135,9 +135,14 @@ public class DataObject : ScriptableObject
 [Serializable]
 public class SaveData
 {
-    int[] medalsLVL;
-    int[] scoreLVL;
-    bool playedOnce;
+    public int[] medalsLVL;
+    public int[] scoreLVL;
+    public bool playedOnce;
+
+    public SaveData()
+    {
+
+    }
 
     public SaveData(int[] medalsLVL, int[] scoreLVL, bool playedOnce)
     {

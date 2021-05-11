@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 6205155100615283042
+  uniqueID: 2508517788057011233
   updateError: 1
   checkTime: 2000
 --- !u!1 &1656856907961120
@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 23014185895332860}
   - component: {fileID: 7367030879127278361}
   - component: {fileID: 796754243}
+  - component: {fileID: 4935684160054410648}
   m_Layer: 8
   m_Name: SM_Bld_House_03
   m_TagString: Untagged
@@ -251,6 +252,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 2
+--- !u!114 &4935684160054410648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839124528823706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575bc11654ac22346bff4d14a81a1c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionClips:
+  - actionName: GettingHurt
+    actionVolume: 1
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 00c947dbc2dedc649b2a2ee368d74a35, type: 3}
+  - actionName: Dying
+    actionVolume: 1
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 199adf232235e8943a7985f87608eb8a, type: 3}
 --- !u!1001 &3666040879937062657
 PrefabInstance:
   m_ObjectHideFlags: 0

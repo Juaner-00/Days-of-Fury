@@ -19,7 +19,7 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 
     #region Sound
 
-    public Action OnPicked;
+    public Action OnSFX;
 
     #endregion
 
@@ -45,6 +45,7 @@ public abstract class PickUpBase : MonoBehaviour, IPool
     protected virtual void Pick()
     {
         OnPick?.Invoke(pickupSpawn, pType);
+        OnSFX?.Invoke();
         hasPicked = true;
     }
 

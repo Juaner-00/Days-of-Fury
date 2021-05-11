@@ -6,7 +6,7 @@ public class EnemyTankSoundManager : TankSoundManager
 {
     EnemyStateMachine stateMachine;
     EnemyController enemyController;
-    
+
     protected override void GetEventComponents()
     {
         stateMachine = GetComponent<EnemyStateMachine>();

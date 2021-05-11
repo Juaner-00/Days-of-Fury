@@ -2,15 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerSoundManager : SoundController
+public class TowerSoundManager : TankSoundManager
 {
-    protected override void SetUp(bool child)
+    EnemyTowerController tower;
+
+    protected override void GetEventComponents()
     {
-        
+        tower = GetComponent<EnemyTowerController>();
     }
 
-    private void PlayShooting()
+    protected override void SetSubscribeEvents(bool setSubscription)
     {
-        PlayActionByName("Shooting");
+        if (setSubscription)
+        {
+            tower.OnGettingHurt += PlayGettingHurt;
+            tower.OnShooting += PlayShooting;
+        }
+        else
+        {
+            tower.OnGettingHurt -= PlayGettingHurt;
+            tower.OnShooting -= PlayShooting;
+        }
     }
 }

@@ -2293,6 +2293,7 @@ GameObject:
   - component: {fileID: 3777426762568420247}
   - component: {fileID: 119422013}
   - component: {fileID: 119422012}
+  - component: {fileID: 4771548565741479858}
   m_Layer: 0
   m_Name: Structure 1
   m_TagString: Untagged
@@ -2364,6 +2365,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.82, y: 12.18, z: 9.61}
   m_Center: {x: -5.2, y: 2.72, z: 5.11}
+--- !u!114 &4771548565741479858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096886852144274443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575bc11654ac22346bff4d14a81a1c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionClips:
+  - actionName: GettingHurt
+    actionVolume: 1
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 00c947dbc2dedc649b2a2ee368d74a35, type: 3}
+  - actionName: Dying
+    actionVolume: 1
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 199adf232235e8943a7985f87608eb8a, type: 3}
 --- !u!1 &8560780155498299765
 GameObject:
   m_ObjectHideFlags: 0

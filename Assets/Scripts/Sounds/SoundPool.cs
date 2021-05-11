@@ -28,7 +28,7 @@ public class SoundPool
             {
                 stoppedSources.Enqueue(gameObject.AddComponent(typeof(AudioSource)) as AudioSource);
                 firstSourceCreated = true;
-                Debug.Log("Fuente inicial creada");
+//                Debug.Log("Fuente inicial creada");
             }
 
             if (!firstSourceCreated)
@@ -36,7 +36,7 @@ public class SoundPool
                 if (!loop)
                 {
                     stoppedSources.Enqueue(gameObject.AddComponent(typeof(AudioSource)) as AudioSource);
-                    Debug.Log("Fuente creada");
+//                    Debug.Log("Fuente creada");
                 }
                 else
                 {
@@ -52,7 +52,7 @@ public class SoundPool
         source.volume = volume;
         playingSources.Add(source);
         source.Play();
-        Debug.Log("Fuente reproduciendo");
+//        Debug.Log("Fuente reproduciendo");
 
         if (loop) yield break;
 
@@ -62,7 +62,7 @@ public class SoundPool
         source.Stop();
         playingSources.Remove(source);
         stoppedSources.Enqueue(source);
-        Debug.Log("Fuente detenida");
+//        Debug.Log("Fuente detenida");
     }
 
     public void StopAll()

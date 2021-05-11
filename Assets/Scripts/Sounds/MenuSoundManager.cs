@@ -5,15 +5,17 @@ using System;
 
 public class MenuSoundManager : SoundController
 {
-    Menu menu;
+    Menu[] menus;
 
 
     protected override void SetUp(bool child)
     {
-        menu = GetComponent<Menu>();
-
-        menu.OnNavigating += PlayNavigating;
-        menu.OnSelecting += PlaySelecting;
+        menus = GetComponents<Menu>();
+        for(int i = 0; i < menus.Length; i++)
+        {
+            menus[i].OnNavigating += PlayNavigating;
+            menus[i].OnSelecting += PlaySelecting;
+        }
     }
 
     private void PlayNavigating()

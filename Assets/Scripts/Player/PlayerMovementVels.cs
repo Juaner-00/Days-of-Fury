@@ -81,7 +81,7 @@ public class PlayerMovementVels : MonoBehaviour
 
     private void Start()
     {
-        state = PlayerStates.Stoped;
+        state = PlayerStates.Stopped;
         movementSpeed = 0;
         maxSpeed = maxSpeedBase;
         curveTimer = 0;
@@ -138,7 +138,7 @@ public class PlayerMovementVels : MonoBehaviour
                     {
                         // Si está acelerando se para
                         case PlayerStates.Accelerating:
-                            state = PlayerStates.Stoped;
+                            state = PlayerStates.Stopped;
                             movementSpeed = 0;
                             OnStoped?.Invoke();
                             break;
@@ -149,13 +149,12 @@ public class PlayerMovementVels : MonoBehaviour
                             break;
                     }
 
-
                     crashCoolDownTimer = crashCoolDown;
                 }
             }
         }
 
-        if (state != PlayerStates.Stoped)
+        if (state != PlayerStates.Stopped)
             crashCoolDownTimer -= Time.deltaTime;
         crashCoolDownTimer = Mathf.Clamp(crashCoolDownTimer, 0, crashCoolDown);
     }
@@ -165,7 +164,7 @@ public class PlayerMovementVels : MonoBehaviour
         switch (state)
         {
             // Si está parado y presiona cualquier tecla se pone en acelerando
-            case PlayerStates.Stoped:
+            case PlayerStates.Stopped:
                 if (Input.anyKey && !Menu.IsPaused)
                 {
                     curveTimer = 0;
@@ -328,7 +327,7 @@ public class PlayerMovementVels : MonoBehaviour
 
 public enum PlayerStates
 {
-    Stoped,
+    Stopped,
     Accelerating,
     MaxSpeed
 }

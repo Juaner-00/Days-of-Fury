@@ -44,6 +44,7 @@ public class ScoreManager : MonoBehaviour, ICounterValueContainer
     {
         totalScore += score;
         OnGetScore?.Invoke(score);
+        HUDmanager.Instance.Refresh();
     }
 
     public void ActiveOneStarMedal()

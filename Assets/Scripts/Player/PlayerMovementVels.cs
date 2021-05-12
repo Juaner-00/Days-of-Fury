@@ -52,10 +52,14 @@ public class PlayerMovementVels : MonoBehaviour
     Ray leftRay;
     Ray rightRay;
 
+    [Header("Rotation Angles")]
+    [SerializeField] float fromAngle;
+    [SerializeField] float currentAngle;
+    [SerializeField] float toAngle;
+    [SerializeField] float time;
 
     public static Action OnMoving;
     public static Action OnStoped;
-
 
     public static Action OnMovingObjetive;
 
@@ -77,11 +81,11 @@ public class PlayerMovementVels : MonoBehaviour
 
     private void Start()
     {
-        state = PlayerStates.Stoped;
+        state = PlayerStates.Stopped;
         movementSpeed = 0;
         maxSpeed = maxSpeedBase;
         curveTimer = 0;
-
+        time = 0;
         available = true;
 
         crashCoolDownTimer = 0;
@@ -97,6 +101,7 @@ public class PlayerMovementVels : MonoBehaviour
             if (Input.anyKeyDown)
                 HandleDirection();
 
+            HandleNextRotation();
             HandleRotation();
 
             HandleRayCast();
@@ -133,7 +138,7 @@ public class PlayerMovementVels : MonoBehaviour
                     {
                         // Si está acelerando se para
                         case PlayerStates.Accelerating:
-                            state = PlayerStates.Stoped;
+                            state = PlayerStates.Stopped;
                             movementSpeed = 0;
                             OnStoped?.Invoke();
                             break;
@@ -144,13 +149,12 @@ public class PlayerMovementVels : MonoBehaviour
                             break;
                     }
 
-
                     crashCoolDownTimer = crashCoolDown;
                 }
             }
         }
 
-        if (state != PlayerStates.Stoped)
+        if (state != PlayerStates.Stopped)
             crashCoolDownTimer -= Time.deltaTime;
         crashCoolDownTimer = Mathf.Clamp(crashCoolDownTimer, 0, crashCoolDown);
     }
@@ -160,7 +164,7 @@ public class PlayerMovementVels : MonoBehaviour
         switch (state)
         {
             // Si está parado y presiona cualquier tecla se pone en acelerando
-            case PlayerStates.Stoped:
+            case PlayerStates.Stopped:
                 if (Input.anyKey && !Menu.IsPaused)
                 {
                     curveTimer = 0;
@@ -219,31 +223,53 @@ public class PlayerMovementVels : MonoBehaviour
             rotationTime = rotationTimeBase;
     }
 
-    void HandleRotation()
+    void HandleNextRotation()
     {
         if (turnDir != lastDir)
         {
             // Girar el tanque con DoTween
             if (vertical > 0.1f)
             {
-                transform.DOLocalRotate(Vector3.up * 0, rotationTime, RotateMode.Fast);
+                toAngle = 0;
+                // transform.DOLocalRotate(Vector3.up * 0, rotationTime, RotateMode.Fast);
                 lastDir = Directions.North;
             }
             else if (vertical < -0.1f)
             {
-                transform.DOLocalRotate(Vector3.up * -180, rotationTime, RotateMode.Fast);
+                toAngle = 180;
+                // transform.DOLocalRotate(Vector3.up * -180, rotationTime, RotateMode.Fast);
                 lastDir = Directions.South;
             }
             else if (horizontal > 0.1f)
             {
-                transform.DOLocalRotate(Vector3.up * 90, rotationTime, RotateMode.Fast);
+                toAngle = 90;
+                // transform.DOLocalRotate(Vector3.up * 90, rotationTime, RotateMode.Fast);
                 lastDir = Directions.East;
             }
             else if (horizontal < -0.1f)
             {
-                transform.DOLocalRotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
+                toAngle = -90;
+                // transform.DOLocalRotate(Vector3.up * -90, rotationTime, RotateMode.Fast);
                 lastDir = Directions.West;
             }
+
+            fromAngle = transform.eulerAngles.y;
+            time = 0;
+        }
+    }
+
+    void HandleRotation()
+    {
+        if (time < rotationTime)
+        {
+            currentAngle = Mathf.LerpAngle(fromAngle, toAngle, time / rotationTime);
+            transform.eulerAngles = Vector3.up * currentAngle;
+            time += Time.deltaTime;
+        }
+        else
+        {
+            currentAngle = toAngle;
+            transform.eulerAngles = Vector3.up * currentAngle;
         }
     }
 
@@ -255,19 +281,7 @@ public class PlayerMovementVels : MonoBehaviour
 
     Directions GetOpositeDirection()
     {
-        switch (lastDir)
-        {
-            case Directions.North:
-                return Directions.South;
-            case Directions.East:
-                return Directions.West;
-            case Directions.South:
-                return Directions.North;
-            case Directions.West:
-                return Directions.East;
-            default:
-                return Directions.South;
-        }
+        return (Directions)(((int)lastDir + 2) % 4);
     }
 
     void FirstClick()
@@ -313,7 +327,7 @@ public class PlayerMovementVels : MonoBehaviour
 
 public enum PlayerStates
 {
-    Stoped,
+    Stopped,
     Accelerating,
     MaxSpeed
 }

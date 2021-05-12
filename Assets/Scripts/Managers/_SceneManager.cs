@@ -37,6 +37,9 @@ public class _SceneManager : MonoBehaviour
                 newName = "Level1";
                 break;
             case "Level1":
+                newName = "Level2";
+                break;
+            case "Level2":
                 newName = "Level3";
                 break;
             default:
@@ -60,4 +63,9 @@ public class _SceneManager : MonoBehaviour
     }
 
     public static _SceneManager Instance { get; private set; }
+    public static bool IsHome => SceneManager.GetActiveScene().name == "Home";
+    public static bool IsTutorial => SceneManager.GetActiveScene().name == "Tutorial";
+    public static bool IsLevel1 => SceneManager.GetActiveScene().name == "Level1";
+    public static bool IsLevel2 => SceneManager.GetActiveScene().name == "Level2";
+    public static bool IsLevel3 => SceneManager.GetActiveScene().name == "Level3";
 }

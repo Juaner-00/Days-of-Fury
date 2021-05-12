@@ -10,8 +10,14 @@ public class SoundPool
 
     GameObject gameObject;
 
+    SoundPool instance;
 
     public SoundPool(GameObject gameObject)
+    {
+        SetUp(gameObject);
+    }
+
+    private void SetUp(GameObject gameObject)
     {
         this.gameObject = gameObject;
 
@@ -19,7 +25,7 @@ public class SoundPool
         stoppedSources = new Queue<AudioSource>();
     }
 
-    public IEnumerator PlayCorroutine(AudioClip clip, bool loop)
+    public IEnumerator PlayCorroutine(AudioClip clip, float volume, bool loop)
     {
         if (stoppedSources.Count <= 0)
         {
@@ -28,7 +34,7 @@ public class SoundPool
             {
                 stoppedSources.Enqueue(gameObject.AddComponent(typeof(AudioSource)) as AudioSource);
                 firstSourceCreated = true;
-                Debug.Log("Fuente inicial creada");
+//                Debug.Log("Fuente inicial creada");
             }
 
             if (!firstSourceCreated)
@@ -36,7 +42,7 @@ public class SoundPool
                 if (!loop)
                 {
                     stoppedSources.Enqueue(gameObject.AddComponent(typeof(AudioSource)) as AudioSource);
-                    Debug.Log("Fuente creada");
+//                    Debug.Log("Fuente creada");
                 }
                 else
                 {
@@ -49,9 +55,10 @@ public class SoundPool
         var source = stoppedSources.Dequeue();
         source.loop = loop;
         source.clip = clip;
+        source.volume = volume;
         playingSources.Add(source);
         source.Play();
-        Debug.Log("Fuente reproduciendo");
+//        Debug.Log("Fuente reproduciendo");
 
         if (loop) yield break;
 
@@ -61,16 +68,34 @@ public class SoundPool
         source.Stop();
         playingSources.Remove(source);
         stoppedSources.Enqueue(source);
-        Debug.Log("Fuente detenida");
+//        Debug.Log("Fuente detenida");
     }
 
     public void StopAll()
     {
+        if (NullCatcher())
+        {
+            try
+            {
+                SetUp(gameObject);
+                Debug.Log($"Null catched. Reseted");
+            }
+            catch
+            {
+                Debug.Log($"Game Object is null = {gameObject == null}");
+            }
+        }
+
         for(int psI = 0; psI < playingSources.Count; psI++)
         {
             var ps = playingSources[psI];
             ps.Stop();
             stoppedSources.Enqueue(ps);
         }
+    }
+
+    private bool NullCatcher()
+    {
+        return playingSources == null || stoppedSources == null;
     }
 }

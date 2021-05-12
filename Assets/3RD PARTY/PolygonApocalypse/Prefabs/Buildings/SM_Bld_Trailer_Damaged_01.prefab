@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 23532954130939054}
   - component: {fileID: 4101210462832775457}
   - component: {fileID: 8047881299356144975}
+  - component: {fileID: 2578993051503308992}
   m_Layer: 0
   m_Name: SM_Bld_Trailer_Damaged_01
   m_TagString: Untagged
@@ -191,6 +192,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 1
+--- !u!114 &2578993051503308992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436402022423282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575bc11654ac22346bff4d14a81a1c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionClips:
+  - actionName: GettingHurt
+    actionVolume: 1
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 00c947dbc2dedc649b2a2ee368d74a35, type: 3}
+  - actionName: Dying
+    actionVolume: 1
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 199adf232235e8943a7985f87608eb8a, type: 3}
 --- !u!1 &1610460018127152
 GameObject:
   m_ObjectHideFlags: 0

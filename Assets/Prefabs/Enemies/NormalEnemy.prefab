@@ -217,6 +217,8 @@ MonoBehaviour:
   timeDead: 2
   damagedSmoke: {fileID: 0}
   stayOnLevelProbability: 0.2
+  isStrong: 0
+  minimapSignal: {fileID: 0}
 --- !u!65 &6744038053857644895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -264,7 +266,7 @@ MonoBehaviour:
   strafeRight: {fileID: 2874193823486265285}
   t_minStrafe: 0
   t_maxStrafe: 2
-  chaseRadius: 38
+  chaseRadius: 20
   ChaseReachedDistance: 30
   fieldOfViewAngle: 20
   fovRadius: 55
@@ -286,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionClips:
   - actionName: Moving
-    actionVolume: 1
+    actionVolume: 0.027
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}

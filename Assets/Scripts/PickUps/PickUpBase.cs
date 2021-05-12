@@ -6,6 +6,10 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 {
     public static Action<Vector3, PickUpType> OnPick;
     public static Action<Vector3> OnDespawn;
+
+    [SerializeField]
+    bool dontDespawn;
+
     [SerializeField]
     PickUpType pType;
     Vector3 inicialPosition;
@@ -19,7 +23,7 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 
     #region Sound
 
-    public Action OnPicked;
+    public Action OnSFX;
 
     #endregion
 
@@ -33,11 +37,18 @@ public abstract class PickUpBase : MonoBehaviour, IPool
             }
     }
 
+    private void Start()
+    {
+        if (dontDespawn)
+            hasPicked = false;
+    }
+
     protected virtual void Despawn()
     {
         if (!hasPicked)
             OnDespawn?.Invoke(pickupSpawn);
 
+        print("despawn");
         time = 0;
         End();
     }
@@ -45,6 +56,7 @@ public abstract class PickUpBase : MonoBehaviour, IPool
     protected virtual void Pick()
     {
         OnPick?.Invoke(pickupSpawn, pType);
+        OnSFX?.Invoke();
         hasPicked = true;
     }
 
@@ -72,17 +84,21 @@ public abstract class PickUpBase : MonoBehaviour, IPool
         hasPicked = true;
         transform.position = inicialPosition;
         pickupSpawn = Vector3.zero;
+
+        if (dontDespawn)
+            Destroy(gameObject);
     }
 
     private void Update()
     {
-        if (!hasPicked)
-        {
-            time += Time.deltaTime;
+        if (!dontDespawn)
+            if (!hasPicked)
+            {
+                time += Time.deltaTime;
 
-            if (time > despawnTime)
-                Despawn();
-        }
+                if (time > despawnTime)
+                    Despawn();
+            }
     }
 
     public static float DespawnTime { get => despawnTime; set => despawnTime = value; }

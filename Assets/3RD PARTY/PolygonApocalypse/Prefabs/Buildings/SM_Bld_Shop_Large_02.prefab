@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 23879856690301244}
   - component: {fileID: 4886820521870868693}
   - component: {fileID: 2957154705249797725}
+  - component: {fileID: 4803836933122287672}
   m_Layer: 8
   m_Name: SM_Bld_Shop_Large_02
   m_TagString: Untagged
@@ -197,6 +198,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 3
+--- !u!114 &4803836933122287672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730336916111372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575bc11654ac22346bff4d14a81a1c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionClips:
+  - actionName: GettingHurt
+    actionVolume: 1
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 00c947dbc2dedc649b2a2ee368d74a35, type: 3}
+  - actionName: Dying
+    actionVolume: 1
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 199adf232235e8943a7985f87608eb8a, type: 3}
 --- !u!1 &7030713561284228462
 GameObject:
   m_ObjectHideFlags: 0

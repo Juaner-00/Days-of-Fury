@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abaafcaf14bc00442b95a08ef11a91ef, type: 3}
   m_Name: Llv2-Mision1
   m_EditorClassIdentifier: 
-  names: Mision1
-  description: Destroy 4 Buildings
-  objetive: 4
+  names: Mision2
+  description: Collect 3 Pickups
+  objetive: 3
   numObjetive: 0
-  opcion: 2
-  TypePickup: 0
+  opcion: 7
+  TypePickup: 3

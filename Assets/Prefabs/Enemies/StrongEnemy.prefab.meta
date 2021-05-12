@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Prefabs/PickUps/Score PickUp.prefab.meta
-guid: 3170a376b52f0ad4ca169c9cbe742d4c
-=======
-guid: b3c8cdebdbe47f448b7dcc39f87c284e
->>>>>>> Enemies:Assets/Prefabs/Enemies/StrongEnemy.prefab.meta
+guid: 281fec91cd26bd246982e6b36071d288
 PrefabImporter:
   externalObjects: {}
   userData: 

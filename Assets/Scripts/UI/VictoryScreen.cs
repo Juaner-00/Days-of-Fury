@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class VictoryScreen : Menu
 {
-    //[SerializeField] GameObject victoryScreen;
     public static VictoryScreen Instance { get; private set; }
 
     [Header("Medal's Win")]
@@ -23,17 +22,18 @@ public class VictoryScreen : Menu
 
     private void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.G))
-        {
             WinGame();
-        }
+#endif
 
         if (HasWon == true && IsDead == false)
             Navigate();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         ScoreManager.OnMedalObtained += AsignMedals;
     }
 
@@ -70,10 +70,12 @@ public class VictoryScreen : Menu
         if (Option.gameObject.name == "Home")
         {
             GoHome();
+            MisionManager.Instance.Resetear();
         }
         else if (Option.gameObject.name == "Next Level")
         {
             NextLevel();
+            MisionManager.Instance.Resetear();
         }
         else if (Option.gameObject.name == "Restart")
         {

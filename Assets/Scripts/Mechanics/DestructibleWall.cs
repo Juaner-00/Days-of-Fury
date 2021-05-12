@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
@@ -11,15 +12,12 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
     public int HealthPoints => healthPoints;
 
-    public static event WallEvent WallDestroyed;
+    public event WallEvent OnWallDestroyed;
+    public static Action OnDestoy;
     public delegate void WallEvent();
 
-    PoolVfxs particleDestruction;
-
-    public void Awake()
-    {
-        particleDestruction = GameObject.Find("VFXsBuildExplo(Pool)").GetComponent<PoolVfxs>();
-    }
+    public Action OnDying;
+    public Action OnGettingHurt;
 
     public void TakeDamage()
     {
@@ -29,19 +27,22 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
         if (healthPoints <= 0)
             Die();
+
+        OnGettingHurt?.Invoke();
     }
 
     void Die()
     {
+        OnWallDestroyed?.Invoke();
+        OnDestoy?.Invoke();
+        OnDying?.Invoke();
 
-        ParticleSystem destruction = particleDestruction.GetItem(transform.position, tag);
+        // // Desactivar los renderer de los hijos
+        Renderer[] renders = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renders.Length - 1; i++)
+            renders[i].enabled = false;
 
-        WallDestroyed?.Invoke();
-
-        // Desactivar los renderer de los hijos
-        foreach (Renderer render in GetComponentsInChildren<Renderer>())
-            render.enabled = false;
-        transform.GetChild(0).gameObject.SetActive(true);
+        GetComponentInChildren<ParticleSystem>().Play();
 
         // Desactivar los renderer y el collider
         GetComponent<Renderer>().enabled = false;
@@ -56,6 +57,16 @@ public class DestructibleWall : MonoBehaviour, IDamagable
         // Desactivar el collider
         foreach (Collider collider in dynamic.gameObject.GetComponents<Collider>())
             collider.enabled = false;
+
+        // Encender el collider de los escombros
+        transform.GetChild(0).gameObject.SetActive(true);
+        Collider trigger;
+
+        if (transform.GetChild(0).TryGetComponent(out trigger))
+            trigger.enabled = true;
+        else
+            for (int i = 0; i < transform.GetChild(0).childCount; i++)
+                transform.GetChild(0).GetChild(i).GetComponent<Collider>().enabled = true;
     }
 }
 

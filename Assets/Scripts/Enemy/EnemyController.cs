@@ -14,6 +14,12 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
     public static event Action<int> Mission = delegate { };
     public static event Action Kill = delegate { };
+    public static event Action KillStrong = delegate { };
+    public static event Action KillNormal = delegate { };
+
+    [SerializeField] public bool isStrong;
+
+    [SerializeField] GameObject minimapSignal;
 
     #region Sound
 
@@ -62,6 +68,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         float prob = UnityEngine.Random.Range(0f, 1f);
         StayOnScene = prob <= stayOnLevelProbability;
+        
     }
 
     // Se llama cuando el pool devuelve el objeto
@@ -80,6 +87,11 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         healthPoints = maxHealthPoints;
         isDead = false;
         transform.position = position;
+
+        foreach (Renderer material in GetComponentsInChildren<Renderer>())
+        {
+            material.material.SetFloat("damageChanger", (float)healthPoints / maxHealthPoints);
+        }
     }
 
     // Se llama cuando el objeto se devuelve al pool
@@ -114,21 +126,35 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         ParticleSystem damage = particleDamage.GetItem(transform.position, tag);
         healthPoints--;
+
+        foreach (Renderer material in GetComponentsInChildren<Renderer>())
+        {
+            material.material.SetFloat("damageChanger", (float)healthPoints / maxHealthPoints);
+        }
+
         isDead = (healthPoints <= 0) ? true : false;
 
         if (isDead)
         {
+
+            foreach (Renderer material in GetComponentsInChildren<Renderer>())
+            {
+                material.material.SetFloat("damageChanger", 0f);
+            }
             stateMachine.Alive = false;
-            
+
             if (damagedSmoke)
             {
                 damagedSmoke.Stop();
             }
 
             if (StayOnScene)
+            { 
                 enemyAnimator.SetTrigger($"Dead{UnityEngine.Random.Range(3, 5)}");
+                Destroy(minimapSignal);
+            }
             else
-                enemyAnimator.SetTrigger($"Dead{UnityEngine.Random.Range(1, 5)}");
+            enemyAnimator.SetTrigger($"Dead{UnityEngine.Random.Range(1, 5)}");
 
 
             ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
@@ -145,6 +171,10 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
                 aIPath.canMove = false;
             }
             Invoke("End", timeDead);
+            
+            if (isStrong == false) KillNormal?.Invoke();
+            else { KillStrong?.Invoke(); }
+
             Kill(); //Misiones
         }
     }

@@ -145,20 +145,19 @@ public class PickUpSpawnManager : MonoBehaviour
     public void StartSpawning()
     {
         canSpawn = true;
-        time = 0;
+        time = spawnTime;
     }
 
-    void CountPickUps(Vector3 pos,PickUpType pType)
+    void CountPickUps(Vector3 pos, PickUpType pType)
     {
         spawns[pos] = true;
         currentPickUpsInScene--;
-        time = 0;
     }
+
     void CountPickUps(Vector3 pos)
     {
         spawns[pos] = true;
         currentPickUpsInScene--;
-        time = 0;
     }
 
     public static PickUpSpawnManager Instance { get; private set; }

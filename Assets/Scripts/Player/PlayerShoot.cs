@@ -35,7 +35,6 @@ public class PlayerShoot : TurretTank
         {
             counter += Time.deltaTime * AttackSpeed;
             counter = Mathf.Clamp(counter, 0f, numShoots);
-
         }
         else
         {
@@ -64,7 +63,7 @@ public class PlayerShoot : TurretTank
 
         Vector3 force = -transform.up * this.force;
         GameObject clone = cartrigde.GetItem(reference.position, Vector3.zero, tag);
-        //clone.transform.LookAt(clone.transform.position + transform.forward);
+        clone.transform.LookAt(clone.transform.position - transform.up);
         clone.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
         return true;
     }

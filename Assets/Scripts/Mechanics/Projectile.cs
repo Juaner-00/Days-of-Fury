@@ -10,7 +10,8 @@ public class Projectile : MonoBehaviour, IPool
     [SerializeField] TrailRenderer trail;
     new Rigidbody rigidbody;
     Vector3 initial;
-    PoolVfxs poolBullet;
+    PoolVfxs poolBullet,poolBuildC;
+    GameObject obstacle;
     string tag;
 
 
@@ -21,6 +22,8 @@ public class Projectile : MonoBehaviour, IPool
     {
 
         poolBullet = GameObject.Find("VFXsBulletCollision(Pool)").GetComponent<PoolVfxs>();
+        poolBuildC = GameObject.Find("VFXsBuildCollision(Pool)").GetComponent<PoolVfxs>();
+        
         if (poolBullet == null)
         {
             print("null");
@@ -28,7 +31,7 @@ public class Projectile : MonoBehaviour, IPool
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.isKinematic = true;
         initial = transform.position;
-        GetComponent<SphereCollider>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
         trail.enabled = false;
 
         StayOnScene = false;
@@ -43,7 +46,7 @@ public class Projectile : MonoBehaviour, IPool
         rigidbody.velocity = Vector3.zero;
         rigidbody.isKinematic = false;
         Invoke("End", lifeTime);
-        GetComponent<SphereCollider>().enabled = true;
+        GetComponent<CapsuleCollider>().enabled = true;
     }
 
     public void End()
@@ -51,19 +54,27 @@ public class Projectile : MonoBehaviour, IPool
         trail.enabled = false;
         transform.position = initial;
         rigidbody.isKinematic = true;
-        GetComponent<SphereCollider>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-
+        if (collision.gameObject.layer == 10)
+        {
+            ParticleSystem buildCollision = poolBuildC.GetItem(collision.GetContact(0).point, tag);
+            buildCollision.transform.forward = -rigidbody.velocity *2;
+            buildCollision.Play();
+        }
         if (!collided)
         {
             ParticleSystem bulletCollision = poolBullet.GetItem(collision.GetContact(0).point, tag);
             //bulletCollision.transform.forward = collision.GetContact(0).normal;
             bulletCollision.transform.forward = -rigidbody.velocity;
 
+            
+
             bulletCollision.Play();
+            
 
             IDamagable destructible = collision.gameObject.GetComponent<IDamagable>();
             if (destructible != null)

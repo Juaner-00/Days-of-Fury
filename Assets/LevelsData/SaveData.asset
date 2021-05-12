@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SaveData
   m_EditorClassIdentifier: 
   levelsCant: 3
-  medalsLVLs: 030000000000000000000000
-  scoreLVLs: 640000000000000000000000
+  medalsLVLs: 000000000000000000000000
+  scoreLVLs: 000000000000000000000000
+  playedOnce: 1

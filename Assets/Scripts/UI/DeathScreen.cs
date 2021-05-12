@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : Menu
 {
-    //[SerializeField] GameObject deathScreen;
     public static DeathScreen Instance { get; private set; }
 
     private void Awake()
@@ -14,13 +13,13 @@ public class DeathScreen : Menu
             Destroy(gameObject);
         Instance = this;
     }
-    
+
     private void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.T))
-        {
             LoseGame();
-        }
+#endif
 
         if (IsDead == true && HasWon == false)
             Navigate();
@@ -39,6 +38,7 @@ public class DeathScreen : Menu
         if (Option.gameObject.name == "Home")
         {
             GoHome();
+            MisionManager.Instance.Resetear();
         }
         else if (Option.gameObject.name == "Restart")
         {

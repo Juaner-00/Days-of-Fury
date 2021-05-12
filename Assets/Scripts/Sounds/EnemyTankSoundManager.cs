@@ -2,36 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTankSoundManager : SoundController
+public class EnemyTankSoundManager : TankSoundManager
 {
-    EnemyStateMachine fov;
-    EnemyController controller;
+    EnemyStateMachine stateMachine;
+    EnemyController enemyController;
 
-    protected override void ChildAwake()
+    protected override void GetEventComponents()
     {
-        fov = GetComponent<EnemyStateMachine>();
-        controller = GetComponent<EnemyController>();
-
-        //fov.OnMoving += PlayMoving;
-        fov.OnShooting += PlayShooting;
-        controller.OnGettingHurt += PlayGettingHurt;
+        stateMachine = GetComponent<EnemyStateMachine>();
+        enemyController = GetComponent<EnemyController>();
     }
-
-    private void PlayMoving() {
-        PlaySourceByName("Moving", null, true);
-    }
-    private void PlayShooting()
+    
+    protected override void SetSubscribeEvents(bool setSubscription)
     {
-        PlaySourceByName("Shooting");
-    }
-    private void PlayGettingHurt()
-    {
-        PlaySourceByName("GettingHurt");
-    }
-
-    private void OnDisable() {
-        //fov.OnMoving -= PlayMoving;
-        fov.OnShooting -= PlayShooting;
-        controller.OnGettingHurt -= PlayGettingHurt;
+        if (setSubscription)
+        {
+            stateMachine.OnShooting += PlayShooting;
+            stateMachine.OnMoving += PlayMoving;
+            enemyController.OnGettingHurt += PlayGettingHurt;
+        }
+        else
+        {
+            stateMachine.OnShooting -= PlayShooting;
+            stateMachine.OnMoving -= PlayMoving;
+            enemyController.OnGettingHurt -= PlayGettingHurt;
+        }
     }
 }

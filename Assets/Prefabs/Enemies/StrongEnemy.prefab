@@ -219,7 +219,7 @@ MonoBehaviour:
   damagedSmoke: {fileID: 1268635723504433819}
   stayOnLevelProbability: 0.2
   isStrong: 0
-  minimapSignal: {fileID: 675233568502895689}
+  minimapSignal: {fileID: 0}
 --- !u!65 &6819111125155334557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   strafeRight: {fileID: 2654532907257814791}
   t_minStrafe: 0
   t_maxStrafe: 2
-  chaseRadius: 38
+  chaseRadius: 20
   ChaseReachedDistance: 30
   fieldOfViewAngle: 20
   fovRadius: 55

@@ -13,7 +13,7 @@ public class EnemyStateMachine : MonoBehaviour
 {
     [SerializeField] TurretTank turretTank;
     [SerializeField] Transform NoAiming, strafeLeft, strafeRight;
-    [SerializeField] float t_minStrafe, t_maxStrafe = 2f, chaseRadius = 38f, ChaseReachedDistance = 20f, fieldOfViewAngle = 20f,
+    [SerializeField] float t_minStrafe, t_maxStrafe = 2f, chaseRadius = 20f, ChaseReachedDistance = 20f, fieldOfViewAngle = 20f,
         fovRadius = 55f, memoryStartTime = 5f, noiseTravelDistance = 80f, spinTime = 3f;
 
     Transform noisePosition;
@@ -115,7 +115,7 @@ public class EnemyStateMachine : MonoBehaviour
 
                 TurretAiming();
 
-                if (distance <= chaseRadius && distance > ChaseReachedDistance)
+                if (distance > ChaseReachedDistance)
                 {
                     aIDestinationSetter.target = player.transform;
                 }
@@ -232,6 +232,12 @@ public class EnemyStateMachine : MonoBehaviour
                 else playerIsInFov = false;
             }
         }
+        else if (distance <= chaseRadius)
+        {
+            playerIsInFov = true;
+            aiMemorizesPlayer = true;
+        }
+        else playerIsInFov = false;
     }
 
     private void OnDrawGizmos()

@@ -10,8 +10,14 @@ public class SoundPool
 
     GameObject gameObject;
 
+    SoundPool instance;
 
     public SoundPool(GameObject gameObject)
+    {
+        SetUp(gameObject);
+    }
+
+    private void SetUp(GameObject gameObject)
     {
         this.gameObject = gameObject;
 
@@ -67,11 +73,29 @@ public class SoundPool
 
     public void StopAll()
     {
+        if (NullCatcher())
+        {
+            try
+            {
+                SetUp(gameObject);
+                Debug.Log($"Null catched. Reseted");
+            }
+            catch
+            {
+                Debug.Log($"Game Object is null = {gameObject == null}");
+            }
+        }
+
         for(int psI = 0; psI < playingSources.Count; psI++)
         {
             var ps = playingSources[psI];
             ps.Stop();
             stoppedSources.Enqueue(ps);
         }
+    }
+
+    private bool NullCatcher()
+    {
+        return playingSources == null || stoppedSources == null;
     }
 }

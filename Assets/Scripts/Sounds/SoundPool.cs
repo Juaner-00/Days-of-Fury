@@ -73,29 +73,67 @@ public class SoundPool
 
     public void StopAll()
     {
+        
         if (NullCatcher())
         {
             try
             {
                 SetUp(gameObject);
                 Debug.Log($"Null catched. Reseted");
+                return;
             }
             catch
             {
                 Debug.Log($"Game Object is null = {gameObject == null}");
             }
         }
-
+        
+        Debug.Log($"Queue = {playingSources.Count}");
         for(int psI = 0; psI < playingSources.Count; psI++)
         {
-            var ps = playingSources[psI];
-            ps.Stop();
-            stoppedSources.Enqueue(ps);
+            if (playingSources.Count > 0)
+            {
+                var ps = playingSources[psI];
+                if (ps == null)
+                {
+                    SetUp(gameObject);
+                    Debug.Log("JUEPUTAAA");
+                }
+                else ps.Stop();
+                stoppedSources.Enqueue(ps);
+            }
         }
     }
 
     private bool NullCatcher()
     {
-        return playingSources == null || stoppedSources == null;
+        //return playingSources == null || stoppedSources == null;
+        bool diagnostic = default;
+
+        int playingNulls = 0, stoppedNulls = 0;
+
+        for(int i = 0; i < playingSources.Count; i++)
+        {
+            if(playingSources[i] == null) playingNulls++;
+        }
+
+        var backUpQueue = stoppedSources;
+        List<AudioSource> laLista = new List<AudioSource>();
+
+        for(int i = backUpQueue.Count; i > 0; i--)
+        {
+            laLista.Add(backUpQueue.Dequeue());
+        }
+
+        Debug.Log($"Lista = {laLista.Count} | Queue = {stoppedSources.Count} | Back Up queue = {backUpQueue.Count}");
+
+        for (int i = 0; i < stoppedSources.Count; i++)
+        {
+            if (laLista[i] == null) stoppedNulls++;
+        }
+
+        diagnostic = (stoppedNulls == laLista.Count && stoppedNulls > 0) || (playingNulls == playingSources.Count && playingNulls > 0);
+
+        return diagnostic;
     }
 }

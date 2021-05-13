@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour, IPool
     [SerializeField] TrailRenderer trail;
     new Rigidbody rigidbody;
     Vector3 initial;
-    PoolVfxs poolBullet,poolBuildC;
+    PoolVfxs poolBullet, poolBuildC;
     GameObject obstacle;
     string tag;
 
@@ -18,12 +18,13 @@ public class Projectile : MonoBehaviour, IPool
 
     bool collided;
 
-    public void Instantiate()
+    public void Instantiate(Pool parentPool)
     {
+        ParentPool = parentPool;
 
         poolBullet = GameObject.Find("VFXsBulletCollision(Pool)").GetComponent<PoolVfxs>();
         poolBuildC = GameObject.Find("VFXsBuildCollision(Pool)").GetComponent<PoolVfxs>();
-        
+
         if (poolBullet == null)
         {
             print("null");
@@ -55,6 +56,7 @@ public class Projectile : MonoBehaviour, IPool
         transform.position = initial;
         rigidbody.isKinematic = true;
         GetComponent<CapsuleCollider>().enabled = false;
+        ParentPool.PushItem(gameObject);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -62,7 +64,7 @@ public class Projectile : MonoBehaviour, IPool
         if (collision.gameObject.layer == 10)
         {
             ParticleSystem buildCollision = poolBuildC.GetItem(collision.GetContact(0).point, tag);
-            buildCollision.transform.forward = -rigidbody.velocity *2;
+            buildCollision.transform.forward = -rigidbody.velocity * 2;
             buildCollision.Play();
         }
         if (!collided)
@@ -71,10 +73,10 @@ public class Projectile : MonoBehaviour, IPool
             //bulletCollision.transform.forward = collision.GetContact(0).normal;
             bulletCollision.transform.forward = -rigidbody.velocity;
 
-            
+
 
             bulletCollision.Play();
-            
+
 
             IDamagable destructible = collision.gameObject.GetComponent<IDamagable>();
             if (destructible != null)
@@ -92,4 +94,5 @@ public class Projectile : MonoBehaviour, IPool
     }
 
     public bool StayOnScene { get; set; }
+    public Pool ParentPool { get; set; }
 }

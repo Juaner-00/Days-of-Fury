@@ -45,4 +45,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 2091521271594613765, guid: 4ae2851edb0e6de49843627a1ea84194, type: 3}
   length: 10
-  cantEnemiesThatStay: 0

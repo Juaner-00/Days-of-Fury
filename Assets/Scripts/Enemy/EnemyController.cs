@@ -54,7 +54,7 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
     }
 
     // Se llama cuando se instancia el objeto
-    public void Instantiate()
+    public void Instantiate(Pool parentPool)
     {
         if (aIPath)
         {
@@ -68,7 +68,8 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
 
         float prob = UnityEngine.Random.Range(0f, 1f);
         StayOnScene = prob <= stayOnLevelProbability;
-        
+
+        ParentPool = parentPool;
     }
 
     // Se llama cuando el pool devuelve el objeto
@@ -108,6 +109,9 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
             healthPoints = maxHealthPoints;
             enemyAnimator.SetTrigger("Init");
         }
+
+        if (!StayOnScene)
+            ParentPool.PushItem(gameObject);
     }
 
     // Método para hacer que el enemigo tome daño
@@ -135,49 +139,53 @@ public class EnemyController : MonoBehaviour, IPool, IDamagable
         isDead = (healthPoints <= 0) ? true : false;
 
         if (isDead)
+            Dead();
+    }
+
+    void Dead()
+    {
+        foreach (Renderer material in GetComponentsInChildren<Renderer>())
         {
+            material.material.SetFloat("damageChanger", 0f);
+        }
+        stateMachine.Alive = false;
 
-            foreach (Renderer material in GetComponentsInChildren<Renderer>())
-            {
-                material.material.SetFloat("damageChanger", 0f);
-            }
-            stateMachine.Alive = false;
+        if (damagedSmoke)
+        {
+            damagedSmoke.Stop();
+        }
 
-            if (damagedSmoke)
-            {
-                damagedSmoke.Stop();
-            }
-
-            if (StayOnScene)
-            { 
-                enemyAnimator.SetTrigger($"Dead{UnityEngine.Random.Range(3, 5)}");
-                Destroy(minimapSignal);
-            }
-            else
+        if (StayOnScene)
+        {
+            enemyAnimator.SetTrigger($"Dead{UnityEngine.Random.Range(3, 5)}");
+            Destroy(minimapSignal);
+        }
+        else
             enemyAnimator.SetTrigger($"Dead{UnityEngine.Random.Range(1, 5)}");
 
 
-            ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
+        ParticleSystem Explos = particleExplo.GetItem(transform.position, tag);
 
-            OnDie?.Invoke(transform.position);
+        OnDie?.Invoke(transform.position);
 
-            if (ScoreManager.Instance)
-            {
-                ScoreManager.Instance.Addscore(scorePoints);
-            }
-            if (aIPath)
-            {
-                aIPath.canSearch = false;
-                aIPath.canMove = false;
-            }
-            Invoke("End", timeDead);
-            
-            if (isStrong == false) KillNormal?.Invoke();
-            else { KillStrong?.Invoke(); }
-
-            Kill(); //Misiones
+        if (ScoreManager.Instance)
+        {
+            ScoreManager.Instance.Addscore(scorePoints);
         }
+        if (aIPath)
+        {
+            aIPath.canSearch = false;
+            aIPath.canMove = false;
+        }
+        Invoke("End", timeDead);
+
+        if (isStrong == false) KillNormal?.Invoke();
+        else { KillStrong?.Invoke(); }
+
+        Kill(); //Misiones
     }
 
+
     public bool StayOnScene { get; set; }
+    public Pool ParentPool { get; set; }
 }

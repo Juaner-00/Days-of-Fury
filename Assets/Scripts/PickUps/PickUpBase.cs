@@ -27,6 +27,8 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 
     #endregion
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (!hasPicked)
@@ -48,7 +50,6 @@ public abstract class PickUpBase : MonoBehaviour, IPool
         if (!hasPicked)
             OnDespawn?.Invoke(pickupSpawn);
 
-        print("despawn");
         time = 0;
         End();
     }
@@ -61,9 +62,11 @@ public abstract class PickUpBase : MonoBehaviour, IPool
     }
 
     // Se llama al inicializar el pickup
-    public void Instantiate()
+    public void Instantiate(Pool poolParent)
     {
         inicialPosition = transform.position;
+
+        ParentPool = poolParent;
 
         StayOnScene = false;
         hasPicked = true;
@@ -87,6 +90,8 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 
         if (dontDespawn)
             Destroy(gameObject);
+        else
+            ParentPool.PushItem(gameObject);
     }
 
     private void Update()
@@ -103,6 +108,7 @@ public abstract class PickUpBase : MonoBehaviour, IPool
 
     public static float DespawnTime { get => despawnTime; set => despawnTime = value; }
     public bool StayOnScene { get; set; }
+    public Pool ParentPool { get; set; }
 }
 
 public enum PickUpType

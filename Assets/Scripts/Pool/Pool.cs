@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class Pool : MonoBehaviour
 {
@@ -9,62 +8,49 @@ public class Pool : MonoBehaviour
     [SerializeField] GameObject item;
     [SerializeField] int length = 30;
 
-    [Header("Debug (only for enemies)")]
-    [SerializeField] int cantEnemiesThatStay;
+    Queue<IPool> items;
+    Queue<GameObject> objects;
 
-    List<IPool> items;
-    List<GameObject> objects;
 
-    int index = 0;
-
-    int cantNotStay = 0;
-
-    private void Awake()
+    protected virtual void Awake()
     {
-        items = new List<IPool>();
-        objects = new List<GameObject>();
+        items = new Queue<IPool>(length);
+        objects = new Queue<GameObject>(length);
 
-        // for (int i = 0; i < length; i++)
-        while (cantNotStay < length)
+        for (int i = 0; i < length; i++)
             InstantiateItem();
-
-        cantEnemiesThatStay = items.Count(c => c.StayOnScene);
     }
 
-    void InstantiateItem()
+    protected virtual void InstantiateItem()
     {
         GameObject objTemp = Instantiate(item, transform.position, Quaternion.identity);
         IPool ipoolTemp = objTemp.GetComponent<IPool>();
 
-        ipoolTemp.Instantiate();
+        ipoolTemp.Instantiate(this);
         objTemp.transform.parent = transform;
 
-        objects.Add(objTemp);
-        items.Add(ipoolTemp);
-
-        if (!ipoolTemp.StayOnScene)
-            cantNotStay++;
+        objects.Enqueue(objTemp);
+        items.Enqueue(ipoolTemp);
     }
 
     // Devuelve un objeto del pool en la posición requerida
-    public GameObject GetItem(Vector3 position, Vector3 pos, string tag = "")
+    public virtual GameObject GetItem(Vector3 position, Vector3 pos, string tag = "")
     {
-        IPool ipoolTemp = items[index];
+        if (items.Count == 0)
+            InstantiateItem();
 
+        IPool ipoolTemp = items.Dequeue();
         ipoolTemp.Begin(position, tag, pos);
-        GameObject tmp = objects[index];
 
-        if (ipoolTemp.StayOnScene)
-        {
-            objects.RemoveAt(index);
-            items.RemoveAt(index);
-        }
-
-        index++;
-
-        if (index >= items.Count)
-            index = 0;
+        GameObject tmp = objects.Dequeue();
 
         return tmp;
+    }
+
+    // Añade el objeto al pool
+    public void PushItem(GameObject newObject)
+    {
+        objects.Enqueue(newObject);
+        items.Enqueue(newObject.GetComponent<IPool>());
     }
 }

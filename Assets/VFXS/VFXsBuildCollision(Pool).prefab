@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4902420862479241666}
   - component: {fileID: 5317976461651552822}
   m_Layer: 0
-  m_Name: VFXsBuildCollision
+  m_Name: VFXsBuildCollision(Pool)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

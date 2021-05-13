@@ -4,8 +4,9 @@ using UnityEngine;
 
 public interface IPool
 {
+    Pool ParentPool { get; set; }
     bool StayOnScene { get; set; }
-    void Instantiate();
+    void Instantiate(Pool poolParent);
     void Begin(Vector3 position, string tag, Vector3 pos);
     void End();
 }

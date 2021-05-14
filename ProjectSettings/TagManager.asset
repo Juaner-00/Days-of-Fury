@@ -12,6 +12,7 @@ TagManager:
   - MoveSpot
   - Remains
   - Indestructible
+  - Build
   layers:
   - Default
   - TransparentFX

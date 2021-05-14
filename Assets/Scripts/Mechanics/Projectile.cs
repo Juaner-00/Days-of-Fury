@@ -63,7 +63,7 @@ public class Projectile : MonoBehaviour, IPool
     {
         if (collision.gameObject.CompareTag("Indestructible")) collision.gameObject.GetComponent<IndctBuildingSoundManager>().PlayGettingHurt();
 
-        if (collision.gameObject.layer == 10)
+        if (collision.gameObject.CompareTag("Build"))
         {
             ParticleSystem buildCollision = poolBuildC.GetItem(collision.GetContact(0).point, tag);
             buildCollision.transform.forward = -rigidbody.velocity * 2;

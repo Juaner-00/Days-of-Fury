@@ -36,4 +36,9 @@ public class BuildingSoundManager : SoundController
     {
         PlayActionByName("GettingHurt");
     }
+
+    private void OnDisable()
+    {
+        SetSubscribeEvents(false);
+    }
 }

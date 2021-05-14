@@ -5651,12 +5651,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionClips:
   - actionName: Shooting
-    actionVolume: 1
+    actionVolume: 0.778
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
   - actionName: GettingHurt
-    actionVolume: 1
+    actionVolume: 0.799
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}

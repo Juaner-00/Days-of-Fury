@@ -170,9 +170,10 @@ GameObject:
   - component: {fileID: 33342465649932344}
   - component: {fileID: 23444515548266370}
   - component: {fileID: 4002654941068324737}
+  - component: {fileID: 8278962415966901387}
   m_Layer: 8
   m_Name: SM_Bld_ContainerBridge_01
-  m_TagString: Untagged
+  m_TagString: Indestructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -253,3 +254,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.3956544, y: 3.1363764, z: 6.092375}
   m_Center: {x: -0.0072005987, y: -1.3723013, z: 0.047925353}
+--- !u!114 &8278962415966901387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804672514264270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b948cc59c8955e4089d48243274bb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionClips:
+  - actionName: GettingHurt
+    actionVolume: 0.758
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 1b17f024730cb3d43a417c30d6e27a32, type: 3}

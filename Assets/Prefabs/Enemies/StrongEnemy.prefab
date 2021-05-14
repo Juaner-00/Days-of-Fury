@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6819111125155334557}
   - component: {fileID: 6511220085604451508}
   - component: {fileID: 6129854843171676662}
+  - component: {fileID: -6367180263155314922}
   m_Layer: 8
   m_Name: StrongEnemy
   m_TagString: Enemy
@@ -274,6 +275,34 @@ MonoBehaviour:
   noiseTravelDistance: 80
   spinTime: 3
   Alive: 0
+--- !u!114 &-6367180263155314922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048772328222031996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionClips:
+  - actionName: Shooting
+    actionVolume: 0.77
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
+  - actionName: Moving
+    actionVolume: 0.16
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
+  - actionName: GettingHurt
+    actionVolume: 0.795
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}
 --- !u!1 &1681243473023067827
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ TagManager:
   - DestuctibleWall
   - MoveSpot
   - Remains
+  - Indestructible
   layers:
   - Default
   - TransparentFX

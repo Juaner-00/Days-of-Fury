@@ -24,4 +24,9 @@ public class TowerSoundManager : TankSoundManager
             tower.OnShooting -= PlayShooting;
         }
     }
+
+    private void OnDisable()
+    {
+        SetSubscribeEvents(false);
+    }
 }

@@ -35,7 +35,7 @@ public abstract class SoundController : MonoBehaviour
                 {
                     if (this == null)
                     {
-                        //Debug.Log($"El objeto es nulo = {this == null}");
+                        Debug.Log($"Sound Controller es nulo = {this == null}");
                     }
                     else
                     {

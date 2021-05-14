@@ -53,6 +53,7 @@ public class SoundPool
 
         //      Reproduzca una fuente detenida.
         var source = stoppedSources.Dequeue();
+        source.spatialBlend = 0.5f;
         source.loop = loop;
         source.clip = clip;
         source.volume = volume;

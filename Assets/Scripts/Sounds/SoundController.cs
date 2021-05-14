@@ -41,7 +41,7 @@ public abstract class SoundController : MonoBehaviour
                     {
                         AudioClip[] clips = actionClips[acI].Clips;
                         int clipI = random? UnityEngine.Random.Range(0, clips.Length) : 0;
-                        //StartCoroutine(sPool.PlayCorroutine(clips[clipI], actionClips[acI].ActionVolume, loop));
+                        StartCoroutine(sPool.PlayCorroutine(clips[clipI], actionClips[acI].ActionVolume, loop));
                         StartCoroutine("TestCoroutine");
                     }
                 }

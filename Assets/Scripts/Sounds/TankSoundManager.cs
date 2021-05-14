@@ -71,4 +71,9 @@ public class TankSoundManager : SoundController
     {
         StopActionByName("Moving");
     }
+
+    private void OnDisable()
+    {
+        SetSubscribeEvents(false);
+    }
 }

@@ -10,6 +10,7 @@ public abstract class SoundController : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Initialized");
         sources = new Dictionary<string, SoundPool>();
 
         for(int acI = 0; acI < actionClips.Length; acI++)
@@ -30,11 +31,19 @@ public abstract class SoundController : MonoBehaviour
             if(actionClips[acI].ActionName == actionName)
             {
                 SoundPool sPool = default;
-                if(sources.TryGetValue(actionName, out sPool))
+                if (sources.TryGetValue(actionName, out sPool))
                 {
-                    AudioClip[] clips = actionClips[acI].Clips;
-                    int clipI = random? UnityEngine.Random.Range(0, clips.Length) : 0;
-                    StartCoroutine(sPool.PlayCorroutine(clips[clipI], actionClips[acI].ActionVolume,loop));
+                    if (this == null)
+                    {
+                        Debug.Log($"Sound Controller es nulo = {this == null}");
+                    }
+                    else
+                    {
+                        AudioClip[] clips = actionClips[acI].Clips;
+                        int clipI = random? UnityEngine.Random.Range(0, clips.Length) : 0;
+                        StartCoroutine(sPool.PlayCorroutine(clips[clipI], actionClips[acI].ActionVolume, loop));
+                        StartCoroutine("TestCoroutine");
+                    }
                 }
             }
         }
@@ -53,5 +62,10 @@ public abstract class SoundController : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator TestCoroutine()
+    {
+        yield return null;
     }
 }

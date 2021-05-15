@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675233568502895689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 199, z: 0}
+  m_LocalPosition: {x: 0, y: 180, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1048772328222031997}
@@ -218,7 +218,8 @@ MonoBehaviour:
   timeDead: 2
   damagedSmoke: {fileID: 1268635723504433819}
   stayOnLevelProbability: 0.2
-  IsStrong: 1
+  isStrong: 0
+  minimapSignal: {fileID: 675233568502895689}
 --- !u!65 &6819111125155334557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -266,7 +267,7 @@ MonoBehaviour:
   strafeRight: {fileID: 2654532907257814791}
   t_minStrafe: 0
   t_maxStrafe: 2
-  chaseRadius: 38
+  chaseRadius: 20
   ChaseReachedDistance: 30
   fieldOfViewAngle: 20
   fovRadius: 55

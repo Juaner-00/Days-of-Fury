@@ -26,4 +26,13 @@ public class MenuSoundManager : SoundController
     {
         PlayActionByName("Selecting");
     }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < menus.Length; i++)
+        {
+            menus[i].OnNavigating -= PlayNavigating;
+            menus[i].OnSelecting -= PlaySelecting;
+        }
+    }
 }

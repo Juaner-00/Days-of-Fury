@@ -23,7 +23,7 @@ public class PoolVfxs : MonoBehaviour
             objects[i] = Instantiate(item, transform.position, Quaternion.identity);
             objects[i].transform.parent = transform;
             items[i] = objects[i].GetComponent<IPool>();
-            items[i].Instantiate();
+            items[i].Instantiate(null);
         }
     }
 

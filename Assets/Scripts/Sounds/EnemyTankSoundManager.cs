@@ -28,4 +28,9 @@ public class EnemyTankSoundManager : TankSoundManager
             enemyController.OnGettingHurt -= PlayGettingHurt;
         }
     }
+
+    private void OnDisable()
+    {
+        SetSubscribeEvents(false);
+    }
 }

@@ -47,11 +47,13 @@ public class TankSoundManager : SoundController
 
     protected void PlayShooting()
     {
+        Debug.Log($"Tank Sound Mng is null = {this == null}");
         PlayActionByName("Shooting");
     }
 
     protected void PlayMoving()
     {
+        Debug.Log($"Tank Sound Mng is null = {this == null}");
         PlayActionByName("Moving", false, true);
     }
 
@@ -68,5 +70,10 @@ public class TankSoundManager : SoundController
     protected void StopMoving()
     {
         StopActionByName("Moving");
+    }
+
+    private void OnDisable()
+    {
+        SetSubscribeEvents(false);
     }
 }

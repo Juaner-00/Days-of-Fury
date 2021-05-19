@@ -5634,7 +5634,7 @@ MonoBehaviour:
   maxHealthPoints: 1
   scorePoints: 65
   damagedSmoke: {fileID: 0}
-  radius: 20
+  radius: 50
   timeDead: 2
   turretTank: {fileID: 1937282129062286460}
 --- !u!114 &2146522230471278990
@@ -5651,12 +5651,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionClips:
   - actionName: Shooting
-    actionVolume: 1
+    actionVolume: 0.778
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
   - actionName: GettingHurt
-    actionVolume: 1
+    actionVolume: 0.799
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}
@@ -6210,7 +6210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 40
-  attackSpeedBase: 0.5
+  attackSpeedBase: 0.65
   reference: {fileID: 1939478200668063709}
   smokeFire: {fileID: 1740220858228002331}
   attackSpeed: 0
@@ -6722,7 +6722,7 @@ GameObject:
   - component: {fileID: 3035550893385042743}
   - component: {fileID: 513720315633284633}
   - component: {fileID: 1638003337519478472}
-  m_Layer: 31
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

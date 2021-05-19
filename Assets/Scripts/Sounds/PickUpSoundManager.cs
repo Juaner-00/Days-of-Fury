@@ -19,4 +19,9 @@ public class PickUpSoundManager : SoundController
         Debug.Log("Picked up");
         PlayActionByName("SFX");
     }
+
+    private void OnDisable()
+    {
+        pickUp.OnSFX -= PlaySFX;
+    }
 }

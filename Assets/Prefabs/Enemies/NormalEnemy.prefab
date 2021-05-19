@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8881533889715790074}
   - component: {fileID: 9166473208834267048}
   - component: {fileID: 5216608686692542896}
-  m_Layer: 31
+  m_Layer: 11
   m_Name: Minimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750714425205476491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 199, z: 0}
+  m_LocalPosition: {x: 0, y: 180, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 988548298858404031}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6744038053857644895}
   - component: {fileID: -2780555251600778122}
   - component: {fileID: 6207197306603583796}
-  - component: {fileID: 5288502520329056477}
+  - component: {fileID: -447836883601168840}
   m_Layer: 8
   m_Name: NormalEnemy
   m_TagString: Enemy
@@ -216,7 +216,7 @@ MonoBehaviour:
   scorePoints: 50
   timeDead: 2
   damagedSmoke: {fileID: 0}
-  stayOnLevelProbability: 0.2
+  stayOnLevelProbability: 0
   isStrong: 0
   minimapSignal: {fileID: 750714425205476491}
 --- !u!65 &6744038053857644895
@@ -266,7 +266,7 @@ MonoBehaviour:
   strafeRight: {fileID: 2874193823486265285}
   t_minStrafe: 0
   t_maxStrafe: 2
-  chaseRadius: 38
+  chaseRadius: 20
   ChaseReachedDistance: 30
   fieldOfViewAngle: 20
   fovRadius: 55
@@ -274,7 +274,7 @@ MonoBehaviour:
   noiseTravelDistance: 80
   spinTime: 3
   Alive: 0
---- !u!114 &5288502520329056477
+--- !u!114 &-447836883601168840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,22 +283,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 988548298858404030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7c29341f3aa5d49afd89d2e905eec2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionClips:
-  - actionName: Moving
-    actionVolume: 0.027
-    isOverlappable: 0
-    clips:
-    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
   - actionName: Shooting
-    actionVolume: 0.7
+    actionVolume: 0.77
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
+  - actionName: Moving
+    actionVolume: 0.16
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
   - actionName: GettingHurt
-    actionVolume: 1
+    actionVolume: 0.795
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}
@@ -356,8 +356,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959426235147392056}
-  m_LocalRotation: {x: -0.000000059604645, y: 0.00000011920924, z: 0.00000025034348,
-    w: 1}
+  m_LocalRotation: {x: 0.00000014901161, y: 0.00000013087356, z: 0.5579112, w: 0.8299007}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -11,6 +11,8 @@ TagManager:
   - DestuctibleWall
   - MoveSpot
   - Remains
+  - Indestructible
+  - Build
   layers:
   - Default
   - TransparentFX
@@ -23,7 +25,7 @@ TagManager:
   - Enemy
   - Player
   - Obstacle
-  - 
+  - Minimap
   - 
   - 
   - 
@@ -43,7 +45,7 @@ TagManager:
   - 
   - UI RADAR
   - NoRender
-  - Minimap
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8679693862076217400}
   - component: {fileID: 8935178226756030314}
   - component: {fileID: 5427090879891124594}
-  m_Layer: 31
+  m_Layer: 11
   m_Name: Minimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675233568502895689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 199, z: 0}
+  m_LocalPosition: {x: 0, y: 180, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1048772328222031997}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6819111125155334557}
   - component: {fileID: 6511220085604451508}
   - component: {fileID: 6129854843171676662}
-  - component: {fileID: 5369637613701026925}
+  - component: {fileID: -6367180263155314922}
   m_Layer: 8
   m_Name: StrongEnemy
   m_TagString: Enemy
@@ -217,8 +217,8 @@ MonoBehaviour:
   scorePoints: 80
   timeDead: 2
   damagedSmoke: {fileID: 1268635723504433819}
-  stayOnLevelProbability: 0.2
-  isStrong: 0
+  stayOnLevelProbability: 1
+  isStrong: 1
   minimapSignal: {fileID: 675233568502895689}
 --- !u!65 &6819111125155334557
 BoxCollider:
@@ -267,7 +267,7 @@ MonoBehaviour:
   strafeRight: {fileID: 2654532907257814791}
   t_minStrafe: 0
   t_maxStrafe: 2
-  chaseRadius: 38
+  chaseRadius: 20
   ChaseReachedDistance: 30
   fieldOfViewAngle: 20
   fovRadius: 55
@@ -275,7 +275,7 @@ MonoBehaviour:
   noiseTravelDistance: 80
   spinTime: 3
   Alive: 0
---- !u!114 &5369637613701026925
+--- !u!114 &-6367180263155314922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,22 +284,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1048772328222031996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7c29341f3aa5d49afd89d2e905eec2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionClips:
-  - actionName: Moving
-    actionVolume: 1
-    isOverlappable: 0
-    clips:
-    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
   - actionName: Shooting
-    actionVolume: 0.7
+    actionVolume: 0.77
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: f1805401701fc7b48b3b52f611c35bc3, type: 3}
+  - actionName: Moving
+    actionVolume: 0.16
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: 4d78603af32640f4283c7cd11d490bdf, type: 3}
   - actionName: GettingHurt
-    actionVolume: 1
+    actionVolume: 0.795
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: b0dd171ccc27a18489f3b4b463afe41f, type: 3}

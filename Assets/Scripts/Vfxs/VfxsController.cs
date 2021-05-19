@@ -18,10 +18,10 @@ public class VfxsController : MonoBehaviour, IPool
     }
 
     // Se llama al inicializar el pool
-    public void Instantiate()
+    public void Instantiate(Pool parentPool)
     {
         initial = transform.position;
-
+        ParentPool = parentPool;
         StayOnScene = false;
     }
 
@@ -40,7 +40,9 @@ public class VfxsController : MonoBehaviour, IPool
     {
         thisparticle.Stop();
         transform.position = initial;
+        ParentPool?.PushItem(gameObject);
     }
 
     public bool StayOnScene { get; set; }
+    public Pool ParentPool { get; set; }
 }

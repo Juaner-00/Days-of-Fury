@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 8686952562530556908}
   - component: {fileID: 970707815819774485}
   - component: {fileID: 336783112834127862}
-  m_Layer: 31
+  m_Layer: 11
   m_Name: Minimap - PickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

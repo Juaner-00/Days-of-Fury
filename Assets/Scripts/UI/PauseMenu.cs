@@ -9,7 +9,7 @@ public class PauseMenu : Menu
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetButtonDown("Pause"))
         {
             if (IsPaused == true && IsDead == false && HasWon == false && OptionsOpen == false)
             {

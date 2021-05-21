@@ -35,7 +35,7 @@ public class ReticleController : MonoBehaviour
 
     void HandleTurret()
     {
-        if (string.IsNullOrEmpty(Input.GetJoystickNames()[0]))
+        if (Input.GetJoystickNames().Length == 0 || string.IsNullOrEmpty(Input.GetJoystickNames()[0]))
         {
             if (turretTransform)
             {

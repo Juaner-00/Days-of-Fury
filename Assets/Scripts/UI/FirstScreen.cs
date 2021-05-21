@@ -15,7 +15,7 @@ public class FirstScreen : Menu
 
     private void LateUpdate()
     {
-        if (Input.anyKeyDown && firstClick == false)
+        if (Input.anyKeyDown || Input.GetAxisRaw("Horizontal") > 0.1 || Input.GetAxisRaw("Vertical") > 0.1 && firstClick == false)
         {
             firstClick = true;
             Resume();

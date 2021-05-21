@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickUpSoundManager : SoundController
 {
+    const float SPACING_3D = 0.4f;
+
     PickUpBase pickUp;
 
     protected override void SetUp(bool child)
@@ -17,7 +19,7 @@ public class PickUpSoundManager : SoundController
     private void PlaySFX()
     {
         Debug.Log("Picked up");
-        PlayActionByName("SFX");
+        PlayActionByName("SFX", SPACING_3D);
     }
 
     private void OnDisable()

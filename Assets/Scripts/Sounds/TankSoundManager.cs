@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TankSoundManager : SoundController
 {
+    const float SPACING_3D = 0.4f;
+
     private ReticleController reticle;
 
 
@@ -48,23 +50,23 @@ public class TankSoundManager : SoundController
     protected void PlayShooting()
     {
         Debug.Log($"Tank Sound Mng is null = {this == null}");
-        PlayActionByName("Shooting");
+        PlayActionByName("Shooting", SPACING_3D /*+ (0.75f - SPACING_3D)*/);
     }
 
     protected void PlayMoving()
     {
         Debug.Log($"Tank Sound Mng is null = {this == null}");
-        PlayActionByName("Moving", false, true);
+        PlayActionByName("Moving", SPACING_3D, false, true);
     }
 
     protected void PlayGettingHurt()
     {
-        PlayActionByName("GettingHurt");
+        PlayActionByName("GettingHurt", SPACING_3D);
     }
 
     protected void PlayDying()
     {
-        PlayActionByName("Dying");
+        PlayActionByName("Dying", SPACING_3D);
     }
 
     protected void StopMoving()

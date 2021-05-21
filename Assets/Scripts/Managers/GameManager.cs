@@ -90,10 +90,11 @@ public class GameManager : MonoBehaviour
     // Método que se cuando el jugador muere
     void PlayerDie()
     {
-        if (playerMedals == Medals.None)
-            LoseGame();
-        else
-            WinGame();
+        if (!Menu.HasWon && !Menu.IsDead)
+            if (playerMedals == Medals.None)
+                LoseGame();
+            else
+                WinGame();
     }
 
     void WinGame()
@@ -134,8 +135,9 @@ public class GameManager : MonoBehaviour
     {
         playerMedals = star;
 
-        if (playerMedals == Medals.ThreeMedal)
-            WinGame();
+        if (!Menu.HasWon && !Menu.IsDead)
+            if (playerMedals == Medals.ThreeMedal)
+                WinGame();
     }
 
     void SaveGame()

@@ -98,8 +98,7 @@ public class PlayerMovementVels : MonoBehaviour
         {
             HandleInputs();
             // Solo se llama si hay un input
-            if (Input.anyKeyDown)
-                HandleDirection();
+            HandleDirection();
 
             HandleNextRotation();
             HandleRotation();
@@ -165,7 +164,7 @@ public class PlayerMovementVels : MonoBehaviour
         {
             // Si está parado y presiona cualquier tecla se pone en acelerando
             case PlayerStates.Stopped:
-                if (Input.anyKey && !Menu.IsPaused)
+                if ((horizontal != 0 || vertical != 0) && !Menu.IsPaused)
                 {
                     curveTimer = 0;
                     state = PlayerStates.Accelerating;

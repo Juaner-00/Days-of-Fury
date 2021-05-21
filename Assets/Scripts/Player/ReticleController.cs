@@ -35,12 +35,23 @@ public class ReticleController : MonoBehaviour
 
     void HandleTurret()
     {
-        if (turretTransform)
+        if (string.IsNullOrEmpty(Input.GetJoystickNames()[0]))
         {
-            Vector3 turretLookDir = reticlePosition - turretTransform.position;
-            Vector3 newDir = Vector3.RotateTowards(turretTransform.forward, turretLookDir, 1, 0.0F);
-            target = Quaternion.LookRotation(newDir);
-            turretTransform.rotation = Quaternion.Euler(-90, target.eulerAngles.y, 0);
+            if (turretTransform)
+            {
+                Vector3 turretLookDir = reticlePosition - turretTransform.position;
+                Vector3 newDir = Vector3.RotateTowards(turretTransform.forward, turretLookDir, 1, 0.0F);
+                target = Quaternion.LookRotation(newDir);
+                turretTransform.rotation = Quaternion.Euler(-90, target.eulerAngles.y, 0);
+            }
+        }
+        else
+        {
+            float horizontal = Input.GetAxis("AimHorizontal");
+            float vertical = -Input.GetAxis("AimVertical");
+
+            float dir = Mathf.Atan2(horizontal, vertical)*Mathf.Rad2Deg;
+            turretTransform.rotation = Quaternion.Euler(-90, dir, 0);
         }
     }
 

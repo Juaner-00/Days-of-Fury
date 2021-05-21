@@ -187,7 +187,7 @@ public class EnemyStateMachine : MonoBehaviour
         if (distance <= noiseTravelDistance)
         {
 
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButtonDown("Fire1"))
             {
                 noisePosition.position = player.transform.position;
                 aiHeardPlayer = true; 

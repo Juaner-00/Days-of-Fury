@@ -78,6 +78,20 @@ public class MisionManager : MonoBehaviour
         EnemyController.KillStrong += OnEnemyStrongDead;
     }
 
+    public void OnDisable()
+    {
+        EnemyController.OnDie -= OnEnemyDead;
+        ScoreManager.OnGetScore -= OnScoreGet;
+        PlayerMovementVels.OnMovingObjetive -= OnMove;
+        ObjetiveManager.OnReachObjetive -= OnReachObj;
+        EnemyTowerController.OnDie -= TowerDead;
+        PickUpBase.OnPick -= OnPickUp;
+        DestructibleWall.OnDestoy -= OnWallDestroy;
+
+        EnemyController.KillNormal -= OnEnemyNormalDead;
+        EnemyController.KillStrong -= OnEnemyStrongDead;
+    }
+
     void OnScoreGet(int score)
     {
         if (missions[actualMision].opcion == Missions.Opcion.Score)

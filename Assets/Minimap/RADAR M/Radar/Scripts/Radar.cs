@@ -67,14 +67,14 @@ public class Radar : MonoBehaviour {
             }
         }*/
         
-        /*if (Input.GetKeyDown(KeyCode.T)) {
-            rotationSpeed += 20;
+        if (Input.GetKeyDown(KeyCode.T)) {
+            rotationSpeed += 0;
             Debug.Log("rotationSpeed: " + rotationSpeed);
         }
         if (Input.GetKeyDown(KeyCode.R)) {
-            rotationSpeed -= 20;
+            rotationSpeed -= 0;
             Debug.Log("rotationSpeed: " + rotationSpeed);
-        }*/
+        }
     }
 
 }

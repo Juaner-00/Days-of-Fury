@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class SoundController : MonoBehaviour
 {
-    [SerializeField] private ActionClips[] actionClips;
+    [SerializeField] protected ActionClips[] actionClips;
 
-    private Dictionary<string, SoundPool> sources;
+    protected Dictionary<string, SoundPool> sources;
 
     private void Awake()
     {
@@ -24,11 +24,11 @@ public abstract class SoundController : MonoBehaviour
 
     protected abstract void SetUp(bool child);
 
-    protected void PlayActionByName(string actionName, bool random = false, bool loop = false)
+    protected void PlayActionByName(string actionName, float spacing3D = 0f, bool random = false, bool loop = false)
     {
-        for(int acI = 0; acI < actionClips.Length; acI++)
+        for (int acI = 0; acI < actionClips.Length; acI++)
         {
-            if(actionClips[acI].ActionName == actionName)
+            if (actionClips[acI].ActionName == actionName)
             {
                 SoundPool sPool = default;
                 if (sources.TryGetValue(actionName, out sPool))
@@ -40,15 +40,15 @@ public abstract class SoundController : MonoBehaviour
                     else
                     {
                         AudioClip[] clips = actionClips[acI].Clips;
-                        int clipI = random? UnityEngine.Random.Range(0, clips.Length) : 0;
-                        StartCoroutine(sPool.PlayCorroutine(clips[clipI], actionClips[acI].ActionVolume, loop));
+                        int clipI = random ? UnityEngine.Random.Range(0, clips.Length) : 0;
+                        StartCoroutine(sPool.PlayCorroutine(clips[clipI], actionClips[acI].ActionVolume, loop, spacing3D));
                         StartCoroutine("TestCoroutine");
                     }
                 }
             }
         }
     }
-    
+
     protected void StopActionByName(string actionName)
     {
         for(int acI = 0; acI < actionClips.Length; acI++)

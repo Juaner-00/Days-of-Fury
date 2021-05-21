@@ -25,7 +25,7 @@ public class SoundPool
         stoppedSources = new Queue<AudioSource>();
     }
 
-    public IEnumerator PlayCorroutine(AudioClip clip, float volume, bool loop)
+    public IEnumerator PlayCorroutine(AudioClip clip, float volume, bool loop, float spacing3D)
     {
         if (stoppedSources.Count <= 0)
         {
@@ -53,10 +53,10 @@ public class SoundPool
 
         //      Reproduzca una fuente detenida.
         var source = stoppedSources.Dequeue();
-        source.spatialBlend = 0.4f;
         source.loop = loop;
         source.clip = clip;
         source.volume = volume;
+        source.spatialBlend = spacing3D;
         playingSources.Add(source);
         source.Play();
 //        Debug.Log("Fuente reproduciendo");

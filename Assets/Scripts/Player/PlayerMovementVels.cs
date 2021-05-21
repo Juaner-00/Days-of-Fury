@@ -94,7 +94,7 @@ public class PlayerMovementVels : MonoBehaviour
 
     private void Update()
     {
-        if (available)
+        if (available && !Menu.IsPaused)
         {
             HandleInputs();
             // Solo se llama si hay un input

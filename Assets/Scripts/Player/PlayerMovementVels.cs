@@ -98,8 +98,7 @@ public class PlayerMovementVels : MonoBehaviour
         {
             HandleInputs();
             // Solo se llama si hay un input
-            if (Input.anyKeyDown)
-                HandleDirection();
+            HandleDirection();
 
             HandleNextRotation();
             HandleRotation();
@@ -165,7 +164,7 @@ public class PlayerMovementVels : MonoBehaviour
         {
             // Si está parado y presiona cualquier tecla se pone en acelerando
             case PlayerStates.Stopped:
-                if (Input.anyKey && !Menu.IsPaused)
+                if ((horizontal != 0 || vertical != 0) && !Menu.IsPaused)
                 {
                     curveTimer = 0;
                     state = PlayerStates.Accelerating;
@@ -206,15 +205,30 @@ public class PlayerMovementVels : MonoBehaviour
     {
         Directions oppositeDirection = GetOpositeDirection();
 
-        // Obtener la dirección a girar
-        if (vertical > 0.1f)
-            turnDir = Directions.North;
-        else if (vertical < -0.1f)
-            turnDir = Directions.South;
-        else if (horizontal > 0.1f)
+        // // Obtener la dirección a girar
+        // if (vertical > 0.1f)
+        //     turnDir = Directions.North;
+        // else if (vertical < -0.1f)
+        //     turnDir = Directions.South;
+        // else if (horizontal > 0.1f)
+        //     turnDir = Directions.East;
+        // else if (horizontal < -0.1f)
+        //     turnDir = Directions.West;
+
+        //Dirección a la que mira (4 direcciones)
+        //East
+        if (horizontal > 0.1f && Mathf.Abs(horizontal) >= Mathf.Abs(vertical))
             turnDir = Directions.East;
-        else if (horizontal < -0.1f)
+        //West
+        else if (horizontal < -0.1f && Mathf.Abs(horizontal) >= Mathf.Abs(vertical))
             turnDir = Directions.West;
+        //North
+        else if (vertical > 0.1f && Mathf.Abs(horizontal) < Mathf.Abs(vertical))
+            turnDir = Directions.North;
+        //South
+        else if (vertical < -0.1f && Mathf.Abs(horizontal) < Mathf.Abs(vertical))
+            turnDir = Directions.South;
+
 
         // Cambiar la duración de la rotación
         if (turnDir == oppositeDirection)

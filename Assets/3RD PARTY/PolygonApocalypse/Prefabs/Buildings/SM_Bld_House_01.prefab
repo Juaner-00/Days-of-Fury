@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4309182577281348}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &606680179
 BoxCollider:
@@ -97,8 +97,8 @@ Transform:
   - {fileID: 4998679552763500}
   - {fileID: 6311111583096148746}
   - {fileID: 9079899206507049118}
-  - {fileID: 606680177}
   - {fileID: 8789725542452466321}
+  - {fileID: 606680177}
   - {fileID: 4524117903183667487}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -533,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

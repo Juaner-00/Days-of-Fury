@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BuildingSoundManager : SoundController
 {
+    const float SPACING_3D = 0.75f;
+
     DestructibleWall wall;
 
     protected override void SetUp(bool child)
@@ -30,11 +32,11 @@ public class BuildingSoundManager : SoundController
 
     private void PlayDying()
     {
-        PlayActionByName("Dying");
+        PlayActionByName("Dying", SPACING_3D);
     }
     private void PlayGettingHurt()
     {
-        PlayActionByName("GettingHurt");
+        PlayActionByName("GettingHurt", SPACING_3D);
     }
 
     private void OnDisable()

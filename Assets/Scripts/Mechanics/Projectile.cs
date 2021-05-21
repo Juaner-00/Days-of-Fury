@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour, IPool
     [SerializeField] TrailRenderer trail;
     new Rigidbody rigidbody;
     Vector3 initial;
-    PoolVfxs poolBullet, poolBuildC;
+    PoolVfxs poolBullet, poolBuildC, poolBuildI;
     GameObject obstacle;
     string tag;
 
@@ -24,6 +24,7 @@ public class Projectile : MonoBehaviour, IPool
 
         poolBullet = GameObject.Find("VFXsBulletCollision(Pool)").GetComponent<PoolVfxs>();
         poolBuildC = GameObject.Find("VFXsBuildCollision(Pool)").GetComponent<PoolVfxs>();
+        poolBuildI = GameObject.Find("VFXsBuildIndestructible(Pool)").GetComponent<PoolVfxs>();
 
         if (poolBullet == null)
         {
@@ -68,6 +69,12 @@ public class Projectile : MonoBehaviour, IPool
             ParticleSystem buildCollision = poolBuildC.GetItem(collision.GetContact(0).point, tag);
             buildCollision.transform.forward = -rigidbody.velocity * 2;
             buildCollision.Play();
+        }
+        if (collision.gameObject.CompareTag("Indestructible"))
+        {
+            ParticleSystem buildCollisionI = poolBuildI.GetItem(collision.GetContact(0).point, tag);
+            buildCollisionI.transform.forward = -rigidbody.velocity;
+            buildCollisionI.Play();
         }
         if (!collided)
         {

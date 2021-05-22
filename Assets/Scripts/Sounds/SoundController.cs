@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class SoundController : MonoBehaviour
 {
+    [SerializeField] protected GameObject source;
     [SerializeField] protected ActionClips[] actionClips;
 
     protected Dictionary<string, SoundPool> sources;
@@ -15,7 +16,7 @@ public abstract class SoundController : MonoBehaviour
 
         for(int acI = 0; acI < actionClips.Length; acI++)
         {
-            SoundPool sPool = new SoundPool(gameObject);
+            SoundPool sPool = new SoundPool(source != null? source : gameObject);
             sources.Add(actionClips[acI].ActionName, sPool);
         }
 

@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 1395042537113141127}
   actionClips:
   - actionName: Shooting
     actionVolume: 0.77
@@ -20399,6 +20400,12 @@ Transform:
 --- !u!198 &1268635723504433819 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198914367316890152, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1394346668211513523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1395042537113141127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1575754434287412, guid: 6c32251bcc267b04bb7f78bfe9e35de8,
     type: 3}
   m_PrefabInstance: {fileID: 1394346668211513523}
   m_PrefabAsset: {fileID: 0}

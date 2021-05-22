@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4229,6 +4229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6637d0c4df1a1d34794bfdb86c676627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 0}
   actionClips:
   - actionName: Navigating
     actionVolume: 0.5
@@ -5880,11 +5881,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3305032096419333679, guid: 46bfe6e80b71d5b4f9406b5cd9a7e586,
-        type: 3}
-      propertyPath: actionClips.Array.data[1].actionVolume
-      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bfe6e80b71d5b4f9406b5cd9a7e586, type: 3}

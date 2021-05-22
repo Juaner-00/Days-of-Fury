@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 3960102628544749230}
   actionClips:
   - actionName: Shooting
     actionVolume: 0.77

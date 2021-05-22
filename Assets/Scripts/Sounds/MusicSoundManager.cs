@@ -26,9 +26,29 @@ public class MusicSoundManager : SoundController
 
     private void UploadMusic(Scene scene, LoadSceneMode loadSceneMode)
     {
-        
+        StopAll();
+
+        for (int i = 0; i < actionClips.Length; i++)
+        {
+            if(actionClips[i].ActionName == scenesPerActions[i].ActionName)
+            {
+                if (scenesPerActions[i].SceneNames.Contains(scene.name))
+                {
+                    PlayActionByName(actionClips[i].ActionName, 0, scenesPerActions[i].PlayRandomClip, true);
+                }
+            }
+        }
     }
 
+    private void StopAll()
+    {
+        for(int i = 0; i < actionClips.Length; i++)
+        {
+            sources[actionClips[i].ActionName].StopAll();
+        }
+    }
+
+    /*
     private void OnValidate()
     {
         if (actionClips != null) 
@@ -52,4 +72,5 @@ public class MusicSoundManager : SoundController
 
     private int ActionClipsCount { get; set; }
     private ScenesPerAction[] ScenesPerActions { get; set; }
+    */
 }

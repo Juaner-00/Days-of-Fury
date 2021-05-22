@@ -99,9 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138b97db0bd59784b84d147b8811cc08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 0}
   actionClips:
   - actionName: SFX
-    actionVolume: 1
+    actionVolume: 0.765
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: 565d3b04f9d1cc345b07364e2956a9b9, type: 3}

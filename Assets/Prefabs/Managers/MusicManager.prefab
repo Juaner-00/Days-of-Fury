@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3305032096419333678}
-  - component: {fileID: 3305032096419333679}
+  - component: {fileID: 1094384733429747456}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3305032096419333679
+--- !u!114 &1094384733429747456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,28 +40,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 3305032096419333672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad9be1895dc0158498d9738b98341c82, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bb5a181ff633f5448a7ea9aed84b90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMusicController: 1
+  source: {fileID: 0}
   actionClips:
   - actionName: InGame
-    actionVolume: 0.1
+    actionVolume: 0.04
+    isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: af5213e2689bf29488da955af99770c5, type: 3}
     - {fileID: 8300000, guid: c955b37df37eb734e9104cd671a116de, type: 3}
     - {fileID: 8300000, guid: 95bab5668c54ea94cb231c52c226aade, type: 3}
     - {fileID: 8300000, guid: 4e29532f7a4f9044e8e6a0856324e746, type: 3}
   - actionName: Menu
-    actionVolume: 0.5
+    actionVolume: 0.383
+    isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: 5edfbae833773e44ebddfbeea0544e6d, type: 3}
-  scenesActions:
+  scenesPerActions:
   - actionName: InGame
     playRandomClip: 1
     scenesNames:
-    - Level1
     - Tutorial
+    - Level1
+    - Level2
+    - Level3
   - actionName: Menu
     playRandomClip: 0
     scenesNames:

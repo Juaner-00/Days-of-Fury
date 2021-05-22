@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class IndctBuildingSoundManager : SoundController
 {
-    const float SPACING_3D = 0.75f;
-
-    protected override void SetUp(bool child)
-    {
-        
-    }
+    protected const float SPACING_3D = 0.75f;
 
     public void PlayGettingHurt()
     {
         PlayActionByName("GettingHurt", SPACING_3D);
     }
 
-    
+    protected override void SetUp(bool child)
+    {
+        
+    }
 }

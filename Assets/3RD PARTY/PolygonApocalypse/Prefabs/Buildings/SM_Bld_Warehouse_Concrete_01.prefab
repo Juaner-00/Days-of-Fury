@@ -411,10 +411,10 @@ GameObject:
   - component: {fileID: 2859359639571993204}
   - component: {fileID: 6703581723072586432}
   - component: {fileID: 5599455716789246747}
-  - component: {fileID: 8219380747389181415}
+  - component: {fileID: 7084475288579869965}
   m_Layer: 10
   m_Name: SM_Bld_Warehouse_Concrete_01
-  m_TagString: Untagged
+  m_TagString: Indestructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -541,7 +541,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.39636, y: 9.512979, z: 2.4347477}
   m_Center: {x: 0.9664897, y: 4.450316, z: -8.958171}
---- !u!114 &8219380747389181415
+--- !u!114 &7084475288579869965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -550,15 +550,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1752886763242464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b948cc59c8955e4089d48243274bb47, type: 3}
+  m_Script: {fileID: 11500000, guid: 040948b890332444798b9e291e4e37d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionClips:
   - actionName: GettingHurt
-    actionVolume: 0.758
+    actionVolume: 0.66
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: 1b17f024730cb3d43a417c30d6e27a32, type: 3}
+  - actionName: Working
+    actionVolume: 0.01
+    isOverlappable: 0
+    clips:
+    - {fileID: 8300000, guid: bae8392cf490aee419846e86ff7202ff, type: 3}
 --- !u!1 &1731982032654024569
 GameObject:
   m_ObjectHideFlags: 0

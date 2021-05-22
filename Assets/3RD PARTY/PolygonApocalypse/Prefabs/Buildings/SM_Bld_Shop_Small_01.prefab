@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7370284614831708985}
   - component: {fileID: 983045990358351584}
   - component: {fileID: 2908107817967550762}
+  - component: {fileID: 8118214486079605692}
   m_Layer: 10
   m_Name: SM_Bld_Shop_Small_01
   m_TagString: Untagged
@@ -117,8 +118,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.300425, y: 8.716244, z: 8.376118}
-  m_Center: {x: 0.0044920444, y: 4.243211, z: -0.29521036}
+  m_Size: {x: 4.098215, y: 2.1391678, z: 8.693045}
+  m_Center: {x: 4.40932, y: 0.9546728, z: -0.4536738}
 --- !u!114 &983045990358351584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +156,19 @@ MonoBehaviour:
     isOverlappable: 0
     clips:
     - {fileID: 8300000, guid: 199adf232235e8943a7985f87608eb8a, type: 3}
+--- !u!65 &8118214486079605692
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182436441720712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8739855, y: 8.154293, z: 8.404483}
+  m_Center: {x: 0, y: 4.0771465, z: -0.32067075}
 --- !u!1 &1417258858890128
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +776,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1915722273134775882, guid: 2ea761880d89e6e4cb767bf35ddd961a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2ea761880d89e6e4cb767bf35ddd961a, type: 3}
 --- !u!4 &2248831543612673047 stripped
 Transform:
@@ -1485,7 +1500,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2590475572025829124, guid: 9b2427eedaee08f4e912e8c38b0ed785, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9b2427eedaee08f4e912e8c38b0ed785, type: 3}
 --- !u!4 &3788778673260018515 stripped
 Transform:
@@ -2281,7 +2297,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2590475572025829124, guid: 9b2427eedaee08f4e912e8c38b0ed785, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9b2427eedaee08f4e912e8c38b0ed785, type: 3}
 --- !u!4 &6918740808490010194 stripped
 Transform:
@@ -2750,7 +2767,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 895173377937179308, guid: d6112e16f7e54344099937776b3d7f38, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d6112e16f7e54344099937776b3d7f38, type: 3}
 --- !u!4 &8578439542412112682 stripped
 Transform:

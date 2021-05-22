@@ -44,8 +44,12 @@ public class DestructibleWall : MonoBehaviour, IDamagable
 
         GetComponentInChildren<ParticleSystem>().Play();
 
-        // Desactivar los renderer y el collider
-        GetComponent<Renderer>().enabled = false;
+        // Tratar de desactivar los renderer y el collider
+
+        Renderer renderer;
+
+        if (TryGetComponent(out renderer))
+            enabled = false;
 
         foreach (Collider collider in GetComponents<Collider>())
             collider.enabled = false;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4682791150949070}
   - component: {fileID: 33392821561423910}
   - component: {fileID: 23098434317281962}
-  - component: {fileID: -2650167353280976421}
+  - component: {fileID: 4827929757070829906}
   m_Layer: 0
   m_Name: SM_Prop_Hydrant_01
   m_TagString: Untagged
@@ -80,8 +80,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &-2650167353280976421
-MeshCollider:
+--- !u!65 &4827929757070829906
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,7 +90,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 4b59460c1c4c73244841c87820a523a6, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.55091107, y: 1.0532614, z: 0.5404358}
+  m_Center: {x: -0.0001296252, y: 0.5266307, z: 0.0000006109476}

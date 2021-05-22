@@ -327,7 +327,6 @@ GameObject:
   - component: {fileID: 4769652186717400}
   - component: {fileID: 33462270606791760}
   - component: {fileID: 23405709290767834}
-  - component: {fileID: 895173377937179308}
   m_Layer: 0
   m_Name: SM_Prop_Dresser_03
   m_TagString: Untagged
@@ -402,19 +401,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &895173377937179308
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511794136444630}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.8739855, y: 0.98717743, z: 0.73251706}
-  m_Center: {x: 0, y: 0.49358872, z: -0.007268071}
 --- !u!1 &1677776506833602
 GameObject:
   m_ObjectHideFlags: 0

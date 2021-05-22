@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9887513920fea4fad5fa431af94e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 3960102628544749230}
+  source: {fileID: 0}
   actionClips:
   - actionName: Shooting
     actionVolume: 0.77
@@ -343,7 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3962801949959109276}
   - component: {fileID: 3959426235147392057}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoneTurretTurn
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 3954289442321869066}
   - component: {fileID: 3928349867075813032}
   - component: {fileID: 3936898632330263164}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BarrelMount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3962665513651709350}
   - component: {fileID: 4010259953395039692}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: marksLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3954440664231108044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoneWheel_L2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 3963071900185948890}
   - component: {fileID: 3929884447347184500}
   - component: {fileID: 3937180838938899922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3962644803035732100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoneBarreTilt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,7 +742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3954685555283549342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoneWheel_R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 3954528090700114534}
   - component: {fileID: 3928921215056974644}
   - component: {fileID: 3936773837043225502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,7 +852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3962803469022186132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,7 +882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3962709536808257478}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: NormalEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -915,7 +915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3954719548836941258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoneBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 3954181906492240476}
   - component: {fileID: 3928276034862790922}
   - component: {fileID: 3936869122457404634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_L2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1027,7 +1027,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3963069649743005788}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BodyShake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1058,7 +1058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3954678990893345306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoneBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,7 +1089,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3962886560071162426}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 3962915463738420360}
   - component: {fileID: 3928509679012460286}
   - component: {fileID: 3937062440582894528}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1204,7 +1204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3962896771840821930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoneWheel_R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3954432540851498698}
   - component: {fileID: 4009018094049156940}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tank_T34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1287,7 +1287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3954254827312568568}
   - component: {fileID: 4009601533648847822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: marksRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1417,7 +1417,7 @@ GameObject:
   - component: {fileID: 3962653126785103048}
   - component: {fileID: 3769189012304594962}
   - component: {fileID: 3761233441674585160}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftDustTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6034,7 +6034,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3962653034460599908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoneWheel_L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6067,7 +6067,7 @@ GameObject:
   - component: {fileID: 3962869193502632488}
   - component: {fileID: 3928545246354817406}
   - component: {fileID: 3937634252289121098}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6144,7 +6144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3962845529244792994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoneTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6177,7 +6177,7 @@ GameObject:
   - component: {fileID: 3954205411803062050}
   - component: {fileID: 3761593455647509562}
   - component: {fileID: 3762127454076006702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightDustTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10796,7 +10796,7 @@ GameObject:
   - component: {fileID: 3954526772796081842}
   - component: {fileID: 3929075087148000374}
   - component: {fileID: 3937746278009700052}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10875,7 +10875,7 @@ GameObject:
   - component: {fileID: 3954690170910231966}
   - component: {fileID: 3929328561753636210}
   - component: {fileID: 3937408367283666478}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10954,7 +10954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3022791000240878852}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: NoAiming
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11012,9 +11012,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3954690170910231966}
     m_Modifications:
+    - target: {fileID: 1472325922009524, guid: 018c6bb3f1d37b34fbba9163f8f42430, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1938979120316268, guid: 018c6bb3f1d37b34fbba9163f8f42430, type: 3}
       propertyPath: m_Name
       value: Cannon_Shot_FX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938979120316268, guid: 018c6bb3f1d37b34fbba9163f8f42430, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4463585258680846, guid: 018c6bb3f1d37b34fbba9163f8f42430, type: 3}
       propertyPath: m_LocalPosition.x

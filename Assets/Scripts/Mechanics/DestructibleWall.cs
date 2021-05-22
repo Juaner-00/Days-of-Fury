@@ -49,7 +49,7 @@ public class DestructibleWall : MonoBehaviour, IDamagable
         Renderer renderer;
 
         if (TryGetComponent(out renderer))
-            enabled = false;
+            renderer.enabled = false;
 
         foreach (Collider collider in GetComponents<Collider>())
             collider.enabled = false;
